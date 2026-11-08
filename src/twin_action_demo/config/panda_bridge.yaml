@@ -1,18 +1,11 @@
-# ros_gz_bridge config_file format. Each entry is one topic mapping, and
-# `direction` is the spelled-out form of the bracket used in inline specs:
-# GZ_TO_ROS is '[', ROS_TO_GZ is ']'.
-#
-# Eight mappings: one measurement coming out, seven commands going in.
-
-# --- FEEDBACK: gz -> ROS. Note the type asymmetry: Gazebo emits a whole Model
-# --- message and ROS wants a JointState. The bridge knows that conversion.
+# ---- FEEDBACK: gz -> ROS (the '[' direction) ----
 - ros_topic_name: "/world/empty/model/panda/joint_state"
   gz_topic_name: "/world/empty/model/panda/joint_state"
   ros_type_name: "sensor_msgs/msg/JointState"
   gz_type_name: "gz.msgs.Model"
   direction: GZ_TO_ROS
 
-# --- COMMANDS: ROS -> gz, one per actuated arm joint.
+# ---- COMMANDS: ROS -> gz (the ']' direction), Joints 1–7 ----
 - ros_topic_name: "/panda_joint1/cmd_pos"
   gz_topic_name: "/panda_joint1/cmd_pos"
   ros_type_name: "std_msgs/msg/Float64"
@@ -54,3 +47,40 @@
   ros_type_name: "std_msgs/msg/Float64"
   gz_type_name: "gz.msgs.Double"
   direction: ROS_TO_GZ
+
+# ============================================================
+# S20 PERCEPTION: append these entries to panda_bridge.yaml
+# (the gz -> ROS feedback direction, same as the joint_state entry).
+# The rgbd_camera sensor publishes four gz topics under /overhead_camera;
+# we only need the depth image + camera_info to deproject a pixel to a
+# 3D point. (RGB is bridged too so you can eyeball it in rqt / rviz.)
+# ============================================================
+
+# --- Depth image: gz.msgs.Image -> sensor_msgs/Image (32FC1 depth) ---
+- ros_topic_name: "/overhead_camera/depth_image"
+  gz_topic_name: "/overhead_camera/depth_image"
+  ros_type_name: "sensor_msgs/msg/Image"
+  gz_type_name: "gz.msgs.Image"
+  direction: GZ_TO_ROS
+
+# --- Camera intrinsics: needed to turn (u,v,depth) into (x,y,z) ---
+- ros_topic_name: "/overhead_camera/camera_info"
+  gz_topic_name: "/overhead_camera/camera_info"
+  ros_type_name: "sensor_msgs/msg/CameraInfo"
+  gz_type_name: "gz.msgs.CameraInfo"
+  direction: GZ_TO_ROS
+
+# --- RGB image: for color segmentation (find the blue cube) ---
+- ros_topic_name: "/overhead_camera/image"
+  gz_topic_name: "/overhead_camera/image"
+  ros_type_name: "sensor_msgs/msg/Image"
+  gz_type_name: "gz.msgs.Image"
+  direction: GZ_TO_ROS
+# NOTE: the rgbd_camera also emits /overhead_camera/points (a PointCloud2).
+# Bridging that is an ALTERNATIVE to depth+info deprojection -- if you'd
+# rather segment in cloud space later, add:
+# - ros_topic_name: "/overhead_camera/points"
+#   gz_topic_name: "/overhead_camera/points"
+#   ros_type_name: "sensor_msgs/msg/PointCloud2"
+#   gz_type_name: "gz.msgs.PointCloudPacked"
+#   direction: GZ_TO_ROS

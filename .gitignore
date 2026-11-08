@@ -1,15 +1,29 @@
-# ROS 2 / colcon outputs
+# ROS / colcon generated files, including accidentally nested builds
 build/
 install/
 log/
+logs/
+logs_live_verify/
+.sync-backups/
 
-# Python artifacts
+# Python generated files
 __pycache__/
 *.py[cod]
 .pytest_cache/
 
-# Editors and local environment
+# Local tools, credentials, and editor settings
 .vscode/
 .idea/
 .venv/
+.serena/
+.codex/
+.aws/
+.env
+.env.*
+.claude/settings.local.json
 
+# Historical local snapshots and generated frame diagrams
+*.bak*
+*.pre_*_bak
+frames_*.gv
+frames_*.pdf

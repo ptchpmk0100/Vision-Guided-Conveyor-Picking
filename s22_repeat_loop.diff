@@ -1,0 +1,241 @@
+--- a/src/twin_moveit_scripts/twin_moveit_scripts/move_to.py	2026-11-06 19:51:29.113465561 +0100
++++ b/src/twin_moveit_scripts/twin_moveit_scripts/move_to.py	2026-11-07 00:16:32.701731039 +0100
+@@ -787,6 +787,55 @@
+ }
+ 
+ 
++# ---- S22: auto-chosen, varying place destination (stateless ring-tour) ----
++# The point of the repeat-without-respawn loop: the cube is left in the world and
++# each run the camera finds it wherever the PREVIOUS run dropped it, picks it, and
++# drops it at a NEW safe spot. So the destination can no longer be one fixed point
++# ('table' at (0.35,0.2) would just place the cube back on itself next run). These
++# are a few pre-vetted drop slots, all:
++#   - inside the arm's demonstrated-reachable zone (x in [0.35,0.55],
++#     y in [-0.20,0.20]); the overhead camera at (0.4,0,1.2), 60 deg FOV, easily
++#     covers this, so reach (not view) is the binding constraint;
++#   - on the ground at the cube's resting-center z (0.015), so object_detector's
++#     center-z plausibility gate (0.015 +/- 0.04) still accepts the placed cube and
++#     the NEXT run can perceive it (a cube on ANY face still centers at 0.015);
++#   - mutually well separated (~0.18 m), so every move is genuine and the next
++#     detection is unambiguous.
++# TUNABLE: ground-truth verification confirms each slot stays in reach.
++PLACE_SLOTS = [
++    (0.45,  0.18, 0.015),
++    (0.50,  0.00, 0.015),
++    (0.45, -0.18, 0.015),
++    (0.37,  0.00, 0.015),
++]
++
++
++def choose_place_target(current_xyz, logger=None):
++    """Pick the next drop slot for a cube currently at `current_xyz`.
++
++    Stateless ring-tour: find the slot NEAREST the cube now, return the NEXT slot
++    in PLACE_SLOTS order. Across independent `pick_and_place` processes this walks
++    the cube around the ring (slot i -> i+1 -> ...), so every run moves it to a
++    fresh, known-safe, in-view, in-reach spot WITHOUT any persisted state and
++    WITHOUT ever placing it back where it already is. If the cube's position is
++    unknown (e.g. pick could not report it), start the tour at slot 0.
++    """
++    if current_xyz is None:
++        idx = 0
++    else:
++        cx, cy = current_xyz[0], current_xyz[1]
++        nearest = min(range(len(PLACE_SLOTS)),
++                      key=lambda i: (cx - PLACE_SLOTS[i][0]) ** 2
++                      + (cy - PLACE_SLOTS[i][1]) ** 2)
++        idx = (nearest + 1) % len(PLACE_SLOTS)
++    target = PLACE_SLOTS[idx]
++    if logger is not None:
++        cur = tuple(round(v, 3) for v in current_xyz) if current_xyz else None
++        logger.info(f"choose_place_target: cube at {cur} -> drop slot {idx} @ "
++                    f"({target[0]:.3f}, {target[1]:.3f}, {target[2]:.3f})")
++    return target
++
++
+ class _ObjectPoseCache:
+     """Owns a subscription to /detected_objects/box and holds the latest pose.
+ 
+@@ -1076,16 +1125,21 @@
+       - Approach/descend/retract use the same top-down TOPDOWN_GRASP_QUAT as pick,
+         so the target location is treated with the same alignment (axis-aligned).
+     """
+-    logger.info(f"=== place('{target_id}') ===")
+-
+-    # Resolve the target location.
+-    txyz = resolve_object(target_id, logger, twin)   # S20: twin -> clock for pose freshness
+-    if txyz is None:
+-        # S19 FIX: was mislabelled "not_holding", which sent you looking at the
+-        # gripper for what is actually a bad target id.
+-        return PlaceResult(ok=False, stage="no_target_resolved",
+-                           error=f"could not resolve target '{target_id}' "
+-                                 f"(known targets: {sorted(_KNOWN_TARGETS)})")
++    # S22: target_id may be an explicit (x, y, z) drop point (from
++    # choose_place_target) OR a named target id resolved via the perception seam.
++    if isinstance(target_id, (tuple, list)) and len(target_id) == 3:
++        txyz = (float(target_id[0]), float(target_id[1]), float(target_id[2]))
++        logger.info(f"=== place(xyz=({txyz[0]:.3f},{txyz[1]:.3f},{txyz[2]:.3f})) ===")
++    else:
++        logger.info(f"=== place('{target_id}') ===")
++        # Resolve the target location.
++        txyz = resolve_object(target_id, logger, twin)   # S20: twin -> clock for pose freshness
++        if txyz is None:
++            # S19 FIX: was mislabelled "not_holding", which sent you looking at the
++            # gripper for what is actually a bad target id.
++            return PlaceResult(ok=False, stage="no_target_resolved",
++                               error=f"could not resolve target '{target_id}' "
++                                     f"(known targets: {sorted(_KNOWN_TARGETS)})")
+     tx, ty, tz = txyz
+ 
+     # PRE-CHECK: are we holding something? Read the current gripper width.
+@@ -1193,29 +1247,50 @@
+     return res
+ 
+ 
+-def pick_and_place(robot, arm, logger, params, twin, pick_id, place_id):
+-    """Composite: call pick() then place() in sequence. Returns both results
+-    so a caller can see exactly where a cycle failed.
++def pick_and_place(robot, arm, logger, params, twin, pick_id, place_id=None):
++    """Composite: pick() -> place() at an AUTO-CHOSEN safe slot -> park at 'ready'.
+ 
+-    Returns a tuple: (pick_result, place_result). Either or both may be not ok.
+-    Useful for testing the full pick-place cycle and for future LLM sequencing.
++    S22: the drop location is chosen each run by choose_place_target() from where
++    the cube was actually picked, so repeated cycles need NO respawn -- the camera
++    finds the cube wherever the last run left it, and it is moved to a fresh safe
++    slot (touring the ring across runs). `place_id` is accepted for CLI/back-compat
++    but ignored UNLESS it names a fixed _KNOWN_TARGETS entry other than the default
++    'table' (pass e.g. a future named bin to force a specific drop point).
++
++    Returns (pick_result, place_result); either may be not ok. The arm is homed to
++    'ready' at the end REGARDLESS of outcome (Feature C), which also clears it out
++    of the overhead camera's view so the next cycle's detection sees the cube.
+     """
+-    logger.info(f"=== pick_and_place('{pick_id}' -> '{place_id}') ===")
++    logger.info(f"=== pick_and_place('{pick_id}' -> auto) ===")
+ 
+-    # Phase 1: pick
+-    pick_result = pick(robot, arm, logger, params, twin, pick_id)
+-    logger.info(f"pick phase: {pick_result}")
+-    if not pick_result.ok:
+-        logger.error(f"pick failed at stage {pick_result.stage}; "
+-                     f"aborting place phase")
+-        return (pick_result, None)
+-
+-    # Phase 2: place
+-    place_result = place(robot, arm, logger, params, twin, place_id)
+-    logger.info(f"place phase: {place_result}")
+-
+-    logger.info(f"pick_and_place cycle: {'SUCCESS' if place_result.ok else 'FAILED'}")
+-    return (pick_result, place_result)
++    place_result = None
++    try:
++        # Phase 1: pick
++        pick_result = pick(robot, arm, logger, params, twin, pick_id)
++        logger.info(f"pick phase: {pick_result}")
++        if not pick_result.ok:
++            logger.error(f"pick failed at stage {pick_result.stage}; "
++                         f"aborting place phase")
++            return (pick_result, None)
++
++        # Phase 2: choose a safe drop slot from where the cube actually was, place there.
++        if place_id not in (None, "table") and place_id in _KNOWN_TARGETS:
++            target = place_id                                  # explicit fixed target
++        else:
++            target = choose_place_target(pick_result.object_xyz, logger)
++        place_result = place(robot, arm, logger, params, twin, target)
++        logger.info(f"place phase: {place_result}")
++        logger.info(f"pick_and_place cycle: {'SUCCESS' if place_result.ok else 'FAILED'}")
++        return (pick_result, place_result)
++    finally:
++        # Phase 3 (Feature C): return to a safe configuration every cycle, success
++        # or fail. Non-fatal if it hiccups -- a homing error must not mask a place
++        # result that already happened.
++        try:
++            logger.info("pick_and_place: returning to safe 'ready' configuration")
++            move_to_named(robot, arm, logger, params, "ready")
++        except Exception as e:
++            logger.warn(f"pick_and_place: return-to-ready raised: {e}")
+ 
+ 
+ def main():
+@@ -1244,9 +1319,11 @@
+         target = argv[1] if len(argv) > 1 else "table"
+         logger.info(f"RESULT: {place(robot, arm, logger, params, twin, target)}")
+     elif cmd == "pick_and_place":
+-        # ros2 run twin_moveit_scripts move_to pick_and_place box table
++        # ros2 run twin_moveit_scripts move_to pick_and_place box
++        # S22: the drop location is auto-chosen each run (no respawn needed). A 2nd
++        # arg naming a fixed _KNOWN_TARGETS entry (other than 'table') forces it.
+         pick_id = argv[1] if len(argv) > 1 else "box"
+-        place_id = argv[2] if len(argv) > 2 else "table"
++        place_id = argv[2] if len(argv) > 2 else None
+         pick_result, place_result = pick_and_place(robot, arm, logger, params,
+                                                     twin, pick_id, place_id)
+         logger.info(f"Cycle result: pick={pick_result.ok}, place={place_result.ok if place_result else 'N/A'}")
+--- a/src/twin_action_demo/setup.py	2026-08-04 11:37:02.377984022 +0200
++++ b/src/twin_action_demo/setup.py	2026-11-07 00:16:36.855757147 +0100
+@@ -16,6 +16,9 @@
+         # S20 PERCEPTION: install the sensors-enabled world so the launch file
+         # can point gz_args at share/twin_action_demo/worlds/sensors_empty.sdf.
+         (os.path.join('share', package_name, 'worlds'), glob('worlds/*.sdf')),
++        # S22: install the graspable cube model so panda_bringup can spawn it as
++        # part of the world (one launch brings up robot + camera + cube).
++        (os.path.join('share', package_name, 'models'), glob('models/*.sdf')),
+     ],
+     install_requires=['setuptools'],
+     zip_safe=True,
+--- a/src/twin_action_demo/launch/panda_bringup.launch.py	2026-08-04 11:36:13.967365560 +0200
++++ b/src/twin_action_demo/launch/panda_bringup.launch.py	2026-11-07 00:16:48.311828635 +0100
+@@ -182,6 +182,42 @@
+         )
+     )
+ 
++    # S22: run the object detector as PART of bringup, so perception is always up
++    # and repeated pick_and_place runs need no separate terminal. Run exactly as
++    # S21 verified it via `ros2 run` (wall-clock stamps; move_to judges pose
++    # freshness clock-independently, so no use_sim_time is needed here).
++    object_detector = Node(
++        package='twin_moveit_scripts',
++        executable='object_detector',
++        output='screen',
++    )
++
++    # S22: spawn the graspable cube as part of the world, at the start spot
++    # (0.45, 0.0). -z 0.03 drops it so it settles with its center at 0.015. The
++    # cube PERSISTS across pick_and_place runs, so the camera re-finds it wherever
++    # the previous run dropped it -- no respawn needed. Installed to this package's
++    # share/models by setup.py.
++    cube_path = PathJoinSubstitution([
++        FindPackageShare('twin_action_demo'),
++        'models',
++        'grasp_box.sdf',
++    ])
++    spawn_cube = Node(
++        package='ros_gz_sim',
++        executable='create',
++        arguments=[
++            '-world', 'empty',
++            '-name', 'b',
++            '-file', cube_path,
++            '-x', '0.45', '-y', '0.0', '-z', '0.03',
++        ],
++        output='screen',
++    )
++    # Spawn the cube only AFTER the Panda create exits -- by then the world is up.
++    cube_after_spawn = RegisterEventHandler(
++        OnProcessExit(target_action=spawn, on_exit=[spawn_cube])
++    )
++
+     return LaunchDescription([
+         set_gz_version,
+         set_gz_config,
+@@ -196,5 +232,7 @@
+         arm_after_jsb,
+         # finger_state_publisher,
+         gripper_after_jsb,
++        cube_after_spawn,      # S22: cube spawns once the Panda is in the world
+         bridge,
++        object_detector,       # S22: perception up as part of bringup
+     ])
+\ No newline at end of file

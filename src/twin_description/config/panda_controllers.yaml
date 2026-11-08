@@ -1,56 +1,56 @@
-# Controller configuration, loaded by the controller_manager that
-# gz_ros2_control starts inside the simulator.
-#
-# Two logical sections: a registry naming each controller and its type, then
-# per-controller configuration keyed by those same names.
-#
-# Naming a controller here does NOT start it. A spawner has to load and
-# activate it, which is why `ros2 control list_controllers` is empty until the
-# spawners in panda_bringup.launch.py have run.
+# controller_manager:
+#   ros__parameters:
+#     use_sim_time: true # Use Gazebo's clock for ROS time
+#     update_rate: 1000 # Hz — the manager's control-loop rate
+
+#     # --- registry: name -> type. Naming here does NOT start them. ---
+#     joint_state_broadcaster:
+#       type: joint_state_broadcaster/JointStateBroadcaster
+
+#     joint_position_controller:
+#       type: position_controllers/JointGroupPositionController
+
+# # --- per-controller config, keyed by the names above ---
+# joint_position_controller:
+#   ros__parameters:
+#     joints:
+#       - panda_joint1
+#       - panda_joint2
+#       - panda_joint3
+#       - panda_joint4
+#       - panda_joint5
+#       - panda_joint6
+#       - panda_joint7
+#     command_interfaces:
+#       - position
+#     state_interfaces:
+#       - position
+#       - velocity
 
 controller_manager:
   ros__parameters:
-    # Follow Gazebo's clock rather than the wall clock. This is per-node and
-    # defaults to false: being hosted inside the simulator does not make a node
-    # infer sim-time, it has to be told. robot_state_publisher is told
-    # separately in the launch file, because a split clock breaks TF.
-    use_sim_time: true
+    use_sim_time: true # Use Gazebo's clock for ROS time
+    update_rate: 1000 # Hz — the manager's control-loop rate
 
-    # Hz. The rate of the control loop itself, independent of the simulator's
-    # physics step.
-    update_rate: 1000
-
-    # --- registry: name -> type ---
+    # --- registry: name -> type. Naming here does NOT start them. ---
     joint_state_broadcaster:
       type: joint_state_broadcaster/JointStateBroadcaster
 
-    # Named arm_controller rather than after its type: MoveIt's configuration
-    # refers to controllers by name, and this is the name that seam expects.
-    # Note the package namespace - joint_trajectory_controller, not
-    # position_controllers.
     arm_controller:
       type: joint_trajectory_controller/JointTrajectoryController
 
-    # An action controller rather than a trajectory controller, chosen for what
-    # it reports rather than what it commands. GripperCommand carries a target
-    # width and an effort ceiling, and the result says whether the fingers
-    # STALLED - closed until they hit something - or merely reached the
-    # commanded width. That distinction is the grasp-success signal: closing on
-    # an object and closing on air are otherwise identical.
+    # --- Finger controller: JointTrajectoryController over BOTH finger joints.
+    # Was position_controllers/GripperActionController (single joint + mimic), but
+    # DART can't enforce the mimic, so the second finger was uncoupled. JTC drives
+    # both fingers together as commanded joints -> symmetric close, no friction
+    # chatter. Trade-off: JTC has no stall signal, so move_gripper now infers the
+    # grasp from finger width vs commanded (see move_to.py). ---
     gripper_controller:
-      type: position_controllers/GripperActionController
+      type: joint_trajectory_controller/JointTrajectoryController
 
-# --- per-controller configuration ---
-# Still no PID gains. The trajectory controller interpolates between waypoints
-# and writes positions to the command interface; GazeboSimSystem closes the
-# loop. Gains would return only on an effort or velocity interface.
-#
-# Unlike the group position controller it replaced, the trajectory controller
-# needs its interfaces declared: it reads state to track where it is along the
-# trajectory, not just to report it.
+# --- per-controller config, keyed by the names above ---
 arm_controller:
   ros__parameters:
-    # Order defines the joint ordering the controller expects.
     joints:
       - panda_joint1
       - panda_joint2
@@ -65,15 +65,20 @@ arm_controller:
       - position
       - velocity
 
+# --- Finger controller config: both fingers, position trajectory ---
+# panda_finger_joint2 is commanded alongside joint1 (no mimic). MoveIt drives
+# this via FollowJointTrajectory now, not GripperCommand -- the MoveIt controllers
+# yaml must match (type: FollowJointTrajectory for the gripper).
 gripper_controller:
   ros__parameters:
-    # Singular. GripperActionController takes one joint; the trajectory and
-    # group controllers take a `joints` list. A missing `joint` is the first
-    # thing to check when this controller will not activate.
-    joint: panda_finger_joint1
-
-    # Without this, a grasp that stalls on an object is reported as a failure -
-    # which is exactly backwards. Stalling is how a gripper succeeds.
-    allow_stalling: true
-    stall_velocity_threshold: 0.001
-    stall_timeout: 0.5
+    joints:
+      - panda_finger_joint1
+      - panda_finger_joint2
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+    # Both fingers get the same commanded position each point, so the hand closes
+    # symmetrically. allow_stalling/stall_* are gone: JTC has no stall concept;
+    # grasp detection moved into move_gripper (finger width vs commanded gap).

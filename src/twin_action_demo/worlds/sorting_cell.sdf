@@ -1,0 +1,149 @@
+<?xml version="1.0" ?>
+<!-- A1 SORTING CELL: sensors_empty.sdf plus the static cell furniture.
+     World name stays "empty": spawners and /world/empty/* tooling depend on it.
+
+     Constraints this layout respects:
+       - NO BLUE anywhere in the camera's view. object_detector treats every
+         blue-dominant pixel as the cube, so a blue bin would corrupt its centroid.
+       - Work surface is the FLOOR. pick/place and the detector z-gate are calibrated
+         for objects resting at center z = 0.015. The workbench is a flat visual mat,
+         not a raised table; raising it needs recalibration.
+       - Bins have NO floor (objects rest on the ground, so z stays 0.015) and sit on
+         PLACE_SLOTS 0, 2 and 3 in move_to.py. Slot 1 (0.50, 0) stays the open pick area.
+       - Bins are 0.14 m wide (open fingers need the room) with 0.03 m walls (the hand
+         stays above them at release height).
+       - Gantry posts are at y = +/-0.80, outside the camera's ground footprint
+         (about +/-0.69). The beam sits above camera_link, which is still defined in
+         panda.urdf at (0.4, 0, 1.2). The beam gives it a visible mount; the camera's
+         pose and intrinsics are unchanged. -->
+<sdf version="1.8">
+  <world name="empty">
+
+    <physics name="1ms" type="ignored">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1.0</real_time_factor>
+    </physics>
+
+    <plugin filename="gz-sim-physics-system"
+            name="gz::sim::systems::Physics"/>
+    <plugin filename="gz-sim-user-commands-system"
+            name="gz::sim::systems::UserCommands"/>
+    <plugin filename="gz-sim-scene-broadcaster-system"
+            name="gz::sim::systems::SceneBroadcaster"/>
+    <plugin filename="gz-sim-sensors-system"
+            name="gz::sim::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+    </plugin>
+
+    <light type="directional" name="sun">
+      <cast_shadows>true</cast_shadows>
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+
+    <model name="ground_plane">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry><plane><normal>0 0 1</normal><size>100 100</size></plane></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><plane><normal>0 0 1</normal><size>100 100</size></plane></geometry>
+          <material>
+            <ambient>0.8 0.8 0.8 1</ambient>
+            <diffuse>0.8 0.8 0.8 1</diffuse>
+            <specular>0.8 0.8 0.8 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Workbench mat: visual only, top surface 1 mm above the floor. No collision,
+         so objects still rest on the ground plane at center z = 0.015. -->
+    <model name="workbench_mat">
+      <static>true</static>
+      <pose>0.42 0 0.0005 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry><box><size>0.50 0.70 0.001</size></box></geometry>
+          <material>
+            <ambient>0.30 0.30 0.30 1</ambient>
+            <diffuse>0.30 0.30 0.30 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Bin A at PLACE_SLOT 0 -->
+    <model name="bin_red">
+      <static>true</static>
+      <pose>0.45 0.18 0 0 0 0</pose>
+      <link name="walls">
+        <collision name="w_px"><pose>0.068 0 0.015 0 0 0</pose><geometry><box><size>0.004 0.14 0.03</size></box></geometry></collision>
+        <collision name="w_nx"><pose>-0.068 0 0.015 0 0 0</pose><geometry><box><size>0.004 0.14 0.03</size></box></geometry></collision>
+        <collision name="w_py"><pose>0 0.068 0.015 0 0 0</pose><geometry><box><size>0.14 0.004 0.03</size></box></geometry></collision>
+        <collision name="w_ny"><pose>0 -0.068 0.015 0 0 0</pose><geometry><box><size>0.14 0.004 0.03</size></box></geometry></collision>
+        <visual name="v_px"><pose>0.068 0 0.015 0 0 0</pose><geometry><box><size>0.004 0.14 0.03</size></box></geometry><material><ambient>0.8 0.1 0.1 1</ambient><diffuse>0.8 0.1 0.1 1</diffuse></material></visual>
+        <visual name="v_nx"><pose>-0.068 0 0.015 0 0 0</pose><geometry><box><size>0.004 0.14 0.03</size></box></geometry><material><ambient>0.8 0.1 0.1 1</ambient><diffuse>0.8 0.1 0.1 1</diffuse></material></visual>
+        <visual name="v_py"><pose>0 0.068 0.015 0 0 0</pose><geometry><box><size>0.14 0.004 0.03</size></box></geometry><material><ambient>0.8 0.1 0.1 1</ambient><diffuse>0.8 0.1 0.1 1</diffuse></material></visual>
+        <visual name="v_ny"><pose>0 -0.068 0.015 0 0 0</pose><geometry><box><size>0.14 0.004 0.03</size></box></geometry><material><ambient>0.8 0.1 0.1 1</ambient><diffuse>0.8 0.1 0.1 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <!-- Bin B at PLACE_SLOT 2 -->
+    <model name="bin_green">
+      <static>true</static>
+      <pose>0.45 -0.18 0 0 0 0</pose>
+      <link name="walls">
+        <collision name="w_px"><pose>0.068 0 0.015 0 0 0</pose><geometry><box><size>0.004 0.14 0.03</size></box></geometry></collision>
+        <collision name="w_nx"><pose>-0.068 0 0.015 0 0 0</pose><geometry><box><size>0.004 0.14 0.03</size></box></geometry></collision>
+        <collision name="w_py"><pose>0 0.068 0.015 0 0 0</pose><geometry><box><size>0.14 0.004 0.03</size></box></geometry></collision>
+        <collision name="w_ny"><pose>0 -0.068 0.015 0 0 0</pose><geometry><box><size>0.14 0.004 0.03</size></box></geometry></collision>
+        <visual name="v_px"><pose>0.068 0 0.015 0 0 0</pose><geometry><box><size>0.004 0.14 0.03</size></box></geometry><material><ambient>0.1 0.7 0.1 1</ambient><diffuse>0.1 0.7 0.1 1</diffuse></material></visual>
+        <visual name="v_nx"><pose>-0.068 0 0.015 0 0 0</pose><geometry><box><size>0.004 0.14 0.03</size></box></geometry><material><ambient>0.1 0.7 0.1 1</ambient><diffuse>0.1 0.7 0.1 1</diffuse></material></visual>
+        <visual name="v_py"><pose>0 0.068 0.015 0 0 0</pose><geometry><box><size>0.14 0.004 0.03</size></box></geometry><material><ambient>0.1 0.7 0.1 1</ambient><diffuse>0.1 0.7 0.1 1</diffuse></material></visual>
+        <visual name="v_ny"><pose>0 -0.068 0.015 0 0 0</pose><geometry><box><size>0.14 0.004 0.03</size></box></geometry><material><ambient>0.1 0.7 0.1 1</ambient><diffuse>0.1 0.7 0.1 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <!-- Bin C at PLACE_SLOT 3 (yellow, not blue: see the header note) -->
+    <model name="bin_yellow">
+      <static>true</static>
+      <pose>0.37 0 0 0 0 0</pose>
+      <link name="walls">
+        <collision name="w_px"><pose>0.068 0 0.015 0 0 0</pose><geometry><box><size>0.004 0.14 0.03</size></box></geometry></collision>
+        <collision name="w_nx"><pose>-0.068 0 0.015 0 0 0</pose><geometry><box><size>0.004 0.14 0.03</size></box></geometry></collision>
+        <collision name="w_py"><pose>0 0.068 0.015 0 0 0</pose><geometry><box><size>0.14 0.004 0.03</size></box></geometry></collision>
+        <collision name="w_ny"><pose>0 -0.068 0.015 0 0 0</pose><geometry><box><size>0.14 0.004 0.03</size></box></geometry></collision>
+        <visual name="v_px"><pose>0.068 0 0.015 0 0 0</pose><geometry><box><size>0.004 0.14 0.03</size></box></geometry><material><ambient>0.85 0.75 0.1 1</ambient><diffuse>0.85 0.75 0.1 1</diffuse></material></visual>
+        <visual name="v_nx"><pose>-0.068 0 0.015 0 0 0</pose><geometry><box><size>0.004 0.14 0.03</size></box></geometry><material><ambient>0.85 0.75 0.1 1</ambient><diffuse>0.85 0.75 0.1 1</diffuse></material></visual>
+        <visual name="v_py"><pose>0 0.068 0.015 0 0 0</pose><geometry><box><size>0.14 0.004 0.03</size></box></geometry><material><ambient>0.85 0.75 0.1 1</ambient><diffuse>0.85 0.75 0.1 1</diffuse></material></visual>
+        <visual name="v_ny"><pose>0 -0.068 0.015 0 0 0</pose><geometry><box><size>0.14 0.004 0.03</size></box></geometry><material><ambient>0.85 0.75 0.1 1</ambient><diffuse>0.85 0.75 0.1 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <!-- Camera gantry: two posts and a beam. Beam underside (z = 1.225) meets the top
+         of the 5 cm camera_link box centered at z = 1.2. -->
+    <model name="camera_gantry">
+      <static>true</static>
+      <pose>0.4 0 0 0 0 0</pose>
+      <link name="frame">
+        <collision name="post_l"><pose>0 0.80 0.6375 0 0 0</pose><geometry><box><size>0.05 0.05 1.275</size></box></geometry></collision>
+        <collision name="post_r"><pose>0 -0.80 0.6375 0 0 0</pose><geometry><box><size>0.05 0.05 1.275</size></box></geometry></collision>
+        <collision name="beam"><pose>0 0 1.25 0 0 0</pose><geometry><box><size>0.05 1.65 0.05</size></box></geometry></collision>
+        <visual name="post_l_v"><pose>0 0.80 0.6375 0 0 0</pose><geometry><box><size>0.05 0.05 1.275</size></box></geometry><material><ambient>0.45 0.45 0.42 1</ambient><diffuse>0.45 0.45 0.42 1</diffuse></material></visual>
+        <visual name="post_r_v"><pose>0 -0.80 0.6375 0 0 0</pose><geometry><box><size>0.05 0.05 1.275</size></box></geometry><material><ambient>0.45 0.45 0.42 1</ambient><diffuse>0.45 0.45 0.42 1</diffuse></material></visual>
+        <visual name="beam_v"><pose>0 0 1.25 0 0 0</pose><geometry><box><size>0.05 1.65 0.05</size></box></geometry><material><ambient>0.45 0.45 0.42 1</ambient><diffuse>0.45 0.45 0.42 1</diffuse></material></visual>
+      </link>
+    </model>
+
+  </world>
+</sdf>

@@ -5,6 +5,7 @@ moveit_controller_manager: moveit_simple_controller_manager/MoveItSimpleControll
 moveit_simple_controller_manager:
   controller_names:
     - arm_controller
+    - gripper_controller
 
   arm_controller:
     type: FollowJointTrajectory
@@ -16,5 +17,17 @@ moveit_simple_controller_manager:
       - panda_joint5
       - panda_joint6
       - panda_joint7
+    action_ns: follow_joint_trajectory
+    default: true
+
+  # Gripper is now a JointTrajectoryController (both fingers), so MoveIt talks to
+  # it via FollowJointTrajectory, not GripperCommand. move_gripper still drives it
+  # directly by action for grasp detection; registering it here keeps MoveIt's
+  # view of the robot consistent and lets MoveIt plan finger motions if needed.
+  gripper_controller:
+    type: FollowJointTrajectory
+    joints:
+      - panda_finger_joint1
+      - panda_finger_joint2
     action_ns: follow_joint_trajectory
     default: true

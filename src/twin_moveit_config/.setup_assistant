@@ -6,5 +6,5 @@ moveit_setup_assistant_config:
     relative_path: config/panda.srdf
   package_settings:
     author_name: Khoi
-    author_email: 59853829+ptchpmk0100@users.noreply.github.com
+    author_email: phaminhkhoi@gmail.com
     generated_timestamp: 1785404990

@@ -1,0 +1,40 @@
+schema_version: 1
+transform:
+  parent_frame: "world"
+  child_frame: "camera_optical_link"
+  convention: "p_world = R_world_optical * p_optical + t_world_optical"
+  units: "m"
+  rotation_matrix:
+    - [0.000153415254765, -0.99999944896, -0.00103852910741]
+    - [-0.999999982088, -0.000153300052854, -0.000111006649347]
+    - [0.000110847381611, 0.00103854611892, -0.999999454567]
+  translation: [0.400252949876, -0.000694094067475, 1.20006280988]
+calibration:
+  method: "Kabsch SVD, rigid transform without scale"
+  generated_utc: "2026-11-07T11:46:08.136294+00:00"
+  dataset_count: 2
+  correspondence_count: 24
+  run_ids:
+    - "run1"
+    - "run2"
+  rms_residual_m: 0.000369926748885
+  max_residual_m: 0.00052957336837
+  diagnostic_unconstrained_scale: 0.998041609904
+  orthonormality_error_fro: 2.23370947736e-15
+  determinant: 1
+  geometry_singular_value_ratio: 0.190082531253
+  nominal_rotation_error_deg: 0.0604839432874
+  nominal_translation_error_m: 0.000741414388468
+  repeatability_evaluated: true
+  repeatability_pair_count: 1
+gates:
+  passed: true
+  rms_residual_max_m: 0.002
+  max_residual_max_m: 0.004
+  scale_range: [0.998, 1.002]
+  geometry_ratio_min: 0.01
+  nominal_rotation_max_deg: 2
+  nominal_translation_max_m: 0.02
+  repeat_rotation_max_deg: 0.15
+  repeat_translation_max_m: 0.002
+  repeat_cross_rms_max_m: 0.003

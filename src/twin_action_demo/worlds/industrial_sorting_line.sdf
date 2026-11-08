@@ -1,0 +1,140 @@
+<?xml version="1.0" ?>
+<!-- V2 SORTING LINE (raised). World name stays "empty" (/world/empty/* tooling depends on
+     it). Replaces the ground cubes+bins scheme with a belt-height sorting cell:
+       - a raised PICK DECK (collision) at z-top 0.295 holding 3 colour boxes (spawned by
+         the launch) whose centres rest at z=0.320;
+       - a TRAY TABLE at the same height carrying 3 colour-coded TRAYS (collision floor +
+         walls) with a coloured FLOOR PANEL label each (red/green/yellow).
+     Reach to every box + tray pose was Gazebo-ground-truth verified GO at this height
+     (tools/reach_probe_sorting_line.py, 42/42 legs). See V2_DECISIONS.md D5.
+
+     INVARIANTS (do not regress):
+       - Panda base at z=0; boxes rest with centre z=0.320 (deck top 0.295 + half 0.025).
+       - Overhead functional camera (panda.urdf) at (0.4,0,1.2), unchanged; the detector
+         deprojects true depth, so XY stays valid at the new height (only the z-gate moves).
+       - SUN-ONLY lighting. Adding fill light historically dragged the detected centroid
+         ~29 mm into a false grasp. Do NOT add lights.
+       - NO blue-dominant surface in the camera view (detector hue excludes blue; the hand's
+         indicator dots are blue). Trays are gray with red/green/yellow floors only.
+       - Tray colour is on the FLOOR panel (top 0.297), 23 mm below the box centre gate, so
+         it can never be read as a box. Walls are gray. -->
+<sdf version="1.8">
+  <world name="empty">
+    <physics name="1ms" type="ignored">
+      <max_step_size>0.001</max_step_size><real_time_factor>1.0</real_time_factor>
+    </physics>
+    <plugin filename="gz-sim-physics-system" name="gz::sim::systems::Physics"/>
+    <plugin filename="gz-sim-user-commands-system" name="gz::sim::systems::UserCommands"/>
+    <plugin filename="gz-sim-scene-broadcaster-system" name="gz::sim::systems::SceneBroadcaster"/>
+    <plugin filename="gz-sim-sensors-system" name="gz::sim::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+    </plugin>
+
+    <light type="directional" name="sun">
+      <cast_shadows>true</cast_shadows><pose>0 0 10 0 0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse><specular>0.2 0.2 0.2 1</specular>
+      <attenuation><range>1000</range><constant>0.9</constant><linear>0.01</linear><quadratic>0.001</quadratic></attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+    <!-- Do NOT add fill lighting (see header). Sun-only, as the verified worlds. -->
+
+    <!-- industrial gray floor -->
+    <model name="ground_plane"><static>true</static><link name="link">
+      <collision name="collision"><geometry><plane><normal>0 0 1</normal><size>100 100</size></plane></geometry></collision>
+      <visual name="visual"><geometry><plane><normal>0 0 1</normal><size>100 100</size></plane></geometry>
+        <material><ambient>0.30 0.30 0.32 1</ambient><diffuse>0.33 0.33 0.35 1</diffuse><specular>0.1 0.1 0.1 1</specular></material></visual>
+    </link></model>
+
+    <!-- ===== FUNCTIONAL: raised PICK DECK (collision) -- boxes rest on its top (z=0.295) ===== -->
+    <model name="pick_belt"><static>true</static><pose>0.560 0 0 0 0 0</pose><link name="l">
+      <collision name="deck"><pose>0 0 0.280 0 0 0</pose><geometry><box><size>0.080 0.360 0.030</size></box></geometry></collision>
+      <visual name="deck_v"><pose>0 0 0.280 0 0 0</pose><geometry><box><size>0.080 0.360 0.030</size></box></geometry><material><ambient>0.08 0.08 0.09 1</ambient><diffuse>0.10 0.10 0.11 1</diffuse></material></visual>
+      <visual name="rail_py"><pose>0 0.185 0.300 0 0 0</pose><geometry><box><size>0.090 0.012 0.020</size></box></geometry><material><ambient>0.5 0.5 0.53 1</ambient><diffuse>0.55 0.55 0.58 1</diffuse></material></visual>
+      <visual name="rail_ny"><pose>0 -0.185 0.300 0 0 0</pose><geometry><box><size>0.090 0.012 0.020</size></box></geometry><material><ambient>0.5 0.5 0.53 1</ambient><diffuse>0.55 0.55 0.58 1</diffuse></material></visual>
+      <visual name="leg_py"><pose>0 0.150 0.1325 0 0 0</pose><geometry><box><size>0.05 0.05 0.265</size></box></geometry><material><ambient>0.4 0.4 0.43 1</ambient><diffuse>0.45 0.45 0.48 1</diffuse></material></visual>
+      <visual name="leg_ny"><pose>0 -0.150 0.1325 0 0 0</pose><geometry><box><size>0.05 0.05 0.265</size></box></geometry><material><ambient>0.4 0.4 0.43 1</ambient><diffuse>0.45 0.45 0.48 1</diffuse></material></visual>
+    </link></model>
+
+    <!-- ===== FUNCTIONAL: TRAY TABLE (visual support) at belt height ===== -->
+    <model name="tray_table"><static>true</static><pose>0.405 0 0 0 0 0</pose><link name="l">
+      <visual name="top"><pose>0 0 0.275 0 0 0</pose><geometry><box><size>0.250 0.540 0.040</size></box></geometry><material><ambient>0.42 0.42 0.45 1</ambient><diffuse>0.47 0.47 0.50 1</diffuse></material></visual>
+      <visual name="leg1"><pose>0.10 0.24 0.1275 0 0 0</pose><geometry><box><size>0.04 0.04 0.255</size></box></geometry><material><ambient>0.4 0.4 0.43 1</ambient><diffuse>0.45 0.45 0.48 1</diffuse></material></visual>
+      <visual name="leg2"><pose>-0.10 0.24 0.1275 0 0 0</pose><geometry><box><size>0.04 0.04 0.255</size></box></geometry><material><ambient>0.4 0.4 0.43 1</ambient><diffuse>0.45 0.45 0.48 1</diffuse></material></visual>
+      <visual name="leg3"><pose>0.10 -0.24 0.1275 0 0 0</pose><geometry><box><size>0.04 0.04 0.255</size></box></geometry><material><ambient>0.4 0.4 0.43 1</ambient><diffuse>0.45 0.45 0.48 1</diffuse></material></visual>
+      <visual name="leg4"><pose>-0.10 -0.24 0.1275 0 0 0</pose><geometry><box><size>0.04 0.04 0.255</size></box></geometry><material><ambient>0.4 0.4 0.43 1</ambient><diffuse>0.45 0.45 0.48 1</diffuse></material></visual>
+    </link></model>
+
+    <!-- ===== FUNCTIONAL: 3 colour-coded trays (collision floor + walls, coloured floor label) ===== -->
+    <!-- RED tray -->
+    <model name="tray_red"><static>true</static><pose>0.450 0.180 0 0 0 0</pose><link name="l">
+      <collision name="floor"><pose>0 0 0.290 0 0 0</pose><geometry><box><size>0.148 0.148 0.010</size></box></geometry></collision>
+      <visual name="floor_v"><pose>0 0 0.290 0 0 0</pose><geometry><box><size>0.148 0.148 0.010</size></box></geometry><material><ambient>0.45 0.45 0.48 1</ambient><diffuse>0.50 0.50 0.53 1</diffuse></material></visual>
+      <visual name="label"><pose>0 0 0.296 0 0 0</pose><geometry><box><size>0.120 0.120 0.002</size></box></geometry><material><ambient>0.70 0.05 0.05 1</ambient><diffuse>0.85 0.08 0.08 1</diffuse></material></visual>
+      <collision name="w_px"><pose>0.072 0 0.315 0 0 0</pose><geometry><box><size>0.004 0.148 0.040</size></box></geometry></collision>
+      <collision name="w_nx"><pose>-0.072 0 0.315 0 0 0</pose><geometry><box><size>0.004 0.148 0.040</size></box></geometry></collision>
+      <collision name="w_py"><pose>0 0.072 0.315 0 0 0</pose><geometry><box><size>0.148 0.004 0.040</size></box></geometry></collision>
+      <collision name="w_ny"><pose>0 -0.072 0.315 0 0 0</pose><geometry><box><size>0.148 0.004 0.040</size></box></geometry></collision>
+      <visual name="w_px_v"><pose>0.072 0 0.315 0 0 0</pose><geometry><box><size>0.004 0.148 0.040</size></box></geometry><material><ambient>0.5 0.5 0.53 1</ambient><diffuse>0.55 0.55 0.58 1</diffuse></material></visual>
+      <visual name="w_nx_v"><pose>-0.072 0 0.315 0 0 0</pose><geometry><box><size>0.004 0.148 0.040</size></box></geometry><material><ambient>0.5 0.5 0.53 1</ambient><diffuse>0.55 0.55 0.58 1</diffuse></material></visual>
+      <visual name="w_py_v"><pose>0 0.072 0.315 0 0 0</pose><geometry><box><size>0.148 0.004 0.040</size></box></geometry><material><ambient>0.5 0.5 0.53 1</ambient><diffuse>0.55 0.55 0.58 1</diffuse></material></visual>
+      <visual name="w_ny_v"><pose>0 -0.072 0.315 0 0 0</pose><geometry><box><size>0.148 0.004 0.040</size></box></geometry><material><ambient>0.5 0.5 0.53 1</ambient><diffuse>0.55 0.55 0.58 1</diffuse></material></visual>
+    </link></model>
+    <!-- GREEN tray -->
+    <model name="tray_green"><static>true</static><pose>0.450 -0.180 0 0 0 0</pose><link name="l">
+      <collision name="floor"><pose>0 0 0.290 0 0 0</pose><geometry><box><size>0.148 0.148 0.010</size></box></geometry></collision>
+      <visual name="floor_v"><pose>0 0 0.290 0 0 0</pose><geometry><box><size>0.148 0.148 0.010</size></box></geometry><material><ambient>0.45 0.45 0.48 1</ambient><diffuse>0.50 0.50 0.53 1</diffuse></material></visual>
+      <visual name="label"><pose>0 0 0.296 0 0 0</pose><geometry><box><size>0.120 0.120 0.002</size></box></geometry><material><ambient>0.05 0.50 0.10 1</ambient><diffuse>0.08 0.70 0.12 1</diffuse></material></visual>
+      <collision name="w_px"><pose>0.072 0 0.315 0 0 0</pose><geometry><box><size>0.004 0.148 0.040</size></box></geometry></collision>
+      <collision name="w_nx"><pose>-0.072 0 0.315 0 0 0</pose><geometry><box><size>0.004 0.148 0.040</size></box></geometry></collision>
+      <collision name="w_py"><pose>0 0.072 0.315 0 0 0</pose><geometry><box><size>0.148 0.004 0.040</size></box></geometry></collision>
+      <collision name="w_ny"><pose>0 -0.072 0.315 0 0 0</pose><geometry><box><size>0.148 0.004 0.040</size></box></geometry></collision>
+      <visual name="w_px_v"><pose>0.072 0 0.315 0 0 0</pose><geometry><box><size>0.004 0.148 0.040</size></box></geometry><material><ambient>0.5 0.5 0.53 1</ambient><diffuse>0.55 0.55 0.58 1</diffuse></material></visual>
+      <visual name="w_nx_v"><pose>-0.072 0 0.315 0 0 0</pose><geometry><box><size>0.004 0.148 0.040</size></box></geometry><material><ambient>0.5 0.5 0.53 1</ambient><diffuse>0.55 0.55 0.58 1</diffuse></material></visual>
+      <visual name="w_py_v"><pose>0 0.072 0.315 0 0 0</pose><geometry><box><size>0.148 0.004 0.040</size></box></geometry><material><ambient>0.5 0.5 0.53 1</ambient><diffuse>0.55 0.55 0.58 1</diffuse></material></visual>
+      <visual name="w_ny_v"><pose>0 -0.072 0.315 0 0 0</pose><geometry><box><size>0.148 0.004 0.040</size></box></geometry><material><ambient>0.5 0.5 0.53 1</ambient><diffuse>0.55 0.55 0.58 1</diffuse></material></visual>
+    </link></model>
+    <!-- YELLOW tray -->
+    <model name="tray_yellow"><static>true</static><pose>0.370 0 0 0 0 0</pose><link name="l">
+      <collision name="floor"><pose>0 0 0.290 0 0 0</pose><geometry><box><size>0.148 0.148 0.010</size></box></geometry></collision>
+      <visual name="floor_v"><pose>0 0 0.290 0 0 0</pose><geometry><box><size>0.148 0.148 0.010</size></box></geometry><material><ambient>0.45 0.45 0.48 1</ambient><diffuse>0.50 0.50 0.53 1</diffuse></material></visual>
+      <visual name="label"><pose>0 0 0.296 0 0 0</pose><geometry><box><size>0.120 0.120 0.002</size></box></geometry><material><ambient>0.75 0.65 0.05 1</ambient><diffuse>0.90 0.80 0.08 1</diffuse></material></visual>
+      <collision name="w_px"><pose>0.072 0 0.315 0 0 0</pose><geometry><box><size>0.004 0.148 0.040</size></box></geometry></collision>
+      <collision name="w_nx"><pose>-0.072 0 0.315 0 0 0</pose><geometry><box><size>0.004 0.148 0.040</size></box></geometry></collision>
+      <collision name="w_py"><pose>0 0.072 0.315 0 0 0</pose><geometry><box><size>0.148 0.004 0.040</size></box></geometry></collision>
+      <collision name="w_ny"><pose>0 -0.072 0.315 0 0 0</pose><geometry><box><size>0.148 0.004 0.040</size></box></geometry></collision>
+      <visual name="w_px_v"><pose>0.072 0 0.315 0 0 0</pose><geometry><box><size>0.004 0.148 0.040</size></box></geometry><material><ambient>0.5 0.5 0.53 1</ambient><diffuse>0.55 0.55 0.58 1</diffuse></material></visual>
+      <visual name="w_nx_v"><pose>-0.072 0 0.315 0 0 0</pose><geometry><box><size>0.004 0.148 0.040</size></box></geometry><material><ambient>0.5 0.5 0.53 1</ambient><diffuse>0.55 0.55 0.58 1</diffuse></material></visual>
+      <visual name="w_py_v"><pose>0 0.072 0.315 0 0 0</pose><geometry><box><size>0.148 0.004 0.040</size></box></geometry><material><ambient>0.5 0.5 0.53 1</ambient><diffuse>0.55 0.55 0.58 1</diffuse></material></visual>
+      <visual name="w_ny_v"><pose>0 -0.072 0.315 0 0 0</pose><geometry><box><size>0.148 0.004 0.040</size></box></geometry><material><ambient>0.5 0.5 0.53 1</ambient><diffuse>0.55 0.55 0.58 1</diffuse></material></visual>
+    </link></model>
+
+    <!-- ===== DRESSING (visual-only, kept from the industrial cell) ===== -->
+    <model name="robot_pedestal"><static>true</static><pose>0 0 0 0 0 0</pose><link name="l">
+      <visual name="base"><pose>0 0 0.01 0 0 0</pose><geometry><box><size>0.46 0.46 0.02</size></box></geometry><material><ambient>0.45 0.45 0.48 1</ambient><diffuse>0.5 0.5 0.53 1</diffuse></material></visual>
+      <visual name="plat"><pose>0 0 0.025 0 0 0</pose><geometry><cylinder><radius>0.17</radius><length>0.05</length></cylinder></geometry><material><ambient>0.5 0.5 0.53 1</ambient><diffuse>0.55 0.55 0.58 1</diffuse><specular>0.3 0.3 0.3 1</specular></material></visual>
+    </link></model>
+    <model name="cabinet"><static>true</static><pose>-0.5 0 0 0 0 0</pose><link name="l">
+      <visual name="body"><pose>0 0 0.55 0 0 0</pose><geometry><box><size>0.35 0.6 1.1</size></box></geometry><material><ambient>0.42 0.42 0.45 1</ambient><diffuse>0.47 0.47 0.5 1</diffuse></material></visual>
+      <visual name="grille"><pose>0.18 0 0.75 0 0 0</pose><geometry><box><size>0.01 0.4 0.4</size></box></geometry><material><ambient>0.2 0.2 0.22 1</ambient><diffuse>0.22 0.22 0.24 1</diffuse></material></visual>
+    </link></model>
+    <model name="camera_arm"><static>true</static><pose>0.4 0 0 0 0 0</pose><link name="l">
+      <visual name="post"><pose>0 0.82 0.6 0 0 0</pose><geometry><box><size>0.06 0.06 1.2</size></box></geometry><material><ambient>0.45 0.45 0.48 1</ambient><diffuse>0.5 0.5 0.53 1</diffuse></material></visual>
+      <visual name="beam"><pose>0 0.42 1.21 0 0 0</pose><geometry><box><size>0.05 0.86 0.05</size></box></geometry><material><ambient>0.45 0.45 0.48 1</ambient><diffuse>0.5 0.5 0.53 1</diffuse></material></visual>
+      <visual name="ring"><pose>0 0.78 0.35 1.5708 0 0</pose><geometry><cylinder><radius>0.09</radius><length>0.03</length></cylinder></geometry><material><ambient>0.55 0.35 0.2 1</ambient><diffuse>0.6 0.4 0.22 1</diffuse></material></visual>
+    </link></model>
+    <model name="fence_back"><static>true</static><pose>-0.35 0 0 0 0 0</pose><link name="l">
+      <visual name="top"><pose>0 0 1.1 0 0 0</pose><geometry><box><size>0.03 1.8 0.04</size></box></geometry><material><ambient>0.5 0.5 0.53 1</ambient><diffuse>0.55 0.55 0.58 1</diffuse></material></visual>
+      <visual name="bot"><pose>0 0 0.05 0 0 0</pose><geometry><box><size>0.03 1.8 0.04</size></box></geometry><material><ambient>0.5 0.5 0.53 1</ambient><diffuse>0.55 0.55 0.58 1</diffuse></material></visual>
+      <visual name="b1"><pose>0 -0.75 0.55 0 0 0</pose><geometry><box><size>0.02 0.02 1.1</size></box></geometry><material><ambient>0.5 0.5 0.53 1</ambient><diffuse>0.55 0.55 0.58 1</diffuse></material></visual>
+      <visual name="b3"><pose>0 -0.15 0.55 0 0 0</pose><geometry><box><size>0.02 0.02 1.1</size></box></geometry><material><ambient>0.5 0.5 0.53 1</ambient><diffuse>0.55 0.55 0.58 1</diffuse></material></visual>
+      <visual name="b5"><pose>0 0.45 0.55 0 0 0</pose><geometry><box><size>0.02 0.02 1.1</size></box></geometry><material><ambient>0.5 0.5 0.53 1</ambient><diffuse>0.55 0.55 0.58 1</diffuse></material></visual>
+    </link></model>
+    <model name="fence_right"><static>true</static><pose>0.5 -0.9 0 0 0 1.5708</pose><link name="l">
+      <visual name="top"><pose>0 0 1.1 0 0 0</pose><geometry><box><size>0.03 1.8 0.04</size></box></geometry><material><ambient>0.5 0.5 0.53 1</ambient><diffuse>0.55 0.55 0.58 1</diffuse></material></visual>
+      <visual name="bot"><pose>0 0 0.05 0 0 0</pose><geometry><box><size>0.03 1.8 0.04</size></box></geometry><material><ambient>0.5 0.5 0.53 1</ambient><diffuse>0.55 0.55 0.58 1</diffuse></material></visual>
+      <visual name="b2"><pose>0 -0.2 0.55 0 0 0</pose><geometry><box><size>0.02 0.02 1.1</size></box></geometry><material><ambient>0.5 0.5 0.53 1</ambient><diffuse>0.55 0.55 0.58 1</diffuse></material></visual>
+      <visual name="b4"><pose>0 0.6 0.55 0 0 0</pose><geometry><box><size>0.02 0.02 1.1</size></box></geometry><material><ambient>0.5 0.5 0.53 1</ambient><diffuse>0.55 0.55 0.58 1</diffuse></material></visual>
+    </link></model>
+
+  </world>
+</sdf>

@@ -1,297 +1,466 @@
+# #------------------With voice command V.2 (SingleThreadedExecutor)------------------#
+
+# #!/usr/bin/env python3
+# """LLM-driven Panda control (path b: import primitives, one shared MoveItPy context).
+
+# Two input paths, one dispatch:
+#   - stdin REPL ("cmd> ")           -- interactive, main thread
+#   - /voice_command (std_msgs/String) -- publish with `ros2 topic pub`, sets up a
+#     future speech front-end; runs in a background spin thread.
+
+# Each instruction: text -> Ollama (schema-constrained JSON) -> parse -> clamp (pose)
+# -> dispatch. A lock serializes dispatch so the REPL and the topic never drive the
+# single MoveItPy context concurrently.
+
+# Usage:
+#   ros2 run twin_moveit_scripts llm_move
+#   # REPL: type "go to the ready position" or "move to x 0.3 y -0.2 z 0.5"; Ctrl-D/"quit" to exit.
+#   # Topic: ros2 topic pub --once /voice_command std_msgs/String "data: 'go home'"
+# """
+# import json
+# import threading
+# import urllib.request
+
+# import rclpy
+# from rclpy.node import Node
+# from rclpy.executors import SingleThreadedExecutor
+# from std_msgs.msg import String
+
+# from twin_moveit_scripts.move_to import (
+#     setup, shutdown, move_to_named, move_to_pose,
+# )
+
+# OLLAMA_URL = "http://localhost:11434/api/chat"
+# MODEL = "qwen2.5:3b-instruct"
+
+# # Conservative reachable box for the Panda in panda_link0 frame (meters).
+# BOUNDS = {"x": (0.15, 0.65), "y": (-0.5, 0.5), "z": (0.15, 0.9)}
+
+# SYSTEM_PROMPT = (
+#     "You translate a natural-language instruction for a Panda robot arm into ONE JSON tool call. "
+#     "Two tools:\n"
+#     "- move_to_named: go to a preset joint pose. args: {\"name\": \"ready\"|\"home\"}. "
+#     "Use for words like ready, home, reset.\n"
+#     "- move_to_pose: move the gripper to a Cartesian point. args: {\"x\": float, \"y\": float, \"z\": float} in meters.\n"
+#     "Pick move_to_named when the user names a preset pose; pick move_to_pose only when explicit "
+#     "x/y/z coordinates are given. Output JSON only."
+# )
+
+# SCHEMA = {
+#     "oneOf": [
+#         {"type": "object", "properties": {
+#             "action": {"const": "move_to_named"},
+#             "args": {"type": "object", "properties": {
+#                 "name": {"type": "string", "enum": ["ready", "home"]}},
+#                 "required": ["name"], "additionalProperties": False}},
+#             "required": ["action", "args"], "additionalProperties": False},
+#         {"type": "object", "properties": {
+#             "action": {"const": "move_to_pose"},
+#             "args": {"type": "object", "properties": {
+#                 "x": {"type": "number"}, "y": {"type": "number"}, "z": {"type": "number"}},
+#                 "required": ["x", "y", "z"], "additionalProperties": False}},
+#             "required": ["action", "args"], "additionalProperties": False},
+#     ]
+# }
+
+
+# def query_llm(text):
+#     """Send one instruction, return parsed {action, args} dict (schema-guaranteed shape)."""
+#     payload = {
+#         "model": MODEL,
+#         "stream": False,
+#         "messages": [
+#             {"role": "system", "content": SYSTEM_PROMPT},
+#             {"role": "user", "content": text},
+#         ],
+#         "format": SCHEMA,
+#         "options": {"temperature": 0},
+#     }
+#     req = urllib.request.Request(
+#         OLLAMA_URL,
+#         data=json.dumps(payload).encode(),
+#         headers={"Content-Type": "application/json"},
+#     )
+#     with urllib.request.urlopen(req, timeout=30) as resp:
+#         body = json.loads(resp.read().decode())
+#     return json.loads(body["message"]["content"])
+
+
+# def clamp_pose(args, logger):
+#     """Snap x/y/z into the reachable box; log any change."""
+#     out = {}
+#     for k in ("x", "y", "z"):
+#         lo, hi = BOUNDS[k]
+#         v = float(args[k])
+#         c = max(lo, min(hi, v))
+#         if c != v:
+#             logger.warn(f"clamped {k}: {v} -> {c} (bounds {lo}..{hi})")
+#         out[k] = c
+#     return out
+
+
+# # ---- one dispatch path, shared by REPL and topic ----
+# def handle_instruction(text, robot, arm, logger, params, twin, lock, source="repl"):
+#     """query -> parse -> clamp (pose) -> dispatch. Serialized via lock so the two
+#     input paths never drive the single MoveItPy context concurrently.
+
+#     Returns the MoveResult from the primitive (or None if no motion ran), so
+#     callers/future task-level logic can react to plan-fail / final-pose."""
+#     text = text.strip()
+#     if not text:
+#         return
+
+#     try:
+#         call = query_llm(text)
+#     except Exception as e:
+#         logger.error(f"[{source}] LLM query failed: {e}")
+#         return
+
+#     action = call.get("action")
+#     args = call.get("args", {})
+#     logger.info(f"[{source}] LLM -> {action} {args}")
+
+#     # Serialize actual arm motion; a second instruction waits its turn.
+#     # Primitives now return a MoveResult (ok / stage / final_pose / error);
+#     # report it back so later self-correction / task planning can react to it.
+#     with lock:
+#         if action == "move_to_named":
+#             result = move_to_named(robot, arm, logger, params, args["name"])
+#         elif action == "move_to_pose":
+#             safe = clamp_pose(args, logger)
+#             result = move_to_pose(robot, arm, logger, params,
+#                                   safe["x"], safe["y"], safe["z"])
+#         else:
+#             logger.error(f"[{source}] unknown action: {action}")
+#             return None
+
+#     if result.ok:
+#         logger.info(f"[{source}] DONE: {result}")
+#     else:
+#         logger.error(f"[{source}] MOVE FAILED: {result}")
+#     return result
+
+
+# class VoiceCommandNode(Node):
+#     """Subscribes to /voice_command and routes each String through handle_instruction."""
+
+#     def __init__(self, robot, arm, logger, params, twin, lock):
+#         super().__init__("llm_move_sub")
+#         self._robot = robot
+#         self._arm = arm
+#         self._logger = logger
+#         self._params = params
+#         self._twin = twin
+#         self._lock = lock
+#         self.create_subscription(String, "/voice_command", self._on_msg, 10)
+#         logger.info("Subscribed to /voice_command (std_msgs/String).")
+
+#     def _on_msg(self, msg):
+#         handle_instruction(
+#             msg.data, self._robot, self._arm, self._logger, self._params,
+#             self._twin, self._lock, source="topic",
+#         )
+
+
+# def main():
+#     robot, arm, logger, params, twin = setup(node_name="llm_move")
+
+#     lock = threading.Lock()
+
+#     # Topic path: its own node, spun in a background thread so callbacks fire
+#     # while the REPL blocks on input() in the main thread.
+#     spin_thread = None
+#     try:
+#         sub_node = VoiceCommandNode(robot, arm, logger, params, twin, lock)
+#         executor = SingleThreadedExecutor()
+#         executor.add_node(sub_node)
+
+#         def _spin():
+#             try:
+#                 executor.spin()
+#             except Exception as e:  # otherwise a thread death is silent
+#                 logger.error(f"spin thread died: {e}")
+
+#         spin_thread = threading.Thread(target=_spin, daemon=True)
+#         spin_thread.start()
+#         logger.info("Topic path started (spin thread live).")
+#     except Exception as e:
+#         logger.error(f"could not start /voice_command path: {e!r} -- REPL still works")
+#         executor = None
+#         sub_node = None
+
+#     logger.info("LLM control ready. Type an instruction (Ctrl-D or 'quit' to exit). "
+#                 "Also listening on /voice_command.")
+
+#     try:
+#         while True:
+#             try:
+#                 text = input("cmd> ")
+#             except EOFError:
+#                 break
+#             if text.strip().lower() in ("quit", "exit"):
+#                 break
+#             handle_instruction(text, robot, arm, logger, params, twin, lock, source="repl")
+#     finally:
+#         logger.info("Shutting down.")
+#         if executor is not None:
+#             executor.shutdown()
+#         if sub_node is not None:
+#             sub_node.destroy_node()
+#         shutdown(twin)
+
+
+# if __name__ == "__main__":
+#     main()
+
+#------------------With voice command V.2 (SingleThreadedExecutor)------------------#
+
+#------------------With voice command V.2 (SingleThreadedExecutor)------------------#
+
 #!/usr/bin/env python3
-"""
-Drive the Panda from natural language, through a local LLM.
-
-Each instruction takes one path: text -> Ollama, decoded against a JSON schema
--> parse -> clamp -> dispatch to a motion primitive.
-
-The primitives are imported rather than invoked as subprocesses, so the whole
-program shares one MoveItPy context. Building a context per command would pay
-the construction cost and the action-client settle every time.
+"""LLM-driven Panda control (path b: import primitives, one shared MoveItPy context).
 
 Two input paths, one dispatch:
+  - stdin REPL ("cmd> ")           -- interactive, main thread
+  - /voice_command (std_msgs/String) -- publish with `ros2 topic pub`, sets up a
+    future speech front-end; runs in a background spin thread.
 
-    ros2 run twin_moveit_scripts llm_move
-    cmd> go to the ready position
+Each instruction: text -> Ollama (schema-constrained JSON) -> parse -> clamp (pose)
+-> dispatch. A lock serializes dispatch so the REPL and the topic never drive the
+single MoveItPy context concurrently.
 
-    ros2 topic pub --once /voice_command std_msgs/String "data: 'go home'"
-
-The REPL blocks the main thread on input(), so the subscriber gets its own node
-spun in a background thread. A lock serializes the motion itself, because both
-paths drive the same MoveIt context.
-
-Requires the Gazebo bringup and a running Ollama.
+Usage:
+  ros2 run twin_moveit_scripts llm_move
+  # REPL: type "go to the ready position" or "move to x 0.3 y -0.2 z 0.5"; Ctrl-D/"quit" to exit.
+  # Topic: ros2 topic pub --once /voice_command std_msgs/String "data: 'go home'"
 """
-
 import json
 import threading
 import urllib.request
 
-from rclpy.executors import SingleThreadedExecutor
+import rclpy
 from rclpy.node import Node
-
+from rclpy.executors import SingleThreadedExecutor
 from std_msgs.msg import String
 
 from twin_moveit_scripts.move_to import (
-    move_to_named,
-    move_to_pose,
-    setup,
-    shutdown,
+    setup, shutdown, move_to_named, move_to_pose, pick, place, pick_and_place,
 )
 
-OLLAMA_URL = 'http://localhost:11434/api/chat'
+OLLAMA_URL = "http://localhost:11434/api/chat"
+MODEL = "qwen2.5:3b-instruct"
 
-# A 3B model is a deliberate choice, not a compromise on a big machine: it fits
-# entirely in 4 GB of VRAM alongside the simulator. Translating one sentence
-# into one tool call does not need a larger model, and a 7B spills to CPU.
-MODEL = 'qwen2.5:3b-instruct'
-
-# Conservative reachable box in the panda_link0 frame, in metres. Deliberately
-# smaller than the arm's true workspace: the cost of refusing a valid target is
-# a retry, the cost of accepting an invalid one is a failed plan or a collision.
-BOUNDS = {
-    'x': (0.15, 0.65),
-    'y': (-0.5, 0.5),
-    'z': (0.15, 0.9),
-}
+# Conservative reachable box for the Panda in panda_link0 frame (meters).
+BOUNDS = {"x": (0.15, 0.65), "y": (-0.5, 0.5), "z": (0.15, 0.9)}
 
 SYSTEM_PROMPT = (
-    'You translate a natural-language instruction for a Panda robot arm into '
-    'ONE JSON tool call. Two tools:\n'
-    '- move_to_named: go to a preset joint pose. '
-    'args: {"name": "ready"|"home"}. Use for words like ready, home, reset.\n'
-    '- move_to_pose: move the gripper to a Cartesian point. '
-    'args: {"x": float, "y": float, "z": float} in meters.\n'
-    'Pick move_to_named when the user names a preset pose; pick move_to_pose '
-    'only when explicit x/y/z coordinates are given. Output JSON only.'
+    "You translate a natural-language instruction for a Panda robot arm into ONE JSON tool call. "
+    "Tools:\n"
+    "- move_to_named: go to a preset joint pose. args: {\"name\": \"ready\"|\"home\"}. "
+    "Use for words like ready, home, reset.\n"
+    "- move_to_pose: move the gripper to a Cartesian point. args: {\"x\": float, \"y\": float, \"z\": float} in meters.\n"
+    "- pick: grasp a known object. args: {\"object\": \"box\"}. Use for words like pick, grab, grasp, pick up.\n"
+    "- place: put the held object down at a known target. args: {\"target\": \"table\"}. "
+    "Use for words like place, put, drop, put down, set down.\n"
+    "- pick_and_place: grasp an object then place it at a target in one motion. "
+    "args: {\"object\": \"box\", \"target\": \"table\"}. Use when the instruction names BOTH a thing "
+    "to move and where to move it, e.g. 'move the box to the table' or 'put the box on the table'.\n"
+    "Pick move_to_named when the user names a preset pose; move_to_pose only when explicit "
+    "x/y/z coordinates are given; pick/place/pick_and_place for manipulation of named objects. "
+    "Output JSON only."
 )
 
-# Ollama constrains decoding to this schema, so the model cannot emit prose or
-# an unexpected key - the shape is enforced while the tokens are generated
-# rather than validated afterwards.
-#
-# The oneOf/const pairing is what makes it work at this model size. With a
-# permissive {"args": {"type": "object"}} the 3B model read "go to ready" as a
-# move_to_pose carrying an invented pose_name key: the schema allowed it, so
-# constrained decoding dutifully produced it. Binding each action to its exact
-# argument shape removes the option.
 SCHEMA = {
-    'oneOf': [
-        {
-            'type': 'object',
-            'properties': {
-                'action': {'const': 'move_to_named'},
-                'args': {
-                    'type': 'object',
-                    'properties': {
-                        'name': {'type': 'string', 'enum': ['ready', 'home']},
-                    },
-                    'required': ['name'],
-                    'additionalProperties': False,
-                },
-            },
-            'required': ['action', 'args'],
-            'additionalProperties': False,
-        },
-        {
-            'type': 'object',
-            'properties': {
-                'action': {'const': 'move_to_pose'},
-                'args': {
-                    'type': 'object',
-                    'properties': {
-                        'x': {'type': 'number'},
-                        'y': {'type': 'number'},
-                        'z': {'type': 'number'},
-                    },
-                    'required': ['x', 'y', 'z'],
-                    'additionalProperties': False,
-                },
-            },
-            'required': ['action', 'args'],
-            'additionalProperties': False,
-        },
+    "oneOf": [
+        {"type": "object", "properties": {
+            "action": {"const": "move_to_named"},
+            "args": {"type": "object", "properties": {
+                "name": {"type": "string", "enum": ["ready", "home"]}},
+                "required": ["name"], "additionalProperties": False}},
+            "required": ["action", "args"], "additionalProperties": False},
+        {"type": "object", "properties": {
+            "action": {"const": "move_to_pose"},
+            "args": {"type": "object", "properties": {
+                "x": {"type": "number"}, "y": {"type": "number"}, "z": {"type": "number"}},
+                "required": ["x", "y", "z"], "additionalProperties": False}},
+            "required": ["action", "args"], "additionalProperties": False},
+        {"type": "object", "properties": {
+            "action": {"const": "pick"},
+            "args": {"type": "object", "properties": {
+                "object": {"type": "string", "enum": ["box"]}},
+                "required": ["object"], "additionalProperties": False}},
+            "required": ["action", "args"], "additionalProperties": False},
+        {"type": "object", "properties": {
+            "action": {"const": "place"},
+            "args": {"type": "object", "properties": {
+                "target": {"type": "string", "enum": ["table"]}},
+                "required": ["target"], "additionalProperties": False}},
+            "required": ["action", "args"], "additionalProperties": False},
+        {"type": "object", "properties": {
+            "action": {"const": "pick_and_place"},
+            "args": {"type": "object", "properties": {
+                "object": {"type": "string", "enum": ["box"]},
+                "target": {"type": "string", "enum": ["table"]}},
+                "required": ["object", "target"], "additionalProperties": False}},
+            "required": ["action", "args"], "additionalProperties": False},
     ]
 }
 
 
 def query_llm(text):
-    """Turn one instruction into a parsed {action, args} tool call."""
+    """Send one instruction, return parsed {action, args} dict (schema-guaranteed shape)."""
     payload = {
-        'model': MODEL,
-        'stream': False,
-        'messages': [
-            {'role': 'system', 'content': SYSTEM_PROMPT},
-            {'role': 'user', 'content': text},
+        "model": MODEL,
+        "stream": False,
+        "messages": [
+            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "user", "content": text},
         ],
-        'format': SCHEMA,
-        # Temperature 0: this is a classification, not a creative task, and the
-        # same sentence should always produce the same call.
-        'options': {'temperature': 0},
+        "format": SCHEMA,
+        "options": {"temperature": 0},
     }
-
-    request = urllib.request.Request(
+    req = urllib.request.Request(
         OLLAMA_URL,
         data=json.dumps(payload).encode(),
-        headers={'Content-Type': 'application/json'},
+        headers={"Content-Type": "application/json"},
     )
-    with urllib.request.urlopen(request, timeout=30) as response:
-        body = json.loads(response.read().decode())
-
-    return json.loads(body['message']['content'])
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        body = json.loads(resp.read().decode())
+    return json.loads(body["message"]["content"])
 
 
 def clamp_pose(args, logger):
-    """
-    Snap a Cartesian target into the reachable box, logging any change.
-
-    The safety seam. A schema constrains the *shape* of what the model emits,
-    never the *values*, so nothing upstream prevents it proposing a point two
-    metres away. The model proposes; this decides.
-    """
-    clamped = {}
-    for axis in ('x', 'y', 'z'):
-        low, high = BOUNDS[axis]
-        requested = float(args[axis])
-        value = max(low, min(high, requested))
-        if value != requested:
-            logger.warn(
-                f'clamped {axis}: {requested} -> {value} '
-                f'(bounds {low}..{high})'
-            )
-        clamped[axis] = value
-    return clamped
+    """Snap x/y/z into the reachable box; log any change."""
+    out = {}
+    for k in ("x", "y", "z"):
+        lo, hi = BOUNDS[k]
+        v = float(args[k])
+        c = max(lo, min(hi, v))
+        if c != v:
+            logger.warn(f"clamped {k}: {v} -> {c} (bounds {lo}..{hi})")
+        out[k] = c
+    return out
 
 
-def handle_instruction(text, robot, arm, logger, params, twin, lock,
-                       source='repl'):
-    """
-    Translate one instruction and drive the arm with it.
+# ---- one dispatch path, shared by REPL and topic ----
+def handle_instruction(text, robot, arm, logger, params, twin, lock, source="repl"):
+    """query -> parse -> clamp (pose) -> dispatch. Serialized via lock so the two
+    input paths never drive the single MoveItPy context concurrently.
 
-    Both input paths call this, so there is one translate-clamp-dispatch path
-    rather than two that can drift apart. `source` tags the logs so it is
-    visible which path drove a motion.
-
-    The lock serializes the motion, not the translation: a second instruction
-    arriving mid-move waits its turn rather than being dropped, which matches
-    how the prompt already behaved. Two instructions can never drive the single
-    MoveIt context at once.
-
-    Returns the primitive's MoveResult, or None if no motion ran, so a caller
-    can react to the outcome rather than reading the log.
-
-    `twin` is carried but unused: it is the handle a future gripper verb will
-    need, threaded through now so adding that verb touches only the dispatch.
-    """
+    Returns the MoveResult from the primitive (or None if no motion ran), so
+    callers/future task-level logic can react to plan-fail / final-pose."""
     text = text.strip()
     if not text:
         return
 
     try:
         call = query_llm(text)
-    except Exception as error:
-        logger.error(f'[{source}] LLM query failed: {error}')
+    except Exception as e:
+        logger.error(f"[{source}] LLM query failed: {e}")
         return
 
-    action = call.get('action')
-    args = call.get('args', {})
-    logger.info(f'[{source}] LLM -> {action} {args}')
+    action = call.get("action")
+    args = call.get("args", {})
+    logger.info(f"[{source}] LLM -> {action} {args}")
 
+    # Serialize actual arm motion; a second instruction waits its turn.
+    # Primitives now return a MoveResult (ok / stage / final_pose / error);
+    # report it back so later self-correction / task planning can react to it.
     with lock:
-        if action == 'move_to_named':
-            result = move_to_named(robot, arm, logger, params, args['name'])
-        elif action == 'move_to_pose':
+        if action == "move_to_named":
+            result = move_to_named(robot, arm, logger, params, args["name"])
+        elif action == "move_to_pose":
             safe = clamp_pose(args, logger)
-            result = move_to_pose(
-                robot, arm, logger, params, safe['x'], safe['y'], safe['z']
-            )
+            result = move_to_pose(robot, arm, logger, params,
+                                  safe["x"], safe["y"], safe["z"])
+        elif action == "pick":
+            result = pick(robot, arm, logger, params, twin, args["object"])
+        elif action == "place":
+            result = place(robot, arm, logger, params, twin, args["target"])
+        elif action == "pick_and_place":
+            # pick_and_place returns a (pick_result, place_result) tuple, not a
+            # single MoveResult. Log both stages, then hand the shared tail below
+            # ONE result to report on: the place if we got that far, else the
+            # pick that stopped the cycle.
+            pick_result, place_result = pick_and_place(
+                robot, arm, logger, params, twin, args["object"], args["target"])
+            logger.info(f"[{source}] pick_and_place: "
+                        f"pick={pick_result.ok}, "
+                        f"place={place_result.ok if place_result else 'N/A (pick failed)'}")
+            result = place_result if place_result is not None else pick_result
         else:
-            logger.error(f'[{source}] unknown action: {action}')
+            logger.error(f"[{source}] unknown action: {action}")
             return None
 
     if result.ok:
-        logger.info(f'[{source}] DONE: {result}')
+        logger.info(f"[{source}] DONE: {result}")
     else:
-        logger.error(f'[{source}] MOVE FAILED: {result}')
+        logger.error(f"[{source}] MOVE FAILED: {result}")
     return result
 
 
 class VoiceCommandNode(Node):
-    """Route each /voice_command String through the shared dispatch."""
+    """Subscribes to /voice_command and routes each String through handle_instruction."""
 
     def __init__(self, robot, arm, logger, params, twin, lock):
-        super().__init__('llm_move_sub')
+        super().__init__("llm_move_sub")
         self._robot = robot
         self._arm = arm
         self._logger = logger
         self._params = params
         self._twin = twin
         self._lock = lock
-        self.create_subscription(String, '/voice_command', self._on_message, 10)
-        logger.info('Subscribed to /voice_command (std_msgs/String).')
+        self.create_subscription(String, "/voice_command", self._on_msg, 10)
+        logger.info("Subscribed to /voice_command (std_msgs/String).")
 
-    def _on_message(self, msg):
+    def _on_msg(self, msg):
         handle_instruction(
             msg.data, self._robot, self._arm, self._logger, self._params,
-            self._twin, self._lock, source='topic',
+            self._twin, self._lock, source="topic",
         )
-
-
-def start_topic_path(robot, arm, logger, params, twin, lock):
-    """Spin a subscriber node in the background, or report why it could not."""
-    try:
-        node = VoiceCommandNode(robot, arm, logger, params, twin, lock)
-        executor = SingleThreadedExecutor()
-        executor.add_node(node)
-
-        def spin():
-            # A thread that raises simply vanishes - no traceback, and the main
-            # thread carries on looking healthy. The only symptom of losing this
-            # thread is a topic with no subscriber, which is a long way from the
-            # cause, so failures here are logged rather than swallowed.
-            try:
-                executor.spin()
-            except Exception as error:
-                logger.error(f'spin thread died: {error}')
-
-        threading.Thread(target=spin, daemon=True).start()
-        logger.info('Topic path started (spin thread live).')
-        return executor, node
-    except Exception as error:
-        logger.error(
-            f'could not start the /voice_command path: {error!r} '
-            '-- the prompt still works'
-        )
-        return None, None
 
 
 def main():
-    robot, arm, logger, params, twin = setup(node_name='llm_move')
+    robot, arm, logger, params, twin = setup(node_name="llm_move")
 
     lock = threading.Lock()
-    executor, sub_node = start_topic_path(
-        robot, arm, logger, params, twin, lock
-    )
 
-    logger.info(
-        "LLM control ready. Type an instruction (Ctrl-D or 'quit' to exit). "
-        'Also listening on /voice_command.'
-    )
+    # Topic path: its own node, spun in a background thread so callbacks fire
+    # while the REPL blocks on input() in the main thread.
+    spin_thread = None
+    try:
+        sub_node = VoiceCommandNode(robot, arm, logger, params, twin, lock)
+        executor = SingleThreadedExecutor()
+        executor.add_node(sub_node)
+
+        def _spin():
+            try:
+                executor.spin()
+            except Exception as e:  # otherwise a thread death is silent
+                logger.error(f"spin thread died: {e}")
+
+        spin_thread = threading.Thread(target=_spin, daemon=True)
+        spin_thread.start()
+        logger.info("Topic path started (spin thread live).")
+    except Exception as e:
+        logger.error(f"could not start /voice_command path: {e!r} -- REPL still works")
+        executor = None
+        sub_node = None
+
+    logger.info("LLM control ready. Type an instruction (Ctrl-D or 'quit' to exit). "
+                "Also listening on /voice_command.")
 
     try:
         while True:
             try:
-                text = input('cmd> ')
+                text = input("cmd> ")
             except EOFError:
                 break
-            if text.strip().lower() in ('quit', 'exit'):
+            if text.strip().lower() in ("quit", "exit"):
                 break
-            handle_instruction(
-                text, robot, arm, logger, params, twin, lock,
-                source='repl',
-            )
+            handle_instruction(text, robot, arm, logger, params, twin, lock, source="repl")
     finally:
-        logger.info('Shutting down.')
+        logger.info("Shutting down.")
         if executor is not None:
             executor.shutdown()
         if sub_node is not None:
@@ -299,5 +468,5 @@ def main():
         shutdown(twin)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

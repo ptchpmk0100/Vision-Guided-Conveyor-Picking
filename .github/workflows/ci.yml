@@ -1,0 +1,25 @@
+name: ci
+
+# Runs the OFFLINE test suite (component self-tests + py_compile) in a ROS 2 Jazzy container.
+# The full pick-and-sort checks need a running Gazebo simulator and are not run in CI; they
+# are exercised locally via tools/run_sort_line_check.sh (ground truth).
+on:
+  push:
+  pull_request:
+
+jobs:
+  offline-tests:
+    runs-on: ubuntu-latest
+    container: ros:jazzy
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install python deps
+        run: |
+          apt-get update
+          apt-get install -y --no-install-recommends python3-numpy python3-opencv python3-yaml
+      - name: Offline test suite
+        shell: bash
+        run: |
+          source /opt/ros/jazzy/setup.bash
+          chmod +x tools/run_offline_tests.sh
+          tools/run_offline_tests.sh

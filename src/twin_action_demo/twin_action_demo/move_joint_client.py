@@ -1,5 +1,11 @@
 #!/usr/bin/env python3
 
+# from typing import Optional
+
+# import rclpy
+# from rclpy.action import ActionClient
+# from rclpy.node import Node
+
 import argparse
 from typing import Optional
 
@@ -10,18 +16,19 @@ from rclpy.utilities import remove_ros_args
 
 from twin_interfaces.action import MoveJoint
 
-DEFAULT_TARGET_ANGLE = 1.57
-
 
 class MoveJointClient(Node):
     """Send one joint-angle goal and report feedback and result."""
 
-    def __init__(self, target_angle: float = DEFAULT_TARGET_ANGLE) -> None:
+    # def __init__(self) -> None:
+    #     super().__init__('move_joint_client')
+
+    #     self.declare_parameter('target_angle', 1.57)
+    def __init__(self, target_angle: float = 1.57) -> None:
         super().__init__('move_joint_client')
 
-        # Declared with the command-line value as its default, so
-        # `--ros-args -p target_angle:=X` still overrides it.
         self.declare_parameter('target_angle', target_angle)
+
 
         self._action_client = ActionClient(
             self,
@@ -34,6 +41,7 @@ class MoveJointClient(Node):
 
     def send_goal(self) -> None:
         """Wait for the server and asynchronously send one goal."""
+
         target_angle = float(
             self.get_parameter('target_angle').value
         )
@@ -76,6 +84,7 @@ class MoveJointClient(Node):
 
     def goal_response_callback(self, future) -> None:
         """Handle server acceptance or rejection."""
+
         try:
             self._goal_handle = future.result()
         except Exception as error:
@@ -97,6 +106,7 @@ class MoveJointClient(Node):
 
     def feedback_callback(self, feedback_message) -> None:
         """Receive progress information while motion executes."""
+
         feedback = feedback_message.feedback
 
         self.get_logger().info(
@@ -107,6 +117,7 @@ class MoveJointClient(Node):
 
     def result_callback(self, future) -> None:
         """Process the final action result."""
+
         try:
             wrapped_result = future.result()
             result = wrapped_result.result
@@ -131,38 +142,38 @@ class MoveJointClient(Node):
         self.done = True
 
 
-def parse_arguments(args=None) -> argparse.Namespace:
-    """
-    Parse this node's own arguments from the non-ROS command line.
+# def main(args=None) -> None:
+#     rclpy.init(args=args)
 
-    ``ros2 run`` appends ROS arguments such as ``--ros-args``; passing the raw
-    command line to argparse makes them look like unrecognised options, so they
-    are stripped first.
-    """
-    parser = argparse.ArgumentParser(
-        description='Send a single MoveJoint goal.'
-    )
-    parser.add_argument(
-        'target_angle',
-        type=float,
-        nargs='?',
-        default=DEFAULT_TARGET_ANGLE,
-        help=(
-            'Target joint angle in radians '
-            f'(default: {DEFAULT_TARGET_ANGLE}).'
-        ),
-    )
-    return parser.parse_args(remove_ros_args(args)[1:])
-
-
+#     node: Optional[MoveJointClient] = None
 def main(args=None) -> None:
     rclpy.init(args=args)
 
-    parsed = parse_arguments(args)
+    # Strip ROS's own args, then parse ours from what's left.
+    argv = remove_ros_args(args)
+    parser = argparse.ArgumentParser(description='Send a MoveJoint goal.')
+    parser.add_argument(
+        'target_angle',
+        type=float,
+        nargs='?',           # optional: no arg -> use default
+        default=1.57,
+        help='Target joint angle in radians (default: 1.57).',
+    )
+    parsed = parser.parse_args(argv[1:])   # argv[0] is the program name
 
     node: Optional[MoveJointClient] = None
 
     try:
+        # parser = argparse.ArgumentParser()
+        # parser.add_argument(
+        #     '--target-angle',
+        #     type=float,
+        #     default=1.57,
+        #     help='Target joint angle in radians'
+        # )
+        # args = parser.parse_args()
+
+        # node = MoveJointClient(target_angle=args.target_angle)
         node = MoveJointClient(target_angle=parsed.target_angle)
         node.send_goal()
 
