@@ -19,6 +19,7 @@ jobs:
           # The parcel-cell tests import MoveIt and the control/vision message packages
           # (no simulator is started; only the Python modules are needed).
           apt-get install -y --no-install-recommends python3-numpy python3-opencv python3-yaml \
+            build-essential cmake python3-colcon-common-extensions \
             ros-jazzy-moveit-py ros-jazzy-moveit-configs-utils ros-jazzy-moveit-msgs \
             ros-jazzy-vision-msgs ros-jazzy-control-msgs ros-jazzy-trajectory-msgs \
             ros-jazzy-shape-msgs ros-jazzy-sensor-msgs ros-jazzy-geometry-msgs \
@@ -27,5 +28,9 @@ jobs:
         shell: bash
         run: |
           source /opt/ros/jazzy/setup.bash
+          # twin_description and twin_moveit_config are data-only packages; the MoveIt
+          # config tests look them up in the ROS package index, so build just those two.
+          colcon build --packages-select twin_description twin_moveit_config
+          source install/setup.bash
           chmod +x tools/run_offline_tests.sh
           tools/run_offline_tests.sh
