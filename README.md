@@ -145,6 +145,19 @@ view; it retains the calibrated camera transform and reads the actual camera
 intrinsics. A fault stops the feed. Relaunch with an empty tote for another batch.
 See [TEN_PARCEL_PLAN.md](TEN_PARCEL_PLAN.md) for the capacity maths, risks and evidence.
 
+To simply WATCH the arm in the Gazebo window, use the helper. It starts from a clean
+environment, uses the validated settings and waits for the controllers, so each terminal
+is one command (start the second right after the first):
+
+```bash
+tools/parcel_demo.sh sim     # terminal 1: simulator, detector, sensors (add "headless" for no window)
+tools/parcel_demo.sh task    # terminal 2: the camera-guided arm task
+```
+
+Set `COUNT=3|7|8|10`, `SPEED=<m/s>` or `DOMAIN=<n>` (the same in both terminals) to change
+the batch. Stop with Ctrl+C in terminal 1. It has none of the scored harness's independent
+checkers; use `tools/run_parcel_cell_check.sh` (below) for pass/fail evidence.
+
 For a scored ten-box GUI test from this repository root in a desktop terminal:
 
 ```bash
