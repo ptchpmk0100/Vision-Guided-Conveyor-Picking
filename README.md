@@ -76,6 +76,142 @@ tools/run_b1_calibration.sh               # 2 captures of 12 flat targets → ga
 #   src/twin_action_demo/config/overhead_camera_extrinsic.yaml to put it in service.
 ```
 
+## Industrial parcel-cell variant
+
+The additive parcel scene keeps the same Panda and overhead RGBD calibration. It adds a
+long conveyor, cardboard parcels, an open blue tote, industrial pedestal, cabinet, fencing,
+and saved presentation cameras. The original colour-sorting launch remains available.
+
+After sourcing the ROS base and this checkout's overlay in each terminal:
+
+```bash
+ros2 launch twin_action_demo industrial_parcel_cell_bringup.launch.py continuous:=true
+ros2 run twin_moveit_scripts parcel_task --continuous
+```
+
+Omit both continuous flags for the original stationary batch. For a queued stop-and-pick
+batch, launch with `indexed:=true` and run `parcel_task --indexed`. The belt
+moves cartons by Gazebo surface-contact physics, stops for observation/picking, and stops
+on lost command messages. Three cartons fill three tote slots; start with an empty tote
+and reset/relaunch for the next batch. The right feeder is a stationary supported section.
+Use distinct `ROS_DOMAIN_ID` and `GZ_PARTITION` values for concurrent simulations.
+
+For moving-target handling, pair `continuous:=true` in the launch with
+`parcel_task --continuous` in the other terminal. This selects an extended upstream
+belt with 1.2 m parcel spacing (20 simulated seconds between arrivals). The belt runs
+at 0.06 m/s throughout normal picking,
+placement and verification. The robot selects the closest reachable camera track,
+matches conveyor motion above it, descends while following, closes and lifts it,
+then places it in the next tote slot. The next parcel keeps travelling during placement.
+Perception/command loss or a failed intercept stops the feed. This demo finishes when
+the three-slot tote is full; relaunch with an empty tote for another batch.
+The original stationary and indexed modes remain available.
+
+An opt-in **7, 8 or 10-parcel** batch uses the SAME conveyor as the three-parcel
+profile (a 5.0 m deck, y = -3.6 to +1.4 m; it is never lengthened) and a wider,
+single-layer tote. The extra boxes are fitted by shrinking the pitch so the last box
+stays 0.2 m inside the upstream end: **10 boxes at 0.344 m, 8 at 0.442 m, 7 at 0.516 m**
+(the three-box profile keeps 1.2 m). The smallest allowed pitch is 0.14 m, which leaves
+at least 35 mm between an open finger and the next box. With a fixed belt length the
+belt speed must match the arm: the arrival interval is pitch / belt speed and must not
+be shorter than the pick-place-return cycle. Ten boxes run at **0.045 m/s** (7.6
+simulated seconds between arrivals). The three-box profile still runs at 0.06 m/s.
+
+These profiles also use a faster cycle than the three-box path (the three-box path
+is unchanged): the gripper opens in 0.5 s instead of 2.5 s, there is no separate retract
+move after release, the tote slot is confirmed from depth while the arm is already
+heading back, one camera tracker stays live for the whole run, and the arm launches as
+soon as a whole, tracked box is reachable (predicted y >= -0.25 m instead of -0.16 m)
+with a shorter, still collision-checked interception (0.3 s planning lead, grasp at
+1.35 s, 0.9 s lift). If the arm is not yet able to follow an early box, nothing is
+sent and it retries as the box comes closer. After placing, the arm waits for the next
+whole box; it does no extra moves.
+
+With the ROS base and this mirror's overlay sourced in both terminals, run:
+
+```bash
+# Terminal 1: simulator, camera detector and finger contact sensors
+ros2 launch twin_action_demo industrial_parcel_cell_bringup.launch.py \
+  continuous:=true parcel_count:=10
+
+# Terminal 2: camera-guided interception with confirmed two-pad grasps
+ros2 run twin_moveit_scripts parcel_task --continuous --grasp-mode confirmed \
+  --parcel-count 10 --belt-speed 0.045
+```
+
+The launch and task profiles must match (the pitch is derived from the count; do not
+pass one that does not fit). The profile also widens the temporary RGBD sensor field of
+view; it retains the calibrated camera transform and reads the actual camera
+intrinsics. A fault stops the feed. Relaunch with an empty tote for another batch.
+See [TEN_PARCEL_PLAN.md](TEN_PARCEL_PLAN.md) for the capacity maths, risks and evidence.
+
+For a scored ten-box GUI test from this repository root in a desktop terminal:
+
+```bash
+env -i PATH=/usr/bin:/bin:/usr/local/bin \
+  DISPLAY="$DISPLAY" XAUTHORITY="$XAUTHORITY" XDG_RUNTIME_DIR="$XDG_RUNTIME_DIR" \
+  bash --noprofile --norc tools/run_parcel_cell_check.sh \
+  --gui --mode continuous --grasp-mode confirmed --parcel-count 10 --belt-speed 0.045 \
+  --motion-metrics --trajectory-check sampled --runs 1 --domain 85 \
+  --logdir "logs/orig_belt/manual_$(date +%Y%m%d_%H%M%S)"
+```
+
+This performs independent geometry, perception, transport, grasp and placement
+checks and then closes its own simulation. Omit `--gui` and the display variables
+for headless operation. GUI playback can take substantially longer than simulated
+time on this machine; a 7.6-second simulated arrival interval is not 7.6 wall seconds.
+A heavily loaded host (for example a busy editor language server) lowers the
+real-time factor and can make the unchanged three-box path time out on a gripper
+result; see TEN_PARCEL_PLAN.md.
+
+Run independent scored checks from a clean shell, choosing a fresh evidence directory:
+
+```bash
+env -i PATH=/usr/bin:/bin:/usr/local/bin bash --noprofile --norc \
+  tools/run_parcel_cell_check.sh --mode stationary --runs 2 \
+  --logdir /tmp/panda-parcel-stationary-check
+# Use --mode continuous for moving grasps, indexed for stop-and-pick transport,
+# or geometry/transport/faults for focused checks.
+```
+
+Actual verification results, changed components, and limitations are recorded in
+[PARCEL_CELL_IMPLEMENTATION.md](PARCEL_CELL_IMPLEMENTATION.md). Design rationale and
+acceptance gates are in [PANDA_ENVIRONMENT_REDESIGN_PLAN.md](PANDA_ENVIRONMENT_REDESIGN_PLAN.md).
+
+If the arm pauses at `ready`, check the task's last state. `FEED` means it is waiting for
+the conveyor to deliver a carton; the first delivery takes about 20–30 wall seconds in
+the GUI on this machine. `FEED_WAIT` now reports progress every five seconds.
+If the reported simulation time stays fixed, check Gazebo's Play state. Keep one
+`parcel_task` running per ROS domain; a second invocation is refused before it can move
+the arm. Match `indexed:=true` in the launch with `--indexed` in the task, or omit both
+for stationary cartons. `PARCEL_TASK_FAILED` is also saved in the ROS log.
+Continuous mode uses `CONTINUOUS_WAIT` and `INTERCEPT` instead of `FEED`/`STOPPED`.
+At startup it moves directly above the belt while opening the gripper in parallel.
+The feed starts once both motions and fresh empty-tote/perception checks are complete.
+
+To test the full GUI workflow automatically from a desktop terminal:
+
+```bash
+env -i PATH=/usr/bin:/bin:/usr/local/bin \
+  DISPLAY="$DISPLAY" XAUTHORITY="$XAUTHORITY" XDG_RUNTIME_DIR="$XDG_RUNTIME_DIR" \
+  bash --noprofile --norc tools/run_parcel_cell_check.sh \
+  --gui --quick-start --mode continuous --runs 1 --domain 88 \
+  --logdir "logs/gui_check_$(date +%Y%m%d_%H%M%S)"
+```
+
+This opens a fresh cell, runs the task, checks actual placement and closes that test cell.
+`--quick-start` begins preparation when controllers are active and runs independent
+checks after the batch. Omit it to include the full pre-run geometry/perception inspection.
+See [GUI_PARCEL_DIAGNOSIS.md](GUI_PARCEL_DIAGNOSIS.md) for the GUI investigation and evidence.
+The continuous design and its verification are recorded in
+[CONTINUOUS_PARCEL_PLAN.md](CONTINUOUS_PARCEL_PLAN.md).
+
+Optional path-planning experiments, their validation gates and measured comparisons
+are documented in [PATH_PLANNING_PLAN.md](PATH_PLANNING_PLAN.md). The normal planner
+remains RRTConnect with TOTG. `--motion-metrics --trajectory-check sampled` on the
+parcel harness records final planned paths and checks them before dispatch. Experimental
+smoothing and arrival shadowing are separate opt-ins; the shadow does not control arrival.
+
 ## Layout
 
 | Path | What |
