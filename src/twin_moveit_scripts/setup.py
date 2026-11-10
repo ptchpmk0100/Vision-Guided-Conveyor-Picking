@@ -25,6 +25,9 @@ setup(
     },
     entry_points={
         'console_scripts': [
+            'object_detector_parcel_cell = twin_moveit_scripts.object_detector_parcel_cell:main',
+            'parcel_task = twin_moveit_scripts.parcel_task:main',
+            'parcel_feed_guard = twin_moveit_scripts.parcel_feed:main',
             'move_to = twin_moveit_scripts.move_to:main',
             'llm_move = twin_moveit_scripts.llm_move:main',
             'object_detector = twin_moveit_scripts.object_detector:main',
