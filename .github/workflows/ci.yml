@@ -16,7 +16,13 @@ jobs:
       - name: Install python deps
         run: |
           apt-get update
-          apt-get install -y --no-install-recommends python3-numpy python3-opencv python3-yaml
+          # The parcel-cell tests import MoveIt and the control/vision message packages
+          # (no simulator is started; only the Python modules are needed).
+          apt-get install -y --no-install-recommends python3-numpy python3-opencv python3-yaml \
+            ros-jazzy-moveit-py ros-jazzy-moveit-configs-utils ros-jazzy-moveit-msgs \
+            ros-jazzy-vision-msgs ros-jazzy-control-msgs ros-jazzy-trajectory-msgs \
+            ros-jazzy-shape-msgs ros-jazzy-sensor-msgs ros-jazzy-geometry-msgs \
+            ros-jazzy-rosgraph-msgs ros-jazzy-std-msgs
       - name: Offline test suite
         shell: bash
         run: |

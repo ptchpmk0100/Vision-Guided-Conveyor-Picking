@@ -1,0 +1,166 @@
+<?xml version="1.0"?>
+<sdf version="1.9">
+  <model name="parcel">
+    <static>false</static>
+    <pose>0 0 0 0 0 0</pose>
+    <link name="body">
+      <inertial>
+        <mass>0.05</mass>
+        <inertia>
+          <ixx>2.083333333333334e-05</ixx>
+          <iyy>3.708333333333334e-05</iyy>
+          <izz>3.708333333333334e-05</izz>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyz>0</iyz>
+        </inertia>
+      </inertial>
+      <collision name="carton">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.08 0.05 0.05</size>
+          </box>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>1.0</mu>
+              <mu2>1.0</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name="carton_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.08 0.05 0.05</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.70 0.53 0.35 1</ambient>
+          <diffuse>0.70 0.53 0.35 1</diffuse>
+          <specular>0.15 0.15 0.15 1</specular>
+        </material>
+      </visual>
+      <visual name="tape_visual">
+        <pose>0 0 0.02515 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.012 0.05 0.0003</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.79 0.66 0.46 1</ambient>
+          <diffuse>0.79 0.66 0.46 1</diffuse>
+          <specular>0.15 0.15 0.15 1</specular>
+        </material>
+      </visual>
+      <visual name="label_visual">
+        <pose>0.02 0.005 0.0253 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.022 0.019 0.0003</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.85 0.84 0.75 1</ambient>
+          <diffuse>0.85 0.84 0.75 1</diffuse>
+          <specular>0.15 0.15 0.15 1</specular>
+        </material>
+      </visual>
+      <visual name="barcode_0_visual">
+        <pose>0.012 0.005 0.0255 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.0008 0.012 0.0001</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.055 0.062 0.070 1</ambient>
+          <diffuse>0.055 0.062 0.070 1</diffuse>
+          <specular>0.15 0.15 0.15 1</specular>
+        </material>
+      </visual>
+      <visual name="barcode_1_visual">
+        <pose>0.0144 0.005 0.0255 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.0008 0.012 0.0001</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.055 0.062 0.070 1</ambient>
+          <diffuse>0.055 0.062 0.070 1</diffuse>
+          <specular>0.15 0.15 0.15 1</specular>
+        </material>
+      </visual>
+      <visual name="barcode_2_visual">
+        <pose>0.0168 0.005 0.0255 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.0008 0.012 0.0001</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.055 0.062 0.070 1</ambient>
+          <diffuse>0.055 0.062 0.070 1</diffuse>
+          <specular>0.15 0.15 0.15 1</specular>
+        </material>
+      </visual>
+      <visual name="barcode_3_visual">
+        <pose>0.0192 0.005 0.0255 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.0008 0.012 0.0001</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.055 0.062 0.070 1</ambient>
+          <diffuse>0.055 0.062 0.070 1</diffuse>
+          <specular>0.15 0.15 0.15 1</specular>
+        </material>
+      </visual>
+      <visual name="barcode_4_visual">
+        <pose>0.0216 0.005 0.0255 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.0008 0.012 0.0001</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.055 0.062 0.070 1</ambient>
+          <diffuse>0.055 0.062 0.070 1</diffuse>
+          <specular>0.15 0.15 0.15 1</specular>
+        </material>
+      </visual>
+      <visual name="barcode_5_visual">
+        <pose>0.024 0.005 0.0255 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.0008 0.012 0.0001</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.055 0.062 0.070 1</ambient>
+          <diffuse>0.055 0.062 0.070 1</diffuse>
+          <specular>0.15 0.15 0.15 1</specular>
+        </material>
+      </visual>
+      <visual name="barcode_6_visual">
+        <pose>0.0264 0.005 0.0255 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.0008 0.012 0.0001</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.055 0.062 0.070 1</ambient>
+          <diffuse>0.055 0.062 0.070 1</diffuse>
+          <specular>0.15 0.15 0.15 1</specular>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>
