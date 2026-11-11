@@ -1,4 +1,4 @@
-[INFO] [1794394589.506544464] [parcel_condition]: condition classifier ready: model=/home/pmkhoi/ros_test_ws_mirror/logs/condition/runs/uncertain/model.onnx detections=/parcel_cell/moving_detections min_confidence=0.75
+[INFO] [1794394589.506544464] [parcel_condition]: condition classifier ready: model=logs/condition/runs/uncertain/model.onnx detections=/parcel_cell/moving_detections min_confidence=0.75
 [INFO] [1794394603.443660634] [parcel_condition]: msgs=46 parcels=46 unmatched=3 edge=0 latency_ms mean=10.5 p95=14.3 max=18.8
 [INFO] [1794394629.778293135] [parcel_condition]: msgs=114 parcels=116 unmatched=19 edge=0 latency_ms mean=10.5 p95=15.2 max=18.8
 [INFO] [1794394656.216780340] [parcel_condition]: msgs=186 parcels=190 unmatched=31 edge=0 latency_ms mean=10.5 p95=15.2 max=18.8
@@ -10,9 +10,9 @@
 Traceback (most recent call last):
   File "<frozen runpy>", line 198, in _run_module_as_main
   File "<frozen runpy>", line 88, in _run_code
-  File "/home/pmkhoi/ros_test_ws_mirror/build/twin_moveit_scripts/twin_moveit_scripts/parcel_condition_node.py", line 129, in <module>
+  File "build/twin_moveit_scripts/twin_moveit_scripts/parcel_condition_node.py", line 129, in <module>
     main()
-  File "/home/pmkhoi/ros_test_ws_mirror/build/twin_moveit_scripts/twin_moveit_scripts/parcel_condition_node.py", line 120, in main
+  File "build/twin_moveit_scripts/twin_moveit_scripts/parcel_condition_node.py", line 120, in main
     rclpy.spin(node)
   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
     executor.spin_once()

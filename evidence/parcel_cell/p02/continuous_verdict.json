@@ -1,0 +1,100 @@
+{
+  "passed": true,
+  "always_commanded": true,
+  "command_samples": 5829,
+  "speed": 0.045,
+  "start_sim": 9.92,
+  "end_sim": 89.755,
+  "parcels": [
+    {
+      "name": "parcel_1",
+      "measured_speed": 0.04500000000150028,
+      "displacement": 0.05121000004705739,
+      "observed_span": 1.138,
+      "during_grasp_speed": 0.0449999999999896,
+      "following_error_m": 0.0017284194011685794,
+      "passed": true
+    },
+    {
+      "name": "parcel_2",
+      "measured_speed": 0.04500000000001711,
+      "displacement": 0.393480000047079,
+      "observed_span": 8.744,
+      "during_grasp_speed": 0.044999999999989576,
+      "following_error_m": 0.000990907226295329,
+      "passed": true
+    },
+    {
+      "name": "parcel_3",
+      "measured_speed": 0.04499999999996214,
+      "displacement": 0.7357950000467869,
+      "observed_span": 16.351,
+      "during_grasp_speed": 0.04499999999999013,
+      "following_error_m": 0.0009035712914945981,
+      "passed": true
+    },
+    {
+      "name": "parcel_4",
+      "measured_speed": 0.04500000000001656,
+      "displacement": 1.0831500000471714,
+      "observed_span": 24.07,
+      "during_grasp_speed": 0.044999999999989375,
+      "following_error_m": 0.000491067232825132,
+      "passed": true
+    },
+    {
+      "name": "parcel_5",
+      "measured_speed": 0.04500000000001765,
+      "displacement": 1.4283450000477274,
+      "observed_span": 31.741,
+      "during_grasp_speed": 0.04499999999998882,
+      "following_error_m": 0.00043276255456556334,
+      "passed": true
+    },
+    {
+      "name": "parcel_6",
+      "measured_speed": 0.045000000000072087,
+      "displacement": 1.7688150000482932,
+      "observed_span": 39.307,
+      "during_grasp_speed": 0.044999999999991366,
+      "following_error_m": 0.0011096561725279508,
+      "passed": true
+    },
+    {
+      "name": "parcel_7",
+      "measured_speed": 0.04500000000007212,
+      "displacement": 2.1144600000488456,
+      "observed_span": 46.988,
+      "during_grasp_speed": 0.04499999999999041,
+      "following_error_m": 0.0010228314679459338,
+      "passed": true
+    },
+    {
+      "name": "parcel_8",
+      "measured_speed": 0.04500000000007212,
+      "displacement": 2.4558750000494025,
+      "observed_span": 54.575,
+      "during_grasp_speed": 0.04499999999999195,
+      "following_error_m": 0.0015784031656909114,
+      "passed": true
+    },
+    {
+      "name": "parcel_9",
+      "measured_speed": 0.04500000000007212,
+      "displacement": 2.8018800000499584,
+      "observed_span": 62.263999999999996,
+      "during_grasp_speed": 0.04499999999998881,
+      "following_error_m": 0.0018159153399874284,
+      "passed": true
+    },
+    {
+      "name": "parcel_10",
+      "measured_speed": 0.04500000000007212,
+      "displacement": 3.1944600000505035,
+      "observed_span": 70.988,
+      "during_grasp_speed": 0.045000000000003745,
+      "following_error_m": 0.001019785392116973,
+      "passed": true
+    }
+  ]
+}

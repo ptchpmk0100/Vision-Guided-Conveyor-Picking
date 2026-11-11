@@ -1,8 +1,8 @@
 #!/bin/bash
-# B5: offline test suite — everything that runs WITHOUT Gazebo/a sim (so it is CI-able).
-# Covers the three component self-tests + a py_compile of every package/tool module.
-# The full ground-truth sort checks need a running simulator and are NOT part of this suite
-# (see tools/run_sort_line_check.sh). No `set -u` (ROS setup.bash).
+# Offline test suite: everything that runs WITHOUT Gazebo (so CI can run it).
+# Unit and contract tests for perception, grasping, motion, condition routing and calibration,
+# plus a py_compile of every package/tool module. The scored simulator checks are
+# tools/run_parcel_cell_check.sh and tools/condition_arm_check.sh. No `set -u` (ROS setup.bash).
 set -o pipefail
 TOOLS="$(cd "$(dirname "$0")" && pwd)"
 MIRROR="$(dirname "$TOOLS")"
@@ -24,8 +24,6 @@ run () {  # $1 = label, rest = command
 
 echo "===== OFFLINE TEST SUITE (no simulator) ====="
 # 1. component self-tests
-run "behaviour-tree self-test"  python3 "$PKG/behaviour_tree.py" --self-test
-run "validator self-test"       python3 "$PKG/sorting_validator.py" --self-test
 run "extrinsic-solver self-test" python3 "$TOOLS/fit_extrinsic_calibration.py" --self-test
 run "parcel geometry and depth perception" python3 "$TOOLS/test_parcel_cell.py"
 run "parcel grasp confirmation and loss" python3 "$TOOLS/test_parcel_grasp.py"

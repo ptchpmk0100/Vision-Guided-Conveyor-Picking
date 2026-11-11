@@ -1,0 +1,192 @@
+{
+  "mode": "geometry",
+  "checks": [
+    {
+      "name": "parcel_1",
+      "position": [
+        0.56,
+        -0.3,
+        0.31999960051117604
+      ],
+      "yaw": -2.3870183780576867e-18,
+      "stable": true,
+      "height_ok": true,
+      "footprint_ok": true,
+      "roll_pitch": [
+        2.7493650095944926e-18,
+        -4.655249174301997e-18
+      ],
+      "upright": true,
+      "passed": true
+    },
+    {
+      "name": "parcel_2",
+      "position": [
+        0.56,
+        -0.6439999999999999,
+        0.31999960051117604
+      ],
+      "yaw": -2.134951248715929e-18,
+      "stable": true,
+      "height_ok": true,
+      "footprint_ok": true,
+      "roll_pitch": [
+        7.059769275486409e-18,
+        -5.474204395901316e-18
+      ],
+      "upright": true,
+      "passed": true
+    },
+    {
+      "name": "parcel_3",
+      "position": [
+        0.56,
+        -0.988,
+        0.31999960051117604
+      ],
+      "yaw": -2.0708391519739583e-18,
+      "stable": true,
+      "height_ok": true,
+      "footprint_ok": true,
+      "roll_pitch": [
+        2.3268611287798954e-18,
+        3.594402482899448e-18
+      ],
+      "upright": true,
+      "passed": true
+    },
+    {
+      "name": "parcel_4",
+      "position": [
+        0.56,
+        -1.332,
+        0.31999960051117604
+      ],
+      "yaw": -1.7300372085637412e-18,
+      "stable": true,
+      "height_ok": true,
+      "footprint_ok": true,
+      "roll_pitch": [
+        8.693847564174942e-18,
+        -4.245917922006198e-18
+      ],
+      "upright": true,
+      "passed": true
+    },
+    {
+      "name": "parcel_5",
+      "position": [
+        0.56,
+        -1.676,
+        0.31999960051117604
+      ],
+      "yaw": -4.276188186785913e-18,
+      "stable": true,
+      "height_ok": true,
+      "footprint_ok": true,
+      "roll_pitch": [
+        1.823371504618932e-17,
+        -1.8100860221542162e-17
+      ],
+      "upright": true,
+      "passed": true
+    },
+    {
+      "name": "parcel_6",
+      "position": [
+        0.56,
+        -2.0199999999999996,
+        0.31999960051117604
+      ],
+      "yaw": -2.1668535918177444e-18,
+      "stable": true,
+      "height_ok": true,
+      "footprint_ok": true,
+      "roll_pitch": [
+        1.2226324169485507e-17,
+        -5.950840692520693e-18
+      ],
+      "upright": true,
+      "passed": true
+    },
+    {
+      "name": "parcel_7",
+      "position": [
+        0.56,
+        -2.364,
+        0.31999960051117604
+      ],
+      "yaw": -1.6149886306290391e-18,
+      "stable": true,
+      "height_ok": true,
+      "footprint_ok": true,
+      "roll_pitch": [
+        7.301496756165364e-18,
+        -5.0869172412139576e-18
+      ],
+      "upright": true,
+      "passed": true
+    },
+    {
+      "name": "parcel_8",
+      "position": [
+        0.56,
+        -2.7079999999999997,
+        0.31999960051117604
+      ],
+      "yaw": -1.90626675795572e-18,
+      "stable": true,
+      "height_ok": true,
+      "footprint_ok": true,
+      "roll_pitch": [
+        1.0698237050483204e-17,
+        -6.229633691216959e-18
+      ],
+      "upright": true,
+      "passed": true
+    },
+    {
+      "name": "parcel_9",
+      "position": [
+        0.56,
+        -3.0519999999999996,
+        0.31999960051117604
+      ],
+      "yaw": -1.4993935989034493e-18,
+      "stable": true,
+      "height_ok": true,
+      "footprint_ok": true,
+      "roll_pitch": [
+        9.25043626559777e-18,
+        -5.890369038657742e-18
+      ],
+      "upright": true,
+      "passed": true
+    },
+    {
+      "name": "parcel_10",
+      "position": [
+        0.56,
+        -3.3959999999999995,
+        0.31999960051117604
+      ],
+      "yaw": -9.28601473466172e-19,
+      "stable": true,
+      "height_ok": true,
+      "footprint_ok": true,
+      "roll_pitch": [
+        5.03256707443488e-18,
+        -5.200489357064116e-18
+      ],
+      "upright": true,
+      "passed": true
+    }
+  ],
+  "exact_entities": true,
+  "passed": true,
+  "images": {
+    "rgbd": "logs/orig_belt/p01/run1/rgbd.png",
+    "overview": "logs/orig_belt/p01/run1/overview.png",
+    "side": "logs/orig_belt/p01/run1/side.png"
+  }
+}
