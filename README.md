@@ -5,7 +5,7 @@ conveyor using a calibrated RGB-D camera. A CNN trained only on synthetic simula
 and the arm routes them to a reject bin. Every result is checked against Gazebo ground truth, never against the
 robot's own log lines.
 
-[![CI](https://github.com/ptchpmk0100/language-controlled-panda-digital-twin/actions/workflows/ci.yml/badge.svg)](../../actions/workflows/ci.yml)
+[![CI](https://github.com/ptchpmk0100/language-controlled-panda-digital-twin/actions/workflows/ci.yml/badge.svg)](https://github.com/ptchpmk0100/language-controlled-panda-digital-twin/actions/workflows/ci.yml)
 ![ROS 2 Jazzy](https://img.shields.io/badge/ROS%202-Jazzy-22314E)
 ![Gazebo Harmonic](https://img.shields.io/badge/Gazebo-Harmonic-F58113)
 ![MoveIt 2](https://img.shields.io/badge/MoveIt-2-6A3D9A)
@@ -14,8 +14,8 @@ robot's own log lines.
 
 ![The Panda picks an intact parcel into the tote, then a damaged one into the red reject bin](docs/media/demo.gif)
 
-*12 s at 3× speed. Full run: [4× video (1:52)](../../releases/download/v1.0/demo-4x.mp4) ·
-[real-time recording (7:27)](../../releases/download/v1.0/simulation-full.mp4)*
+*12 s at 3× speed. Full run: [4× video (1:52)](https://github.com/ptchpmk0100/language-controlled-panda-digital-twin/releases/download/v1.0/demo-4x.mp4) ·
+[real-time recording (7:27)](https://github.com/ptchpmk0100/language-controlled-panda-digital-twin/releases/download/v1.0/simulation-full.mp4)*
 
 ## Results
 
@@ -94,7 +94,7 @@ env -i PATH=/usr/bin:/bin:/usr/local/bin bash --noprofile --norc tools/run_parce
 
 Retrain and evaluate the classifier: `tools/condition_collect.sh` → `condition_extract.py` → `condition_train.py` →
 `condition_eval.py` ([pipeline](evidence/parcel_condition/README.md)). The training crops are the release asset
-[`condition-dataset-r1.zip`](../../releases/tag/v1.0).
+[`condition-dataset-r1.zip`](https://github.com/ptchpmk0100/language-controlled-panda-digital-twin/releases/tag/v1.0).
 
 ## Repository layout
 
