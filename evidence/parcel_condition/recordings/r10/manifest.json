@@ -1,0 +1,167 @@
+{
+ "seed": "cond-r10",
+ "count": 10,
+ "queue_y": [
+  -0.3,
+  -0.6439999999999999,
+  -0.988,
+  -1.332,
+  -1.676,
+  -2.0199999999999996,
+  -2.364,
+  -2.7079999999999997,
+  -3.0519999999999996,
+  -3.3959999999999995
+ ],
+ "parcels": [
+  {
+   "index": 1,
+   "name": "parcel_1",
+   "condition": "damaged",
+   "damage": [
+    {
+     "kind": "crush",
+     "corner": [
+      1,
+      1
+     ],
+     "size": 0.0211
+    }
+   ],
+   "benign": [
+    "sticker"
+   ],
+   "shade": 0.994,
+   "yaw_deg": 5.46
+  },
+  {
+   "index": 2,
+   "name": "parcel_2",
+   "condition": "intact",
+   "damage": [],
+   "benign": [
+    "sticker"
+   ],
+   "shade": 0.886,
+   "yaw_deg": 3.01
+  },
+  {
+   "index": 3,
+   "name": "parcel_3",
+   "condition": "damaged",
+   "damage": [
+    {
+     "kind": "tear",
+     "centre": [
+      0.0001,
+      0.0002
+     ],
+     "length": 0.0365
+    }
+   ],
+   "benign": [
+    "sticker"
+   ],
+   "shade": 0.969,
+   "yaw_deg": 1.16
+  },
+  {
+   "index": 4,
+   "name": "parcel_4",
+   "condition": "damaged",
+   "damage": [
+    {
+     "kind": "tear",
+     "centre": [
+      0.0151,
+      -0.0137
+     ],
+     "length": 0.0399
+    }
+   ],
+   "benign": [
+    "sticker"
+   ],
+   "shade": 1.017,
+   "yaw_deg": -9.66
+  },
+  {
+   "index": 5,
+   "name": "parcel_5",
+   "condition": "intact",
+   "damage": [],
+   "benign": [],
+   "shade": 0.975,
+   "yaw_deg": 5.67
+  },
+  {
+   "index": 6,
+   "name": "parcel_6",
+   "condition": "damaged",
+   "damage": [
+    {
+     "kind": "stain",
+     "centre": [
+      0.0118,
+      -0.0019
+     ],
+     "blobs": 3
+    }
+   ],
+   "benign": [],
+   "shade": 1.009,
+   "yaw_deg": 9.91
+  },
+  {
+   "index": 7,
+   "name": "parcel_7",
+   "condition": "intact",
+   "damage": [],
+   "benign": [],
+   "shade": 0.982,
+   "yaw_deg": 1.54
+  },
+  {
+   "index": 8,
+   "name": "parcel_8",
+   "condition": "intact",
+   "damage": [],
+   "benign": [
+    "sticker"
+   ],
+   "shade": 0.912,
+   "yaw_deg": 5.73
+  },
+  {
+   "index": 9,
+   "name": "parcel_9",
+   "condition": "damaged",
+   "damage": [
+    {
+     "kind": "tear",
+     "centre": [
+      0.0131,
+      -0.0009
+     ],
+     "length": 0.034
+    }
+   ],
+   "benign": [
+    "sticker"
+   ],
+   "shade": 0.954,
+   "yaw_deg": 3.79
+  },
+  {
+   "index": 10,
+   "name": "parcel_10",
+   "condition": "intact",
+   "damage": [],
+   "benign": [
+    "sticker"
+   ],
+   "shade": 0.927,
+   "yaw_deg": -8.17
+  }
+ ]
+}

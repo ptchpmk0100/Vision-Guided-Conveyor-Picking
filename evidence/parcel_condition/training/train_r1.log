@@ -1,0 +1,28 @@
+  torch.onnx.export(model, dummy, str(out / 'model.onnx'), input_names=['input'], output_names=['logits'],
+device=cuda train=3056 (damaged 1478) val=596 (damaged 299)
+epoch 01 head train_loss 0.4606 val_loss 0.6808 bal_acc 0.500 dmg_recall 0.983 dmg_prec 0.502 (7.5s)
+epoch 02 head train_loss 0.2442 val_loss 0.6516 bal_acc 0.529 dmg_recall 0.970 dmg_prec 0.517 (6.9s)
+epoch 03 head train_loss 0.2093 val_loss 0.5827 bal_acc 0.601 dmg_recall 0.913 dmg_prec 0.564 (7.0s)
+epoch 04 full train_loss 0.0178 val_loss 0.5558 bal_acc 0.721 dmg_recall 0.977 dmg_prec 0.647 (17.6s)
+epoch 05 full train_loss 0.0011 val_loss 0.4810 bal_acc 0.763 dmg_recall 1.000 dmg_prec 0.680 (17.8s)
+epoch 06 full train_loss 0.0009 val_loss 0.3165 bal_acc 0.805 dmg_recall 1.000 dmg_prec 0.720 (18.5s)
+epoch 07 full train_loss 0.0033 val_loss 0.1922 bal_acc 0.908 dmg_recall 0.936 dmg_prec 0.886 (18.7s)
+epoch 08 full train_loss 0.0038 val_loss 0.0288 bal_acc 0.993 dmg_recall 0.997 dmg_prec 0.990 (18.9s)
+epoch 09 full train_loss 0.0002 val_loss 0.0463 bal_acc 0.987 dmg_recall 0.983 dmg_prec 0.990 (18.8s)
+epoch 10 full train_loss 0.0000 val_loss 0.0549 bal_acc 0.978 dmg_recall 0.963 dmg_prec 0.993 (19.2s)
+epoch 11 full train_loss 0.0000 val_loss 0.0499 bal_acc 0.980 dmg_recall 0.967 dmg_prec 0.993 (19.3s)
+epoch 12 full train_loss 0.0000 val_loss 0.0488 bal_acc 0.980 dmg_recall 0.967 dmg_prec 0.993 (19.5s)
+epoch 13 full train_loss 0.0000 val_loss 0.0526 bal_acc 0.982 dmg_recall 0.973 dmg_prec 0.990 (19.6s)
+epoch 14 full train_loss 0.0000 val_loss 0.0529 bal_acc 0.983 dmg_recall 0.980 dmg_prec 0.987 (19.2s)
+epoch 15 full train_loss 0.0000 val_loss 0.0486 bal_acc 0.983 dmg_recall 0.977 dmg_prec 0.990 (19.1s)
+epoch 16 full train_loss 0.0000 val_loss 0.0480 bal_acc 0.985 dmg_recall 0.980 dmg_prec 0.990 (19.5s)
+epoch 17 full train_loss 0.0000 val_loss 0.0505 bal_acc 0.983 dmg_recall 0.983 dmg_prec 0.983 (19.1s)
+epoch 18 full train_loss 0.0000 val_loss 0.0490 bal_acc 0.978 dmg_recall 0.967 dmg_prec 0.990 (19.3s)
+epoch 19 full train_loss 0.0000 val_loss 0.0501 bal_acc 0.983 dmg_recall 0.980 dmg_prec 0.987 (19.4s)
+epoch 20 full train_loss 0.0001 val_loss 0.0475 bal_acc 0.980 dmg_recall 0.967 dmg_prec 0.993 (19.0s)
+epoch 21 full train_loss 0.0000 val_loss 0.0504 bal_acc 0.983 dmg_recall 0.980 dmg_prec 0.987 (19.1s)
+epoch 22 full train_loss 0.0000 val_loss 0.0521 bal_acc 0.980 dmg_recall 0.967 dmg_prec 0.993 (19.7s)
+epoch 23 full train_loss 0.0000 val_loss 0.0526 bal_acc 0.983 dmg_recall 0.980 dmg_prec 0.987 (19.2s)
+best epoch 8 (val balanced acc 0.993); checkpoint /home/pmkhoi/ros_test_ws_mirror/logs/condition/runs/r1/best.pt
+exported /home/pmkhoi/ros_test_ws_mirror/logs/condition/runs/r1/model.onnx
+peak VRAM 553 MiB

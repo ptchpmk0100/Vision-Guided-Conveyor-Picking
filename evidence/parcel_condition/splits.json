@@ -1,0 +1,18 @@
+{
+ "r01": "train",
+ "r02": "train",
+ "r03": "train",
+ "r04": "val",
+ "r05": "train",
+ "r06": "train",
+ "r07": "train",
+ "r08": "train",
+ "r09": "test",
+ "r10": "val",
+ "r11": "test",
+ "r12": "train",
+ "r13": "train",
+ "r14": "test",
+ "r15": "train",
+ "r16": "train"
+}
