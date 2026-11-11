@@ -17,18 +17,9 @@ def _box(link,template,name,center,size):
         link.append(item)
 
 
-def batch_world(source,batch):
-    root=ET.parse(source).getroot()
-    if batch.count==3:return root
-    world=root.find('world')
-    # The conveyor is NEVER lengthened: the batch is fitted onto the original deck
-    # (parcel_layout.batch_layout rejects any pitch whose last box would not fit).
-    from twin_moveit_scripts.parcel_layout import QUEUE_LAST_Y_LIMIT
-    if batch.queue_y[-1] < QUEUE_LAST_Y_LIMIT-1e-9:
-        raise ValueError('Batch does not fit on the original conveyor deck')
-    x,y=batch.tote_xy;w,h=batch.tote_size
-    tote=world.find("model[@name='collection_tote_blue']/link")
-    for item in tote:
+def _fit_tote(link,x,y,w,h):
+    """Move/resize the tote primitives (floor, walls, rims) to a box centred at (x,y) of size (w,h)."""
+    for item in link:
         if item.tag not in ('collision','visual'):continue
         name=item.get('name').removesuffix('_visual')
         pose=_values(item.find('pose'));dims=_values(item.find('geometry/box/size'))
@@ -43,6 +34,20 @@ def batch_world(source,batch):
             side=int(name.split('_')[-1]);pose[:2]=[x,y+side*h/2];dims[0]=w+.014
         else:raise ValueError('Unknown tote primitive '+name)
         item.find('pose').text=_text(pose);item.find('geometry/box/size').text=_text(dims)
+
+
+def batch_world(source,batch,reject_bin=False):
+    root=ET.parse(source).getroot()
+    if batch.count==3:return root
+    world=root.find('world')
+    # The conveyor is NEVER lengthened: the batch is fitted onto the original deck
+    # (parcel_layout.batch_layout rejects any pitch whose last box would not fit).
+    from twin_moveit_scripts.parcel_layout import QUEUE_LAST_Y_LIMIT
+    if batch.queue_y[-1] < QUEUE_LAST_Y_LIMIT-1e-9:
+        raise ValueError('Batch does not fit on the original conveyor deck')
+    x,y=batch.tote_xy;w,h=batch.tote_size
+    tote=world.find("model[@name='collection_tote_blue']/link")
+    _fit_tote(tote,x,y,w,h)
     table=world.find("model[@name='tote_station']/link")
     top=table.find("collision[@name='top']");old_leg=next(
         e.get('name') for e in table.findall('collision') if e.get('name').startswith('leg_'))
@@ -55,9 +60,12 @@ def batch_world(source,batch):
     for item in list(table):
         if item.tag in ('collision','visual') and not item.get('name').startswith('batch_'):
             table.remove(item)
+    if reject_bin:
+        from twin_moveit_scripts.parcel_reject import add_reject_bin
+        add_reject_bin(world,_fit_tote)
     return root
 
 
-def write_batch_world(source,destination,batch):
-    root=batch_world(source,batch);ET.indent(root,space='  ')
+def write_batch_world(source,destination,batch,reject_bin=False):
+    root=batch_world(source,batch,reject_bin);ET.indent(root,space='  ')
     ET.ElementTree(root).write(destination,encoding='unicode',xml_declaration=True)

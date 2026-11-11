@@ -97,6 +97,7 @@ def background_observations(observation_class, speed, sensors=False):
             self.closing=False
             self.pending_slot=None
             self.tracker=None
+            self._cond_stamp=None
             self.tracker_lock=threading.Lock()
             self.control.create_timer(.05, self.heartbeat, clock=Clock(clock_type=ClockType.STEADY_TIME))
             self.arm_client = ActionClient(self.control, FollowJointTrajectory,
@@ -142,10 +143,29 @@ def background_observations(observation_class, speed, sensors=False):
                 return
             with self.tracker_lock:
                 self.tracker.update(stamp, positions)
+                # optional condition classifier output (empty unless /parcel_cell/condition is published)
+                cond = self.io_state.get('condition')
+                if cond and cond[0] != self._cond_stamp:
+                    self._cond_stamp = cond[0]
+                    self.tracker.add_condition(cond[0]/1e9, cond[1])
 
-        def tracked_target(self, now, hand_xyz, window):
+        def tracked_target(self, now, hand_xyz, window, exclude=frozenset()):
             with self.tracker_lock:
-                return self.tracker.nearest(now, hand_xyz, window)
+                return self.tracker.nearest(now, hand_xyz, window, exclude)
+
+        def condition_verdict(self, number):
+            """('pending'|'damaged'|'intact'|'unknown', mean damaged probability, votes) for track `number`."""
+            from twin_moveit_scripts.parcel_reject import verdict
+            with self.tracker_lock:
+                track = self.tracker.track_by_number(number) if self.tracker else None
+                votes = list(track.votes) if track else []
+            return verdict(votes)
+
+        def track_y(self, number):
+            """Predicted belt y of a track now (None if unknown)."""
+            with self.tracker_lock:
+                track = self.tracker.track_by_number(number) if self.tracker else None
+                return None if track is None else track.position_at(self.now(), self.speed)[1]
 
         def poll(self, seconds=.15, speed=None):
             # The periodic publisher stays alive during blocking arm execution.
@@ -347,7 +367,7 @@ def prepare(robot, arm, logger, params, observed, event, startup=False):
         raise RuntimeError(f'Cannot reach continuous observation approach: {ready}')
 
 
-def next_target(observed, speed, timeout=None, window=None):
+def next_target(observed, speed, timeout=None, window=None, exclude=frozenset()):
     persistent = window is not None and getattr(observed, 'tracker', None) is not None
     tracker = BeltTracker(speed)
     if timeout is None:
@@ -359,7 +379,7 @@ def next_target(observed, speed, timeout=None, window=None):
     while observed.now() < deadline and time.monotonic() < wall_deadline:
         observed.poll(.025)
         if persistent:
-            found = observed.tracked_target(observed.now(), (.56, .06, .52), window)
+            found = observed.tracked_target(observed.now(), (.56, .06, .52), window, exclude)
             if found:
                 return found
             if time.monotonic() >= report_at:

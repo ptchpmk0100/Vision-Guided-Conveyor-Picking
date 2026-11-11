@@ -19,6 +19,8 @@ def follow_distance(elapsed, speed, total=4.5, deceleration=.4):
 class Track:
     number: int
     samples: list = field(default_factory=list)
+    votes: list = field(default_factory=list)     # per-frame damaged probabilities (condition routing only)
+    vote_stamps: list = field(default_factory=list)
 
     def estimate(self):
         if len(self.samples) < 5 or self.samples[-1][0]-self.samples[0][0] < .38:
@@ -29,6 +31,11 @@ class Track:
                       for i, a in enumerate(self.samples) for b in self.samples[i+1:]
                       if b[0]-a[0] > .18]
         return statistics.median(velocities) if velocities else None
+
+    def position_at(self, stamp, velocity):
+        """Extrapolate from the latest sample to `stamp` (either side); never raises."""
+        seen, (x, y, z) = self.samples[-1]
+        return x, y+velocity*(stamp-seen), z
 
     def predict(self, stamp, velocity):
         seen, (x, y, z) = self.samples[-1]
@@ -73,9 +80,31 @@ class BeltTracker:
             updated.append(track)
         self.tracks = updated+available
 
-    def nearest(self, now, hand_xyz, window=(-.160, -.075)):
+    def add_condition(self, stamp, items, radius=.03):
+        """Attach per-frame classifier output [((x, y, z), p_damaged), ...] to the nearest track.
+
+        Each (track, stamp) pair takes at most one vote; items farther than `radius` from every track are dropped.
+        Returns the number of votes added.
+        """
+        added = 0
+        for xyz, p_damaged in items:
+            best = min(((math.dist(t.position_at(stamp, self.speed), xyz), t) for t in self.tracks
+                        if t.samples and abs(stamp-t.samples[-1][0]) <= 1.5), key=lambda v: v[0],
+                       default=(float('inf'), None))
+            if best[0] <= radius and stamp not in best[1].vote_stamps:
+                best[1].votes.append(float(p_damaged))
+                best[1].vote_stamps.append(stamp)
+                added += 1
+        return added
+
+    def track_by_number(self, number):
+        return next((t for t in self.tracks if t.number == number), None)
+
+    def nearest(self, now, hand_xyz, window=(-.160, -.075), exclude=frozenset()):
         candidates = []
         for track in self.tracks:
+            if track.number in exclude:
+                continue  # deliberately skipped parcel: it may pass the window without raising
             if now-track.samples[-1][0] > .25:
                 continue
             velocity = track.estimate()

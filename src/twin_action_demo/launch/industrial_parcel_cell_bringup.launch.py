@@ -53,11 +53,14 @@ def _launch(context):
     world = str(share / 'worlds' / ('industrial_parcel_cell_continuous.sdf' if continuous
                                    else 'industrial_parcel_cell.sdf'))
     world_temp=None
+    reject_bin = LaunchConfiguration('reject_bin').perform(context).lower() == 'true'
+    if reject_bin and not batch.extended:
+        raise RuntimeError('reject_bin:=true needs parcel_count 7, 8 or 10')
     if batch.extended:
         from twin_moveit_scripts.parcel_batch_world import write_batch_world
         handle=tempfile.NamedTemporaryFile(prefix='parcel-ten-',suffix='.sdf',delete=False)
         handle.close();world_temp=Path(handle.name)
-        write_batch_world(world,world_temp,batch);world=str(world_temp)
+        write_batch_world(world,world_temp,batch,reject_bin=reject_bin);world=str(world_temp)
     gui = IncludeLaunchDescription(source, launch_arguments={'gz_args': world + ' -r'}.items(),
                                    condition=UnlessCondition(LaunchConfiguration('headless')))
     headless = IncludeLaunchDescription(source,
@@ -70,10 +73,31 @@ def _launch(context):
     jsb = controller('joint_state_broadcaster')
     from twin_moveit_scripts.parcel_layout import PICK_X, QUEUE_Y, STAGING_Y, CONTINUOUS_QUEUE_Y
     ys = batch.queue_y if continuous else (QUEUE_Y if indexed else STAGING_Y)
+    # Optional appearance variants (default OFF -> every parcel is the original parcel_box.sdf).
+    variant_files, variant_yaw, variant_dir = {}, {}, None
+    variant_seed = LaunchConfiguration('variant_seed').perform(context)
+    if variant_seed:
+        import json, random
+        from twin_moveit_scripts.parcel_variants import parse_damaged, write_variants
+        damaged = parse_damaged(LaunchConfiguration('variant_damaged').perform(context), batch.count)
+        variant_dir = tempfile.mkdtemp(prefix='parcel-variants-')
+        variant_files, manifest = write_variants(variant_dir, share / 'models/parcel_box.sdf',
+                                                 batch.count, damaged, variant_seed)
+        yaw_limit = float(LaunchConfiguration('variant_yaw_deg').perform(context))
+        rng = random.Random(f'{variant_seed}:yaw')
+        for info in manifest:
+            info['yaw_deg'] = round(rng.uniform(-yaw_limit, yaw_limit), 2)
+            variant_yaw[info['name']] = info['yaw_deg']
+        path = LaunchConfiguration('variant_manifest').perform(context)
+        if path:
+            Path(path).write_text(json.dumps({'seed': variant_seed, 'count': batch.count,
+                                              'queue_y': list(ys), 'parcels': manifest}, indent=1))
     parcels = [Node(package='ros_gz_sim', executable='create',
                     arguments=['-world', 'empty', '-name', f'parcel_{i}', '-file',
-                               str(share / 'models/parcel_box.sdf'), '-x', str(PICK_X),
-                               '-y', str(y), '-z', '.345'], output='screen')
+                               variant_files.get(f'parcel_{i}', str(share / 'models/parcel_box.sdf')),
+                               '-x', str(PICK_X), '-y', str(y), '-z', '.345',
+                               *(['-Y', str(variant_yaw[f'parcel_{i}'] * 3.141592653589793 / 180)]
+                                 if variant_yaw.get(f'parcel_{i}') else [])], output='screen')
                for i, y in enumerate(ys, 1)]
     bridges = [IncludeLaunchDescription(PythonLaunchDescriptionSource(str(share / 'launch/bridge.launch.py'))),
         Node(package='ros_gz_bridge', executable='parameter_bridge', arguments=[
@@ -84,6 +108,9 @@ def _launch(context):
     def cleanup(_):
         Path(temp.name).unlink(missing_ok=True)
         if world_temp is not None:world_temp.unlink(missing_ok=True)
+        if variant_dir is not None:
+            import shutil
+            shutil.rmtree(variant_dir, ignore_errors=True)
         return []
     return [gui, headless,
         Node(package='robot_state_publisher', executable='robot_state_publisher',
@@ -112,6 +139,11 @@ def generate_launch_description():
         DeclareLaunchArgument('indexed', default_value='false', description='true = parcels queued upstream'),
         DeclareLaunchArgument('continuous', default_value='false', description='true = spaced parcels on extended belt'),
         DeclareLaunchArgument('grasp_sensors', default_value='false'),
+        DeclareLaunchArgument('reject_bin', default_value='false', description='true = add the reject bin (condition routing)'),
+        DeclareLaunchArgument('variant_seed', default_value='', description='non-empty = intact/damaged appearance variants'),
+        DeclareLaunchArgument('variant_damaged', default_value='', description='comma list of 1-based damaged parcel indices'),
+        DeclareLaunchArgument('variant_manifest', default_value='', description='write the ground-truth variant manifest (json) here'),
+        DeclareLaunchArgument('variant_yaw_deg', default_value='0', description='spawn yaw jitter half-range (deg), data collection only'),
         DeclareLaunchArgument('parcel_count', default_value='3'),
         DeclareLaunchArgument('parcel_pitch', default_value='', description='Continuous centre-to-centre spacing (m)'),
         SetEnvironmentVariable('GZ_VERSION', 'harmonic'),
