@@ -57,6 +57,14 @@ def _run(buffer,length,lock,commands,parent_pid,sensors):
         recv_stamps.append(stamp)
         state.update(message=msg,received=time.monotonic())
     def tote(msg):state['tote_message']=msg
+    def condition(msg):
+        # compact: (sim stamp ns, [((x,y,z), p_damaged), ...]) from the optional condition challenger
+        items=[]
+        for d in msg.detections:
+            pd=next((r.hypothesis.score for r in d.results if r.hypothesis.class_id=='damaged'),None)
+            if pd is not None:
+                c=d.bbox.center.position;items.append(((c.x,c.y,c.z),pd))
+        state['condition']=(msg.header.stamp.sec*1000000000+msg.header.stamp.nanosec,items)
     def joints(msg):
         q=dict(zip(msg.name,msg.position))
         ns=msg.header.stamp.sec*1000000000+msg.header.stamp.nanosec
@@ -67,7 +75,8 @@ def _run(buffer,length,lock,commands,parent_pid,sensors):
 
     subscriptions=[node.create_subscription(Detection3DArray,MOVING_DETECTION_TOPIC,detection,10),
                    node.create_subscription(Detection3DArray,'/parcel_cell/tote_detections',tote,10),
-                   node.create_subscription(JointState,'/joint_states',joints,10)]
+                   node.create_subscription(JointState,'/joint_states',joints,10),
+                   node.create_subscription(Detection3DArray,'/parcel_cell/condition',condition,10)]
 
     def tick():
         nonlocal speed,monitor,close_start,last_parent,stopping,last_sim_ns,last_sim_wall

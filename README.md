@@ -158,6 +158,24 @@ Set `COUNT=3|7|8|10`, `SPEED=<m/s>` or `DOMAIN=<n>` (the same in both terminals)
 the batch. Stop with Ctrl+C in terminal 1. It has none of the scored harness's independent
 checkers; use `tools/run_parcel_cell_check.sh` (below) for pass/fail evidence.
 
+### Parcel condition: damaged vs intact (RGB classifier, opt-in)
+
+A small ResNet18 classifies the RGB crop at each depth-detected parcel as `intact` or `damaged`. It is OFF by default:
+the depth detector alone drives the arm. Results, commands and caveats (simulation only, large synthetic marks):
+[PARCEL_CONDITION_CLASSIFIER.md](PARCEL_CONDITION_CLASSIFIER.md). To watch it route parcels (7/8/10 boxes, needs the
+trained model from `tools/condition_train.py`, which lives outside the ROS python in `~/venvs/parcel_cls`):
+
+```bash
+COUNT=10 CONDITION_MODEL=logs/condition/runs/r1/model.onnx VARIANT_DAMAGED=3,6,9 tools/parcel_demo.sh sim   # terminal 1
+COUNT=10 CONDITION_MODEL=logs/condition/runs/r1/model.onnx VARIANT_DAMAGED=3,6,9 tools/parcel_demo.sh task  # terminal 2
+```
+
+Damaged parcels go to the red reject bin, intact ones to the tote, and a parcel whose class stays unknown is left on the
+belt and logged (never guessed). Afterwards `python3 tools/check_condition_routing.py --manifest logs/parcel_demo_manifest.json`
+judges the result against Gazebo. Scored version with the same checker:
+`ROUTING=1 tools/condition_arm_check.sh <seed> <damaged csv> <model.onnx>` (checker `tools/check_condition_routing.py`).
+Unset `CONDITION_MODEL` (or omit `--condition-routing` / `reject_bin:=true`) for the original depth-only behaviour.
+
 For a scored ten-box GUI test from this repository root in a desktop terminal:
 
 ```bash

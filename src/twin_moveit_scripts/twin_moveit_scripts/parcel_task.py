@@ -213,7 +213,8 @@ def _run(args):
             handle=tempfile.NamedTemporaryFile(prefix='parcel-ten-plan-',suffix='.sdf',delete=False)
             handle.close();world_temp=Path(handle.name)
             write_batch_world(Path(get_package_share_directory('twin_action_demo')) /
-                              'worlds/industrial_parcel_cell_continuous.sdf',world_temp,batch)
+                              'worlds/industrial_parcel_cell_continuous.sdf',world_temp,batch,
+                              reject_bin=args.condition_routing)
             client=AsyncParameterClient(twin,'object_detector_parcel_cell')
             if not client.wait_for_services(timeout_sec=10):raise RuntimeError('Batch detector unavailable')
             future=client.get_parameters(['parcel_count','parcel_pitch','batch_scene_hash'])
@@ -266,7 +267,16 @@ def _run(args):
             if not move_to_named(robot, arm, logger, params, 'ready').ok:
                 raise RuntimeError('Cannot reach the clear observation pose')
             observed.require_empty_tote()
-        for slot_no, (x, y) in enumerate(batch.slots):
+        routing = args.condition_routing
+        router = skipped = None
+        if routing:
+            from twin_moveit_scripts import parcel_reject
+            router, skipped = parcel_reject.Router(batch.slots), set()
+        turn_numbers = range(batch.count) if routing else range(len(batch.slots))
+        for slot_no in turn_numbers:
+            turn = slot_no
+            reject = False
+            x, y = (None, None) if routing else batch.slots[slot_no]
             event('READY', slot=slot_no)
             # Phase 3: the arm is already at 'ready' here -- homed before the loop
             # (slot 0) or by the post-place verification home of the previous slot
@@ -276,11 +286,27 @@ def _run(args):
                 # Launch as soon as a whole, tracked box is reachable (persistent tracker).
                 from twin_moveit_scripts.parcel_confirmed import intercept as confirmed_intercept
                 announced = False
+                skip_turn = False
                 while True:
                     track, velocity = continuous.next_target(
-                        observed, args.belt_speed, window=(continuous.EARLY_LAUNCH_Y, -.075))
+                        observed, args.belt_speed, window=(continuous.EARLY_LAUNCH_Y, -.075),
+                        exclude=skipped or frozenset())
+                    verdict_info = {}
+                    if routing:
+                        state, p_damaged, votes = observed.condition_verdict(track.number)
+                        action = parcel_reject.next_action(state, observed.track_y(track.number))
+                        verdict_info = dict(condition=state, p_damaged=p_damaged, votes=votes)
+                        if action == 'wait':
+                            observed.poll(.05)
+                            continue
+                        if action == 'skip':
+                            # class unknown or no votes in time: leave it on the belt, never guess
+                            skipped.add(track.number)
+                            event('SKIPPED', track=track.number, **verdict_info)
+                            skip_turn = True
+                            break
                     if not announced:
-                        event('PICK', track=track.number)
+                        event('PICK', track=track.number, **verdict_info)
                         announced = True
                     try:
                         confirmed_intercept(robot, arm, logger, observed, track, velocity, event,
@@ -290,6 +316,13 @@ def _run(args):
                         # Nothing was dispatched: wait for the box to come closer, retry.
                         event('INTERCEPT_DEFERRED', track=track.number, reason=str(exc))
                         observed.poll(.15)
+                if skip_turn:
+                    continue
+                if routing:
+                    destination, dest_no, (x, y) = router.assign(state)
+                    reject = destination == 'reject'
+                    if not reject:
+                        slot_no = dest_no
             elif args.continuous:
                 track, velocity = continuous.next_target(observed, args.belt_speed)
                 event('PICK', track=track.number)
@@ -323,7 +356,7 @@ def _run(args):
                 target = observed.stationary_target()
             if not getattr(observed,'payload_attached',False):
                 carry_parcel(robot)
-            event('PLACE', target=[x, y, PARCEL_Z])
+            event('PLACE', target=[x, y, PARCEL_Z], **({'destination': destination, 'slot': dest_no} if routing else {}))
             # home_first=False: route directly from the lift pose to the tote
             # (object->tray) instead of detouring home (Phase 2). Falls back to
             # home-then-approach internally if the direct plan fails.
@@ -351,7 +384,7 @@ def _run(args):
             from twin_moveit_scripts.parcel_layout import PARCEL_SIZE
             collision = CollisionObject()
             collision.header.frame_id = 'panda_link0'
-            collision.id = f'filled_slot_{slot_no}'
+            collision.id = f'reject_slot_{dest_no}' if reject else f'filled_slot_{slot_no}'
             collision.operation = CollisionObject.ADD
             prim = SolidPrimitive()
             prim.type = SolidPrimitive.BOX
@@ -366,10 +399,12 @@ def _run(args):
                     raise RuntimeError('Cannot protect occupied tote slot')
                 if collision.id not in {obj.id for obj in scene.planning_scene_message.world.collision_objects}:
                     raise RuntimeError('Occupied slot collision read-back failed')
-            if batch.extended:
+            if batch.extended and reject:
+                event('REJECTED', slot=dest_no)     # the bin is outside the tote depth region; the checker confirms it
+            elif batch.extended:
                 # Confirm the slot from depth while the arm already heads back.
                 observed.begin_slot_confirmation(x, y, lambda s=slot_no: event('SETTLED', slot=s))
-            direct_return=args.continuous and batch.extended and slot_no<batch.count-1
+            direct_return=args.continuous and batch.extended and turn<batch.count-1
             if direct_return:
                 continuous.prepare(robot,arm,logger,params,observed,event)
             elif not move_to_named(robot, arm, logger, params, 'ready').ok:
@@ -382,11 +417,19 @@ def _run(args):
                 event('SETTLED', slot=slot_no)
             if args.continuous and slot_no < len(batch.slots)-1 and not direct_return:
                 continuous.prepare(robot, arm, logger, params, observed, event)
+        if routing:
+            observed.settle_pending_slot()
+            event('BATCH_ROUTED', intact_in_tote=router.tote_used, rejected=router.bin_used,
+                  skipped=len(skipped), skipped_tracks=sorted(skipped))
+            result['routing'] = dict(intact_in_tote=router.tote_used, rejected=router.bin_used, skipped=len(skipped))
         if not move_to_named(robot, arm, logger, params, 'ready').ok:
             raise RuntimeError('Final ready failed')
-        event('FULL', occupied=len(batch.slots))
+        event('FULL', occupied=router.tote_used if routing else len(batch.slots))
         result['passed'] = True
         print('PARCEL_TASK_COMPLETE', flush=True)
+        if routing and skipped:
+            print(f'PARCEL_TASK_SKIPPED {len(skipped)} parcel(s) left on the belt: class unknown, never guessed',
+                  flush=True)
     except (Exception, KeyboardInterrupt) as exc:
         result['error'] = str(exc) or type(exc).__name__
         if logger is not None:
@@ -424,6 +467,9 @@ def main():
     parser.add_argument('--handoff-probe', action='store_true')
     parser.add_argument('--output', type=Path)
     parser.add_argument('--parcel-count',type=int,choices=(3,7,8,10),default=3)
+    parser.add_argument('--condition-routing', action='store_true',
+                        help='damaged parcels -> reject bin, intact -> tote, unknown -> skipped (needs the condition '
+                             'node and launch reject_bin:=true); default OFF = depth detector only')
     parser.add_argument('--parcel-pitch',type=float)
     args = parser.parse_args()
     if args.parcel_count!=3 and not args.continuous:parser.error('7/8/10 parcels require --continuous')
@@ -434,6 +480,8 @@ def main():
     os.environ['TWIN_PARCEL_PITCH']=str(batch.pitch)
     if args.grasp_mode=='confirmed' and not args.continuous:
         parser.error('--grasp-mode confirmed requires --continuous')
+    if args.condition_routing and not (args.continuous and batch.extended and args.grasp_mode=='confirmed'):
+        parser.error('--condition-routing requires --continuous --grasp-mode confirmed and --parcel-count 7/8/10')
     if not math.isfinite(args.belt_speed) or not .02 <= args.belt_speed <= CONTINUOUS_SPEED:
         parser.error('--belt-speed must be finite and in [.02, .06] m/s for this intercept geometry')
     from twin_moveit_scripts.parcel_task_session import task_session

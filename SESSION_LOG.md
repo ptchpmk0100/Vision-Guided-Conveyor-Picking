@@ -530,3 +530,167 @@ only. The unchanged three-box path has a fixed 15 wall-second gripper wait that 
 ## Next action
 
 Merge PR #1 when satisfied; nothing else pending without a new request.
+
+---
+
+<!-- handoff-id: ce441691-4648-4724-b81e-ed4af50cb4a1 -->
+## 2026-11-11T10:42:58+00:00 | claude | checkpoint
+
+- Repository: "/home/pmkhoi/ros_test_ws_mirror"
+- Branch: "master"
+- Commit: `a9b3ad622ae02443b864d6ed60a85a469dd4ee96`
+- Git status captured before this save (paths are JSON-escaped):
+
+```text
+" M src/twin_action_demo/launch/industrial_parcel_cell_bringup.launch.py"
+" M tools/run_offline_tests.sh"
+"?? Next_Step.txt"
+"?? Next_Step_learned_detector_advice.txt"
+"?? PARCEL_CONDITION_CLASSIFIER.md"
+"?? src/twin_moveit_scripts/twin_moveit_scripts/parcel_condition.py"
+"?? src/twin_moveit_scripts/twin_moveit_scripts/parcel_condition_node.py"
+"?? src/twin_moveit_scripts/twin_moveit_scripts/parcel_variants.py"
+"?? tools/condition_arm_check.sh"
+"?? tools/condition_collect.sh"
+"?? tools/condition_eval.py"
+"?? tools/condition_extract.py"
+"?? tools/condition_live_check.py"
+"?? tools/condition_run.py"
+"?? tools/condition_sheet.py"
+"?? tools/condition_train.py"
+"?? tools/run_condition_node.sh"
+"?? tools/test_parcel_condition.py"
+"?? tools/test_parcel_variants.py"
+```
+
+## Task and constraints
+
+Khoi asked (2026-11-11) to rewrite Next_Step.txt steps 5-6 for a crop-classifier route (depth detector localises, a small RGB
+classifier labels intact/damaged) and then execute the whole plan in auto mode. Reserved for Khoi and NOT done: merging PR #1 (step 0),
+any commit or push. Step 9 thresholds are `[confirm: number]` in the plan and were not given. Everything is uncommitted in the mirror.
+Steps 1-8 are DONE with results in PARCEL_CONDITION_CLASSIFIER.md; step 9 (reject bin + routing) is in progress / see Next action.
+
+## Changes and decisions
+
+New: parcel_variants.py, parcel_condition.py, parcel_condition_node.py (src/twin_moveit_scripts/twin_moveit_scripts/);
+tools/condition_{collect.sh,run.py,extract.py,train.py,eval.py,live_check.py,sheet.py,arm_check.sh}, run_condition_node.sh,
+test_parcel_variants.py, test_parcel_condition.py (both registered in tools/run_offline_tests.sh, suite ALL PASS at last run).
+Edited: industrial_parcel_cell_bringup.launch.py (variant_* launch args, default OFF), Next_Step.txt (steps 5/6/8 rewritten).
+Decisions: no segmentation camera (labels = spawn manifest + projected Gazebo poses); raw depth not bagged (live depth-detector
+output is); damage marks enlarged 1.4x after first look; split by whole recording (11 train / 2 val / 3 test).
+Training env: ~/venvs/parcel_cls (torch 2.15.0+cu132, onnxruntime CPU, pyyaml added). Shell has a PYTHONPATH to the PRIMARY
+workspace: use tools/*.sh or the scratchpad rosenv.sh (env -i) and `env -u PYTHONPATH` for the venv.
+
+## Verification and evidence
+
+16/16 recordings ok (logs/condition/rec, 7.2 GB, git-ignored). Dataset 4435 crops (logs/condition/dataset). Model logs/condition/runs/r1
+(best epoch 8, val bal-acc 0.993). Test split (r09 r11 r14, 30 parcels): depth-detector crops per crop acc 0.993, damaged recall 232/232,
+3/170 intact flagged; per parcel 30/30. Depth detector class-blind (detection 91.9% vs 90.9%, p=0.41). Arm picks variants: armA/armB/armC
+10/10 by tools/check_parcel_cell.py, 0 Tracebacks. Live node during the arm task: 249 detections, 10/10 parcels correct, latency mean 15 ms p95 29 ms.
+Caveat recorded: sim only, large synthetic marks, 30 test parcels.
+
+## Running operations
+
+None at the time of this checkpoint (sims are started and stopped per script; process audit clean: no gz sim).
+
+## Usage
+
+Unknown. No external monitor configured.
+
+## Remaining work and blockers
+
+Step 9 (reject bin, arm routing behind a flag, independent check) and README/handoff wrap-up. Khoi must still decide: merge PR #1,
+commit these files, and confirm the step 9 thresholds (proposal: damaged recall >= 0.95, intact sent to reject <= 0.05).
+
+## Next action
+
+Implement step 9 behind default-off flags (launch reject_bin, task --condition-routing); keep depth-only behaviour as default.
+
+---
+
+<!-- handoff-id: 32e1a728-c12a-480d-917b-9da287d11435 -->
+## 2026-11-11T11:13:06+00:00 | claude | complete
+
+- Repository: "/home/pmkhoi/ros_test_ws_mirror"
+- Branch: "master"
+- Commit: `a9b3ad622ae02443b864d6ed60a85a469dd4ee96`
+- Git status captured before this save (paths are JSON-escaped):
+
+```text
+" M HANDOFF.md"
+" M README.md"
+" M SESSION_LOG.md"
+" M src/twin_action_demo/launch/industrial_parcel_cell_bringup.launch.py"
+" M src/twin_moveit_scripts/twin_moveit_scripts/parcel_batch_world.py"
+" M src/twin_moveit_scripts/twin_moveit_scripts/parcel_continuous.py"
+" M src/twin_moveit_scripts/twin_moveit_scripts/parcel_io.py"
+" M src/twin_moveit_scripts/twin_moveit_scripts/parcel_task.py"
+" M src/twin_moveit_scripts/twin_moveit_scripts/parcel_tracking.py"
+" M tools/parcel_demo.sh"
+" M tools/run_offline_tests.sh"
+"?? Next_Step.txt"
+"?? Next_Step_learned_detector_advice.txt"
+"?? PARCEL_CONDITION_CLASSIFIER.md"
+"?? src/twin_moveit_scripts/twin_moveit_scripts/parcel_condition.py"
+"?? src/twin_moveit_scripts/twin_moveit_scripts/parcel_condition_node.py"
+"?? src/twin_moveit_scripts/twin_moveit_scripts/parcel_reject.py"
+"?? src/twin_moveit_scripts/twin_moveit_scripts/parcel_variants.py"
+"?? tools/check_condition_routing.py"
+"?? tools/condition_arm_check.sh"
+"?? tools/condition_collect.sh"
+"?? tools/condition_eval.py"
+"?? tools/condition_extract.py"
+"?? tools/condition_live_check.py"
+"?? tools/condition_run.py"
+"?? tools/condition_sheet.py"
+"?? tools/condition_train.py"
+"?? tools/run_condition_node.sh"
+"?? tools/test_parcel_condition.py"
+"?? tools/test_parcel_reject.py"
+"?? tools/test_parcel_variants.py"
+```
+
+## Task and constraints
+
+Khoi asked (2026-11-11) to rewrite Next_Step.txt steps 5-6 for a crop-classifier route and execute the whole plan in auto mode. DONE:
+steps 1-9 in the simulator, results in PARCEL_CONDITION_CLASSIFIER.md. Reserved for Khoi and NOT done: merging PR #1 (plan step 0), any
+commit or push (the mirror has no remote). Step 9 thresholds were `[confirm: number]`; I used PROPOSED ones (damaged recall >= 0.95,
+intact-sent-to-reject <= 0.05, per parcel) and flagged them in the doc and in Next_Step.txt for Khoi to confirm. All work is uncommitted.
+
+## Changes and decisions
+
+New modules: parcel_variants, parcel_condition, parcel_condition_node, parcel_reject (src/twin_moveit_scripts/twin_moveit_scripts/).
+New tools: condition_{collect.sh,run.py,extract.py,train.py,eval.py,live_check.py,sheet.py,arm_check.sh}, run_condition_node.sh,
+check_condition_routing.py, tests test_parcel_{variants,condition,reject}.py (all in tools/run_offline_tests.sh).
+Edited (all default-off): industrial_parcel_cell_bringup.launch.py (variant_* and reject_bin args), parcel_batch_world.py (tote-fit helper,
+optional bin; default world byte-identical, hash-compared), parcel_tracking/io/continuous/task (condition votes, exclude set,
+--condition-routing), parcel_demo.sh (opt-in CONDITION_MODEL), README.md, Next_Step.txt, run_offline_tests.sh.
+Decisions: crop classifier (Khoi); no segmentation camera; raw depth not bagged; damage marks enlarged 1.4x; split by whole recording.
+Reject bin at (0.18, 0.50), 6 slots, floor at tote floor height. Vote rule: mean of last 8 votes (>= 4); >= 0.75 reject, <= 0.25 tote, else skip.
+
+## Verification and evidence
+
+Offline suite ALL PASS (16 checks) after the last code change. 16/16 recordings (logs/condition/rec). Model logs/condition/runs/r1.
+Held-out test (r09 r11 r14, 30 parcels): depth-detector crops per crop acc 0.993, damaged recall 232/232, 3/170 intact flagged; 30/30 parcels.
+Depth detector class-blind (91.9% vs 90.9% detection, p=0.41). Arm picks variants: armA/B/C 10/10. Live node: 249 detections, 10/10 parcels,
+latency mean 15 ms p95 29 ms. Routing (tools/check_condition_routing.py): routeA 3+7, routeB 5+5, demo-script run 3+7, all 10/10; skipA
+(uncertain model) all 10 skipped cleanly; default path (stock parcel_demo.sh) 10/10, FULL 91.6 sim-s. 0 Tracebacks in every task log.
+Caveat: sim only, large synthetic damage, one camera/lighting, 30 test parcels (95% lower bound of recall 0.80).
+
+## Running operations
+
+None. Process audit clean at save time (no gz sim, no ros2 launch, no condition node/bag). Every run script stops its own sim.
+
+## Usage
+
+Unknown. No external monitor configured.
+
+## Remaining work and blockers
+
+Khoi to: review and merge PR #1 (primary repo), decide what to commit from this mirror (logs/condition is git-ignored, 9.2 GB incl. bags;
+delete logs/condition/rec when no longer needed), confirm or change the step 9 thresholds. Optional next science: subtler damage, more
+lighting/belt variation, more held-out recordings. Pre-existing optional items from the earlier handoff are untouched.
+
+## Next action
+
+Task complete; wait for Khoi's review and new request. Do not merge, commit or push without authorisation.
