@@ -7,7 +7,7 @@ from rclpy.qos import QoSProfile, ReliabilityPolicy
 from sensor_msgs.msg import CameraInfo, Image
 from vision_msgs.msg import Detection3D, Detection3DArray, ObjectHypothesisWithPose
 
-from twin_moveit_scripts.object_detector_sorting_line import _load_extrinsic
+from twin_moveit_scripts.extrinsic import load_extrinsic as _load_extrinsic
 from twin_moveit_scripts.parcel_layout import DETECTION_TOPIC, MOVING_DETECTION_TOPIC, PARCEL_SIZE,batch_layout
 from twin_moveit_scripts.parcel_perception import detect_regions
 

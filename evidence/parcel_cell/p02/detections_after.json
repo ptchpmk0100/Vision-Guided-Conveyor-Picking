@@ -1,0 +1,77 @@
+{
+  "passed": true,
+  "regions": {
+    "pick": {
+      "received": true,
+      "expected": 0,
+      "detected": 0,
+      "matches": [],
+      "passed": true
+    },
+    "tote": {
+      "received": true,
+      "expected": 10,
+      "detected": 10,
+      "matches": [
+        {
+          "entity": "parcel_9",
+          "error_m": 0.002192670168368904,
+          "passed": true
+        },
+        {
+          "entity": "parcel_7",
+          "error_m": 0.0029281477020156907,
+          "passed": true
+        },
+        {
+          "entity": "parcel_5",
+          "error_m": 0.0017563947163193848,
+          "passed": true
+        },
+        {
+          "entity": "parcel_1",
+          "error_m": 0.0025816780099376774,
+          "passed": true
+        },
+        {
+          "entity": "parcel_8",
+          "error_m": 0.000639989114532939,
+          "passed": true
+        },
+        {
+          "entity": "parcel_2",
+          "error_m": 0.0021766258231329287,
+          "passed": true
+        },
+        {
+          "entity": "parcel_4",
+          "error_m": 0.001013204628936666,
+          "passed": true
+        },
+        {
+          "entity": "parcel_3",
+          "error_m": 0.0015943550714642807,
+          "passed": true
+        },
+        {
+          "entity": "parcel_6",
+          "error_m": 0.0012291912231862589,
+          "passed": true
+        },
+        {
+          "entity": "parcel_10",
+          "error_m": 0.003008545910115571,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    "moving": {
+      "received": true,
+      "expected": 0,
+      "detected": 0,
+      "matches": [],
+      "passed": true
+    }
+  }
+}

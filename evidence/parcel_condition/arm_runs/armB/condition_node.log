@@ -1,7 +1,7 @@
 Traceback (most recent call last):
   File "<frozen runpy>", line 198, in _run_module_as_main
   File "<frozen runpy>", line 88, in _run_code
-  File "/home/pmkhoi/ros_test_ws_mirror/build/twin_moveit_scripts/twin_moveit_scripts/parcel_condition_node.py", line 12, in <module>
+  File "build/twin_moveit_scripts/twin_moveit_scripts/parcel_condition_node.py", line 12, in <module>
     import rclpy
   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 48, in <module>
     from rclpy.parameter import Parameter

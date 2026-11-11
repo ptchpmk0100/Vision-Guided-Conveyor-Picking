@@ -23,6 +23,6 @@ epoch 20 full train_loss 0.0001 val_loss 0.0475 bal_acc 0.980 dmg_recall 0.967 d
 epoch 21 full train_loss 0.0000 val_loss 0.0504 bal_acc 0.983 dmg_recall 0.980 dmg_prec 0.987 (19.1s)
 epoch 22 full train_loss 0.0000 val_loss 0.0521 bal_acc 0.980 dmg_recall 0.967 dmg_prec 0.993 (19.7s)
 epoch 23 full train_loss 0.0000 val_loss 0.0526 bal_acc 0.983 dmg_recall 0.980 dmg_prec 0.987 (19.2s)
-best epoch 8 (val balanced acc 0.993); checkpoint /home/pmkhoi/ros_test_ws_mirror/logs/condition/runs/r1/best.pt
-exported /home/pmkhoi/ros_test_ws_mirror/logs/condition/runs/r1/model.onnx
+best epoch 8 (val balanced acc 0.993); checkpoint logs/condition/runs/r1/best.pt
+exported logs/condition/runs/r1/model.onnx
 peak VRAM 553 MiB

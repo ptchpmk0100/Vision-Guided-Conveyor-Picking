@@ -3,7 +3,7 @@
 
 After collecting at least two datasets from fresh calibration launches:
 
-  python3 /home/pmkhoi/ros_test_ws_mirror/tools/fit_extrinsic_calibration.py \
+  python3 tools/fit_extrinsic_calibration.py \
     logs/v2/calibration/b1_run_01.json \
     logs/v2/calibration/b1_run_02.json
 
@@ -11,7 +11,7 @@ The gated candidate is written to
 ``logs/v2/calibration/overhead_camera_extrinsic.candidate.yaml``.  It is deliberately
 not a production configuration file.  The ROS/Gazebo-free self-check is:
 
-  python3 /home/pmkhoi/ros_test_ws_mirror/tools/fit_extrinsic_calibration.py --self-test
+  python3 tools/fit_extrinsic_calibration.py --self-test
 
 The transform convention is p_world = R_world_optical @ p_optical + t_world_optical.
 No scale is fitted; a similarity scale is calculated only as a diagnostic gate.

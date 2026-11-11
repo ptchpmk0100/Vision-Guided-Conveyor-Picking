@@ -417,7 +417,7 @@
   <gazebo>
     <plugin filename="gz_ros2_control-system"
             name="gz_ros2_control::GazeboSimROS2ControlPlugin">
-      <parameters>/home/pmkhoi/ros_test_ws/install/twin_description/share/twin_description/config/panda_controllers.yaml</parameters>
+      <parameters>__PANDA_CONTROLLERS_YAML__</parameters>
     </plugin>
   </gazebo>
   <!-- S20 PERCEPTION: RGBD sensor on camera_link -> /overhead_camera topics -->

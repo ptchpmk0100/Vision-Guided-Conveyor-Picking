@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "regions": {
+    "pick": {
+      "received": true,
+      "expected": 0,
+      "detected": 0,
+      "matches": [],
+      "passed": true
+    },
+    "tote": {
+      "received": true,
+      "expected": 0,
+      "detected": 0,
+      "matches": [],
+      "passed": true
+    },
+    "moving": {
+      "received": true,
+      "expected": 1,
+      "detected": 1,
+      "matches": [
+        {
+          "entity": "parcel_1",
+          "error_m": 0.0007365457564507236,
+          "passed": true
+        }
+      ],
+      "passed": true
+    }
+  }
+}

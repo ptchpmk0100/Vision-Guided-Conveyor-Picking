@@ -1,7 +1,7 @@
 # Parcel condition classifier: training evidence
 
 Everything needed to inspect how the damaged/intact classifier was made. All data is simulated (Gazebo).
-The narrative write-up is `../../PARCEL_CONDITION_CLASSIFIER.md`. Code is in `src/twin_moveit_scripts/` and `tools/condition_*`.
+The narrative write-up is [`docs/results/PARCEL_CONDITION_CLASSIFIER.md`](../../docs/results/PARCEL_CONDITION_CLASSIFIER.md). Code is in `src/twin_moveit_scripts/` and `tools/condition_*`.
 
 ## What is here
 
@@ -10,17 +10,16 @@ The narrative write-up is `../../PARCEL_CONDITION_CLASSIFIER.md`. Code is in `sr
 | `plan.json`, `splits.json` | The 16 planned recordings: seed, damaged parcel numbers, belt speed, and the train / val / test split |
 | `recordings/rNN/` | Per recording: `manifest.json` (spawn-time label of every parcel) and `run_summary.json` |
 | `dataset/index.csv` | One row per crop: recording, frame, parcel, label, true x/y/z/yaw, crop path, depth-detector crop path and error |
-| `dataset/crops/` | 4435 ground-truth crops (`*_gt.png`) and the crops cut at the depth detector's boxes (`*_det.png`), sorted by recording and class |
-| `dataset/check/` | Full camera frames with labels, crop windows and detections drawn on, used to check the labels by eye |
+| `dataset/crops/`, `dataset/check/` | 4435 ground-truth crops (`*_gt.png`), the crops cut at the depth detector's boxes (`*_det.png`), and 135 full frames with labels drawn on. Published as the release asset `condition-dataset-r1.zip` (SHA-256 in `dataset/MANIFEST.txt`); unzip it inside `evidence/parcel_condition/` |
 | `dataset/dataset_manifest.json` | Git commit, crop window (0.12 m), crop size (64 px), class counts per recording |
 | `training/r1/config.json` | Every training hyper-parameter and the data sizes |
 | `training/r1/history.json`, `training/train_r1.log`, `training/r1/tb/` | Per-epoch loss and validation metrics, console log, TensorBoard events |
 | `training/r1/eval_val.json`, `eval_test.json` | Validation and held-out test results, per crop and per parcel, plus the depth-detector-only comparison |
-| `arm_runs/` | Task results and independent Gazebo checker output for the arm runs (routeA, routeB, skipA, armA to armC) |
+| `arm_runs/` | Task results and independent Gazebo checker output for the arm runs: routing (routeA, routeB, demo), uncertain-model skip (skipA), classifier running beside the depth-only arm (armA to armC), and the stock depth-only run (default) |
 | `figures/` | Contact sheets, a camera strip and `training_curves.png` (made by `make_curves.py`) |
 
-Not included (too large for git): the 16 rosbags (7.2 GB) and the model weights (`best.pt`, `model.onnx`, 43 MB each).
-Regenerate them with the commands below, or publish the weights as a GitHub Release asset.
+Not in git: the 16 rosbags (7.2 GB, not published) and the model weights. The ONNX model is the release asset
+`condition-model-r1.onnx`; regenerate everything with the commands below.
 
 ## Pipeline
 
@@ -48,4 +47,3 @@ place, checked independently against Gazebo. See `training/r1/eval_test.json` an
 Simulation only, large synthetic damage marks, one camera and lighting setup, 30 test parcels (95% lower bound of damaged
 recall about 0.80). Training loss reaches 0 while validation loss stays near 0.05, so the model overfits its training
 parcels somewhat. ImageNet pretrained weights carry research-use terms; check before commercial use.
-Some logs contain local file paths from the machine that produced them.

@@ -1,0 +1,8 @@
+condition-dataset-r1.zip (GitHub release v1.0 asset)
+files: 6815
+sha256: 4717014347fb078a5010f5c6c82dbbc2f02cc10dffc4b414f40bd542a80c3272
+
+condition-model-r1.onnx (GitHub release v1.0 asset; ResNet-18, 2 classes, 128 px input)
+sha256: f94d9d357945fca7be6b71e767fee6f1ad92e7e42d7a3c360d49ac4c81892405
+
+Restore: unzip condition-dataset-r1.zip inside evidence/parcel_condition/
