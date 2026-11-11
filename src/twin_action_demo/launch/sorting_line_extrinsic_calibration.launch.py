@@ -7,7 +7,7 @@ mirror build, the manager runs:
 
 Then, in another identically sourced shell:
 
-  python3 /home/pmkhoi/ros_test_ws_mirror/tools/collect_extrinsic_calibration.py \
+  python3 tools/collect_extrinsic_calibration.py \
     --run-id b1_run_01 --target-half-height 0.002
 
 The camera comes from the unchanged twin_description Panda URDF and is therefore at the
@@ -54,14 +54,31 @@ CALIBRATION_OBJECTS = [
 ]
 
 
+def _portable_urdf():
+    """Copy panda.urdf with its controller-YAML path pointed at this install (as the parcel launch does)."""
+    import tempfile
+    import xml.etree.ElementTree as ET
+    from pathlib import Path
+    from ament_index_python.packages import get_package_share_directory
+    description = Path(get_package_share_directory('twin_description'))
+    text = (description / 'urdf/panda.urdf').read_text()
+    parameters = ET.fromstring(text).find(
+        ".//plugin[@name='gz_ros2_control::GazeboSimROS2ControlPlugin']/parameters")
+    if parameters is None:
+        raise RuntimeError('Panda control plugin parameters were not found')
+    text = text.replace(parameters.text, str(description / 'config/panda_controllers.yaml'))
+    handle = tempfile.NamedTemporaryFile(mode='w', prefix='panda-cal-', suffix='.urdf', delete=False)
+    handle.write(text)
+    handle.close()
+    return handle.name
+
+
 def generate_launch_description():
     share = FindPackageShare('twin_action_demo')
     world_path = PathJoinSubstitution([
         share, 'worlds', 'industrial_sorting_line_calibration.sdf',
     ])
-    urdf_path = PathJoinSubstitution([
-        FindPackageShare('twin_description'), 'urdf', 'panda.urdf',
-    ])
+    urdf_path = _portable_urdf()
 
     gz_launch = PythonLaunchDescriptionSource(PathJoinSubstitution([
         FindPackageShare('ros_gz_sim'), 'launch', 'gz_sim.launch.py',

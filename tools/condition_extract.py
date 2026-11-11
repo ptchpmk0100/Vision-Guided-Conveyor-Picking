@@ -25,7 +25,7 @@ from vision_msgs.msg import Detection3DArray
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'src/twin_moveit_scripts'))
-from twin_moveit_scripts.object_detector_sorting_line import _load_extrinsic  # noqa: E402
+from twin_moveit_scripts.extrinsic import load_extrinsic as _load_extrinsic  # noqa: E402
 from twin_moveit_scripts.parcel_condition import (CROP_SIZE, CROP_WINDOW_M, crop_window, cut_crop,  # noqa: E402
                                                   parcel_corners, world_to_pixel)
 from twin_moveit_scripts.parcel_layout import PARCEL_Z  # noqa: E402

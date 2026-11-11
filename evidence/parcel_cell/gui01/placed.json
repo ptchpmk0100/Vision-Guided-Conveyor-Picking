@@ -1,0 +1,212 @@
+{
+  "mode": "placed",
+  "checks": [
+    {
+      "name": "parcel_1",
+      "position": [
+        0.3697043966349486,
+        -0.36790793071374184,
+        0.3199999735642142
+      ],
+      "yaw": -0.002596728160728676,
+      "stable": true,
+      "height_ok": true,
+      "footprint_ok": true,
+      "roll_pitch": [
+        2.1744226069008866e-07,
+        1.590533492472022e-07
+      ],
+      "upright": true,
+      "passed": true,
+      "slot": 0,
+      "slot_error_m": 0.002112850029683706
+    },
+    {
+      "name": "parcel_2",
+      "position": [
+        0.3692697087678078,
+        -0.26707915499745283,
+        0.31999998068550967
+      ],
+      "yaw": -0.007031327138807386,
+      "stable": true,
+      "height_ok": true,
+      "footprint_ok": true,
+      "roll_pitch": [
+        -2.1539885284917118e-07,
+        2.1747831613062336e-08
+      ],
+      "upright": true,
+      "passed": true,
+      "slot": 1,
+      "slot_error_m": 0.0030107575147662923
+    },
+    {
+      "name": "parcel_3",
+      "position": [
+        0.2697091682377983,
+        -0.3737464696955392,
+        0.3199999760590045
+      ],
+      "yaw": 0.0047618691671652905,
+      "stable": true,
+      "height_ok": true,
+      "footprint_ok": true,
+      "roll_pitch": [
+        -1.2011184753130456e-06,
+        -7.461012771812415e-07
+      ],
+      "upright": true,
+      "passed": true,
+      "slot": 2,
+      "slot_error_m": 0.0037577411158166607
+    },
+    {
+      "name": "parcel_4",
+      "position": [
+        0.2696662974414191,
+        -0.27303456638450097,
+        0.31999997798769464
+      ],
+      "yaw": 0.003157152748092402,
+      "stable": true,
+      "height_ok": true,
+      "footprint_ok": true,
+      "roll_pitch": [
+        3.1985484235879393e-07,
+        2.588844666415088e-07
+      ],
+      "upright": true,
+      "passed": true,
+      "slot": 3,
+      "slot_error_m": 0.0030528594038289067
+    },
+    {
+      "name": "parcel_5",
+      "position": [
+        0.1698207851857943,
+        -0.3699544111071284,
+        0.31999997724176804
+      ],
+      "yaw": 0.010204380987799537,
+      "stable": true,
+      "height_ok": true,
+      "footprint_ok": true,
+      "roll_pitch": [
+        3.2130138525020945e-07,
+        2.827580499722578e-07
+      ],
+      "upright": true,
+      "passed": true,
+      "slot": 4,
+      "slot_error_m": 0.0001849224074687713
+    },
+    {
+      "name": "parcel_6",
+      "position": [
+        0.16965744477032682,
+        -0.2730262015331825,
+        0.31999991895206165
+      ],
+      "yaw": 0.009441855719511769,
+      "stable": true,
+      "height_ok": true,
+      "footprint_ok": true,
+      "roll_pitch": [
+        -1.2286916451566791e-06,
+        -1.925727150848112e-06
+      ],
+      "upright": true,
+      "passed": true,
+      "slot": 5,
+      "slot_error_m": 0.003045527836814596
+    },
+    {
+      "name": "parcel_7",
+      "position": [
+        0.0706422951925538,
+        -0.37208151837097475,
+        0.3199999654626209
+      ],
+      "yaw": -0.012643878354795876,
+      "stable": true,
+      "height_ok": true,
+      "footprint_ok": true,
+      "roll_pitch": [
+        1.07584346872283e-06,
+        8.600509685857097e-07
+      ],
+      "upright": true,
+      "passed": true,
+      "slot": 6,
+      "slot_error_m": 0.002178362192814389
+    },
+    {
+      "name": "parcel_8",
+      "position": [
+        0.06895557037830621,
+        -0.27272400905125643,
+        0.3199999551746379
+      ],
+      "yaw": 0.02229420008809835,
+      "stable": true,
+      "height_ok": true,
+      "footprint_ok": true,
+      "roll_pitch": [
+        -1.1859992036331096e-06,
+        2.8430801157886954e-07
+      ],
+      "upright": true,
+      "passed": true,
+      "slot": 7,
+      "slot_error_m": 0.00291737185596871
+    },
+    {
+      "name": "parcel_9",
+      "position": [
+        -0.03133829242314298,
+        -0.36581273387740937,
+        0.3199999370194395
+      ],
+      "yaw": -0.010197014563111638,
+      "stable": true,
+      "height_ok": true,
+      "footprint_ok": true,
+      "roll_pitch": [
+        -1.7440396688052607e-06,
+        -2.1960857382228246e-07
+      ],
+      "upright": true,
+      "passed": true,
+      "slot": 8,
+      "slot_error_m": 0.004395932687295958
+    },
+    {
+      "name": "parcel_10",
+      "position": [
+        -0.0310350257066611,
+        -0.27517319653093386,
+        0.31999996880195036
+      ],
+      "yaw": 0.003336520086157783,
+      "stable": true,
+      "height_ok": true,
+      "footprint_ok": true,
+      "roll_pitch": [
+        -1.0813208574315613e-06,
+        8.797765083381814e-07
+      ],
+      "upright": true,
+      "passed": true,
+      "slot": 9,
+      "slot_error_m": 0.005275721804750063
+    }
+  ],
+  "exact_entities": true,
+  "passed": true,
+  "images": {
+    "rgbd": "logs/orig_belt/gui01/run1/after/rgbd.png",
+    "overview": "logs/orig_belt/gui01/run1/after/overview.png",
+    "side": "logs/orig_belt/gui01/run1/after/side.png"
+  }
+}

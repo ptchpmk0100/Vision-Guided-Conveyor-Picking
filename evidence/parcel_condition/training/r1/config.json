@@ -1,7 +1,7 @@
 {
- "dataset": "/home/pmkhoi/ros_test_ws_mirror/logs/condition/dataset",
- "splits": "/home/pmkhoi/ros_test_ws_mirror/logs/condition/splits.json",
- "out": "/home/pmkhoi/ros_test_ws_mirror/logs/condition/runs/r1",
+ "dataset": "logs/condition/dataset",
+ "splits": "logs/condition/splits.json",
+ "out": "logs/condition/runs/r1",
  "arch": "resnet18",
  "size": 128,
  "batch": 64,

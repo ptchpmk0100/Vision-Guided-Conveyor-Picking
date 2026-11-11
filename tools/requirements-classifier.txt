@@ -1,0 +1,12 @@
+# Python venv for the parcel condition classifier (versions used for the published results).
+#   python3 -m venv ~/venvs/parcel_cls && ~/venvs/parcel_cls/bin/pip install -r tools/requirements-classifier.txt
+# Live node (tools/run_condition_node.sh, tools/parcel_demo.sh with CONDITION_MODEL):
+onnxruntime==1.31.1
+opencv-python-headless==5.0.0.93
+numpy==2.5.4
+# Training and evaluation (tools/condition_train.py, tools/condition_eval.py):
+torch==2.15.0
+torchvision==0.29.2
+onnx==1.23.2
+pillow==13.0.0
+tensorboard==2.21.0

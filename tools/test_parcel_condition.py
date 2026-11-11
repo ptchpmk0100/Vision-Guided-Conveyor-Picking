@@ -6,7 +6,7 @@ import unittest
 
 import numpy as np
 
-from twin_moveit_scripts.object_detector_sorting_line import _load_extrinsic
+from twin_moveit_scripts.extrinsic import load_extrinsic as _load_extrinsic
 from twin_moveit_scripts.parcel_condition import (CROP_SIZE, CROP_WINDOW_M, crop_window, cut_crop, parcel_corners,
                                                   preprocess, softmax, world_to_pixel)
 

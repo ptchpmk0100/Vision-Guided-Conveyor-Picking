@@ -1,0 +1,76 @@
+{
+  "session": "parcel_ef37b49338e949a39902b7d989f74d2d",
+  "domain": "85",
+  "gui": true,
+  "parcel_count": 10,
+  "parcel_pitch": 0.344,
+  "quick_start": false,
+  "before_checks": true,
+  "passed": true,
+  "motion_experiment": {
+    "TWIN_TRAJECTORY_CHECK": "sampled"
+  },
+  "launch_pid": 148050,
+  "launch_to_task_wall": 27.96091191000596,
+  "task_exit": 0,
+  "task_error": null,
+  "unexpected_errors": [],
+  "cleanup": [
+    [
+      148050,
+      2
+    ],
+    [
+      148054,
+      2
+    ],
+    [
+      148079,
+      2
+    ],
+    [
+      148080,
+      2
+    ],
+    [
+      148081,
+      2
+    ],
+    [
+      148083,
+      2
+    ],
+    [
+      148084,
+      2
+    ],
+    [
+      148085,
+      2
+    ],
+    [
+      148086,
+      2
+    ],
+    [
+      148171,
+      2
+    ],
+    [
+      148172,
+      2
+    ],
+    [
+      148743,
+      2
+    ],
+    [
+      148949,
+      2
+    ],
+    [
+      148950,
+      2
+    ]
+  ]
+}
