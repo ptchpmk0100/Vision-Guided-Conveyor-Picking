@@ -3,12 +3,12 @@
 Read this snapshot together with the current request and repository guidance.
 Verify recorded state before resuming. Earlier entries: SESSION_LOG.md.
 
-<!-- handoff-id: c4501852-8c84-4d68-903a-744a2c171770 -->
-## 2026-11-10T19:16:56+00:00 | claude | complete
+<!-- handoff-id: f243b683-a4d1-46fe-971b-cdf20b94cb2d -->
+## 2026-11-11T14:04:10+00:00 | claude | handoff
 
 - Repository: "/home/pmkhoi/ros_test_ws"
 - Branch: "promote/parcel-cell-original-belt"
-- Commit: `255c909a725234fd9ff1de69f74bef2a922c83af`
+- Commit: `2a93f203cee5ab2c3863bc9d62823636bf86585e`
 - Git status captured before this save (paths are JSON-escaped):
 
 ```text
@@ -17,28 +17,24 @@ Verify recorded state before resuming. Earlier entries: SESSION_LOG.md.
 
 ## Task and constraints
 
-Promotion of the tested mirror work to GitHub (ptchpmk0100/language-controlled-panda-digital-twin) via pull request #1,
-branch promote/parcel-cell-original-belt. The agent opened the PR and did NOT merge it; merging to main is the user's call.
+User asked to update the main workspace (ros_test_ws) to the latest state of ros_test_ws_mirror and commit to GitHub. Complete. Work was applied on the existing PR branch `promote/parcel-cell-original-belt` (PR #1 open) and pushed to origin.
 
 ## Changes and decisions
 
-Branch commits on top of main (0231876): promoted parcel cell and 7/8/10-box work (67 files), docs, a ledger entry, a CI fix
-(build twin_description and twin_moveit_config with colcon so the MoveIt config tests find them) and tools/parcel_demo.sh
-(one command per terminal to watch the arm) with README lines. Excluded on purpose: mirror logs/, *.bak, .vscode/, frames_*.pdf
-and the mirror's own ledgers. Commits use the repo's noreply identity. A temporary `mirror_tmp` remote used for comparison was removed.
+- Applied the mirror's uncommitted diff (README, parcel_* modules, bringup launch, parcel_demo.sh, run_offline_tests.sh) and copied its untracked files (condition classifier modules, tools/condition_*, tests, PARCEL_CONDITION_CLASSIFIER.md, Next_Step*.txt, evidence/).
+- Mirror HANDOFF.md was not copied (it records the mirror path and commit); its 164 new SESSION_LOG lines were appended to this repo's SESSION_LOG.md.
+- Deliberately not synced: mirror-only clutter already ignored or removed here (logs/, .vscode/, *.bak*, frames_*.gv/pdf).
+- Two commits: code/docs/tools (93d3197) and evidence/ dataset, 35 MB, ~6.9k files (2a93f20), kept separate so the dataset can be reverted alone.
 
 ## Verification and evidence
 
-NEW: GitHub Actions on PR #1: first run FAILED (12 of 13 offline items passed; "motion validation prevents dispatch" had 2 errors:
-twin_description / twin_moveit_config not in the ROS package index). Reproduced locally, rehearsed the fix on a clean `git archive`
-export (colcon build of the two packages, then tools/run_offline_tests.sh: ALL PASS), pushed; the next runs (push and pull_request,
-commit 255c909) PASSED (offline-tests, about 1 min each). `tools/parcel_demo.sh` was run end to end (headless, domain 86): the arm
-task printed PARCEL_TASK_COMPLETE, FULL at 90.6 sim-s, and `tools/check_parcel_cell.py --placed --parcel-count 10` confirmed 10 boxes,
-all passed, slot errors 1.1-4.8 mm. Earlier mirror evidence (10-box headless x2 and GUI, colour 2/2, three-box 3 of 4) is unchanged.
+- `bash tools/run_offline_tests.sh` in ros_test_ws: OFFLINE SUITE: ALL PASS (new this session).
+- Changed tracked files compared byte-for-byte with the mirror: identical.
+- Gazebo/ROS runtime behaviour not re-run here; the live and arm-run evidence is the mirror-era output under evidence/parcel_condition/arm_runs.
 
 ## Running operations
 
-None. The demo's orphaned `gz sim` (verified mine by GZ_PARTITION=parcel_demo_86) was stopped; process audit clean.
+None started.
 
 ## Usage
 
@@ -46,9 +42,8 @@ Unknown. No external monitor configured.
 
 ## Remaining work and blockers
 
-User to review and merge PR #1 (`gh pr merge 1 --merge` keeps the commits; `--squash` collapses them). 7 and 8 boxes are layout-tested
-only. The unchanged three-box path has a fixed 15 wall-second gripper wait that can time out on an overloaded host.
+PR #1 is still open and now also contains the condition classifier work, which widens its scope; the user may prefer to split it. The mirror (ros_test_ws_mirror) still holds the same changes uncommitted and has no remote.
 
 ## Next action
 
-Merge PR #1 when satisfied; nothing else pending without a new request.
+Task complete. Review/merge PR #1 when satisfied; new user request needed for anything else.
