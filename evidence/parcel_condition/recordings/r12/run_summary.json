@@ -1,0 +1,32 @@
+{
+ "speed": 0.07,
+ "count": 10,
+ "ok": true,
+ "sim_seconds": 50.8,
+ "wall_seconds": 169.3,
+ "start_y": {
+  "parcel_1": -0.3,
+  "parcel_10": -3.396,
+  "parcel_2": -0.644,
+  "parcel_3": -0.988,
+  "parcel_4": -1.332,
+  "parcel_5": -1.676,
+  "parcel_6": -2.02,
+  "parcel_7": -2.364,
+  "parcel_8": -2.708,
+  "parcel_9": -3.052
+ },
+ "end_y": {
+  "parcel_1": 0.743,
+  "parcel_10": 0.152,
+  "parcel_2": 0.693,
+  "parcel_3": 0.643,
+  "parcel_4": 0.593,
+  "parcel_5": 0.543,
+  "parcel_6": 0.493,
+  "parcel_7": 0.443,
+  "parcel_8": 0.393,
+  "parcel_9": 0.343
+ },
+ "fell": []
+}

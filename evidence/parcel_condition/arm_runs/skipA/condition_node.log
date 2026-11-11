@@ -1,0 +1,29 @@
+[INFO] [1794394589.506544464] [parcel_condition]: condition classifier ready: model=/home/pmkhoi/ros_test_ws_mirror/logs/condition/runs/uncertain/model.onnx detections=/parcel_cell/moving_detections min_confidence=0.75
+[INFO] [1794394603.443660634] [parcel_condition]: msgs=46 parcels=46 unmatched=3 edge=0 latency_ms mean=10.5 p95=14.3 max=18.8
+[INFO] [1794394629.778293135] [parcel_condition]: msgs=114 parcels=116 unmatched=19 edge=0 latency_ms mean=10.5 p95=15.2 max=18.8
+[INFO] [1794394656.216780340] [parcel_condition]: msgs=186 parcels=190 unmatched=31 edge=0 latency_ms mean=10.5 p95=15.2 max=18.8
+[INFO] [1794394685.211952887] [parcel_condition]: msgs=264 parcels=275 unmatched=37 edge=0 latency_ms mean=10.8 p95=15.9 max=37.6
+[INFO] [1794394717.309649950] [parcel_condition]: msgs=335 parcels=350 unmatched=50 edge=0 latency_ms mean=10.9 p95=16.2 max=37.6
+[INFO] [1794394757.181071499] [parcel_condition]: msgs=414 parcels=434 unmatched=58 edge=0 latency_ms mean=10.9 p95=17.0 max=37.6
+[INFO] [1794394814.439959555] [parcel_condition]: msgs=499 parcels=526 unmatched=64 edge=0 latency_ms mean=10.9 p95=17.1 max=48.0
+[INFO] [1794394888.756866149] [parcel_condition]: msgs=582 parcels=614 unmatched=70 edge=0 latency_ms mean=10.4 p95=15.8 max=48.0
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/pmkhoi/ros_test_ws_mirror/build/twin_moveit_scripts/twin_moveit_scripts/parcel_condition_node.py", line 129, in <module>
+    main()
+  File "/home/pmkhoi/ros_test_ws_mirror/build/twin_moveit_scripts/twin_moveit_scripts/parcel_condition_node.py", line 120, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException

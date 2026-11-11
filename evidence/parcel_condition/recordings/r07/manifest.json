@@ -1,0 +1,225 @@
+{
+ "seed": "cond-r07",
+ "count": 10,
+ "queue_y": [
+  -0.3,
+  -0.6439999999999999,
+  -0.988,
+  -1.332,
+  -1.676,
+  -2.0199999999999996,
+  -2.364,
+  -2.7079999999999997,
+  -3.0519999999999996,
+  -3.3959999999999995
+ ],
+ "parcels": [
+  {
+   "index": 1,
+   "name": "parcel_1",
+   "condition": "damaged",
+   "damage": [
+    {
+     "kind": "tear",
+     "centre": [
+      0.0,
+      -0.0
+     ],
+     "length": 0.0441
+    }
+   ],
+   "benign": [
+    "sticker"
+   ],
+   "shade": 1.054,
+   "yaw_deg": 5.67
+  },
+  {
+   "index": 2,
+   "name": "parcel_2",
+   "condition": "damaged",
+   "damage": [
+    {
+     "kind": "stain",
+     "centre": [
+      0.0177,
+      -0.0012
+     ],
+     "blobs": 4
+    },
+    {
+     "kind": "tear",
+     "centre": [
+      0.0068,
+      -0.0118
+     ],
+     "length": 0.041
+    }
+   ],
+   "benign": [
+    "sticker"
+   ],
+   "shade": 0.97,
+   "yaw_deg": 7.87
+  },
+  {
+   "index": 3,
+   "name": "parcel_3",
+   "condition": "damaged",
+   "damage": [
+    {
+     "kind": "stain",
+     "centre": [
+      -0.0025,
+      -0.0039
+     ],
+     "blobs": 3
+    }
+   ],
+   "benign": [
+    "sticker"
+   ],
+   "shade": 1.008,
+   "yaw_deg": 6.21
+  },
+  {
+   "index": 4,
+   "name": "parcel_4",
+   "condition": "intact",
+   "damage": [],
+   "benign": [
+    "sticker"
+   ],
+   "shade": 0.928,
+   "yaw_deg": 7.6
+  },
+  {
+   "index": 5,
+   "name": "parcel_5",
+   "condition": "damaged",
+   "damage": [
+    {
+     "kind": "stain",
+     "centre": [
+      -0.0074,
+      0.004
+     ],
+     "blobs": 4
+    },
+    {
+     "kind": "crush",
+     "corner": [
+      -1,
+      -1
+     ],
+     "size": 0.018
+    }
+   ],
+   "benign": [],
+   "shade": 0.971,
+   "yaw_deg": -5.76
+  },
+  {
+   "index": 6,
+   "name": "parcel_6",
+   "condition": "damaged",
+   "damage": [
+    {
+     "kind": "tear",
+     "centre": [
+      0.0206,
+      0.0017
+     ],
+     "length": 0.0323
+    },
+    {
+     "kind": "crush",
+     "corner": [
+      1,
+      -1
+     ],
+     "size": 0.0199
+    }
+   ],
+   "benign": [],
+   "shade": 0.901,
+   "yaw_deg": 7.75
+  },
+  {
+   "index": 7,
+   "name": "parcel_7",
+   "condition": "damaged",
+   "damage": [
+    {
+     "kind": "tear",
+     "centre": [
+      -0.0001,
+      0.0
+     ],
+     "length": 0.0404
+    },
+    {
+     "kind": "stain",
+     "centre": [
+      0.0008,
+      0.0027
+     ],
+     "blobs": 3
+    }
+   ],
+   "benign": [
+    "sticker"
+   ],
+   "shade": 1.06,
+   "yaw_deg": -6.78
+  },
+  {
+   "index": 8,
+   "name": "parcel_8",
+   "condition": "damaged",
+   "damage": [
+    {
+     "kind": "crush",
+     "corner": [
+      1,
+      -1
+     ],
+     "size": 0.0171
+    },
+    {
+     "kind": "tear",
+     "centre": [
+      -0.0001,
+      -0.0
+     ],
+     "length": 0.0452
+    }
+   ],
+   "benign": [
+    "sticker"
+   ],
+   "shade": 0.921,
+   "yaw_deg": 9.29
+  },
+  {
+   "index": 9,
+   "name": "parcel_9",
+   "condition": "intact",
+   "damage": [],
+   "benign": [
+    "sticker"
+   ],
+   "shade": 1.044,
+   "yaw_deg": 3.33
+  },
+  {
+   "index": 10,
+   "name": "parcel_10",
+   "condition": "intact",
+   "damage": [],
+   "benign": [],
+   "shade": 1.062,
+   "yaw_deg": -0.94
+  }
+ ]
+}

@@ -1,0 +1,150 @@
+{
+ "split": "val",
+ "model": "/home/pmkhoi/ros_test_ws_mirror/logs/condition/runs/r1/model.onnx",
+ "recordings": [
+  "r04",
+  "r10"
+ ],
+ "gt_crops": {
+  "per_crop": {
+   "n": 596,
+   "confusion": {
+    "intact_as_intact": 294,
+    "intact_as_damaged": 3,
+    "damaged_as_intact": 1,
+    "damaged_as_damaged": 298
+   },
+   "damaged_precision": 0.9900332225913622,
+   "damaged_recall": 0.9966555183946488,
+   "intact_precision": 0.9966101694915255,
+   "intact_recall": 0.98989898989899,
+   "accuracy": 0.9932885906040269,
+   "intact_sent_to_reject_rate": 0.010101010101010102
+  },
+  "per_crop_sweep": [
+   {
+    "threshold": 0.3,
+    "damaged_recall": 1.0,
+    "intact_sent_to_reject_rate": 0.02356902356902357
+   },
+   {
+    "threshold": 0.5,
+    "damaged_recall": 0.9966555183946488,
+    "intact_sent_to_reject_rate": 0.010101010101010102
+   },
+   {
+    "threshold": 0.7,
+    "damaged_recall": 0.9899665551839465,
+    "intact_sent_to_reject_rate": 0.003367003367003367
+   },
+   {
+    "threshold": 0.9,
+    "damaged_recall": 0.9531772575250836,
+    "intact_sent_to_reject_rate": 0.0
+   }
+  ],
+  "per_parcel": {
+   "n": 20,
+   "confusion": {
+    "intact_as_intact": 10,
+    "intact_as_damaged": 0,
+    "damaged_as_intact": 0,
+    "damaged_as_damaged": 10
+   },
+   "damaged_precision": 1.0,
+   "damaged_recall": 1.0,
+   "intact_precision": 1.0,
+   "intact_recall": 1.0,
+   "accuracy": 1.0,
+   "intact_sent_to_reject_rate": 0.0
+  },
+  "parcels": 20,
+  "frames_per_parcel_mean": 29.8
+ },
+ "depth_detector_crops": {
+  "per_crop": {
+   "n": 309,
+   "confusion": {
+    "intact_as_intact": 157,
+    "intact_as_damaged": 0,
+    "damaged_as_intact": 0,
+    "damaged_as_damaged": 152
+   },
+   "damaged_precision": 1.0,
+   "damaged_recall": 1.0,
+   "intact_precision": 1.0,
+   "intact_recall": 1.0,
+   "accuracy": 1.0,
+   "intact_sent_to_reject_rate": 0.0
+  },
+  "per_crop_sweep": [
+   {
+    "threshold": 0.3,
+    "damaged_recall": 1.0,
+    "intact_sent_to_reject_rate": 0.01910828025477707
+   },
+   {
+    "threshold": 0.5,
+    "damaged_recall": 1.0,
+    "intact_sent_to_reject_rate": 0.0
+   },
+   {
+    "threshold": 0.7,
+    "damaged_recall": 0.9802631578947368,
+    "intact_sent_to_reject_rate": 0.0
+   },
+   {
+    "threshold": 0.9,
+    "damaged_recall": 0.9210526315789473,
+    "intact_sent_to_reject_rate": 0.0
+   }
+  ],
+  "per_parcel": {
+   "n": 20,
+   "confusion": {
+    "intact_as_intact": 10,
+    "intact_as_damaged": 0,
+    "damaged_as_intact": 0,
+    "damaged_as_damaged": 10
+   },
+   "damaged_precision": 1.0,
+   "damaged_recall": 1.0,
+   "intact_precision": 1.0,
+   "intact_recall": 1.0,
+   "accuracy": 1.0,
+   "intact_sent_to_reject_rate": 0.0
+  },
+  "parcels": 20,
+  "frames_per_parcel_mean": 15.45
+ },
+ "depth_detector_only": {
+  "intact": {
+   "gt_crops": 297,
+   "in_detector_window": 162,
+   "detected": 157,
+   "detection_rate": 0.9691358024691358,
+   "mean_err_mm": 1.3464968152866243,
+   "std_err_mm": 1.5055958746914613
+  },
+  "damaged": {
+   "gt_crops": 299,
+   "in_detector_window": 168,
+   "detected": 152,
+   "detection_rate": 0.9047619047619048,
+   "mean_err_mm": 1.3217105263157893,
+   "std_err_mm": 1.3689180208412532
+  },
+  "position_error_mann_whitney_p": 0.8925026777877108,
+  "class_blind_baseline": {
+   "always_intact": {
+    "damaged_recall": 0.0,
+    "accuracy": 0.4983221476510067
+   },
+   "always_damaged": {
+    "damaged_recall": 1.0,
+    "intact_sent_to_reject_rate": 1.0,
+    "accuracy": 0.5016778523489933
+   }
+  }
+ }
+}

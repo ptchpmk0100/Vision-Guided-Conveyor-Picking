@@ -1,0 +1,178 @@
+{
+ "git_commit": "a9b3ad622ae02443b864d6ed60a85a469dd4ee96",
+ "crop_window_m": 0.12,
+ "crop_size": 64,
+ "sample_gap_sim_s": 0.5,
+ "classes": [
+  "intact",
+  "damaged"
+ ],
+ "label_source": "variant manifest (spawn-time condition) + Gazebo poses",
+ "total_crops": 4435,
+ "crops_per_class": {
+  "intact": 2194,
+  "damaged": 2241
+ },
+ "recordings": [
+  {
+   "name": "r01",
+   "seed": "cond-r01",
+   "belt_speed": 0.08,
+   "parcels_damaged": 4,
+   "parcels": 10,
+   "crops": 260,
+   "crops_damaged": 106,
+   "det_crops": 129
+  },
+  {
+   "name": "r02",
+   "seed": "cond-r02",
+   "belt_speed": 0.08,
+   "parcels_damaged": 7,
+   "parcels": 10,
+   "crops": 261,
+   "crops_damaged": 181,
+   "det_crops": 123
+  },
+  {
+   "name": "r03",
+   "seed": "cond-r03",
+   "belt_speed": 0.07,
+   "parcels_damaged": 3,
+   "parcels": 10,
+   "crops": 297,
+   "crops_damaged": 95,
+   "det_crops": 150
+  },
+  {
+   "name": "r04",
+   "seed": "cond-r04",
+   "belt_speed": 0.07,
+   "parcels_damaged": 5,
+   "parcels": 10,
+   "crops": 298,
+   "crops_damaged": 147,
+   "det_crops": 155
+  },
+  {
+   "name": "r05",
+   "seed": "cond-r05",
+   "belt_speed": 0.07,
+   "parcels_damaged": 4,
+   "parcels": 10,
+   "crops": 300,
+   "crops_damaged": 112,
+   "det_crops": 149
+  },
+  {
+   "name": "r06",
+   "seed": "cond-r06",
+   "belt_speed": 0.07,
+   "parcels_damaged": 6,
+   "parcels": 10,
+   "crops": 295,
+   "crops_damaged": 180,
+   "det_crops": 151
+  },
+  {
+   "name": "r07",
+   "seed": "cond-r07",
+   "belt_speed": 0.08,
+   "parcels_damaged": 7,
+   "parcels": 10,
+   "crops": 262,
+   "crops_damaged": 191,
+   "det_crops": 129
+  },
+  {
+   "name": "r08",
+   "seed": "cond-r08",
+   "belt_speed": 0.08,
+   "parcels_damaged": 6,
+   "parcels": 10,
+   "crops": 260,
+   "crops_damaged": 155,
+   "det_crops": 127
+  },
+  {
+   "name": "r09",
+   "seed": "cond-r09",
+   "belt_speed": 0.08,
+   "parcels_damaged": 6,
+   "parcels": 10,
+   "crops": 263,
+   "crops_damaged": 171,
+   "det_crops": 133
+  },
+  {
+   "name": "r10",
+   "seed": "cond-r10",
+   "belt_speed": 0.07,
+   "parcels_damaged": 5,
+   "parcels": 10,
+   "crops": 298,
+   "crops_damaged": 152,
+   "det_crops": 154
+  },
+  {
+   "name": "r11",
+   "seed": "cond-r11",
+   "belt_speed": 0.08,
+   "parcels_damaged": 7,
+   "parcels": 10,
+   "crops": 260,
+   "crops_damaged": 186,
+   "det_crops": 132
+  },
+  {
+   "name": "r12",
+   "seed": "cond-r12",
+   "belt_speed": 0.07,
+   "parcels_damaged": 6,
+   "parcels": 10,
+   "crops": 299,
+   "crops_damaged": 188,
+   "det_crops": 148
+  },
+  {
+   "name": "r13",
+   "seed": "cond-r13",
+   "belt_speed": 0.08,
+   "parcels_damaged": 3,
+   "parcels": 10,
+   "crops": 263,
+   "crops_damaged": 89,
+   "det_crops": 142
+  },
+  {
+   "name": "r14",
+   "seed": "cond-r14",
+   "belt_speed": 0.08,
+   "parcels_damaged": 4,
+   "parcels": 10,
+   "crops": 260,
+   "crops_damaged": 107,
+   "det_crops": 137
+  },
+  {
+   "name": "r15",
+   "seed": "cond-r15",
+   "belt_speed": 0.08,
+   "parcels_damaged": 4,
+   "parcels": 10,
+   "crops": 260,
+   "crops_damaged": 104,
+   "det_crops": 133
+  },
+  {
+   "name": "r16",
+   "seed": "cond-r16",
+   "belt_speed": 0.07,
+   "parcels_damaged": 3,
+   "parcels": 10,
+   "crops": 299,
+   "crops_damaged": 77,
+   "det_crops": 151
+  }
+ ]
+}

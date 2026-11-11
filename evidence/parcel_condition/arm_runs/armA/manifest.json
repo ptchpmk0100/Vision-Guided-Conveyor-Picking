@@ -1,0 +1,152 @@
+{
+ "seed": "armA",
+ "count": 10,
+ "queue_y": [
+  -0.3,
+  -0.6439999999999999,
+  -0.988,
+  -1.332,
+  -1.676,
+  -2.0199999999999996,
+  -2.364,
+  -2.7079999999999997,
+  -3.0519999999999996,
+  -3.3959999999999995
+ ],
+ "parcels": [
+  {
+   "index": 1,
+   "name": "parcel_1",
+   "condition": "intact",
+   "damage": [],
+   "benign": [],
+   "shade": 1.077,
+   "yaw_deg": 0.0
+  },
+  {
+   "index": 2,
+   "name": "parcel_2",
+   "condition": "damaged",
+   "damage": [
+    {
+     "kind": "crush",
+     "corner": [
+      1,
+      -1
+     ],
+     "size": 0.0167
+    }
+   ],
+   "benign": [
+    "sticker"
+   ],
+   "shade": 0.88,
+   "yaw_deg": 0.0
+  },
+  {
+   "index": 3,
+   "name": "parcel_3",
+   "condition": "intact",
+   "damage": [],
+   "benign": [],
+   "shade": 0.963,
+   "yaw_deg": 0.0
+  },
+  {
+   "index": 4,
+   "name": "parcel_4",
+   "condition": "intact",
+   "damage": [],
+   "benign": [],
+   "shade": 1.045,
+   "yaw_deg": 0.0
+  },
+  {
+   "index": 5,
+   "name": "parcel_5",
+   "condition": "damaged",
+   "damage": [
+    {
+     "kind": "tear",
+     "centre": [
+      -0.0076,
+      -0.0029
+     ],
+     "length": 0.0378
+    }
+   ],
+   "benign": [],
+   "shade": 0.968,
+   "yaw_deg": 0.0
+  },
+  {
+   "index": 6,
+   "name": "parcel_6",
+   "condition": "damaged",
+   "damage": [
+    {
+     "kind": "tear",
+     "centre": [
+      -0.0152,
+      -0.003
+     ],
+     "length": 0.0348
+    }
+   ],
+   "benign": [
+    "sticker"
+   ],
+   "shade": 0.99,
+   "yaw_deg": 0.0
+  },
+  {
+   "index": 7,
+   "name": "parcel_7",
+   "condition": "intact",
+   "damage": [],
+   "benign": [
+    "sticker"
+   ],
+   "shade": 0.986,
+   "yaw_deg": 0.0
+  },
+  {
+   "index": 8,
+   "name": "parcel_8",
+   "condition": "intact",
+   "damage": [],
+   "benign": [],
+   "shade": 1.03,
+   "yaw_deg": 0.0
+  },
+  {
+   "index": 9,
+   "name": "parcel_9",
+   "condition": "damaged",
+   "damage": [
+    {
+     "kind": "tear",
+     "centre": [
+      0.0,
+      0.0
+     ],
+     "length": 0.045
+    }
+   ],
+   "benign": [
+    "sticker"
+   ],
+   "shade": 0.957,
+   "yaw_deg": 0.0
+  },
+  {
+   "index": 10,
+   "name": "parcel_10",
+   "condition": "intact",
+   "damage": [],
+   "benign": [],
+   "shade": 0.935,
+   "yaw_deg": 0.0
+  }
+ ]
+}

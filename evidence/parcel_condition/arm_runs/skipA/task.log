@@ -1,0 +1,190 @@
+[INFO] [1794394592.389150976] [moveit_648262190.moveit.py.cpp_initializer]: Initialize rclcpp
+[INFO] [1794394592.389312322] [moveit_648262190.moveit.py.cpp_initializer]: Initialize node parameters
+[INFO] [1794394592.389357063] [moveit_648262190.moveit.py.cpp_initializer]: Initialize node and executor
+[INFO] [1794394592.406317774] [moveit_648262190.moveit.py.cpp_initializer]: Spin separate thread
+[INFO] [1794394592.410900246] [moveit_648262190.moveit.ros.rdf_loader]: Loaded robot model in 0 seconds
+[INFO] [1794394592.410992492] [moveit_648262190.moveit.core.robot_model]: Loading robot model 'panda'...
+[INFO] [1794394592.411038088] [moveit_648262190.moveit.core.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
+[WARN] [1794394592.411082480] [moveit_648262190.moveit.core.robot_model]: Link camera_link has visual geometry but no collision geometry. Collision geometry will be left empty. Fix your URDF file by explicitly specifying collision geometry.
+[INFO] [1794394592.423965315] [moveit_648262190.moveit.kinematics.kdl_kinematics_plugin]: Joint weights for group 'panda_arm': 1 1 1 1 1 1 1
+[INFO] [1794394592.463211299] [moveit_648262190.moveit.ros.planning_scene_monitor]: Publishing maintained planning scene on 'monitored_planning_scene'
+[INFO] [1794394592.463354723] [moveit_648262190.moveit.ros.moveit_cpp]: Listening to 'joint_states' for joint states
+[INFO] [1794394592.464170435] [moveit_648262190.moveit.ros.current_state_monitor]: Listening to joint states on topic 'joint_states'
+[INFO] [1794394592.464620708] [moveit_648262190.moveit.ros.planning_scene_monitor]: Listening to '/attached_collision_object' for attached collision objects
+[INFO] [1794394592.464650535] [moveit_648262190.moveit.ros.planning_scene_monitor]: Stopping existing planning scene publisher.
+[INFO] [1794394592.464776539] [moveit_648262190.moveit.ros.planning_scene_monitor]: Stopped publishing maintained planning scene.
+[INFO] [1794394592.465398950] [moveit_648262190.moveit.ros.planning_scene_monitor]: Publishing maintained planning scene on 'monitored_planning_scene'
+[INFO] [1794394592.465615436] [moveit_648262190.moveit.ros.planning_scene_monitor]: Starting planning scene monitor
+[INFO] [1794394592.466373972] [moveit_648262190.moveit.ros.planning_scene_monitor]: Listening to '/planning_scene'
+[INFO] [1794394592.466409213] [moveit_648262190.moveit.ros.planning_scene_monitor]: Starting world geometry update monitor for collision objects, attached objects, octomap updates.
+[INFO] [1794394592.466944542] [moveit_648262190.moveit.ros.planning_scene_monitor]: Listening to 'collision_object'
+[INFO] [1794394592.467446272] [moveit_648262190.moveit.ros.planning_scene_monitor]: Listening to 'planning_scene_world' for planning scene world geometry
+[WARN] [1794394592.467652302] [moveit_648262190.moveit.ros.occupancy_map_monitor]: Resolution not specified for Octomap. Assuming resolution = 0.1 instead
+[ERROR] [1794394592.467686252] [moveit_648262190.moveit.ros.occupancy_map_monitor]: No 3D sensor plugin(s) defined for octomap updates
+[INFO] [1794394592.482838513] [moveit_648262190.moveit.ros.planning_pipeline]: Successfully loaded planner 'OMPL'
+[INFO] [1794394592.485257991] [parcel_task]: Try loading adapter 'default_planning_request_adapters/ResolveConstraintFrames'
+[INFO] [1794394592.487712348] [parcel_task]: Loaded adapter 'default_planning_request_adapters/ResolveConstraintFrames'
+[INFO] [1794394592.487775632] [parcel_task]: Try loading adapter 'default_planning_request_adapters/ValidateWorkspaceBounds'
+[INFO] [1794394592.488130240] [parcel_task]: Loaded adapter 'default_planning_request_adapters/ValidateWorkspaceBounds'
+[INFO] [1794394592.488165279] [parcel_task]: Try loading adapter 'default_planning_request_adapters/CheckStartStateBounds'
+[INFO] [1794394592.488223562] [parcel_task]: Loaded adapter 'default_planning_request_adapters/CheckStartStateBounds'
+[INFO] [1794394592.488250761] [parcel_task]: Try loading adapter 'default_planning_request_adapters/CheckStartStateCollision'
+[INFO] [1794394592.488284341] [parcel_task]: Loaded adapter 'default_planning_request_adapters/CheckStartStateCollision'
+[INFO] [1794394592.490725546] [parcel_task]: Try loading adapter 'default_planning_response_adapters/AddTimeOptimalParameterization'
+[INFO] [1794394592.495008516] [parcel_task]: Loaded adapter 'default_planning_response_adapters/AddTimeOptimalParameterization'
+[INFO] [1794394592.495098512] [parcel_task]: Try loading adapter 'default_planning_response_adapters/ValidateSolution'
+[INFO] [1794394592.499310542] [parcel_task]: Loaded adapter 'default_planning_response_adapters/ValidateSolution'
+[INFO] [1794394592.499359108] [parcel_task]: Try loading adapter 'default_planning_response_adapters/DisplayMotionPath'
+[INFO] [1794394592.500405097] [parcel_task]: Loaded adapter 'default_planning_response_adapters/DisplayMotionPath'
+[INFO] [1794394592.567244032] [moveit_648262190.moveit.plugins.simple_controller_manager]: Added FollowJointTrajectory controller for arm_controller
+[INFO] [1794394592.571801515] [moveit_648262190.moveit.plugins.simple_controller_manager]: Added FollowJointTrajectory controller for gripper_controller
+[INFO] [1794394592.572109875] [moveit_648262190.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394592.572163651] [moveit_648262190.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394592.573225721] [moveit_648262190.moveit.ros.trajectory_execution_manager]: Trajectory execution is managing controllers
+[INFO] [1794394592.780565266] [parcel_task]: resolve_object: subscribed to live perception on /detected_objects/box
+[INFO] [1794394592.781496917] [parcel_task]: MoveItPy up; panda_arm ready. twin_gripper node up.
+[INFO] [1794394593.716356232] [parcel_task]: parcel scene: 17 static models, all physical solids included
+[INFO] [1794394596.974393134] [parcel_task]: PARCEL_STATE {"state": "PREPARE_ARM_START", "sim_time": 7.522, "wall_elapsed": 4.7567117779999535, "startup": true}
+[INFO] [1794394596.975894897] [parcel_task]: PARCEL_STATE {"state": "PREPARE_OPEN_START", "sim_time": 7.522, "wall_elapsed": 4.7563140219999696, "startup": true}
+[INFO] [1794394596.979146348] [parcel_task]: === move_to_grasp_pose(x=0.56, y=0.06, z=0.52) [seeded IK] ===
+[INFO] [1794394596.980901820] [parcel_task]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1794394596.981095801] [parcel_task]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[WARN] [1794394596.981121729] [moveit_648262190.moveit.ros.validate_workspace_bounds]: It looks like the planning volume was not specified. Using default values.
+[INFO] [1794394596.981159429] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1794394596.981212238] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[INFO] [1794394596.982235850] [moveit_648262190.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'panda_arm[RRTConnectkConfigDefault]' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1794394596.982533980] [parcel_task]: Calling Planner 'OMPL'
+[INFO] [1794394597.103147060] [parcel_task]: Calling PlanningResponseAdapter 'AddTimeOptimalParameterization'
+[INFO] [1794394597.106255436] [parcel_task]: Calling PlanningResponseAdapter 'ValidateSolution'
+[INFO] [1794394597.108805227] [parcel_task]: Calling PlanningResponseAdapter 'DisplayMotionPath'
+[INFO] [1794394597.115323899] [parcel_task]: Planning succeeded, executing...
+[INFO] [1794394597.164701386] [moveit_648262190.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394597.164772613] [moveit_648262190.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394597.164837583] [moveit_648262190.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394597.164884036] [moveit_648262190.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394597.164947885] [moveit_648262190.moveit.ros.trajectory_execution_manager]: Validating trajectory with allowed_start_tolerance 0.01
+[INFO] [1794394597.165046762] [moveit_648262190.moveit.ros.trajectory_execution_manager]: Starting trajectory execution ...
+[INFO] [1794394597.165113968] [moveit_648262190.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394597.165178872] [moveit_648262190.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394597.165314763] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: sending trajectory to arm_controller
+[INFO] [1794394597.166446131] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: arm_controller started execution
+[INFO] [1794394597.166482421] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Goal request accepted!
+[INFO] [1794394601.667406132] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Controller 'arm_controller' successfully finished
+[INFO] [1794394601.669548515] [moveit_648262190.moveit.ros.trajectory_execution_manager]: Completed trajectory execution with status SUCCEEDED ...
+[INFO] [1794394601.880007174] [parcel_task]: PARCEL_STATE {"state": "PREPARE_ARM_DONE", "sim_time": 9.394, "wall_elapsed": 9.663183510000636, "startup": true, "arrived": true}
+[INFO] [1794394604.094540824] [parcel_task]: grasp record: cleared (verified empty open hand for continuous approach)
+[INFO] [1794394604.096322719] [parcel_task]: PARCEL_STATE {"state": "PREPARE_OPEN_DONE", "sim_time": 10.249, "wall_elapsed": 11.880325761000677, "startup": true, "strokes": 1, "fingers": [0.03994269118358521, 0.03999829569895932]}
+[INFO] [1794394604.101692055] [parcel_task]: PARCEL_STATE {"state": "BELT_RUNNING", "sim_time": 10.249, "wall_elapsed": 11.884373673000482, "speed": 0.045}
+[INFO] [1794394604.102793990] [parcel_task]: PARCEL_STATE {"state": "READY", "sim_time": 10.249, "wall_elapsed": 11.88737374900029, "slot": 0}
+[INFO] [1794394604.146298153] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=10.267
+[INFO] [1794394607.269677858] [parcel_task]: PARCEL_STATE {"state": "SKIPPED", "sim_time": 11.443, "wall_elapsed": 15.054091089999929, "track": 1, "condition": "unknown", "p_damaged": 0.5, "votes": 7}
+[INFO] [1794394607.272711205] [parcel_task]: PARCEL_STATE {"state": "READY", "sim_time": 11.443, "wall_elapsed": 15.055445661000704, "slot": 1}
+[INFO] [1794394607.301712215] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=11.450
+[INFO] [1794394612.303813730] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=13.335
+[INFO] [1794394617.323301270] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=15.210
+[INFO] [1794394622.334282280] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=17.113
+[INFO] [1794394627.244212333] [parcel_task]: PARCEL_STATE {"state": "SKIPPED", "sim_time": 19.001, "wall_elapsed": 35.02469361200019, "track": 2, "condition": "unknown", "p_damaged": 0.5, "votes": 18}
+[INFO] [1794394627.246677918] [parcel_task]: PARCEL_STATE {"state": "READY", "sim_time": 19.008, "wall_elapsed": 35.03046739199999, "slot": 2}
+[INFO] [1794394627.276140240] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=19.016
+[INFO] [1794394632.289688004] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=20.929
+[INFO] [1794394637.294115156] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=22.791
+[INFO] [1794394642.316618009] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=24.700
+[INFO] [1794394647.346379654] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=26.595
+[INFO] [1794394647.455476082] [parcel_task]: PARCEL_STATE {"state": "SKIPPED", "sim_time": 26.64, "wall_elapsed": 55.23974301300041, "track": 3, "condition": "unknown", "p_damaged": 0.5, "votes": 17}
+[INFO] [1794394647.459225764] [parcel_task]: PARCEL_STATE {"state": "READY", "sim_time": 26.64, "wall_elapsed": 55.24163331799991, "slot": 3}
+[INFO] [1794394647.493039275] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=26.654
+[INFO] [1794394652.502393267] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=28.535
+[INFO] [1794394657.528538451] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=30.513
+[INFO] [1794394662.555946174] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=32.309
+[INFO] [1794394667.581830133] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=34.102
+[INFO] [1794394668.073743304] [parcel_task]: PARCEL_STATE {"state": "SKIPPED", "sim_time": 34.278, "wall_elapsed": 75.85716962200058, "track": 4, "condition": "unknown", "p_damaged": 0.5, "votes": 19}
+[INFO] [1794394668.074635625] [parcel_task]: PARCEL_STATE {"state": "READY", "sim_time": 34.278, "wall_elapsed": 75.8594368540007, "slot": 4}
+[INFO] [1794394668.102426124] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=34.286
+[INFO] [1794394673.106916353] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=36.041
+[INFO] [1794394678.111115271] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=37.591
+[INFO] [1794394683.118201218] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=39.303
+[INFO] [1794394688.138317402] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=40.974
+[INFO] [1794394690.995083862] [parcel_task]: PARCEL_STATE {"state": "SKIPPED", "sim_time": 41.914, "wall_elapsed": 98.77698424800019, "track": 5, "condition": "unknown", "p_damaged": 0.5, "votes": 21}
+[INFO] [1794394690.998336389] [parcel_task]: PARCEL_STATE {"state": "READY", "sim_time": 41.914, "wall_elapsed": 98.78132030800043, "slot": 5}
+[INFO] [1794394691.027307979] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=41.926
+[INFO] [1794394696.044757636] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=43.495
+[INFO] [1794394701.064780024] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=45.143
+[INFO] [1794394706.081742351] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=46.721
+[INFO] [1794394711.100166212] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=48.156
+[INFO] [1794394715.869065279] [parcel_task]: PARCEL_STATE {"state": "SKIPPED", "sim_time": 49.584, "wall_elapsed": 123.6523233150001, "track": 6, "condition": "unknown", "p_damaged": 0.5, "votes": 15}
+[INFO] [1794394715.870807767] [parcel_task]: PARCEL_STATE {"state": "READY", "sim_time": 49.584, "wall_elapsed": 123.65512533400033, "slot": 6}
+[INFO] [1794394715.904598010] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=49.589
+[INFO] [1794394720.908106490] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=51.003
+[INFO] [1794394725.920599571] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=52.431
+[INFO] [1794394730.938941216] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=53.791
+[INFO] [1794394735.955391492] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=55.050
+[INFO] [1794394740.971631400] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=56.284
+[INFO] [1794394745.084129220] [parcel_task]: PARCEL_STATE {"state": "SKIPPED", "sim_time": 57.219, "wall_elapsed": 152.86693782600105, "track": 7, "condition": "unknown", "p_damaged": 0.5, "votes": 21}
+[INFO] [1794394745.085549075] [parcel_task]: PARCEL_STATE {"state": "READY", "sim_time": 57.222, "wall_elapsed": 152.86999400500008, "slot": 7}
+[INFO] [1794394745.114398211] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=57.228
+[INFO] [1794394750.116073066] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=58.407
+[INFO] [1794394755.127846987] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=59.617
+[INFO] [1794394760.130816183] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=60.550
+[INFO] [1794394765.153055387] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=61.495
+[INFO] [1794394770.170776088] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=62.402
+[INFO] [1794394775.196732737] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=63.316
+[INFO] [1794394780.219645401] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=64.248
+[INFO] [1794394783.703311731] [parcel_task]: PARCEL_STATE {"state": "SKIPPED", "sim_time": 64.876, "wall_elapsed": 191.48703651400047, "track": 8, "condition": "unknown", "p_damaged": 0.5, "votes": 24}
+[INFO] [1794394783.704270450] [parcel_task]: PARCEL_STATE {"state": "READY", "sim_time": 64.88, "wall_elapsed": 191.48903035000058, "slot": 8}
+[INFO] [1794394783.732332134] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=64.884
+[INFO] [1794394788.744601295] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=65.787
+[INFO] [1794394793.758258290] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=66.593
+[INFO] [1794394798.762737929] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=67.408
+[INFO] [1794394803.768555232] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=68.195
+[INFO] [1794394808.776831562] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=69.040
+[INFO] [1794394813.792315053] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=69.892
+[INFO] [1794394818.804483360] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=70.723
+[INFO] [1794394823.828818833] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=71.528
+[INFO] [1794394828.830247380] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=72.375
+[INFO] [1794394829.704434252] [parcel_task]: PARCEL_STATE {"state": "SKIPPED", "sim_time": 72.522, "wall_elapsed": 237.48911984700044, "track": 9, "condition": "unknown", "p_damaged": 0.5, "votes": 23}
+[INFO] [1794394829.705365828] [parcel_task]: PARCEL_STATE {"state": "READY", "sim_time": 72.522, "wall_elapsed": 237.49016375600058, "slot": 9}
+[INFO] [1794394829.732771699] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=72.525
+[INFO] [1794394834.743852590] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=73.209
+[INFO] [1794394839.745852267] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=73.868
+[INFO] [1794394844.769607085] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=74.562
+[INFO] [1794394849.791965976] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=75.266
+[INFO] [1794394854.809780781] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=75.879
+[INFO] [1794394859.817799416] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=76.261
+[INFO] [1794394864.832005126] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=77.002
+[INFO] [1794394869.854203882] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=77.727
+[INFO] [1794394874.870597977] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=78.464
+[INFO] [1794394879.891866770] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=79.171
+[INFO] [1794394884.894387587] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=79.618
+[INFO] [1794394889.905793876] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=80.121
+[INFO] [1794394890.172094851] [parcel_task]: PARCEL_STATE {"state": "SKIPPED", "sim_time": 80.15, "wall_elapsed": 297.9568368800001, "track": 10, "condition": "unknown", "p_damaged": 0.5, "votes": 19}
+[INFO] [1794394890.172896934] [parcel_task]: PARCEL_STATE {"state": "BATCH_ROUTED", "sim_time": 80.15, "wall_elapsed": 297.9576660779994, "intact_in_tote": 0, "rejected": 0, "skipped": 10, "skipped_tracks": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
+[INFO] [1794394890.173246133] [parcel_task]: === move_to_named('ready') ===
+[INFO] [1794394890.173590533] [parcel_task]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1794394890.173646682] [parcel_task]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[WARN] [1794394890.173662199] [moveit_648262190.moveit.ros.validate_workspace_bounds]: It looks like the planning volume was not specified. Using default values.
+[INFO] [1794394890.173710978] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1794394890.173749408] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[INFO] [1794394890.174190956] [moveit_648262190.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'panda_arm[RRTConnectkConfigDefault]' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1794394890.174346331] [parcel_task]: Calling Planner 'OMPL'
+[INFO] [1794394890.237042926] [parcel_task]: Calling PlanningResponseAdapter 'AddTimeOptimalParameterization'
+[INFO] [1794394890.237978504] [parcel_task]: Calling PlanningResponseAdapter 'ValidateSolution'
+[INFO] [1794394890.239013469] [parcel_task]: Calling PlanningResponseAdapter 'DisplayMotionPath'
+[INFO] [1794394890.242462837] [parcel_task]: Planning succeeded, executing...
+[INFO] [1794394890.257043286] [moveit_648262190.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394890.257114878] [moveit_648262190.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394890.257153022] [moveit_648262190.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394890.257174555] [moveit_648262190.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394890.257207525] [moveit_648262190.moveit.ros.trajectory_execution_manager]: Validating trajectory with allowed_start_tolerance 0.01
+[INFO] [1794394890.259199493] [moveit_648262190.moveit.ros.trajectory_execution_manager]: Starting trajectory execution ...
+[INFO] [1794394890.259272097] [moveit_648262190.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394890.259330918] [moveit_648262190.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394890.259449764] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: sending trajectory to arm_controller
+[INFO] [1794394890.259855671] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: arm_controller started execution
+[INFO] [1794394890.259883818] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Goal request accepted!
+[INFO] [1794394897.910353085] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Controller 'arm_controller' successfully finished
+[INFO] [1794394897.924819075] [moveit_648262190.moveit.ros.trajectory_execution_manager]: Completed trajectory execution with status SUCCEEDED ...
+[INFO] [1794394898.147000992] [parcel_task]: move_to_named('ready') -> ok @ (0.307, 0.000, 0.590)
+[INFO] [1794394898.148245571] [parcel_task]: PARCEL_STATE {"state": "FULL", "sim_time": 81.007, "wall_elapsed": 305.93289958600053, "occupied": 0}
+PARCEL_TASK_COMPLETE
+/usr/lib/python3.12/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 4 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

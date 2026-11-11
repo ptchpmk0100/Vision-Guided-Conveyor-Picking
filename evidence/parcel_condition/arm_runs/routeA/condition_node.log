@@ -1,0 +1,9 @@
+[INFO] [1794393982.715707322] [parcel_condition]: condition classifier ready: model=/home/pmkhoi/ros_test_ws_mirror/logs/condition/runs/r1/model.onnx detections=/parcel_cell/moving_detections min_confidence=0.75
+[INFO] [1794393999.020762095] [parcel_condition]: msgs=57 parcels=57 unmatched=5 edge=0 latency_ms mean=9.7 p95=13.0 max=21.7
+[INFO] [1794394026.902188027] [parcel_condition]: msgs=87 parcels=87 unmatched=11 edge=0 latency_ms mean=9.6 p95=12.8 max=21.7
+[INFO] [1794394061.465334691] [parcel_condition]: msgs=112 parcels=112 unmatched=18 edge=0 latency_ms mean=10.1 p95=13.9 max=40.1
+[INFO] [1794394092.591649288] [parcel_condition]: msgs=155 parcels=155 unmatched=24 edge=0 latency_ms mean=10.4 p95=14.6 max=40.1
+[INFO] [1794394125.760827869] [parcel_condition]: msgs=192 parcels=192 unmatched=32 edge=0 latency_ms mean=10.6 p95=16.5 max=40.1
+[INFO] [1794394158.555480599] [parcel_condition]: msgs=231 parcels=231 unmatched=35 edge=0 latency_ms mean=10.7 p95=16.2 max=40.1
+[INFO] [1794394192.295292049] [parcel_condition]: msgs=282 parcels=282 unmatched=38 edge=0 latency_ms mean=10.9 p95=16.5 max=45.0
+[INFO] [1794394223.848154710] [parcel_condition]: msgs=315 parcels=315 unmatched=43 edge=0 latency_ms mean=11.3 p95=16.6 max=45.0

@@ -1,0 +1,1614 @@
+{
+  "indexed": false,
+  "continuous": true,
+  "parcel_count": 10,
+  "parcel_pitch": 0.344,
+  "slots": [
+    [
+      0.37,
+      -0.37
+    ],
+    [
+      0.37,
+      -0.27
+    ],
+    [
+      0.27,
+      -0.37
+    ],
+    [
+      0.27,
+      -0.27
+    ],
+    [
+      0.17,
+      -0.37
+    ],
+    [
+      0.17,
+      -0.27
+    ],
+    [
+      0.07,
+      -0.37
+    ],
+    [
+      0.07,
+      -0.27
+    ],
+    [
+      -0.03,
+      -0.37
+    ],
+    [
+      -0.03,
+      -0.27
+    ]
+  ],
+  "started_wall_monotonic": 7434.094618793,
+  "grasp_mode": "confirmed",
+  "belt_speed": 0.045,
+  "passed": true,
+  "events": [
+    {
+      "state": "PREPARE_OPEN_START",
+      "sim_time": 5.832,
+      "wall_elapsed": 3.662784737000038,
+      "startup": true
+    },
+    {
+      "state": "PREPARE_ARM_START",
+      "sim_time": 5.832,
+      "wall_elapsed": 3.663272603999758,
+      "startup": true
+    },
+    {
+      "state": "PREPARE_ARM_DONE",
+      "sim_time": 7.711,
+      "wall_elapsed": 8.155033532999369,
+      "startup": true,
+      "arrived": true
+    },
+    {
+      "state": "PREPARE_OPEN_DONE",
+      "sim_time": 8.57,
+      "wall_elapsed": 10.243931280999277,
+      "startup": true,
+      "strokes": 1,
+      "fingers": [
+        0.03996693661092661,
+        0.0399989901257038
+      ]
+    },
+    {
+      "state": "BELT_RUNNING",
+      "sim_time": 8.578,
+      "wall_elapsed": 10.24825550300011,
+      "speed": 0.045
+    },
+    {
+      "state": "READY",
+      "sim_time": 8.578,
+      "wall_elapsed": 10.249890400999902,
+      "slot": 0
+    },
+    {
+      "state": "PICK",
+      "sim_time": 9.69,
+      "wall_elapsed": 12.969419340000059,
+      "track": 1,
+      "condition": "intact",
+      "p_damaged": 0.0028779722342733294,
+      "votes": 11
+    },
+    {
+      "state": "INTERCEPT",
+      "sim_time": 9.75,
+      "wall_elapsed": 13.137605451999661,
+      "track": 1,
+      "velocity": 0.045,
+      "measured_velocity": 0.04513054148492899,
+      "camera_stamp": 9.7,
+      "target_at_start": [
+        0.5600849326607034,
+        -0.23579801247079318,
+        0.31994516382225135
+      ],
+      "start_sim": 9.99,
+      "grasp_sim": 11.34,
+      "end_sim": 13.99,
+      "grasp_mode": "confirmed"
+    },
+    {
+      "state": "CLOSE_START",
+      "sim_time": 11.342,
+      "wall_elapsed": 17.14579861799939,
+      "scheduled_sim": 11.34
+    },
+    {
+      "state": "FIRST_CONTACT",
+      "sim_time": 12.096,
+      "wall_elapsed": 19.069903575999888,
+      "left": [
+        "parcel_1"
+      ],
+      "right": [
+        "parcel_1"
+      ]
+    },
+    {
+      "state": "BILATERAL_CONTACT",
+      "sim_time": 12.096,
+      "wall_elapsed": 19.070751268000095,
+      "objects": [
+        "parcel_1"
+      ]
+    },
+    {
+      "state": "GRASP_CONFIRMED",
+      "sim_time": 12.267,
+      "wall_elapsed": 19.653903574999276,
+      "object": "parcel_1",
+      "width": 0.02512841092493511,
+      "desired": 0.021479999999999996,
+      "joint_age": 0.001,
+      "contact_age": 0.002,
+      "reason": "bilateral contact and stable seated gap"
+    },
+    {
+      "state": "LIFT_REQUESTED",
+      "sim_time": 12.302,
+      "wall_elapsed": 19.775663030000032,
+      "object": "parcel_1",
+      "lift_sim": 12.440000000000001,
+      "close_start_sim": 11.34,
+      "end_sim": 13.340000000000002
+    },
+    {
+      "state": "LIFTED",
+      "sim_time": 13.346,
+      "wall_elapsed": 23.3223935420001,
+      "object": "parcel_1",
+      "width": 0.025118768468367934,
+      "position": [
+        0.5600826053181617,
+        -0.09404776229808738,
+        0.5699152944408375
+      ]
+    },
+    {
+      "state": "PLACE",
+      "sim_time": 13.352,
+      "wall_elapsed": 23.324214477999703,
+      "target": [
+        0.37,
+        -0.37,
+        0.32
+      ],
+      "destination": "tote",
+      "slot": 0
+    },
+    {
+      "state": "RELEASE_AUTHORIZED",
+      "sim_time": 14.525,
+      "wall_elapsed": 27.768457401999513
+    },
+    {
+      "state": "PREPARE_OPEN_START",
+      "sim_time": 15.669,
+      "wall_elapsed": 30.609035462000065,
+      "startup": false
+    },
+    {
+      "state": "PREPARE_ARM_START",
+      "sim_time": 15.669,
+      "wall_elapsed": 30.60944548399948,
+      "startup": false
+    },
+    {
+      "state": "PREPARE_OPEN_DONE",
+      "sim_time": 15.669,
+      "wall_elapsed": 30.617937921999328,
+      "startup": false,
+      "strokes": 0,
+      "fingers": [
+        0.04000000000000001,
+        0.0399999154982015
+      ]
+    },
+    {
+      "state": "PREPARE_ARM_DONE",
+      "sim_time": 16.67,
+      "wall_elapsed": 33.07918629199958,
+      "startup": false,
+      "arrived": true
+    },
+    {
+      "state": "READY",
+      "sim_time": 16.67,
+      "wall_elapsed": 33.081911290999415,
+      "slot": 1
+    },
+    {
+      "state": "PICK",
+      "sim_time": 17.321,
+      "wall_elapsed": 34.71659116999945,
+      "track": 2,
+      "condition": "damaged",
+      "p_damaged": 0.9999048411846161,
+      "votes": 18
+    },
+    {
+      "state": "SETTLED",
+      "sim_time": 17.382,
+      "wall_elapsed": 34.871187381999334,
+      "slot": 0
+    },
+    {
+      "state": "INTERCEPT",
+      "sim_time": 17.394,
+      "wall_elapsed": 34.88460596200002,
+      "track": 2,
+      "velocity": 0.045,
+      "measured_velocity": 0.04521320939279953,
+      "camera_stamp": 17.3,
+      "target_at_start": [
+        0.5600852528020871,
+        -0.2361116488479355,
+        0.3199547185316543
+      ],
+      "start_sim": 17.627000000000002,
+      "grasp_sim": 18.977000000000004,
+      "end_sim": 21.627000000000002,
+      "grasp_mode": "confirmed"
+    },
+    {
+      "state": "CLOSE_START",
+      "sim_time": 18.978,
+      "wall_elapsed": 38.909882336999544,
+      "scheduled_sim": 18.977000000000004
+    },
+    {
+      "state": "FIRST_CONTACT",
+      "sim_time": 18.978,
+      "wall_elapsed": 38.92384160199981,
+      "left": [
+        "parcel_1"
+      ],
+      "right": [
+        "parcel_1"
+      ]
+    },
+    {
+      "state": "BILATERAL_CONTACT",
+      "sim_time": 18.987,
+      "wall_elapsed": 38.92828717499924,
+      "objects": [
+        "parcel_1"
+      ]
+    },
+    {
+      "state": "BILATERAL_CONTACT",
+      "sim_time": 19.732,
+      "wall_elapsed": 40.847414386999844,
+      "objects": [
+        "parcel_2"
+      ]
+    },
+    {
+      "state": "GRASP_CONFIRMED",
+      "sim_time": 19.902,
+      "wall_elapsed": 41.37630586999967,
+      "object": "parcel_2",
+      "width": 0.0251282678791424,
+      "desired": 0.021500000000000057,
+      "joint_age": 0.0,
+      "contact_age": 0.001,
+      "reason": "bilateral contact and stable seated gap"
+    },
+    {
+      "state": "LIFT_REQUESTED",
+      "sim_time": 19.94,
+      "wall_elapsed": 41.49673506899944,
+      "object": "parcel_2",
+      "lift_sim": 20.077,
+      "close_start_sim": 18.977000000000004,
+      "end_sim": 20.977
+    },
+    {
+      "state": "LIFTED",
+      "sim_time": 20.98,
+      "wall_elapsed": 45.34740969699942,
+      "object": "parcel_2",
+      "width": 0.025119522211360018,
+      "position": [
+        0.5600829364475883,
+        -0.09436168741634972,
+        0.5698779155762664
+      ]
+    },
+    {
+      "state": "PLACE",
+      "sim_time": 20.98,
+      "wall_elapsed": 45.34977700299987,
+      "target": [
+        0.28,
+        0.45,
+        0.32
+      ],
+      "destination": "reject",
+      "slot": 0
+    },
+    {
+      "state": "RELEASE_AUTHORIZED",
+      "sim_time": 22.679,
+      "wall_elapsed": 52.60095105399978
+    },
+    {
+      "state": "REJECTED",
+      "sim_time": 23.723,
+      "wall_elapsed": 55.68728449899936,
+      "slot": 0
+    },
+    {
+      "state": "PREPARE_OPEN_START",
+      "sim_time": 23.723,
+      "wall_elapsed": 55.691834978999395,
+      "startup": false
+    },
+    {
+      "state": "PREPARE_ARM_START",
+      "sim_time": 23.723,
+      "wall_elapsed": 55.69249627199952,
+      "startup": false
+    },
+    {
+      "state": "PREPARE_OPEN_DONE",
+      "sim_time": 23.723,
+      "wall_elapsed": 55.70123526499992,
+      "startup": false,
+      "strokes": 0,
+      "fingers": [
+        0.0399998134637997,
+        0.03999999999999997
+      ]
+    },
+    {
+      "state": "PREPARE_ARM_DONE",
+      "sim_time": 24.862,
+      "wall_elapsed": 59.0329322839998,
+      "startup": false,
+      "arrived": true
+    },
+    {
+      "state": "READY",
+      "sim_time": 24.862,
+      "wall_elapsed": 59.03613486099948,
+      "slot": 2
+    },
+    {
+      "state": "PICK",
+      "sim_time": 24.982,
+      "wall_elapsed": 59.371771851999256,
+      "track": 3,
+      "condition": "intact",
+      "p_damaged": 0.009613440284738317,
+      "votes": 9
+    },
+    {
+      "state": "INTERCEPT",
+      "sim_time": 25.039,
+      "wall_elapsed": 59.55969070499941,
+      "track": 3,
+      "velocity": 0.045,
+      "measured_velocity": 0.041750585528578285,
+      "camera_stamp": 24.9,
+      "target_at_start": [
+        0.5600849326607034,
+        -0.2361560923913296,
+        0.31993749006764927
+      ],
+      "start_sim": 25.282,
+      "grasp_sim": 26.632,
+      "end_sim": 29.282,
+      "grasp_mode": "confirmed"
+    },
+    {
+      "state": "CLOSE_START",
+      "sim_time": 26.635,
+      "wall_elapsed": 64.02952644499965,
+      "scheduled_sim": 26.632
+    },
+    {
+      "state": "FIRST_CONTACT",
+      "sim_time": 26.643,
+      "wall_elapsed": 64.04455927399977,
+      "left": [
+        "parcel_2"
+      ],
+      "right": [
+        "parcel_2"
+      ]
+    },
+    {
+      "state": "BILATERAL_CONTACT",
+      "sim_time": 26.643,
+      "wall_elapsed": 64.04766618999929,
+      "objects": [
+        "parcel_2"
+      ]
+    },
+    {
+      "state": "BILATERAL_CONTACT",
+      "sim_time": 27.389,
+      "wall_elapsed": 66.14725327899941,
+      "objects": [
+        "parcel_3"
+      ]
+    },
+    {
+      "state": "GRASP_CONFIRMED",
+      "sim_time": 27.557,
+      "wall_elapsed": 66.8700135049994,
+      "object": "parcel_3",
+      "width": 0.025129103507716414,
+      "desired": 0.02152000000000001,
+      "joint_age": 0.001,
+      "contact_age": 0.001,
+      "reason": "bilateral contact and stable seated gap"
+    },
+    {
+      "state": "LIFT_REQUESTED",
+      "sim_time": 27.594,
+      "wall_elapsed": 66.985072855,
+      "object": "parcel_3",
+      "lift_sim": 27.732,
+      "close_start_sim": 26.632,
+      "end_sim": 28.631999999999998
+    },
+    {
+      "state": "LIFTED",
+      "sim_time": 28.638,
+      "wall_elapsed": 71.03002609899977,
+      "object": "parcel_3",
+      "width": 0.025129319045193145,
+      "position": [
+        0.5600826144899583,
+        -0.09440603595696635,
+        0.5698752441993158
+      ]
+    },
+    {
+      "state": "PLACE",
+      "sim_time": 28.638,
+      "wall_elapsed": 71.03923835099977,
+      "target": [
+        0.37,
+        -0.27,
+        0.32
+      ],
+      "destination": "tote",
+      "slot": 1
+    },
+    {
+      "state": "RELEASE_AUTHORIZED",
+      "sim_time": 29.582,
+      "wall_elapsed": 74.94990768199932
+    },
+    {
+      "state": "PREPARE_OPEN_START",
+      "sim_time": 30.66,
+      "wall_elapsed": 78.0806858599999,
+      "startup": false
+    },
+    {
+      "state": "PREPARE_ARM_START",
+      "sim_time": 30.67,
+      "wall_elapsed": 78.08733107999979,
+      "startup": false
+    },
+    {
+      "state": "PREPARE_OPEN_DONE",
+      "sim_time": 30.67,
+      "wall_elapsed": 78.09366656299972,
+      "startup": false,
+      "strokes": 0,
+      "fingers": [
+        0.03999986253605935,
+        0.03999999999999997
+      ]
+    },
+    {
+      "state": "PREPARE_ARM_DONE",
+      "sim_time": 31.447,
+      "wall_elapsed": 80.30728398999963,
+      "startup": false,
+      "arrived": true
+    },
+    {
+      "state": "READY",
+      "sim_time": 31.447,
+      "wall_elapsed": 80.31246131399985,
+      "slot": 3
+    },
+    {
+      "state": "SETTLED",
+      "sim_time": 32.431,
+      "wall_elapsed": 83.01618075799979,
+      "slot": 1
+    },
+    {
+      "state": "PICK",
+      "sim_time": 32.616,
+      "wall_elapsed": 83.51362402599989,
+      "track": 4,
+      "condition": "intact",
+      "p_damaged": 0.001495854698077892,
+      "votes": 16
+    },
+    {
+      "state": "INTERCEPT",
+      "sim_time": 32.674,
+      "wall_elapsed": 83.71896642999945,
+      "track": 4,
+      "velocity": 0.045,
+      "measured_velocity": 0.04473205589391417,
+      "camera_stamp": 32.6,
+      "target_at_start": [
+        0.5600858930848543,
+        -0.23638858021647768,
+        0.3199390239320798
+      ],
+      "start_sim": 32.916,
+      "grasp_sim": 34.266,
+      "end_sim": 36.916,
+      "grasp_mode": "confirmed"
+    },
+    {
+      "state": "CLOSE_START",
+      "sim_time": 34.271,
+      "wall_elapsed": 88.09133037099946,
+      "scheduled_sim": 34.266
+    },
+    {
+      "state": "FIRST_CONTACT",
+      "sim_time": 34.279,
+      "wall_elapsed": 88.10721556099998,
+      "left": [
+        "parcel_3"
+      ],
+      "right": [
+        "parcel_3"
+      ]
+    },
+    {
+      "state": "BILATERAL_CONTACT",
+      "sim_time": 34.279,
+      "wall_elapsed": 88.11242305199994,
+      "objects": [
+        "parcel_3"
+      ]
+    },
+    {
+      "state": "BILATERAL_CONTACT",
+      "sim_time": 35.023,
+      "wall_elapsed": 90.27402213799996,
+      "objects": [
+        "parcel_4"
+      ]
+    },
+    {
+      "state": "GRASP_CONFIRMED",
+      "sim_time": 35.187,
+      "wall_elapsed": 90.85429784400003,
+      "object": "parcel_4",
+      "width": 0.025130420800045003,
+      "desired": 0.021580000000000012,
+      "joint_age": 0.0,
+      "contact_age": 0.001,
+      "reason": "bilateral contact and stable seated gap"
+    },
+    {
+      "state": "LIFT_REQUESTED",
+      "sim_time": 35.226,
+      "wall_elapsed": 90.98977826999999,
+      "object": "parcel_4",
+      "lift_sim": 35.366,
+      "close_start_sim": 34.266,
+      "end_sim": 36.266
+    },
+    {
+      "state": "LIFTED",
+      "sim_time": 36.28,
+      "wall_elapsed": 94.88623013699998,
+      "object": "parcel_4",
+      "width": 0.025118805172840687,
+      "position": [
+        0.5600835462770387,
+        -0.0946383991890418,
+        0.5699147934683004
+      ]
+    },
+    {
+      "state": "PLACE",
+      "sim_time": 36.28,
+      "wall_elapsed": 94.88878856099927,
+      "target": [
+        0.27,
+        -0.37,
+        0.32
+      ],
+      "destination": "tote",
+      "slot": 2
+    },
+    {
+      "state": "RELEASE_AUTHORIZED",
+      "sim_time": 37.496,
+      "wall_elapsed": 100.09860417399977
+    },
+    {
+      "state": "PREPARE_OPEN_START",
+      "sim_time": 38.538,
+      "wall_elapsed": 103.20477959399977,
+      "startup": false
+    },
+    {
+      "state": "PREPARE_ARM_START",
+      "sim_time": 38.538,
+      "wall_elapsed": 103.20553180499974,
+      "startup": false
+    },
+    {
+      "state": "PREPARE_OPEN_DONE",
+      "sim_time": 38.543,
+      "wall_elapsed": 103.21089355299955,
+      "startup": false,
+      "strokes": 0,
+      "fingers": [
+        0.03999973252240109,
+        0.03999999999999997
+      ]
+    },
+    {
+      "state": "PREPARE_ARM_DONE",
+      "sim_time": 39.566,
+      "wall_elapsed": 106.14572952299932,
+      "startup": false,
+      "arrived": true
+    },
+    {
+      "state": "READY",
+      "sim_time": 39.566,
+      "wall_elapsed": 106.14912895299949,
+      "slot": 4
+    },
+    {
+      "state": "PICK",
+      "sim_time": 40.282,
+      "wall_elapsed": 108.16320680199988,
+      "track": 5,
+      "condition": "damaged",
+      "p_damaged": 0.9999997764825821,
+      "votes": 18
+    },
+    {
+      "state": "INTERCEPT",
+      "sim_time": 40.343,
+      "wall_elapsed": 108.36195350799971,
+      "track": 5,
+      "velocity": 0.045,
+      "measured_velocity": 0.04426041951000205,
+      "camera_stamp": 40.3,
+      "target_at_start": [
+        0.5600818913175587,
+        -0.23584189242443968,
+        0.3199486471577143
+      ],
+      "start_sim": 40.589,
+      "grasp_sim": 41.939,
+      "end_sim": 44.589,
+      "grasp_mode": "confirmed"
+    },
+    {
+      "state": "SETTLED",
+      "sim_time": 40.934,
+      "wall_elapsed": 110.02862054399975,
+      "slot": 2
+    },
+    {
+      "state": "CLOSE_START",
+      "sim_time": 41.943,
+      "wall_elapsed": 112.78658044099939,
+      "scheduled_sim": 41.939
+    },
+    {
+      "state": "FIRST_CONTACT",
+      "sim_time": 41.943,
+      "wall_elapsed": 112.80260818499937,
+      "left": [
+        "parcel_4"
+      ],
+      "right": [
+        "parcel_4"
+      ]
+    },
+    {
+      "state": "BILATERAL_CONTACT",
+      "sim_time": 41.952,
+      "wall_elapsed": 112.80675638999946,
+      "objects": [
+        "parcel_4"
+      ]
+    },
+    {
+      "state": "BILATERAL_CONTACT",
+      "sim_time": 42.695,
+      "wall_elapsed": 114.86609900999974,
+      "objects": [
+        "parcel_5"
+      ]
+    },
+    {
+      "state": "GRASP_CONFIRMED",
+      "sim_time": 42.865,
+      "wall_elapsed": 115.50918905099934,
+      "object": "parcel_5",
+      "width": 0.02512900121367475,
+      "desired": 0.021500000000000057,
+      "joint_age": 0.001,
+      "contact_age": 0.001,
+      "reason": "bilateral contact and stable seated gap"
+    },
+    {
+      "state": "LIFT_REQUESTED",
+      "sim_time": 42.901,
+      "wall_elapsed": 115.63198396899952,
+      "object": "parcel_5",
+      "lift_sim": 43.039,
+      "close_start_sim": 41.939,
+      "end_sim": 43.939
+    },
+    {
+      "state": "LIFTED",
+      "sim_time": 43.95,
+      "wall_elapsed": 119.78283052999996,
+      "object": "parcel_5",
+      "width": 0.025105678409704825,
+      "position": [
+        0.5600795587610997,
+        -0.09409159114022299,
+        0.5699289855187754
+      ]
+    },
+    {
+      "state": "PLACE",
+      "sim_time": 43.956,
+      "wall_elapsed": 119.78676431999975,
+      "target": [
+        0.28,
+        0.55,
+        0.32
+      ],
+      "destination": "reject",
+      "slot": 1
+    },
+    {
+      "state": "RELEASE_AUTHORIZED",
+      "sim_time": 46.525,
+      "wall_elapsed": 130.86890413799938
+    },
+    {
+      "state": "REJECTED",
+      "sim_time": 47.594,
+      "wall_elapsed": 133.90589297099996,
+      "slot": 1
+    },
+    {
+      "state": "PREPARE_OPEN_START",
+      "sim_time": 47.601,
+      "wall_elapsed": 133.91044657299972,
+      "startup": false
+    },
+    {
+      "state": "PREPARE_ARM_START",
+      "sim_time": 47.601,
+      "wall_elapsed": 133.91120639199926,
+      "startup": false
+    },
+    {
+      "state": "PREPARE_OPEN_DONE",
+      "sim_time": 47.626,
+      "wall_elapsed": 134.00482041799933,
+      "startup": false,
+      "strokes": 0,
+      "fingers": [
+        0.03999954720436464,
+        0.03999999999999998
+      ]
+    },
+    {
+      "state": "PREPARE_ARM_DONE",
+      "sim_time": 49.449,
+      "wall_elapsed": 139.02287430099932,
+      "startup": false,
+      "arrived": true
+    },
+    {
+      "state": "READY",
+      "sim_time": 49.456,
+      "wall_elapsed": 139.03084338499957,
+      "slot": 5
+    },
+    {
+      "state": "PICK",
+      "sim_time": 49.461,
+      "wall_elapsed": 139.06164391099992,
+      "track": 6,
+      "condition": "intact",
+      "p_damaged": 0.012068261101376265,
+      "votes": 25
+    },
+    {
+      "state": "INTERCEPT",
+      "sim_time": 49.53,
+      "wall_elapsed": 139.24798995999936,
+      "track": 6,
+      "velocity": 0.045,
+      "measured_velocity": 0.045381447310814456,
+      "camera_stamp": 49.4,
+      "target_at_start": [
+        0.5600724471467411,
+        -0.1667191077651319,
+        0.31993895890727997
+      ],
+      "start_sim": 49.769999999999996,
+      "grasp_sim": 51.12,
+      "end_sim": 53.769999999999996,
+      "grasp_mode": "confirmed"
+    },
+    {
+      "state": "CLOSE_START",
+      "sim_time": 51.123,
+      "wall_elapsed": 143.73500337199948,
+      "scheduled_sim": 51.12
+    },
+    {
+      "state": "FIRST_CONTACT",
+      "sim_time": 51.131,
+      "wall_elapsed": 143.7496663289994,
+      "left": [
+        "parcel_5"
+      ],
+      "right": [
+        "parcel_5"
+      ]
+    },
+    {
+      "state": "BILATERAL_CONTACT",
+      "sim_time": 51.131,
+      "wall_elapsed": 143.75297933899947,
+      "objects": [
+        "parcel_5"
+      ]
+    },
+    {
+      "state": "BILATERAL_CONTACT",
+      "sim_time": 51.876,
+      "wall_elapsed": 145.85331673099972,
+      "objects": [
+        "parcel_6"
+      ]
+    },
+    {
+      "state": "GRASP_CONFIRMED",
+      "sim_time": 52.047,
+      "wall_elapsed": 146.49397481699998,
+      "object": "parcel_6",
+      "width": 0.02512899524719322,
+      "desired": 0.02147999999999996,
+      "joint_age": 0.001,
+      "contact_age": 0.0,
+      "reason": "bilateral contact and stable seated gap"
+    },
+    {
+      "state": "LIFT_REQUESTED",
+      "sim_time": 52.083,
+      "wall_elapsed": 146.63454608699976,
+      "object": "parcel_6",
+      "lift_sim": 52.22,
+      "close_start_sim": 51.12,
+      "end_sim": 53.12
+    },
+    {
+      "state": "LIFTED",
+      "sim_time": 53.119,
+      "wall_elapsed": 150.77862248399924,
+      "object": "parcel_6",
+      "width": 0.025119959240951343,
+      "position": [
+        0.5600701294580611,
+        -0.02496993708076568,
+        0.5697806574941342
+      ]
+    },
+    {
+      "state": "PLACE",
+      "sim_time": 53.119,
+      "wall_elapsed": 150.78037875399968,
+      "target": [
+        0.27,
+        -0.27,
+        0.32
+      ],
+      "destination": "tote",
+      "slot": 3
+    },
+    {
+      "state": "RELEASE_AUTHORIZED",
+      "sim_time": 54.262,
+      "wall_elapsed": 155.62636346899944
+    },
+    {
+      "state": "PREPARE_OPEN_START",
+      "sim_time": 55.333,
+      "wall_elapsed": 158.7343715979996,
+      "startup": false
+    },
+    {
+      "state": "PREPARE_ARM_START",
+      "sim_time": 55.333,
+      "wall_elapsed": 158.73729802399976,
+      "startup": false
+    },
+    {
+      "state": "PREPARE_OPEN_DONE",
+      "sim_time": 55.34,
+      "wall_elapsed": 158.74537503699958,
+      "startup": false,
+      "strokes": 0,
+      "fingers": [
+        0.03999961291656985,
+        0.03999999999999998
+      ]
+    },
+    {
+      "state": "PREPARE_ARM_DONE",
+      "sim_time": 56.165,
+      "wall_elapsed": 161.10705275300006,
+      "startup": false,
+      "arrived": true
+    },
+    {
+      "state": "READY",
+      "sim_time": 56.165,
+      "wall_elapsed": 161.1105312009995,
+      "slot": 6
+    },
+    {
+      "state": "PICK",
+      "sim_time": 56.175,
+      "wall_elapsed": 161.14074329399955,
+      "track": 7,
+      "condition": "damaged",
+      "p_damaged": 0.9999917596578598,
+      "votes": 27
+    },
+    {
+      "state": "INTERCEPT",
+      "sim_time": 56.238,
+      "wall_elapsed": 161.3384629229995,
+      "track": 7,
+      "velocity": 0.045,
+      "measured_velocity": 0.044732055893913866,
+      "camera_stamp": 56.2,
+      "target_at_start": [
+        0.5600459030836098,
+        -0.20917892778466565,
+        0.3199455963322136
+      ],
+      "start_sim": 56.474999999999994,
+      "grasp_sim": 57.824999999999996,
+      "end_sim": 60.474999999999994,
+      "grasp_mode": "confirmed"
+    },
+    {
+      "state": "SETTLED",
+      "sim_time": 56.728,
+      "wall_elapsed": 162.73694394999984,
+      "slot": 3
+    },
+    {
+      "state": "CLOSE_START",
+      "sim_time": 57.832,
+      "wall_elapsed": 165.74695493299987,
+      "scheduled_sim": 57.824999999999996
+    },
+    {
+      "state": "FIRST_CONTACT",
+      "sim_time": 57.832,
+      "wall_elapsed": 165.76261369799977,
+      "left": [
+        "parcel_6"
+      ],
+      "right": [
+        "parcel_6"
+      ]
+    },
+    {
+      "state": "BILATERAL_CONTACT",
+      "sim_time": 57.837,
+      "wall_elapsed": 165.76540837499942,
+      "objects": [
+        "parcel_6"
+      ]
+    },
+    {
+      "state": "BILATERAL_CONTACT",
+      "sim_time": 58.583,
+      "wall_elapsed": 167.8494189439998,
+      "objects": [
+        "parcel_7"
+      ]
+    },
+    {
+      "state": "GRASP_CONFIRMED",
+      "sim_time": 58.75,
+      "wall_elapsed": 168.47448106899992,
+      "object": "parcel_7",
+      "width": 0.025129117471924325,
+      "desired": 0.02151999999999987,
+      "joint_age": 0.001,
+      "contact_age": 0.002,
+      "reason": "bilateral contact and stable seated gap"
+    },
+    {
+      "state": "LIFT_REQUESTED",
+      "sim_time": 58.788,
+      "wall_elapsed": 168.6089009489997,
+      "object": "parcel_7",
+      "lift_sim": 58.925,
+      "close_start_sim": 57.824999999999996,
+      "end_sim": 59.824999999999996
+    },
+    {
+      "state": "LIFTED",
+      "sim_time": 59.832,
+      "wall_elapsed": 172.65877962800005,
+      "object": "parcel_7",
+      "width": 0.02512000380337241,
+      "position": [
+        0.5600435627759404,
+        -0.06742881284143012,
+        0.5699157346683027
+      ]
+    },
+    {
+      "state": "PLACE",
+      "sim_time": 59.832,
+      "wall_elapsed": 172.66116565899938,
+      "target": [
+        0.18,
+        0.45,
+        0.32
+      ],
+      "destination": "reject",
+      "slot": 2
+    },
+    {
+      "state": "RELEASE_AUTHORIZED",
+      "sim_time": 61.333,
+      "wall_elapsed": 179.07378995499948
+    },
+    {
+      "state": "REJECTED",
+      "sim_time": 62.385,
+      "wall_elapsed": 182.14680092599974,
+      "slot": 2
+    },
+    {
+      "state": "PREPARE_OPEN_START",
+      "sim_time": 62.393,
+      "wall_elapsed": 182.15036110099936,
+      "startup": false
+    },
+    {
+      "state": "PREPARE_ARM_START",
+      "sim_time": 62.393,
+      "wall_elapsed": 182.15192770699923,
+      "startup": false
+    },
+    {
+      "state": "PREPARE_OPEN_DONE",
+      "sim_time": 62.393,
+      "wall_elapsed": 182.15768623799977,
+      "startup": false,
+      "strokes": 0,
+      "fingers": [
+        0.03999999999999998,
+        0.03999996161681054
+      ]
+    },
+    {
+      "state": "PREPARE_ARM_DONE",
+      "sim_time": 63.51,
+      "wall_elapsed": 185.19190702600008,
+      "startup": false,
+      "arrived": true
+    },
+    {
+      "state": "READY",
+      "sim_time": 63.51,
+      "wall_elapsed": 185.1965214619995,
+      "slot": 7
+    },
+    {
+      "state": "PICK",
+      "sim_time": 63.524,
+      "wall_elapsed": 185.23617570999977,
+      "track": 8,
+      "condition": "intact",
+      "p_damaged": 0.000993136280158069,
+      "votes": 19
+    },
+    {
+      "state": "INTERCEPT",
+      "sim_time": 63.579,
+      "wall_elapsed": 185.41428857499977,
+      "track": 8,
+      "velocity": 0.045,
+      "measured_velocity": 0.04473205589391424,
+      "camera_stamp": 63.5,
+      "target_at_start": [
+        0.560080770822716,
+        -0.2214183487171732,
+        0.3199410290161003
+      ],
+      "start_sim": 63.824,
+      "grasp_sim": 65.17399999999999,
+      "end_sim": 67.824,
+      "grasp_mode": "confirmed"
+    },
+    {
+      "state": "CLOSE_START",
+      "sim_time": 65.176,
+      "wall_elapsed": 190.00672541899985,
+      "scheduled_sim": 65.17399999999999
+    },
+    {
+      "state": "FIRST_CONTACT",
+      "sim_time": 65.176,
+      "wall_elapsed": 190.02131008299966,
+      "left": [
+        "parcel_7"
+      ],
+      "right": [
+        "parcel_7"
+      ]
+    },
+    {
+      "state": "BILATERAL_CONTACT",
+      "sim_time": 65.176,
+      "wall_elapsed": 190.02296738399946,
+      "objects": [
+        "parcel_7"
+      ]
+    },
+    {
+      "state": "BILATERAL_CONTACT",
+      "sim_time": 65.932,
+      "wall_elapsed": 192.25520284899994,
+      "objects": [
+        "parcel_8"
+      ]
+    },
+    {
+      "state": "GRASP_CONFIRMED",
+      "sim_time": 66.096,
+      "wall_elapsed": 192.85745064999992,
+      "object": "parcel_8",
+      "width": 0.025127702510328677,
+      "desired": 0.021559999999999774,
+      "joint_age": 0.0,
+      "contact_age": 0.0,
+      "reason": "bilateral contact and stable seated gap"
+    },
+    {
+      "state": "LIFT_REQUESTED",
+      "sim_time": 66.131,
+      "wall_elapsed": 192.9982854310001,
+      "object": "parcel_8",
+      "lift_sim": 66.274,
+      "close_start_sim": 65.17399999999999,
+      "end_sim": 67.174
+    },
+    {
+      "state": "LIFTED",
+      "sim_time": 67.175,
+      "wall_elapsed": 197.15284272099962,
+      "object": "parcel_8",
+      "width": 0.025118978099952394,
+      "position": [
+        0.5600784503811503,
+        -0.07966844020947948,
+        0.5698642308134619
+      ]
+    },
+    {
+      "state": "PLACE",
+      "sim_time": 67.175,
+      "wall_elapsed": 197.15543366699967,
+      "target": [
+        0.17,
+        -0.37,
+        0.32
+      ],
+      "destination": "tote",
+      "slot": 4
+    },
+    {
+      "state": "RELEASE_AUTHORIZED",
+      "sim_time": 68.413,
+      "wall_elapsed": 202.50773162199948
+    },
+    {
+      "state": "PREPARE_OPEN_START",
+      "sim_time": 69.47,
+      "wall_elapsed": 205.55332196399922,
+      "startup": false
+    },
+    {
+      "state": "PREPARE_ARM_START",
+      "sim_time": 69.47,
+      "wall_elapsed": 205.55549301099927,
+      "startup": false
+    },
+    {
+      "state": "PREPARE_OPEN_DONE",
+      "sim_time": 69.515,
+      "wall_elapsed": 205.68534888499926,
+      "startup": false,
+      "strokes": 0,
+      "fingers": [
+        0.039999689139259866,
+        0.03999999999999998
+      ]
+    },
+    {
+      "state": "PREPARE_ARM_DONE",
+      "sim_time": 70.533,
+      "wall_elapsed": 208.59108643199943,
+      "startup": false,
+      "arrived": true
+    },
+    {
+      "state": "READY",
+      "sim_time": 70.533,
+      "wall_elapsed": 208.59631915599948,
+      "slot": 8
+    },
+    {
+      "state": "PICK",
+      "sim_time": 70.94,
+      "wall_elapsed": 209.85882365399993,
+      "track": 9,
+      "condition": "intact",
+      "p_damaged": 0.11518574554247607,
+      "votes": 20
+    },
+    {
+      "state": "INTERCEPT",
+      "sim_time": 71.001,
+      "wall_elapsed": 210.02216779099945,
+      "track": 9,
+      "velocity": 0.045,
+      "measured_velocity": 0.04557683472084408,
+      "camera_stamp": 70.9,
+      "target_at_start": [
+        0.5600839722365525,
+        -0.23178424459267002,
+        0.3199429099707148
+      ],
+      "start_sim": 71.24,
+      "grasp_sim": 72.58999999999999,
+      "end_sim": 75.24,
+      "grasp_mode": "confirmed"
+    },
+    {
+      "state": "SETTLED",
+      "sim_time": 72.127,
+      "wall_elapsed": 213.1498811679994,
+      "slot": 4
+    },
+    {
+      "state": "CLOSE_START",
+      "sim_time": 72.59,
+      "wall_elapsed": 214.43700196600003,
+      "scheduled_sim": 72.58999999999999
+    },
+    {
+      "state": "FIRST_CONTACT",
+      "sim_time": 72.599,
+      "wall_elapsed": 214.45147075399927,
+      "left": [
+        "parcel_8"
+      ],
+      "right": [
+        "parcel_8"
+      ]
+    },
+    {
+      "state": "BILATERAL_CONTACT",
+      "sim_time": 72.599,
+      "wall_elapsed": 214.45564566999929,
+      "objects": [
+        "parcel_8"
+      ]
+    },
+    {
+      "state": "BILATERAL_CONTACT",
+      "sim_time": 73.348,
+      "wall_elapsed": 216.53343428799963,
+      "objects": [
+        "parcel_9"
+      ]
+    },
+    {
+      "state": "GRASP_CONFIRMED",
+      "sim_time": 73.517,
+      "wall_elapsed": 217.1611662769992,
+      "object": "parcel_9",
+      "width": 0.025129197775740415,
+      "desired": 0.021479999999999676,
+      "joint_age": 0.001,
+      "contact_age": 0.0,
+      "reason": "bilateral contact and stable seated gap"
+    },
+    {
+      "state": "LIFT_REQUESTED",
+      "sim_time": 73.559,
+      "wall_elapsed": 217.3287334910001,
+      "object": "parcel_9",
+      "lift_sim": 73.69,
+      "close_start_sim": 72.58999999999999,
+      "end_sim": 74.59
+    },
+    {
+      "state": "LIFTED",
+      "sim_time": 74.6,
+      "wall_elapsed": 221.42829800899926,
+      "object": "parcel_9",
+      "width": 0.02509717148646797,
+      "position": [
+        0.5600816470433572,
+        -0.09003407595276962,
+        0.5699020050683514
+      ]
+    },
+    {
+      "state": "PLACE",
+      "sim_time": 74.6,
+      "wall_elapsed": 221.43217032199937,
+      "target": [
+        0.17,
+        -0.27,
+        0.32
+      ],
+      "destination": "tote",
+      "slot": 5
+    },
+    {
+      "state": "RELEASE_AUTHORIZED",
+      "sim_time": 76.032,
+      "wall_elapsed": 227.5712135849999
+    },
+    {
+      "state": "PREPARE_ARM_START",
+      "sim_time": 77.096,
+      "wall_elapsed": 230.6148963679998,
+      "startup": false
+    },
+    {
+      "state": "PREPARE_OPEN_START",
+      "sim_time": 77.096,
+      "wall_elapsed": 230.61683135399926,
+      "startup": false
+    },
+    {
+      "state": "PREPARE_OPEN_DONE",
+      "sim_time": 77.101,
+      "wall_elapsed": 230.63708686099926,
+      "startup": false,
+      "strokes": 0,
+      "fingers": [
+        0.03999961889899997,
+        0.03999999999999998
+      ]
+    },
+    {
+      "state": "PREPARE_ARM_DONE",
+      "sim_time": 78.212,
+      "wall_elapsed": 233.68499590899955,
+      "startup": false,
+      "arrived": true
+    },
+    {
+      "state": "READY",
+      "sim_time": 78.219,
+      "wall_elapsed": 233.6883404399996,
+      "slot": 9
+    },
+    {
+      "state": "PICK",
+      "sim_time": 78.492,
+      "wall_elapsed": 234.43108767099966,
+      "track": 10,
+      "condition": "intact",
+      "p_damaged": 0.009646943144616671,
+      "votes": 17
+    },
+    {
+      "state": "INTERCEPT",
+      "sim_time": 78.551,
+      "wall_elapsed": 234.60479100999964,
+      "track": 10,
+      "velocity": 0.045,
+      "measured_velocity": 0.04522907873717925,
+      "camera_stamp": 78.4,
+      "target_at_start": [
+        0.5600820513882505,
+        -0.23570801247079337,
+        0.3199402792224821
+      ],
+      "start_sim": 78.792,
+      "grasp_sim": 80.142,
+      "end_sim": 82.792,
+      "grasp_mode": "confirmed"
+    },
+    {
+      "state": "SETTLED",
+      "sim_time": 78.926,
+      "wall_elapsed": 235.6503069370001,
+      "slot": 5
+    },
+    {
+      "state": "CLOSE_START",
+      "sim_time": 80.143,
+      "wall_elapsed": 239.0297948689995,
+      "scheduled_sim": 80.142
+    },
+    {
+      "state": "FIRST_CONTACT",
+      "sim_time": 80.151,
+      "wall_elapsed": 239.04920518199924,
+      "left": [
+        "parcel_9"
+      ],
+      "right": [
+        "parcel_9"
+      ]
+    },
+    {
+      "state": "BILATERAL_CONTACT",
+      "sim_time": 80.151,
+      "wall_elapsed": 239.05033096199986,
+      "objects": [
+        "parcel_9"
+      ]
+    },
+    {
+      "state": "BILATERAL_CONTACT",
+      "sim_time": 80.902,
+      "wall_elapsed": 241.33216520899987,
+      "objects": [
+        "parcel_10"
+      ]
+    },
+    {
+      "state": "GRASP_CONFIRMED",
+      "sim_time": 81.067,
+      "wall_elapsed": 241.95398452599966,
+      "object": "parcel_10",
+      "width": 0.02512822157643802,
+      "desired": 0.02151999999999987,
+      "joint_age": 0.001,
+      "contact_age": 0.002,
+      "reason": "bilateral contact and stable seated gap"
+    },
+    {
+      "state": "LIFT_REQUESTED",
+      "sim_time": 81.099,
+      "wall_elapsed": 242.07461171299929,
+      "object": "parcel_10",
+      "lift_sim": 81.242,
+      "close_start_sim": 80.142,
+      "end_sim": 82.14200000000001
+    },
+    {
+      "state": "LIFTED",
+      "sim_time": 82.153,
+      "wall_elapsed": 245.87129652299973,
+      "object": "parcel_10",
+      "width": 0.02505254822467909,
+      "position": [
+        0.5600796997091144,
+        -0.09395799295030326,
+        0.5698993757381452
+      ]
+    },
+    {
+      "state": "PLACE",
+      "sim_time": 82.153,
+      "wall_elapsed": 245.87381100399944,
+      "target": [
+        0.07,
+        -0.37,
+        0.32
+      ],
+      "destination": "tote",
+      "slot": 6
+    },
+    {
+      "state": "RELEASE_AUTHORIZED",
+      "sim_time": 83.681,
+      "wall_elapsed": 252.3541103459993
+    },
+    {
+      "state": "SETTLED",
+      "sim_time": 86.432,
+      "wall_elapsed": 259.71744679099993,
+      "slot": 6
+    },
+    {
+      "state": "PREPARE_ARM_START",
+      "sim_time": 86.432,
+      "wall_elapsed": 259.7217592779998,
+      "startup": false
+    },
+    {
+      "state": "PREPARE_OPEN_START",
+      "sim_time": 86.432,
+      "wall_elapsed": 259.724352491,
+      "startup": false
+    },
+    {
+      "state": "PREPARE_OPEN_DONE",
+      "sim_time": 86.471,
+      "wall_elapsed": 259.822135892,
+      "startup": false,
+      "strokes": 0,
+      "fingers": [
+        0.03999988447482923,
+        0.03999999999999997
+      ]
+    },
+    {
+      "state": "PREPARE_ARM_DONE",
+      "sim_time": 87.405,
+      "wall_elapsed": 262.3197164559997,
+      "startup": false,
+      "arrived": true
+    },
+    {
+      "state": "BATCH_ROUTED",
+      "sim_time": 87.412,
+      "wall_elapsed": 262.3265101899997,
+      "intact_in_tote": 7,
+      "rejected": 3,
+      "skipped": 0,
+      "skipped_tracks": []
+    },
+    {
+      "state": "FULL",
+      "sim_time": 88.375,
+      "wall_elapsed": 264.8288019239999,
+      "occupied": 7
+    }
+  ],
+  "context_ready_wall": 0.6313191319995894,
+  "batch_scene_hash": "d906d7cf89a1f8f64f7d201efd3991378662ee8b958a9d23aa3fd32939dbb109",
+  "routing": {
+    "intact_in_tote": 7,
+    "rejected": 3,
+    "skipped": 0
+  }
+}
