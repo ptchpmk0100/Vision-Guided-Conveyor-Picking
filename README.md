@@ -31,22 +31,7 @@ All numbers come from simulation, judged by independent checkers that read Gazeb
 
 ## How it works
 
-```mermaid
-flowchart LR
-    CAM["Overhead RGB-D camera<br/>(hand-eye calibrated)"] --> DET["Depth detector<br/>top-plane segmentation"]
-    DET --> TRK["Belt tracker<br/>position + speed prediction"]
-    CAM --> CLS["Crop classifier<br/>ResNet-18 → ONNX"]
-    DET --> CLS
-    CLS --> VOTE["8-frame vote<br/>damaged / intact / unknown"]
-    TRK --> PLAN["MoveIt 2 interception<br/>collision-checked"]
-    VOTE --> PLAN
-    PLAN --> ARM["Panda: two-pad<br/>confirmed grasp"]
-    ARM --> TOTE["Tote slot"]
-    ARM --> BIN["Reject bin"]
-    VOTE -. "unknown" .-> SKIP["Left on belt, logged"]
-    GT[("Gazebo ground truth")] -. "independent checkers" .-> TOTE
-    GT -.-> BIN
-```
+![Pipeline: overhead RGB-D camera, depth detector and crop classifier, belt tracker and 8-frame vote, MoveIt 2 interception, Panda arm, then tote slot or reject bin; Gazebo ground truth verifies both outcomes](docs/media/pipeline.png)
 
 1. **Perception.** The depth detector finds each carton's top plane in the depth image (independent of colour) and
    deprojects it through the calibrated camera transform. No simulator pose is used at run time.
