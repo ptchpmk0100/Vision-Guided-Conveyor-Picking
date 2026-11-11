@@ -1,0 +1,93 @@
+{
+ "messages": 315,
+ "classified_detections": 315,
+ "per_detection": {
+  "damaged->damaged": 90,
+  "intact->damaged": 6,
+  "intact->intact": 217,
+  "intact->unknown": 2
+ },
+ "parcels_seen": 10,
+ "parcels_majority_correct": 10,
+ "parcels": {
+  "parcel_1": {
+   "true": "intact",
+   "votes": {
+    "intact": 59,
+    "damaged": 1
+   },
+   "majority": "intact"
+  },
+  "parcel_2": {
+   "true": "damaged",
+   "votes": {
+    "damaged": 27
+   },
+   "majority": "damaged"
+  },
+  "parcel_3": {
+   "true": "intact",
+   "votes": {
+    "intact": 20,
+    "damaged": 1
+   },
+   "majority": "intact"
+  },
+  "parcel_4": {
+   "true": "intact",
+   "votes": {
+    "intact": 25,
+    "damaged": 1,
+    "unknown": 1
+   },
+   "majority": "intact"
+  },
+  "parcel_5": {
+   "true": "damaged",
+   "votes": {
+    "damaged": 26
+   },
+   "majority": "damaged"
+  },
+  "parcel_6": {
+   "true": "intact",
+   "votes": {
+    "intact": 32,
+    "damaged": 1
+   },
+   "majority": "intact"
+  },
+  "parcel_7": {
+   "true": "damaged",
+   "votes": {
+    "damaged": 37
+   },
+   "majority": "damaged"
+  },
+  "parcel_8": {
+   "true": "intact",
+   "votes": {
+    "intact": 30,
+    "unknown": 1
+   },
+   "majority": "intact"
+  },
+  "parcel_9": {
+   "true": "intact",
+   "votes": {
+    "intact": 27,
+    "damaged": 1
+   },
+   "majority": "intact"
+  },
+  "parcel_10": {
+   "true": "intact",
+   "votes": {
+    "intact": 24,
+    "damaged": 1
+   },
+   "majority": "intact"
+  }
+ },
+ "mean_confidence": 0.9901423586739434
+}

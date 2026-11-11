@@ -1,0 +1,1160 @@
+[INFO] [1794393985.368854763] [moveit_2971632922.moveit.py.cpp_initializer]: Initialize rclcpp
+[INFO] [1794393985.368981085] [moveit_2971632922.moveit.py.cpp_initializer]: Initialize node parameters
+[INFO] [1794393985.369020178] [moveit_2971632922.moveit.py.cpp_initializer]: Initialize node and executor
+[INFO] [1794393985.379213361] [moveit_2971632922.moveit.py.cpp_initializer]: Spin separate thread
+[INFO] [1794393985.382572572] [moveit_2971632922.moveit.ros.rdf_loader]: Loaded robot model in 0 seconds
+[INFO] [1794393985.382643134] [moveit_2971632922.moveit.core.robot_model]: Loading robot model 'panda'...
+[INFO] [1794393985.382661708] [moveit_2971632922.moveit.core.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
+[WARN] [1794393985.382690114] [moveit_2971632922.moveit.core.robot_model]: Link camera_link has visual geometry but no collision geometry. Collision geometry will be left empty. Fix your URDF file by explicitly specifying collision geometry.
+[INFO] [1794393985.397320698] [moveit_2971632922.moveit.kinematics.kdl_kinematics_plugin]: Joint weights for group 'panda_arm': 1 1 1 1 1 1 1
+[INFO] [1794393985.442660209] [moveit_2971632922.moveit.ros.planning_scene_monitor]: Publishing maintained planning scene on 'monitored_planning_scene'
+[INFO] [1794393985.442865088] [moveit_2971632922.moveit.ros.moveit_cpp]: Listening to 'joint_states' for joint states
+[INFO] [1794393985.444349356] [moveit_2971632922.moveit.ros.current_state_monitor]: Listening to joint states on topic 'joint_states'
+[INFO] [1794393985.445053444] [moveit_2971632922.moveit.ros.planning_scene_monitor]: Listening to '/attached_collision_object' for attached collision objects
+[INFO] [1794393985.445094157] [moveit_2971632922.moveit.ros.planning_scene_monitor]: Stopping existing planning scene publisher.
+[INFO] [1794393985.445238042] [moveit_2971632922.moveit.ros.planning_scene_monitor]: Stopped publishing maintained planning scene.
+[INFO] [1794393985.445676751] [moveit_2971632922.moveit.ros.planning_scene_monitor]: Publishing maintained planning scene on 'monitored_planning_scene'
+[INFO] [1794393985.445787683] [moveit_2971632922.moveit.ros.planning_scene_monitor]: Starting planning scene monitor
+[INFO] [1794393985.446554647] [moveit_2971632922.moveit.ros.planning_scene_monitor]: Listening to '/planning_scene'
+[INFO] [1794393985.446595940] [moveit_2971632922.moveit.ros.planning_scene_monitor]: Starting world geometry update monitor for collision objects, attached objects, octomap updates.
+[INFO] [1794393985.447115169] [moveit_2971632922.moveit.ros.planning_scene_monitor]: Listening to 'collision_object'
+[INFO] [1794393985.447558751] [moveit_2971632922.moveit.ros.planning_scene_monitor]: Listening to 'planning_scene_world' for planning scene world geometry
+[WARN] [1794393985.447782157] [moveit_2971632922.moveit.ros.occupancy_map_monitor]: Resolution not specified for Octomap. Assuming resolution = 0.1 instead
+[ERROR] [1794393985.447816638] [moveit_2971632922.moveit.ros.occupancy_map_monitor]: No 3D sensor plugin(s) defined for octomap updates
+[INFO] [1794393985.462341262] [moveit_2971632922.moveit.ros.planning_pipeline]: Successfully loaded planner 'OMPL'
+[INFO] [1794393985.464053238] [parcel_task]: Try loading adapter 'default_planning_request_adapters/ResolveConstraintFrames'
+[INFO] [1794393985.465833196] [parcel_task]: Loaded adapter 'default_planning_request_adapters/ResolveConstraintFrames'
+[INFO] [1794393985.465908003] [parcel_task]: Try loading adapter 'default_planning_request_adapters/ValidateWorkspaceBounds'
+[INFO] [1794393985.466279713] [parcel_task]: Loaded adapter 'default_planning_request_adapters/ValidateWorkspaceBounds'
+[INFO] [1794393985.466305299] [parcel_task]: Try loading adapter 'default_planning_request_adapters/CheckStartStateBounds'
+[INFO] [1794393985.466355716] [parcel_task]: Loaded adapter 'default_planning_request_adapters/CheckStartStateBounds'
+[INFO] [1794393985.466369394] [parcel_task]: Try loading adapter 'default_planning_request_adapters/CheckStartStateCollision'
+[INFO] [1794393985.466394158] [parcel_task]: Loaded adapter 'default_planning_request_adapters/CheckStartStateCollision'
+[INFO] [1794393985.468553494] [parcel_task]: Try loading adapter 'default_planning_response_adapters/AddTimeOptimalParameterization'
+[INFO] [1794393985.473241538] [parcel_task]: Loaded adapter 'default_planning_response_adapters/AddTimeOptimalParameterization'
+[INFO] [1794393985.473412556] [parcel_task]: Try loading adapter 'default_planning_response_adapters/ValidateSolution'
+[INFO] [1794393985.478407883] [parcel_task]: Loaded adapter 'default_planning_response_adapters/ValidateSolution'
+[INFO] [1794393985.478552689] [parcel_task]: Try loading adapter 'default_planning_response_adapters/DisplayMotionPath'
+[INFO] [1794393985.479740768] [parcel_task]: Loaded adapter 'default_planning_response_adapters/DisplayMotionPath'
+[INFO] [1794393985.551123852] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Added FollowJointTrajectory controller for arm_controller
+[INFO] [1794393985.554973839] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Added FollowJointTrajectory controller for gripper_controller
+[INFO] [1794393985.555275883] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794393985.555340892] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794393985.558641666] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Trajectory execution is managing controllers
+[INFO] [1794393985.876163327] [parcel_task]: resolve_object: subscribed to live perception on /detected_objects/box
+[INFO] [1794393985.877464978] [parcel_task]: MoveItPy up; panda_arm ready. twin_gripper node up.
+[INFO] [1794393986.095019390] [parcel_task]: parcel scene: 17 static models, all physical solids included
+[INFO] [1794393988.912349261] [parcel_task]: PARCEL_STATE {"state": "PREPARE_ARM_START", "sim_time": 5.832, "wall_elapsed": 3.663272603999758, "startup": true}
+[INFO] [1794393988.919273634] [parcel_task]: PARCEL_STATE {"state": "PREPARE_OPEN_START", "sim_time": 5.832, "wall_elapsed": 3.662784737000038, "startup": true}
+[INFO] [1794393988.922988968] [parcel_task]: === move_to_grasp_pose(x=0.56, y=0.06, z=0.52) [seeded IK] ===
+[INFO] [1794393988.925074697] [parcel_task]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1794393988.925218638] [parcel_task]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[WARN] [1794393988.925236891] [moveit_2971632922.moveit.ros.validate_workspace_bounds]: It looks like the planning volume was not specified. Using default values.
+[INFO] [1794393988.925267273] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1794393988.925303168] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[INFO] [1794393988.926123158] [moveit_2971632922.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'panda_arm[RRTConnectkConfigDefault]' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1794393988.926677890] [parcel_task]: Calling Planner 'OMPL'
+[INFO] [1794393988.990707736] [parcel_task]: Calling PlanningResponseAdapter 'AddTimeOptimalParameterization'
+[INFO] [1794393988.993683572] [parcel_task]: Calling PlanningResponseAdapter 'ValidateSolution'
+[INFO] [1794393988.996409028] [parcel_task]: Calling PlanningResponseAdapter 'DisplayMotionPath'
+[INFO] [1794393989.001560031] [parcel_task]: Planning succeeded, executing...
+[INFO] [1794393989.042557682] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794393989.042640746] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794393989.042693998] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794393989.042719033] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794393989.042759088] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Validating trajectory with allowed_start_tolerance 0.01
+[INFO] [1794393989.043343229] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Starting trajectory execution ...
+[INFO] [1794393989.043444797] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794393989.043505295] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794393989.043658488] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: sending trajectory to arm_controller
+[INFO] [1794393989.044296367] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: arm_controller started execution
+[INFO] [1794393989.044334878] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Goal request accepted!
+[INFO] [1794393993.194760910] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Controller 'arm_controller' successfully finished
+[INFO] [1794393993.195951606] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Completed trajectory execution with status SUCCEEDED ...
+[INFO] [1794393993.402113430] [parcel_task]: PARCEL_STATE {"state": "PREPARE_ARM_DONE", "sim_time": 7.711, "wall_elapsed": 8.155033532999369, "startup": true, "arrived": true}
+[INFO] [1794393995.489502986] [parcel_task]: grasp record: cleared (verified empty open hand for continuous approach)
+[INFO] [1794393995.490965020] [parcel_task]: PARCEL_STATE {"state": "PREPARE_OPEN_DONE", "sim_time": 8.57, "wall_elapsed": 10.243931280999277, "startup": true, "strokes": 1, "fingers": [0.03996693661092661, 0.0399989901257038]}
+[INFO] [1794393995.495467802] [parcel_task]: PARCEL_STATE {"state": "BELT_RUNNING", "sim_time": 8.578, "wall_elapsed": 10.24825550300011, "speed": 0.045}
+[INFO] [1794393995.497076975] [parcel_task]: PARCEL_STATE {"state": "READY", "sim_time": 8.578, "wall_elapsed": 10.249890400999902, "slot": 0}
+[INFO] [1794393995.542641512] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=8.587
+[INFO] [1794393998.216995986] [parcel_task]: PARCEL_STATE {"state": "PICK", "sim_time": 9.69, "wall_elapsed": 12.969419340000059, "track": 1, "condition": "intact", "p_damaged": 0.0028779722342733294, "votes": 11}
+[INFO] [1794393998.384714402] [parcel_task]: PARCEL_STATE {"state": "INTERCEPT", "sim_time": 9.75, "wall_elapsed": 13.137605451999661, "track": 1, "velocity": 0.045, "measured_velocity": 0.04513054148492899, "camera_stamp": 9.7, "target_at_start": [0.5600849326607034, -0.23579801247079318, 0.31994516382225135], "start_sim": 9.99, "grasp_sim": 11.34, "end_sim": 13.99, "grasp_mode": "confirmed"}
+[INFO] [1794394002.393668263] [parcel_task]: PARCEL_STATE {"state": "CLOSE_START", "sim_time": 11.342, "wall_elapsed": 17.14579861799939, "scheduled_sim": 11.34}
+[INFO] [1794394004.316688291] [parcel_task]: PARCEL_STATE {"state": "FIRST_CONTACT", "sim_time": 12.096, "wall_elapsed": 19.069903575999888, "left": ["parcel_1"], "right": ["parcel_1"]}
+[INFO] [1794394004.317443114] [parcel_task]: PARCEL_STATE {"state": "BILATERAL_CONTACT", "sim_time": 12.096, "wall_elapsed": 19.070751268000095, "objects": ["parcel_1"]}
+[INFO] [1794394004.900720920] [parcel_task]: PARCEL_STATE {"state": "GRASP_CONFIRMED", "sim_time": 12.267, "wall_elapsed": 19.653903574999276, "object": "parcel_1", "width": 0.02512841092493511, "desired": 0.021479999999999996, "joint_age": 0.001, "contact_age": 0.002, "reason": "bilateral contact and stable seated gap"}
+[INFO] [1794394004.902431115] [parcel_task]: grasp record: HOLDING at width=0.0251
+[INFO] [1794394005.022938145] [parcel_task]: PARCEL_STATE {"state": "LIFT_REQUESTED", "sim_time": 12.302, "wall_elapsed": 19.775663030000032, "object": "parcel_1", "lift_sim": 12.440000000000001, "close_start_sim": 11.34, "end_sim": 13.340000000000002}
+[INFO] [1794394008.569959248] [parcel_task]: PARCEL_STATE {"state": "LIFTED", "sim_time": 13.346, "wall_elapsed": 23.3223935420001, "object": "parcel_1", "width": 0.025118768468367934, "position": [0.5600826053181617, -0.09404776229808738, 0.5699152944408375]}
+[INFO] [1794394008.571761342] [parcel_task]: PARCEL_STATE {"state": "PLACE", "sim_time": 13.352, "wall_elapsed": 23.324214477999703, "target": [0.37, -0.37, 0.32], "destination": "tote", "slot": 0}
+[INFO] [1794394008.572301593] [parcel_task]: === place(xyz=(0.370,-0.370,0.320)) ===
+[INFO] [1794394008.576397554] [parcel_task]: place: blended approach+descend to place z=0.510
+[INFO] [1794394008.577450276] [parcel_task]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1794394008.577537303] [parcel_task]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[WARN] [1794394008.577564202] [moveit_2971632922.moveit.ros.validate_workspace_bounds]: It looks like the planning volume was not specified. Using default values.
+[INFO] [1794394008.577624112] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1794394008.577700730] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[INFO] [1794394008.578504854] [moveit_2971632922.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'panda_arm[RRTConnectkConfigDefault]' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1794394008.578639832] [parcel_task]: Calling Planner 'OMPL'
+[INFO] [1794394008.659197711] [parcel_task]: Calling PlanningResponseAdapter 'AddTimeOptimalParameterization'
+[INFO] [1794394008.660114324] [parcel_task]: Calling PlanningResponseAdapter 'ValidateSolution'
+[INFO] [1794394008.661631790] [parcel_task]: Calling PlanningResponseAdapter 'DisplayMotionPath'
+[INFO] [1794394008.662647303] [parcel_task]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1794394008.662717797] [parcel_task]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[WARN] [1794394008.662748388] [moveit_2971632922.moveit.ros.validate_workspace_bounds]: It looks like the planning volume was not specified. Using default values.
+[INFO] [1794394008.662795784] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1794394008.662875761] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[INFO] [1794394008.663439187] [moveit_2971632922.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'panda_arm[RRTConnectkConfigDefault]' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1794394008.663599940] [parcel_task]: Calling Planner 'OMPL'
+[INFO] [1794394008.739657154] [parcel_task]: Calling PlanningResponseAdapter 'AddTimeOptimalParameterization'
+[INFO] [1794394008.740035325] [parcel_task]: Calling PlanningResponseAdapter 'ValidateSolution'
+[INFO] [1794394008.740782738] [parcel_task]: Calling PlanningResponseAdapter 'DisplayMotionPath'
+[INFO] [1794394008.756413543] [parcel_task]: blend: executing merged 2-waypoint motion
+[INFO] [1794394008.794320805] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394008.794445847] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394008.794566010] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394008.794628217] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394008.794701663] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Validating trajectory with allowed_start_tolerance 0.01
+[INFO] [1794394008.796023002] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Starting trajectory execution ...
+[INFO] [1794394008.796109726] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394008.796159949] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394008.796311167] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: sending trajectory to arm_controller
+[INFO] [1794394008.796833285] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: arm_controller started execution
+[INFO] [1794394008.796864646] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Goal request accepted!
+[INFO] [1794394012.797240909] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Controller 'arm_controller' successfully finished
+[INFO] [1794394012.797936810] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Completed trajectory execution with status SUCCEEDED ...
+[INFO] [1794394013.018192154] [parcel_task]: PARCEL_STATE {"state": "RELEASE_AUTHORIZED", "sim_time": 14.525, "wall_elapsed": 27.768457401999513}
+[INFO] [1794394013.018979424] [parcel_task]: === move_gripper(width=0.04, closing=False) ===
+
+>>> [rcutils|error_handling.c:108] rcutils_set_error_state()
+This error state is being overwritten:
+
+  'Handle's typesupport identifier (rosidl_typesupport_cpp) is not supported by this library, at ./src/type_support_dispatch.hpp:114'
+
+with this new error message:
+
+  'Handle's typesupport identifier (rosidl_typesupport_c) is not supported by this library, at ./src/type_support_dispatch.hpp:116'
+
+rcutils_reset_error() should be called after error handling to avoid this.
+<<<
+[INFO] [1794394015.809864522] [parcel_task]: _send_finger_goal: target=0.0400 first=0.0399 final=0.04 in 1.53s (settled)
+[INFO] [1794394015.811658952] [parcel_task]: grasp record: cleared (gripper move ended with nothing held)
+[INFO] [1794394015.814717791] [parcel_task]: move_gripper -> ok [reached] width=0.0400 (gap=-0.0000, floor=0.003)
+[INFO] [1794394015.816509331] [parcel_task]: place: release confirmed -- opened from 0.0251 to 0.0400
+[INFO] [1794394015.819086984] [parcel_task]: place('(0.37, -0.37, 0.32)') -> ok [placed] target@(0.370,-0.370,0.320) RELEASED (no separate retract)
+[INFO] [1794394015.858995349] [parcel_task]: PARCEL_STATE {"state": "PREPARE_OPEN_START", "sim_time": 15.669, "wall_elapsed": 30.609035462000065, "startup": false}
+[INFO] [1794394015.861631570] [parcel_task]: PARCEL_STATE {"state": "PREPARE_ARM_START", "sim_time": 15.669, "wall_elapsed": 30.60944548399948, "startup": false}
+[INFO] [1794394015.863435521] [parcel_task]: grasp record: cleared (verified empty open hand for continuous approach)
+[INFO] [1794394015.866384142] [parcel_task]: PARCEL_STATE {"state": "PREPARE_OPEN_DONE", "sim_time": 15.669, "wall_elapsed": 30.617937921999328, "startup": false, "strokes": 0, "fingers": [0.04000000000000001, 0.0399999154982015]}
+[INFO] [1794394015.866696281] [parcel_task]: === move_to_grasp_pose(x=0.56, y=0.06, z=0.52) [seeded IK] ===
+[INFO] [1794394015.868202374] [parcel_task]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1794394015.868276123] [parcel_task]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[WARN] [1794394015.868287730] [moveit_2971632922.moveit.ros.validate_workspace_bounds]: It looks like the planning volume was not specified. Using default values.
+[INFO] [1794394015.868309346] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1794394015.868337042] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[INFO] [1794394015.868890815] [moveit_2971632922.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'panda_arm[RRTConnectkConfigDefault]' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1794394015.869002087] [parcel_task]: Calling Planner 'OMPL'
+[INFO] [1794394015.968453883] [parcel_task]: Calling PlanningResponseAdapter 'AddTimeOptimalParameterization'
+[INFO] [1794394015.969532414] [parcel_task]: Calling PlanningResponseAdapter 'ValidateSolution'
+[INFO] [1794394015.971366490] [parcel_task]: Calling PlanningResponseAdapter 'DisplayMotionPath'
+[INFO] [1794394015.976059257] [parcel_task]: Planning succeeded, executing...
+[INFO] [1794394016.010831621] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394016.010892922] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394016.010950919] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394016.010972463] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394016.011009901] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Validating trajectory with allowed_start_tolerance 0.01
+[INFO] [1794394016.016639967] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Starting trajectory execution ...
+[INFO] [1794394016.016773142] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394016.016848002] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394016.017013946] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: sending trajectory to arm_controller
+[INFO] [1794394016.017599001] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: arm_controller started execution
+[INFO] [1794394016.017649131] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Goal request accepted!
+[INFO] [1794394018.117883661] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Controller 'arm_controller' successfully finished
+[INFO] [1794394018.118373381] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Completed trajectory execution with status SUCCEEDED ...
+[INFO] [1794394018.327525540] [parcel_task]: PARCEL_STATE {"state": "PREPARE_ARM_DONE", "sim_time": 16.67, "wall_elapsed": 33.07918629199958, "startup": false, "arrived": true}
+[INFO] [1794394018.332151259] [parcel_task]: PARCEL_STATE {"state": "READY", "sim_time": 16.67, "wall_elapsed": 33.081911290999415, "slot": 1}
+[INFO] [1794394018.363491471] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=16.691
+[INFO] [1794394019.965639313] [parcel_task]: PARCEL_STATE {"state": "PICK", "sim_time": 17.321, "wall_elapsed": 34.71659116999945, "track": 2, "condition": "damaged", "p_damaged": 0.9999048411846161, "votes": 18}
+[INFO] [1794394020.119694830] [parcel_task]: PARCEL_STATE {"state": "SETTLED", "sim_time": 17.382, "wall_elapsed": 34.871187381999334, "slot": 0}
+[INFO] [1794394020.132217086] [parcel_task]: PARCEL_STATE {"state": "INTERCEPT", "sim_time": 17.394, "wall_elapsed": 34.88460596200002, "track": 2, "velocity": 0.045, "measured_velocity": 0.04521320939279953, "camera_stamp": 17.3, "target_at_start": [0.5600852528020871, -0.2361116488479355, 0.3199547185316543], "start_sim": 17.627000000000002, "grasp_sim": 18.977000000000004, "end_sim": 21.627000000000002, "grasp_mode": "confirmed"}
+[INFO] [1794394024.157964929] [parcel_task]: PARCEL_STATE {"state": "CLOSE_START", "sim_time": 18.978, "wall_elapsed": 38.909882336999544, "scheduled_sim": 18.977000000000004}
+[INFO] [1794394024.173829444] [parcel_task]: PARCEL_STATE {"state": "FIRST_CONTACT", "sim_time": 18.978, "wall_elapsed": 38.92384160199981, "left": ["parcel_1"], "right": ["parcel_1"]}
+[INFO] [1794394024.175790303] [parcel_task]: PARCEL_STATE {"state": "BILATERAL_CONTACT", "sim_time": 18.987, "wall_elapsed": 38.92828717499924, "objects": ["parcel_1"]}
+[INFO] [1794394026.094246289] [parcel_task]: PARCEL_STATE {"state": "BILATERAL_CONTACT", "sim_time": 19.732, "wall_elapsed": 40.847414386999844, "objects": ["parcel_2"]}
+[INFO] [1794394026.624059353] [parcel_task]: PARCEL_STATE {"state": "GRASP_CONFIRMED", "sim_time": 19.902, "wall_elapsed": 41.37630586999967, "object": "parcel_2", "width": 0.0251282678791424, "desired": 0.021500000000000057, "joint_age": 0.0, "contact_age": 0.001, "reason": "bilateral contact and stable seated gap"}
+[INFO] [1794394026.624519869] [parcel_task]: grasp record: HOLDING at width=0.0251
+[INFO] [1794394026.743615533] [parcel_task]: PARCEL_STATE {"state": "LIFT_REQUESTED", "sim_time": 19.94, "wall_elapsed": 41.49673506899944, "object": "parcel_2", "lift_sim": 20.077, "close_start_sim": 18.977000000000004, "end_sim": 20.977}
+[INFO] [1794394030.595262619] [parcel_task]: PARCEL_STATE {"state": "LIFTED", "sim_time": 20.98, "wall_elapsed": 45.34740969699942, "object": "parcel_2", "width": 0.025119522211360018, "position": [0.5600829364475883, -0.09436168741634972, 0.5698779155762664]}
+[INFO] [1794394030.597586443] [parcel_task]: PARCEL_STATE {"state": "PLACE", "sim_time": 20.98, "wall_elapsed": 45.34977700299987, "target": [0.28, 0.45, 0.32], "destination": "reject", "slot": 0}
+[INFO] [1794394030.598147903] [parcel_task]: === place(xyz=(0.280,0.450,0.320)) ===
+[INFO] [1794394030.604144562] [parcel_task]: place: blended approach+descend to place z=0.510
+[INFO] [1794394030.606237681] [parcel_task]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1794394030.606351916] [parcel_task]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[WARN] [1794394030.606381441] [moveit_2971632922.moveit.ros.validate_workspace_bounds]: It looks like the planning volume was not specified. Using default values.
+[INFO] [1794394030.606430060] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1794394030.606500976] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[INFO] [1794394030.607595434] [moveit_2971632922.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'panda_arm[RRTConnectkConfigDefault]' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1794394030.607807914] [parcel_task]: Calling Planner 'OMPL'
+[INFO] [1794394030.711984940] [parcel_task]: Calling PlanningResponseAdapter 'AddTimeOptimalParameterization'
+[INFO] [1794394030.713478038] [parcel_task]: Calling PlanningResponseAdapter 'ValidateSolution'
+[INFO] [1794394030.715573064] [parcel_task]: Calling PlanningResponseAdapter 'DisplayMotionPath'
+[INFO] [1794394030.717731249] [parcel_task]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1794394030.717806658] [parcel_task]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[WARN] [1794394030.717820653] [moveit_2971632922.moveit.ros.validate_workspace_bounds]: It looks like the planning volume was not specified. Using default values.
+[INFO] [1794394030.717843792] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1794394030.717885613] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[INFO] [1794394030.718396544] [moveit_2971632922.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'panda_arm[RRTConnectkConfigDefault]' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1794394030.718484266] [parcel_task]: Calling Planner 'OMPL'
+[INFO] [1794394030.796200516] [parcel_task]: Calling PlanningResponseAdapter 'AddTimeOptimalParameterization'
+[INFO] [1794394030.796873191] [parcel_task]: Calling PlanningResponseAdapter 'ValidateSolution'
+[INFO] [1794394030.798059689] [parcel_task]: Calling PlanningResponseAdapter 'DisplayMotionPath'
+[INFO] [1794394030.809893051] [parcel_task]: blend: executing merged 2-waypoint motion
+[WARN] [1794394030.831233386] [parcel_task]: blend: chain execution errored (VALIDATION_FAILED: LIMIT:11:panda_joint4:accelerations); falling back
+[INFO] [1794394030.832795963] [parcel_task]: place: approach (0.280,0.450,0.610) top-down
+[INFO] [1794394030.833748971] [parcel_task]: === move_to_grasp_pose(x=0.28, y=0.45, z=0.61) [seeded IK] ===
+[INFO] [1794394030.837802549] [parcel_task]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1794394030.838020983] [parcel_task]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[WARN] [1794394030.838063805] [moveit_2971632922.moveit.ros.validate_workspace_bounds]: It looks like the planning volume was not specified. Using default values.
+[INFO] [1794394030.838126848] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1794394030.838227986] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[INFO] [1794394030.838925457] [moveit_2971632922.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'panda_arm[RRTConnectkConfigDefault]' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1794394030.839072558] [parcel_task]: Calling Planner 'OMPL'
+[INFO] [1794394030.923834449] [parcel_task]: Calling PlanningResponseAdapter 'AddTimeOptimalParameterization'
+[INFO] [1794394030.926326114] [parcel_task]: Calling PlanningResponseAdapter 'ValidateSolution'
+[INFO] [1794394030.929097841] [parcel_task]: Calling PlanningResponseAdapter 'DisplayMotionPath'
+[INFO] [1794394030.936427425] [parcel_task]: Planning succeeded, executing...
+[INFO] [1794394030.977777882] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394030.977866541] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394030.977928075] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394030.977967184] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394030.978015606] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Validating trajectory with allowed_start_tolerance 0.01
+[INFO] [1794394030.978281620] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Starting trajectory execution ...
+[INFO] [1794394030.978345780] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394030.978401935] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394030.978549159] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: sending trajectory to arm_controller
+[INFO] [1794394030.980792816] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: arm_controller started execution
+[INFO] [1794394030.980883475] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Goal request accepted!
+[INFO] [1794394035.479795803] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Controller 'arm_controller' successfully finished
+[INFO] [1794394035.480907344] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Completed trajectory execution with status SUCCEEDED ...
+[INFO] [1794394035.696270456] [parcel_task]: place: descend to place z=0.510
+[INFO] [1794394035.697136294] [parcel_task]: === move_to_grasp_pose(x=0.28, y=0.45, z=0.51) [seeded IK] ===
+[INFO] [1794394035.699614212] [parcel_task]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1794394035.699722065] [parcel_task]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[WARN] [1794394035.699750553] [moveit_2971632922.moveit.ros.validate_workspace_bounds]: It looks like the planning volume was not specified. Using default values.
+[INFO] [1794394035.699792900] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1794394035.699864765] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[INFO] [1794394035.700725211] [moveit_2971632922.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'panda_arm[RRTConnectkConfigDefault]' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1794394035.700879143] [parcel_task]: Calling Planner 'OMPL'
+[INFO] [1794394035.790555965] [parcel_task]: Calling PlanningResponseAdapter 'AddTimeOptimalParameterization'
+[INFO] [1794394035.791201066] [parcel_task]: Calling PlanningResponseAdapter 'ValidateSolution'
+[INFO] [1794394035.792317400] [parcel_task]: Calling PlanningResponseAdapter 'DisplayMotionPath'
+[INFO] [1794394035.795616334] [parcel_task]: Planning succeeded, executing...
+[INFO] [1794394035.818584929] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394035.818677487] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394035.818725757] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394035.818761178] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394035.818811560] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Validating trajectory with allowed_start_tolerance 0.01
+[INFO] [1794394035.822974220] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Starting trajectory execution ...
+[INFO] [1794394035.823129641] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394035.823201283] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394035.823403710] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: sending trajectory to arm_controller
+[INFO] [1794394035.824831392] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: arm_controller started execution
+[INFO] [1794394035.824871516] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Goal request accepted!
+[INFO] [1794394037.624387906] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Controller 'arm_controller' successfully finished
+[INFO] [1794394037.628504366] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Completed trajectory execution with status SUCCEEDED ...
+[INFO] [1794394037.849450671] [parcel_task]: PARCEL_STATE {"state": "RELEASE_AUTHORIZED", "sim_time": 22.679, "wall_elapsed": 52.60095105399978}
+[INFO] [1794394037.851397061] [parcel_task]: === move_gripper(width=0.04, closing=False) ===
+
+>>> [rcutils|error_handling.c:108] rcutils_set_error_state()
+This error state is being overwritten:
+
+  'Handle's typesupport identifier (rosidl_typesupport_cpp) is not supported by this library, at ./src/type_support_dispatch.hpp:114'
+
+with this new error message:
+
+  'Handle's typesupport identifier (rosidl_typesupport_c) is not supported by this library, at ./src/type_support_dispatch.hpp:116'
+
+rcutils_reset_error() should be called after error handling to avoid this.
+<<<
+[INFO] [1794394040.893837385] [parcel_task]: _send_finger_goal: target=0.0400 first=0.0399 final=0.04 in 1.53s (settled)
+[INFO] [1794394040.894518253] [parcel_task]: grasp record: cleared (gripper move ended with nothing held)
+[INFO] [1794394040.896357629] [parcel_task]: move_gripper -> ok [reached] width=0.0400 (gap=-0.0000, floor=0.003)
+[INFO] [1794394040.898657381] [parcel_task]: place: release confirmed -- opened from 0.0251 to 0.0400
+[INFO] [1794394040.899616826] [parcel_task]: place('(0.28, 0.45, 0.32)') -> ok [placed] target@(0.280,0.450,0.320) RELEASED (no separate retract)
+[INFO] [1794394040.936885756] [parcel_task]: PARCEL_STATE {"state": "REJECTED", "sim_time": 23.723, "wall_elapsed": 55.68728449899936, "slot": 0}
+[INFO] [1794394040.941143848] [parcel_task]: PARCEL_STATE {"state": "PREPARE_OPEN_START", "sim_time": 23.723, "wall_elapsed": 55.691834978999395, "startup": false}
+[INFO] [1794394040.944835655] [parcel_task]: PARCEL_STATE {"state": "PREPARE_ARM_START", "sim_time": 23.723, "wall_elapsed": 55.69249627199952, "startup": false}
+[INFO] [1794394040.946739542] [parcel_task]: grasp record: cleared (verified empty open hand for continuous approach)
+[INFO] [1794394040.949672013] [parcel_task]: PARCEL_STATE {"state": "PREPARE_OPEN_DONE", "sim_time": 23.723, "wall_elapsed": 55.70123526499992, "startup": false, "strokes": 0, "fingers": [0.0399998134637997, 0.03999999999999997]}
+[INFO] [1794394040.950839745] [parcel_task]: === move_to_grasp_pose(x=0.56, y=0.06, z=0.52) [seeded IK] ===
+[INFO] [1794394040.951993454] [parcel_task]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1794394040.952056537] [parcel_task]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[WARN] [1794394040.952080294] [moveit_2971632922.moveit.ros.validate_workspace_bounds]: It looks like the planning volume was not specified. Using default values.
+[INFO] [1794394040.952107061] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1794394040.952134680] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[INFO] [1794394040.952663314] [moveit_2971632922.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'panda_arm[RRTConnectkConfigDefault]' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1794394040.952773220] [parcel_task]: Calling Planner 'OMPL'
+[INFO] [1794394041.055123999] [parcel_task]: Calling PlanningResponseAdapter 'AddTimeOptimalParameterization'
+[INFO] [1794394041.057961026] [parcel_task]: Calling PlanningResponseAdapter 'ValidateSolution'
+[INFO] [1794394041.060626136] [parcel_task]: Calling PlanningResponseAdapter 'DisplayMotionPath'
+[INFO] [1794394041.063978473] [parcel_task]: Planning succeeded, executing...
+[INFO] [1794394041.115377458] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394041.115466230] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394041.115545889] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394041.115604605] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394041.115671304] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Validating trajectory with allowed_start_tolerance 0.01
+[INFO] [1794394041.117153350] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Starting trajectory execution ...
+[INFO] [1794394041.117257052] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394041.117307585] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394041.117433660] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: sending trajectory to arm_controller
+[INFO] [1794394041.118211256] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: arm_controller started execution
+[INFO] [1794394041.118268838] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Goal request accepted!
+[INFO] [1794394044.068242050] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Controller 'arm_controller' successfully finished
+[INFO] [1794394044.068491095] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Completed trajectory execution with status SUCCEEDED ...
+[INFO] [1794394044.281688683] [parcel_task]: PARCEL_STATE {"state": "PREPARE_ARM_DONE", "sim_time": 24.862, "wall_elapsed": 59.0329322839998, "startup": false, "arrived": true}
+[INFO] [1794394044.283532650] [parcel_task]: PARCEL_STATE {"state": "READY", "sim_time": 24.862, "wall_elapsed": 59.03613486099948, "slot": 2}
+[INFO] [1794394044.312642619] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=24.879
+[INFO] [1794394044.620644532] [parcel_task]: PARCEL_STATE {"state": "PICK", "sim_time": 24.982, "wall_elapsed": 59.371771851999256, "track": 3, "condition": "intact", "p_damaged": 0.009613440284738317, "votes": 9}
+[INFO] [1794394044.806799088] [parcel_task]: PARCEL_STATE {"state": "INTERCEPT", "sim_time": 25.039, "wall_elapsed": 59.55969070499941, "track": 3, "velocity": 0.045, "measured_velocity": 0.041750585528578285, "camera_stamp": 24.9, "target_at_start": [0.5600849326607034, -0.2361560923913296, 0.31993749006764927], "start_sim": 25.282, "grasp_sim": 26.632, "end_sim": 29.282, "grasp_mode": "confirmed"}
+[INFO] [1794394049.277931484] [parcel_task]: PARCEL_STATE {"state": "CLOSE_START", "sim_time": 26.635, "wall_elapsed": 64.02952644499965, "scheduled_sim": 26.632}
+[INFO] [1794394049.293016270] [parcel_task]: PARCEL_STATE {"state": "FIRST_CONTACT", "sim_time": 26.643, "wall_elapsed": 64.04455927399977, "left": ["parcel_2"], "right": ["parcel_2"]}
+[INFO] [1794394049.297698113] [parcel_task]: PARCEL_STATE {"state": "BILATERAL_CONTACT", "sim_time": 26.643, "wall_elapsed": 64.04766618999929, "objects": ["parcel_2"]}
+[INFO] [1794394051.394162088] [parcel_task]: PARCEL_STATE {"state": "BILATERAL_CONTACT", "sim_time": 27.389, "wall_elapsed": 66.14725327899941, "objects": ["parcel_3"]}
+[INFO] [1794394052.117451074] [parcel_task]: PARCEL_STATE {"state": "GRASP_CONFIRMED", "sim_time": 27.557, "wall_elapsed": 66.8700135049994, "object": "parcel_3", "width": 0.025129103507716414, "desired": 0.02152000000000001, "joint_age": 0.001, "contact_age": 0.001, "reason": "bilateral contact and stable seated gap"}
+[INFO] [1794394052.119310302] [parcel_task]: grasp record: HOLDING at width=0.0251
+[INFO] [1794394052.232883250] [parcel_task]: PARCEL_STATE {"state": "LIFT_REQUESTED", "sim_time": 27.594, "wall_elapsed": 66.985072855, "object": "parcel_3", "lift_sim": 27.732, "close_start_sim": 26.632, "end_sim": 28.631999999999998}
+[INFO] [1794394056.283920532] [parcel_task]: PARCEL_STATE {"state": "LIFTED", "sim_time": 28.638, "wall_elapsed": 71.03002609899977, "object": "parcel_3", "width": 0.025129319045193145, "position": [0.5600826144899583, -0.09440603595696635, 0.5698752441993158]}
+[INFO] [1794394056.287230019] [parcel_task]: PARCEL_STATE {"state": "PLACE", "sim_time": 28.638, "wall_elapsed": 71.03923835099977, "target": [0.37, -0.27, 0.32], "destination": "tote", "slot": 1}
+[INFO] [1794394056.287956130] [parcel_task]: === place(xyz=(0.370,-0.270,0.320)) ===
+[INFO] [1794394056.293414687] [parcel_task]: place: blended approach+descend to place z=0.510
+[INFO] [1794394056.295251328] [parcel_task]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1794394056.295476468] [parcel_task]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[WARN] [1794394056.295715015] [moveit_2971632922.moveit.ros.validate_workspace_bounds]: It looks like the planning volume was not specified. Using default values.
+[INFO] [1794394056.295851903] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1794394056.295988406] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[INFO] [1794394056.297283527] [moveit_2971632922.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'panda_arm[RRTConnectkConfigDefault]' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1794394056.297529892] [parcel_task]: Calling Planner 'OMPL'
+[INFO] [1794394056.361294729] [parcel_task]: Calling PlanningResponseAdapter 'AddTimeOptimalParameterization'
+[INFO] [1794394056.362189002] [parcel_task]: Calling PlanningResponseAdapter 'ValidateSolution'
+[INFO] [1794394056.363885550] [parcel_task]: Calling PlanningResponseAdapter 'DisplayMotionPath'
+[INFO] [1794394056.366056958] [parcel_task]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1794394056.366190912] [parcel_task]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[WARN] [1794394056.366225011] [moveit_2971632922.moveit.ros.validate_workspace_bounds]: It looks like the planning volume was not specified. Using default values.
+[INFO] [1794394056.366272386] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1794394056.366350308] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[INFO] [1794394056.367180397] [moveit_2971632922.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'panda_arm[RRTConnectkConfigDefault]' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1794394056.367334928] [parcel_task]: Calling Planner 'OMPL'
+[INFO] [1794394056.444921947] [parcel_task]: Calling PlanningResponseAdapter 'AddTimeOptimalParameterization'
+[INFO] [1794394056.445536412] [parcel_task]: Calling PlanningResponseAdapter 'ValidateSolution'
+[INFO] [1794394056.446716785] [parcel_task]: Calling PlanningResponseAdapter 'DisplayMotionPath'
+[INFO] [1794394056.456452965] [parcel_task]: blend: executing merged 2-waypoint motion
+[INFO] [1794394056.483157441] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394056.483240129] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394056.483286220] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394056.483312662] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394056.483353537] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Validating trajectory with allowed_start_tolerance 0.01
+[INFO] [1794394056.484008420] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Starting trajectory execution ...
+[INFO] [1794394056.484093762] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394056.484149884] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394056.484323557] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: sending trajectory to arm_controller
+[INFO] [1794394056.484894474] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: arm_controller started execution
+[INFO] [1794394056.484923163] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Goal request accepted!
+[INFO] [1794394059.985456131] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Controller 'arm_controller' successfully finished
+[INFO] [1794394059.986318086] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Completed trajectory execution with status SUCCEEDED ...
+[INFO] [1794394060.197660842] [parcel_task]: PARCEL_STATE {"state": "RELEASE_AUTHORIZED", "sim_time": 29.582, "wall_elapsed": 74.94990768199932}
+[INFO] [1794394060.199320505] [parcel_task]: === move_gripper(width=0.04, closing=False) ===
+
+>>> [rcutils|error_handling.c:108] rcutils_set_error_state()
+This error state is being overwritten:
+
+  'Handle's typesupport identifier (rosidl_typesupport_cpp) is not supported by this library, at ./src/type_support_dispatch.hpp:114'
+
+with this new error message:
+
+  'Handle's typesupport identifier (rosidl_typesupport_c) is not supported by this library, at ./src/type_support_dispatch.hpp:116'
+
+rcutils_reset_error() should be called after error handling to avoid this.
+<<<
+[INFO] [1794394063.292684530] [parcel_task]: _send_finger_goal: target=0.0400 first=0.0399 final=0.04 in 1.54s (settled)
+[INFO] [1794394063.293292215] [parcel_task]: grasp record: cleared (gripper move ended with nothing held)
+[INFO] [1794394063.294333149] [parcel_task]: move_gripper -> ok [reached] width=0.0400 (gap=-0.0000, floor=0.003)
+[INFO] [1794394063.296264850] [parcel_task]: place: release confirmed -- opened from 0.0251 to 0.0400
+[INFO] [1794394063.298546503] [parcel_task]: place('(0.37, -0.27, 0.32)') -> ok [placed] target@(0.370,-0.270,0.320) RELEASED (no separate retract)
+[INFO] [1794394063.335710636] [parcel_task]: PARCEL_STATE {"state": "PREPARE_OPEN_START", "sim_time": 30.66, "wall_elapsed": 78.0806858599999, "startup": false}
+[INFO] [1794394063.337953201] [parcel_task]: PARCEL_STATE {"state": "PREPARE_ARM_START", "sim_time": 30.67, "wall_elapsed": 78.08733107999979, "startup": false}
+[INFO] [1794394063.339331743] [parcel_task]: grasp record: cleared (verified empty open hand for continuous approach)
+[INFO] [1794394063.342075615] [parcel_task]: === move_to_grasp_pose(x=0.56, y=0.06, z=0.52) [seeded IK] ===
+[INFO] [1794394063.343335468] [parcel_task]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1794394063.343419410] [parcel_task]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[WARN] [1794394063.343444563] [moveit_2971632922.moveit.ros.validate_workspace_bounds]: It looks like the planning volume was not specified. Using default values.
+[INFO] [1794394063.343496542] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1794394063.343552977] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[INFO] [1794394063.344229299] [moveit_2971632922.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'panda_arm[RRTConnectkConfigDefault]' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1794394063.344371233] [parcel_task]: Calling Planner 'OMPL'
+[INFO] [1794394063.402628267] [parcel_task]: Calling PlanningResponseAdapter 'AddTimeOptimalParameterization'
+[INFO] [1794394063.403868475] [parcel_task]: Calling PlanningResponseAdapter 'ValidateSolution'
+[INFO] [1794394063.405029741] [parcel_task]: Calling PlanningResponseAdapter 'DisplayMotionPath'
+[INFO] [1794394063.409452068] [parcel_task]: PARCEL_STATE {"state": "PREPARE_OPEN_DONE", "sim_time": 30.67, "wall_elapsed": 78.09366656299972, "startup": false, "strokes": 0, "fingers": [0.03999986253605935, 0.03999999999999997]}
+[INFO] [1794394063.410392510] [parcel_task]: Planning succeeded, executing...
+[INFO] [1794394063.441109015] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394063.441231050] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394063.441303796] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394063.441335944] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394063.441412775] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Validating trajectory with allowed_start_tolerance 0.01
+[INFO] [1794394063.441676793] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Starting trajectory execution ...
+[INFO] [1794394063.441763941] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394063.441812884] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394063.442033728] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: sending trajectory to arm_controller
+[INFO] [1794394063.443087729] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: arm_controller started execution
+[INFO] [1794394063.443128743] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Goal request accepted!
+[INFO] [1794394065.343363581] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Controller 'arm_controller' successfully finished
+[INFO] [1794394065.343708902] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Completed trajectory execution with status SUCCEEDED ...
+[INFO] [1794394065.554325438] [parcel_task]: PARCEL_STATE {"state": "PREPARE_ARM_DONE", "sim_time": 31.447, "wall_elapsed": 80.30728398999963, "startup": false, "arrived": true}
+[INFO] [1794394065.561478830] [parcel_task]: PARCEL_STATE {"state": "READY", "sim_time": 31.447, "wall_elapsed": 80.31246131399985, "slot": 3}
+[INFO] [1794394065.590697575] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=31.452
+[INFO] [1794394068.264820299] [parcel_task]: PARCEL_STATE {"state": "SETTLED", "sim_time": 32.431, "wall_elapsed": 83.01618075799979, "slot": 1}
+[INFO] [1794394068.762474162] [parcel_task]: PARCEL_STATE {"state": "PICK", "sim_time": 32.616, "wall_elapsed": 83.51362402599989, "track": 4, "condition": "intact", "p_damaged": 0.001495854698077892, "votes": 16}
+[INFO] [1794394068.966971821] [parcel_task]: PARCEL_STATE {"state": "INTERCEPT", "sim_time": 32.674, "wall_elapsed": 83.71896642999945, "track": 4, "velocity": 0.045, "measured_velocity": 0.04473205589391417, "camera_stamp": 32.6, "target_at_start": [0.5600858930848543, -0.23638858021647768, 0.3199390239320798], "start_sim": 32.916, "grasp_sim": 34.266, "end_sim": 36.916, "grasp_mode": "confirmed"}
+[INFO] [1794394073.340074054] [parcel_task]: PARCEL_STATE {"state": "CLOSE_START", "sim_time": 34.271, "wall_elapsed": 88.09133037099946, "scheduled_sim": 34.266}
+[INFO] [1794394073.357860787] [parcel_task]: PARCEL_STATE {"state": "FIRST_CONTACT", "sim_time": 34.279, "wall_elapsed": 88.10721556099998, "left": ["parcel_3"], "right": ["parcel_3"]}
+[INFO] [1794394073.360519699] [parcel_task]: PARCEL_STATE {"state": "BILATERAL_CONTACT", "sim_time": 34.279, "wall_elapsed": 88.11242305199994, "objects": ["parcel_3"]}
+[INFO] [1794394075.524187480] [parcel_task]: PARCEL_STATE {"state": "BILATERAL_CONTACT", "sim_time": 35.023, "wall_elapsed": 90.27402213799996, "objects": ["parcel_4"]}
+[INFO] [1794394076.103418846] [parcel_task]: PARCEL_STATE {"state": "GRASP_CONFIRMED", "sim_time": 35.187, "wall_elapsed": 90.85429784400003, "object": "parcel_4", "width": 0.025130420800045003, "desired": 0.021580000000000012, "joint_age": 0.0, "contact_age": 0.001, "reason": "bilateral contact and stable seated gap"}
+[INFO] [1794394076.106781933] [parcel_task]: grasp record: HOLDING at width=0.0251
+[INFO] [1794394076.236826896] [parcel_task]: PARCEL_STATE {"state": "LIFT_REQUESTED", "sim_time": 35.226, "wall_elapsed": 90.98977826999999, "object": "parcel_4", "lift_sim": 35.366, "close_start_sim": 34.266, "end_sim": 36.266}
+[INFO] [1794394080.134187211] [parcel_task]: PARCEL_STATE {"state": "LIFTED", "sim_time": 36.28, "wall_elapsed": 94.88623013699998, "object": "parcel_4", "width": 0.025118805172840687, "position": [0.5600835462770387, -0.0946383991890418, 0.5699147934683004]}
+[INFO] [1794394080.137504067] [parcel_task]: PARCEL_STATE {"state": "PLACE", "sim_time": 36.28, "wall_elapsed": 94.88878856099927, "target": [0.27, -0.37, 0.32], "destination": "tote", "slot": 2}
+[INFO] [1794394080.138741385] [parcel_task]: === place(xyz=(0.270,-0.370,0.320)) ===
+[INFO] [1794394080.144311410] [parcel_task]: place: blended approach+descend to place z=0.510
+[INFO] [1794394080.145751415] [parcel_task]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1794394080.146010620] [parcel_task]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[WARN] [1794394080.146086365] [moveit_2971632922.moveit.ros.validate_workspace_bounds]: It looks like the planning volume was not specified. Using default values.
+[INFO] [1794394080.146149491] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1794394080.146231503] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[INFO] [1794394080.147186933] [moveit_2971632922.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'panda_arm[RRTConnectkConfigDefault]' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1794394080.147355464] [parcel_task]: Calling Planner 'OMPL'
+[INFO] [1794394080.240713511] [parcel_task]: Calling PlanningResponseAdapter 'AddTimeOptimalParameterization'
+[INFO] [1794394080.242324992] [parcel_task]: Calling PlanningResponseAdapter 'ValidateSolution'
+[INFO] [1794394080.244002302] [parcel_task]: Calling PlanningResponseAdapter 'DisplayMotionPath'
+[INFO] [1794394080.245858787] [parcel_task]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1794394080.245985864] [parcel_task]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[WARN] [1794394080.246008920] [moveit_2971632922.moveit.ros.validate_workspace_bounds]: It looks like the planning volume was not specified. Using default values.
+[INFO] [1794394080.246055605] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1794394080.246131707] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[INFO] [1794394080.247293466] [moveit_2971632922.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'panda_arm[RRTConnectkConfigDefault]' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1794394080.247503294] [parcel_task]: Calling Planner 'OMPL'
+[INFO] [1794394080.308041954] [parcel_task]: Calling PlanningResponseAdapter 'AddTimeOptimalParameterization'
+[INFO] [1794394080.308405910] [parcel_task]: Calling PlanningResponseAdapter 'ValidateSolution'
+[INFO] [1794394080.308995695] [parcel_task]: Calling PlanningResponseAdapter 'DisplayMotionPath'
+[INFO] [1794394080.316998908] [parcel_task]: blend: executing merged 2-waypoint motion
+[INFO] [1794394080.370900211] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394080.371012905] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394080.371073027] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394080.371100989] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394080.371156018] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Validating trajectory with allowed_start_tolerance 0.01
+[INFO] [1794394080.373409464] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Starting trajectory execution ...
+[INFO] [1794394080.373524936] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394080.373592274] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394080.373729337] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: sending trajectory to arm_controller
+[INFO] [1794394080.375625258] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: arm_controller started execution
+[INFO] [1794394080.375679386] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Goal request accepted!
+[INFO] [1794394085.126746732] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Controller 'arm_controller' successfully finished
+[INFO] [1794394085.128350903] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Completed trajectory execution with status SUCCEEDED ...
+[INFO] [1794394085.345496800] [parcel_task]: PARCEL_STATE {"state": "RELEASE_AUTHORIZED", "sim_time": 37.496, "wall_elapsed": 100.09860417399977}
+[INFO] [1794394085.346398284] [parcel_task]: === move_gripper(width=0.04, closing=False) ===
+
+>>> [rcutils|error_handling.c:108] rcutils_set_error_state()
+This error state is being overwritten:
+
+  'Handle's typesupport identifier (rosidl_typesupport_cpp) is not supported by this library, at ./src/type_support_dispatch.hpp:114'
+
+with this new error message:
+
+  'Handle's typesupport identifier (rosidl_typesupport_c) is not supported by this library, at ./src/type_support_dispatch.hpp:116'
+
+rcutils_reset_error() should be called after error handling to avoid this.
+<<<
+[INFO] [1794394088.393622549] [parcel_task]: _send_finger_goal: target=0.0400 first=0.0399 final=0.04 in 1.54s (settled)
+[INFO] [1794394088.394815295] [parcel_task]: grasp record: cleared (gripper move ended with nothing held)
+[INFO] [1794394088.398895785] [parcel_task]: move_gripper -> ok [reached] width=0.0400 (gap=-0.0000, floor=0.003)
+[INFO] [1794394088.401864898] [parcel_task]: place: release confirmed -- opened from 0.0251 to 0.0400
+[INFO] [1794394088.403792202] [parcel_task]: place('(0.27, -0.37, 0.32)') -> ok [placed] target@(0.270,-0.370,0.320) RELEASED (no separate retract)
+[INFO] [1794394088.455087442] [parcel_task]: PARCEL_STATE {"state": "PREPARE_OPEN_START", "sim_time": 38.538, "wall_elapsed": 103.20477959399977, "startup": false}
+[INFO] [1794394088.456486212] [parcel_task]: grasp record: cleared (verified empty open hand for continuous approach)
+[INFO] [1794394088.457825288] [parcel_task]: PARCEL_STATE {"state": "PREPARE_OPEN_DONE", "sim_time": 38.543, "wall_elapsed": 103.21089355299955, "startup": false, "strokes": 0, "fingers": [0.03999973252240109, 0.03999999999999997]}
+[INFO] [1794394088.458254339] [parcel_task]: PARCEL_STATE {"state": "PREPARE_ARM_START", "sim_time": 38.538, "wall_elapsed": 103.20553180499974, "startup": false}
+[INFO] [1794394088.462525075] [parcel_task]: === move_to_grasp_pose(x=0.56, y=0.06, z=0.52) [seeded IK] ===
+[INFO] [1794394088.464604425] [parcel_task]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1794394088.464769303] [parcel_task]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[WARN] [1794394088.464801152] [moveit_2971632922.moveit.ros.validate_workspace_bounds]: It looks like the planning volume was not specified. Using default values.
+[INFO] [1794394088.464842521] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1794394088.464887606] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[INFO] [1794394088.465908529] [moveit_2971632922.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'panda_arm[RRTConnectkConfigDefault]' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1794394088.466066966] [parcel_task]: Calling Planner 'OMPL'
+[INFO] [1794394088.542441689] [parcel_task]: Calling PlanningResponseAdapter 'AddTimeOptimalParameterization'
+[INFO] [1794394088.544246907] [parcel_task]: Calling PlanningResponseAdapter 'ValidateSolution'
+[INFO] [1794394088.546387687] [parcel_task]: Calling PlanningResponseAdapter 'DisplayMotionPath'
+[INFO] [1794394088.554400022] [parcel_task]: Planning succeeded, executing...
+[INFO] [1794394088.582410326] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394088.582502767] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394088.582561254] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394088.582595109] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394088.582628509] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Validating trajectory with allowed_start_tolerance 0.01
+[INFO] [1794394088.582700003] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Starting trajectory execution ...
+[INFO] [1794394088.582760877] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394088.582802229] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394088.582896747] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: sending trajectory to arm_controller
+[INFO] [1794394088.583355560] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: arm_controller started execution
+[INFO] [1794394088.583402601] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Goal request accepted!
+[INFO] [1794394091.183901487] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Controller 'arm_controller' successfully finished
+[INFO] [1794394091.184087289] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Completed trajectory execution with status SUCCEEDED ...
+[INFO] [1794394091.393567731] [parcel_task]: PARCEL_STATE {"state": "PREPARE_ARM_DONE", "sim_time": 39.566, "wall_elapsed": 106.14572952299932, "startup": false, "arrived": true}
+[INFO] [1794394091.396259421] [parcel_task]: PARCEL_STATE {"state": "READY", "sim_time": 39.566, "wall_elapsed": 106.14912895299949, "slot": 4}
+[INFO] [1794394091.428156189] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=39.572
+[INFO] [1794394093.412757084] [parcel_task]: PARCEL_STATE {"state": "PICK", "sim_time": 40.282, "wall_elapsed": 108.16320680199988, "track": 5, "condition": "damaged", "p_damaged": 0.9999997764825821, "votes": 18}
+[INFO] [1794394093.609823889] [parcel_task]: PARCEL_STATE {"state": "INTERCEPT", "sim_time": 40.343, "wall_elapsed": 108.36195350799971, "track": 5, "velocity": 0.045, "measured_velocity": 0.04426041951000205, "camera_stamp": 40.3, "target_at_start": [0.5600818913175587, -0.23584189242443968, 0.3199486471577143], "start_sim": 40.589, "grasp_sim": 41.939, "end_sim": 44.589, "grasp_mode": "confirmed"}
+[INFO] [1794394095.276906736] [parcel_task]: PARCEL_STATE {"state": "SETTLED", "sim_time": 40.934, "wall_elapsed": 110.02862054399975, "slot": 2}
+[INFO] [1794394098.036007346] [parcel_task]: PARCEL_STATE {"state": "CLOSE_START", "sim_time": 41.943, "wall_elapsed": 112.78658044099939, "scheduled_sim": 41.939}
+[INFO] [1794394098.052126748] [parcel_task]: PARCEL_STATE {"state": "FIRST_CONTACT", "sim_time": 41.943, "wall_elapsed": 112.80260818499937, "left": ["parcel_4"], "right": ["parcel_4"]}
+[INFO] [1794394098.054417403] [parcel_task]: PARCEL_STATE {"state": "BILATERAL_CONTACT", "sim_time": 41.952, "wall_elapsed": 112.80675638999946, "objects": ["parcel_4"]}
+[INFO] [1794394100.113418935] [parcel_task]: PARCEL_STATE {"state": "BILATERAL_CONTACT", "sim_time": 42.695, "wall_elapsed": 114.86609900999974, "objects": ["parcel_5"]}
+[INFO] [1794394100.757811935] [parcel_task]: PARCEL_STATE {"state": "GRASP_CONFIRMED", "sim_time": 42.865, "wall_elapsed": 115.50918905099934, "object": "parcel_5", "width": 0.02512900121367475, "desired": 0.021500000000000057, "joint_age": 0.001, "contact_age": 0.001, "reason": "bilateral contact and stable seated gap"}
+[INFO] [1794394100.758276741] [parcel_task]: grasp record: HOLDING at width=0.0251
+[INFO] [1794394100.881008408] [parcel_task]: PARCEL_STATE {"state": "LIFT_REQUESTED", "sim_time": 42.901, "wall_elapsed": 115.63198396899952, "object": "parcel_5", "lift_sim": 43.039, "close_start_sim": 41.939, "end_sim": 43.939}
+[INFO] [1794394105.031941592] [parcel_task]: PARCEL_STATE {"state": "LIFTED", "sim_time": 43.95, "wall_elapsed": 119.78283052999996, "object": "parcel_5", "width": 0.025105678409704825, "position": [0.5600795587610997, -0.09409159114022299, 0.5699289855187754]}
+[INFO] [1794394105.034451884] [parcel_task]: PARCEL_STATE {"state": "PLACE", "sim_time": 43.956, "wall_elapsed": 119.78676431999975, "target": [0.28, 0.55, 0.32], "destination": "reject", "slot": 1}
+[INFO] [1794394105.035267264] [parcel_task]: === place(xyz=(0.280,0.550,0.320)) ===
+[INFO] [1794394105.041091886] [parcel_task]: place: blended approach+descend to place z=0.510
+[INFO] [1794394105.042397118] [parcel_task]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1794394105.042486825] [parcel_task]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[WARN] [1794394105.042509493] [moveit_2971632922.moveit.ros.validate_workspace_bounds]: It looks like the planning volume was not specified. Using default values.
+[INFO] [1794394105.042551553] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1794394105.042629198] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[INFO] [1794394105.043280138] [moveit_2971632922.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'panda_arm[RRTConnectkConfigDefault]' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1794394105.043384791] [parcel_task]: Calling Planner 'OMPL'
+[INFO] [1794394105.140324900] [parcel_task]: Calling PlanningResponseAdapter 'AddTimeOptimalParameterization'
+[INFO] [1794394105.142473894] [parcel_task]: Calling PlanningResponseAdapter 'ValidateSolution'
+[INFO] [1794394105.144310182] [parcel_task]: Calling PlanningResponseAdapter 'DisplayMotionPath'
+[INFO] [1794394105.147009717] [parcel_task]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1794394105.147180870] [parcel_task]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[WARN] [1794394105.147213438] [moveit_2971632922.moveit.ros.validate_workspace_bounds]: It looks like the planning volume was not specified. Using default values.
+[INFO] [1794394105.147263343] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1794394105.147357051] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[INFO] [1794394105.148374615] [moveit_2971632922.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'panda_arm[RRTConnectkConfigDefault]' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1794394105.148591864] [parcel_task]: Calling Planner 'OMPL'
+[INFO] [1794394105.250046418] [parcel_task]: Calling PlanningResponseAdapter 'AddTimeOptimalParameterization'
+[INFO] [1794394105.253257256] [parcel_task]: Calling PlanningResponseAdapter 'ValidateSolution'
+[INFO] [1794394105.256466213] [parcel_task]: Calling PlanningResponseAdapter 'DisplayMotionPath'
+[INFO] [1794394105.272654177] [parcel_task]: blend: executing merged 2-waypoint motion
+[INFO] [1794394105.337388355] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394105.337448971] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394105.337515982] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394105.337555415] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394105.337618827] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Validating trajectory with allowed_start_tolerance 0.01
+[INFO] [1794394105.337722866] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Starting trajectory execution ...
+[INFO] [1794394105.337781073] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394105.337826854] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394105.337941109] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: sending trajectory to arm_controller
+[INFO] [1794394105.338412715] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: arm_controller started execution
+[INFO] [1794394105.338436575] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Goal request accepted!
+[INFO] [1794394115.890901212] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Controller 'arm_controller' successfully finished
+[INFO] [1794394115.893604289] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Completed trajectory execution with status SUCCEEDED ...
+[INFO] [1794394116.117410902] [parcel_task]: PARCEL_STATE {"state": "RELEASE_AUTHORIZED", "sim_time": 46.525, "wall_elapsed": 130.86890413799938}
+[INFO] [1794394116.118828927] [parcel_task]: === move_gripper(width=0.04, closing=False) ===
+
+>>> [rcutils|error_handling.c:108] rcutils_set_error_state()
+This error state is being overwritten:
+
+  'Handle's typesupport identifier (rosidl_typesupport_cpp) is not supported by this library, at ./src/type_support_dispatch.hpp:114'
+
+with this new error message:
+
+  'Handle's typesupport identifier (rosidl_typesupport_c) is not supported by this library, at ./src/type_support_dispatch.hpp:116'
+
+rcutils_reset_error() should be called after error handling to avoid this.
+<<<
+[INFO] [1794394119.113073528] [parcel_task]: _send_finger_goal: target=0.0400 first=0.0399 final=0.04 in 1.54s (settled)
+[INFO] [1794394119.114850834] [parcel_task]: grasp record: cleared (gripper move ended with nothing held)
+[INFO] [1794394119.119795045] [parcel_task]: move_gripper -> ok [reached] width=0.0400 (gap=-0.0000, floor=0.003)
+[INFO] [1794394119.122643618] [parcel_task]: place: release confirmed -- opened from 0.0251 to 0.0400
+[INFO] [1794394119.123755652] [parcel_task]: place('(0.28, 0.55, 0.32)') -> ok [placed] target@(0.280,0.550,0.320) RELEASED (no separate retract)
+[INFO] [1794394119.154863206] [parcel_task]: PARCEL_STATE {"state": "REJECTED", "sim_time": 47.594, "wall_elapsed": 133.90589297099996, "slot": 1}
+[INFO] [1794394119.160525757] [parcel_task]: PARCEL_STATE {"state": "PREPARE_ARM_START", "sim_time": 47.601, "wall_elapsed": 133.91120639199926, "startup": false}
+[INFO] [1794394119.161070528] [parcel_task]: PARCEL_STATE {"state": "PREPARE_OPEN_START", "sim_time": 47.601, "wall_elapsed": 133.91044657299972, "startup": false}
+[INFO] [1794394119.164467697] [parcel_task]: === move_to_grasp_pose(x=0.56, y=0.06, z=0.52) [seeded IK] ===
+[INFO] [1794394119.165995348] [parcel_task]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1794394119.166085655] [parcel_task]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[WARN] [1794394119.166102699] [moveit_2971632922.moveit.ros.validate_workspace_bounds]: It looks like the planning volume was not specified. Using default values.
+[INFO] [1794394119.166138303] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1794394119.166179885] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[INFO] [1794394119.166965614] [moveit_2971632922.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'panda_arm[RRTConnectkConfigDefault]' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1794394119.167115547] [parcel_task]: Calling Planner 'OMPL'
+[INFO] [1794394119.240992936] [parcel_task]: Calling PlanningResponseAdapter 'AddTimeOptimalParameterization'
+[INFO] [1794394119.245255871] [parcel_task]: Calling PlanningResponseAdapter 'ValidateSolution'
+[INFO] [1794394119.248274877] [parcel_task]: Calling PlanningResponseAdapter 'DisplayMotionPath'
+[INFO] [1794394119.249263367] [parcel_task]: grasp record: cleared (verified empty open hand for continuous approach)
+[INFO] [1794394119.257182305] [parcel_task]: PARCEL_STATE {"state": "PREPARE_OPEN_DONE", "sim_time": 47.626, "wall_elapsed": 134.00482041799933, "startup": false, "strokes": 0, "fingers": [0.03999954720436464, 0.03999999999999998]}
+[INFO] [1794394119.261315436] [parcel_task]: Planning succeeded, executing...
+[INFO] [1794394119.311354525] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394119.311464664] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394119.311547412] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394119.311606341] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394119.311673381] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Validating trajectory with allowed_start_tolerance 0.01
+[INFO] [1794394119.311779473] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Starting trajectory execution ...
+[INFO] [1794394119.311881124] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394119.311928832] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394119.312041018] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: sending trajectory to arm_controller
+[INFO] [1794394119.313286174] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: arm_controller started execution
+[INFO] [1794394119.313316233] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Goal request accepted!
+[INFO] [1794394124.063059215] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Controller 'arm_controller' successfully finished
+[INFO] [1794394124.063992416] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Completed trajectory execution with status SUCCEEDED ...
+[INFO] [1794394124.275450859] [parcel_task]: PARCEL_STATE {"state": "PREPARE_ARM_DONE", "sim_time": 49.449, "wall_elapsed": 139.02287430099932, "startup": false, "arrived": true}
+[INFO] [1794394124.278298487] [parcel_task]: PARCEL_STATE {"state": "READY", "sim_time": 49.456, "wall_elapsed": 139.03084338499957, "slot": 5}
+[INFO] [1794394124.309568346] [parcel_task]: PARCEL_STATE {"state": "PICK", "sim_time": 49.461, "wall_elapsed": 139.06164391099992, "track": 6, "condition": "intact", "p_damaged": 0.012068261101376265, "votes": 25}
+[INFO] [1794394124.495266012] [parcel_task]: PARCEL_STATE {"state": "INTERCEPT", "sim_time": 49.53, "wall_elapsed": 139.24798995999936, "track": 6, "velocity": 0.045, "measured_velocity": 0.045381447310814456, "camera_stamp": 49.4, "target_at_start": [0.5600724471467411, -0.1667191077651319, 0.31993895890727997], "start_sim": 49.769999999999996, "grasp_sim": 51.12, "end_sim": 53.769999999999996, "grasp_mode": "confirmed"}
+[INFO] [1794394128.984133887] [parcel_task]: PARCEL_STATE {"state": "CLOSE_START", "sim_time": 51.123, "wall_elapsed": 143.73500337199948, "scheduled_sim": 51.12}
+[INFO] [1794394128.997851280] [parcel_task]: PARCEL_STATE {"state": "FIRST_CONTACT", "sim_time": 51.131, "wall_elapsed": 143.7496663289994, "left": ["parcel_5"], "right": ["parcel_5"]}
+[INFO] [1794394129.000740185] [parcel_task]: PARCEL_STATE {"state": "BILATERAL_CONTACT", "sim_time": 51.131, "wall_elapsed": 143.75297933899947, "objects": ["parcel_5"]}
+[INFO] [1794394131.100872292] [parcel_task]: PARCEL_STATE {"state": "BILATERAL_CONTACT", "sim_time": 51.876, "wall_elapsed": 145.85331673099972, "objects": ["parcel_6"]}
+[INFO] [1794394131.740888753] [parcel_task]: PARCEL_STATE {"state": "GRASP_CONFIRMED", "sim_time": 52.047, "wall_elapsed": 146.49397481699998, "object": "parcel_6", "width": 0.02512899524719322, "desired": 0.02147999999999996, "joint_age": 0.001, "contact_age": 0.0, "reason": "bilateral contact and stable seated gap"}
+[INFO] [1794394131.741544515] [parcel_task]: grasp record: HOLDING at width=0.0251
+[INFO] [1794394131.883946115] [parcel_task]: PARCEL_STATE {"state": "LIFT_REQUESTED", "sim_time": 52.083, "wall_elapsed": 146.63454608699976, "object": "parcel_6", "lift_sim": 52.22, "close_start_sim": 51.12, "end_sim": 53.12}
+[INFO] [1794394136.025782545] [parcel_task]: PARCEL_STATE {"state": "LIFTED", "sim_time": 53.119, "wall_elapsed": 150.77862248399924, "object": "parcel_6", "width": 0.025119959240951343, "position": [0.5600701294580611, -0.02496993708076568, 0.5697806574941342]}
+[INFO] [1794394136.028291839] [parcel_task]: PARCEL_STATE {"state": "PLACE", "sim_time": 53.119, "wall_elapsed": 150.78037875399968, "target": [0.27, -0.27, 0.32], "destination": "tote", "slot": 3}
+[INFO] [1794394136.031627124] [parcel_task]: === place(xyz=(0.270,-0.270,0.320)) ===
+[INFO] [1794394136.039312827] [parcel_task]: place: blended approach+descend to place z=0.510
+[INFO] [1794394136.040853828] [parcel_task]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1794394136.040996035] [parcel_task]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[WARN] [1794394136.041108397] [moveit_2971632922.moveit.ros.validate_workspace_bounds]: It looks like the planning volume was not specified. Using default values.
+[INFO] [1794394136.041163449] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1794394136.041228892] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[INFO] [1794394136.042032814] [moveit_2971632922.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'panda_arm[RRTConnectkConfigDefault]' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1794394136.042184560] [parcel_task]: Calling Planner 'OMPL'
+[INFO] [1794394136.138781030] [parcel_task]: Calling PlanningResponseAdapter 'AddTimeOptimalParameterization'
+[INFO] [1794394136.139869457] [parcel_task]: Calling PlanningResponseAdapter 'ValidateSolution'
+[INFO] [1794394136.140854248] [parcel_task]: Calling PlanningResponseAdapter 'DisplayMotionPath'
+[INFO] [1794394136.142269552] [parcel_task]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1794394136.142351331] [parcel_task]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[WARN] [1794394136.142366651] [moveit_2971632922.moveit.ros.validate_workspace_bounds]: It looks like the planning volume was not specified. Using default values.
+[INFO] [1794394136.142395842] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1794394136.142470227] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[INFO] [1794394136.143127397] [moveit_2971632922.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'panda_arm[RRTConnectkConfigDefault]' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1794394136.143243687] [parcel_task]: Calling Planner 'OMPL'
+[INFO] [1794394136.208068034] [parcel_task]: Calling PlanningResponseAdapter 'AddTimeOptimalParameterization'
+[INFO] [1794394136.209453553] [parcel_task]: Calling PlanningResponseAdapter 'ValidateSolution'
+[INFO] [1794394136.210963114] [parcel_task]: Calling PlanningResponseAdapter 'DisplayMotionPath'
+[INFO] [1794394136.220360596] [parcel_task]: blend: executing merged 2-waypoint motion
+[INFO] [1794394136.251993232] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394136.252154265] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394136.252268489] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394136.252329629] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394136.252408543] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Validating trajectory with allowed_start_tolerance 0.01
+[INFO] [1794394136.252677205] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Starting trajectory execution ...
+[INFO] [1794394136.252825452] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394136.252931510] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394136.253089218] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: sending trajectory to arm_controller
+[INFO] [1794394136.253613336] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: arm_controller started execution
+[INFO] [1794394136.253650335] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Goal request accepted!
+[INFO] [1794394140.654143866] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Controller 'arm_controller' successfully finished
+[INFO] [1794394140.654666523] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Completed trajectory execution with status SUCCEEDED ...
+[INFO] [1794394140.873861078] [parcel_task]: PARCEL_STATE {"state": "RELEASE_AUTHORIZED", "sim_time": 54.262, "wall_elapsed": 155.62636346899944}
+[INFO] [1794394140.875131574] [parcel_task]: === move_gripper(width=0.04, closing=False) ===
+
+>>> [rcutils|error_handling.c:108] rcutils_set_error_state()
+This error state is being overwritten:
+
+  'Handle's typesupport identifier (rosidl_typesupport_cpp) is not supported by this library, at ./src/type_support_dispatch.hpp:114'
+
+with this new error message:
+
+  'Handle's typesupport identifier (rosidl_typesupport_c) is not supported by this library, at ./src/type_support_dispatch.hpp:116'
+
+rcutils_reset_error() should be called after error handling to avoid this.
+<<<
+[INFO] [1794394143.937253550] [parcel_task]: _send_finger_goal: target=0.0400 first=0.04 final=0.04 in 1.55s (settled)
+[INFO] [1794394143.938062133] [parcel_task]: grasp record: cleared (gripper move ended with nothing held)
+[INFO] [1794394143.941005190] [parcel_task]: move_gripper -> ok [reached] width=0.0400 (gap=-0.0000, floor=0.003)
+[INFO] [1794394143.944080897] [parcel_task]: place: release confirmed -- opened from 0.0251 to 0.0400
+[INFO] [1794394143.948003460] [parcel_task]: place('(0.27, -0.27, 0.32)') -> ok [placed] target@(0.270,-0.270,0.320) RELEASED (no separate retract)
+[INFO] [1794394143.986567478] [parcel_task]: PARCEL_STATE {"state": "PREPARE_ARM_START", "sim_time": 55.333, "wall_elapsed": 158.73729802399976, "startup": false}
+[INFO] [1794394143.988287155] [parcel_task]: PARCEL_STATE {"state": "PREPARE_OPEN_START", "sim_time": 55.333, "wall_elapsed": 158.7343715979996, "startup": false}
+[INFO] [1794394143.990850595] [parcel_task]: grasp record: cleared (verified empty open hand for continuous approach)
+[INFO] [1794394143.993319055] [parcel_task]: === move_to_grasp_pose(x=0.56, y=0.06, z=0.52) [seeded IK] ===
+[INFO] [1794394143.994678746] [parcel_task]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1794394143.994779833] [parcel_task]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[WARN] [1794394143.994795820] [moveit_2971632922.moveit.ros.validate_workspace_bounds]: It looks like the planning volume was not specified. Using default values.
+[INFO] [1794394143.994823338] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1794394143.994856285] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[INFO] [1794394143.995723751] [moveit_2971632922.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'panda_arm[RRTConnectkConfigDefault]' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1794394143.995882367] [parcel_task]: Calling Planner 'OMPL'
+[INFO] [1794394144.062570943] [parcel_task]: Calling PlanningResponseAdapter 'AddTimeOptimalParameterization'
+[INFO] [1794394144.063859624] [parcel_task]: Calling PlanningResponseAdapter 'ValidateSolution'
+[INFO] [1794394144.064822438] [parcel_task]: Calling PlanningResponseAdapter 'DisplayMotionPath'
+[INFO] [1794394144.068230075] [parcel_task]: PARCEL_STATE {"state": "PREPARE_OPEN_DONE", "sim_time": 55.34, "wall_elapsed": 158.74537503699958, "startup": false, "strokes": 0, "fingers": [0.03999961291656985, 0.03999999999999998]}
+[INFO] [1794394144.069543848] [parcel_task]: Planning succeeded, executing...
+[INFO] [1794394144.093005472] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394144.093087799] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394144.093152246] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394144.093193560] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394144.093255065] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Validating trajectory with allowed_start_tolerance 0.01
+[INFO] [1794394144.093370391] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Starting trajectory execution ...
+[INFO] [1794394144.093447743] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394144.093519719] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394144.093670478] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: sending trajectory to arm_controller
+[INFO] [1794394144.095484763] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: arm_controller started execution
+[INFO] [1794394144.095521158] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Goal request accepted!
+[INFO] [1794394146.146282951] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Controller 'arm_controller' successfully finished
+[INFO] [1794394146.149487196] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Completed trajectory execution with status SUCCEEDED ...
+[INFO] [1794394146.355950252] [parcel_task]: PARCEL_STATE {"state": "PREPARE_ARM_DONE", "sim_time": 56.165, "wall_elapsed": 161.10705275300006, "startup": false, "arrived": true}
+[INFO] [1794394146.357192950] [parcel_task]: PARCEL_STATE {"state": "READY", "sim_time": 56.165, "wall_elapsed": 161.1105312009995, "slot": 6}
+[INFO] [1794394146.389364971] [parcel_task]: PARCEL_STATE {"state": "PICK", "sim_time": 56.175, "wall_elapsed": 161.14074329399955, "track": 7, "condition": "damaged", "p_damaged": 0.9999917596578598, "votes": 27}
+[INFO] [1794394146.585444087] [parcel_task]: PARCEL_STATE {"state": "INTERCEPT", "sim_time": 56.238, "wall_elapsed": 161.3384629229995, "track": 7, "velocity": 0.045, "measured_velocity": 0.044732055893913866, "camera_stamp": 56.2, "target_at_start": [0.5600459030836098, -0.20917892778466565, 0.3199455963322136], "start_sim": 56.474999999999994, "grasp_sim": 57.824999999999996, "end_sim": 60.474999999999994, "grasp_mode": "confirmed"}
+[INFO] [1794394147.984462679] [parcel_task]: PARCEL_STATE {"state": "SETTLED", "sim_time": 56.728, "wall_elapsed": 162.73694394999984, "slot": 3}
+[INFO] [1794394150.995018895] [parcel_task]: PARCEL_STATE {"state": "CLOSE_START", "sim_time": 57.832, "wall_elapsed": 165.74695493299987, "scheduled_sim": 57.824999999999996}
+[INFO] [1794394151.010845228] [parcel_task]: PARCEL_STATE {"state": "FIRST_CONTACT", "sim_time": 57.832, "wall_elapsed": 165.76261369799977, "left": ["parcel_6"], "right": ["parcel_6"]}
+[INFO] [1794394151.014794579] [parcel_task]: PARCEL_STATE {"state": "BILATERAL_CONTACT", "sim_time": 57.837, "wall_elapsed": 165.76540837499942, "objects": ["parcel_6"]}
+[INFO] [1794394153.097517358] [parcel_task]: PARCEL_STATE {"state": "BILATERAL_CONTACT", "sim_time": 58.583, "wall_elapsed": 167.8494189439998, "objects": ["parcel_7"]}
+[INFO] [1794394153.721391600] [parcel_task]: PARCEL_STATE {"state": "GRASP_CONFIRMED", "sim_time": 58.75, "wall_elapsed": 168.47448106899992, "object": "parcel_7", "width": 0.025129117471924325, "desired": 0.02151999999999987, "joint_age": 0.001, "contact_age": 0.002, "reason": "bilateral contact and stable seated gap"}
+[INFO] [1794394153.722036312] [parcel_task]: grasp record: HOLDING at width=0.0251
+[INFO] [1794394153.857155026] [parcel_task]: PARCEL_STATE {"state": "LIFT_REQUESTED", "sim_time": 58.788, "wall_elapsed": 168.6089009489997, "object": "parcel_7", "lift_sim": 58.925, "close_start_sim": 57.824999999999996, "end_sim": 59.824999999999996}
+[INFO] [1794394157.906664055] [parcel_task]: PARCEL_STATE {"state": "LIFTED", "sim_time": 59.832, "wall_elapsed": 172.65877962800005, "object": "parcel_7", "width": 0.02512000380337241, "position": [0.5600435627759404, -0.06742881284143012, 0.5699157346683027]}
+[INFO] [1794394157.909267509] [parcel_task]: PARCEL_STATE {"state": "PLACE", "sim_time": 59.832, "wall_elapsed": 172.66116565899938, "target": [0.18, 0.45, 0.32], "destination": "reject", "slot": 2}
+[INFO] [1794394157.909905697] [parcel_task]: === place(xyz=(0.180,0.450,0.320)) ===
+[INFO] [1794394157.917593790] [parcel_task]: place: blended approach+descend to place z=0.510
+[INFO] [1794394157.919650339] [parcel_task]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1794394157.919814890] [parcel_task]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[WARN] [1794394157.920063372] [moveit_2971632922.moveit.ros.validate_workspace_bounds]: It looks like the planning volume was not specified. Using default values.
+[INFO] [1794394157.920175078] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1794394157.920293665] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[INFO] [1794394157.921389434] [moveit_2971632922.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'panda_arm[RRTConnectkConfigDefault]' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1794394157.921660347] [parcel_task]: Calling Planner 'OMPL'
+[INFO] [1794394157.996362879] [parcel_task]: Calling PlanningResponseAdapter 'AddTimeOptimalParameterization'
+[INFO] [1794394157.999008330] [parcel_task]: Calling PlanningResponseAdapter 'ValidateSolution'
+[INFO] [1794394158.001824117] [parcel_task]: Calling PlanningResponseAdapter 'DisplayMotionPath'
+[INFO] [1794394158.004455975] [parcel_task]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1794394158.004555973] [parcel_task]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[WARN] [1794394158.004599381] [moveit_2971632922.moveit.ros.validate_workspace_bounds]: It looks like the planning volume was not specified. Using default values.
+[INFO] [1794394158.004637424] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1794394158.004702288] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[INFO] [1794394158.005451506] [moveit_2971632922.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'panda_arm[RRTConnectkConfigDefault]' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1794394158.005592432] [parcel_task]: Calling Planner 'OMPL'
+[INFO] [1794394158.087405167] [parcel_task]: Calling PlanningResponseAdapter 'AddTimeOptimalParameterization'
+[INFO] [1794394158.088087350] [parcel_task]: Calling PlanningResponseAdapter 'ValidateSolution'
+[INFO] [1794394158.088862926] [parcel_task]: Calling PlanningResponseAdapter 'DisplayMotionPath'
+[INFO] [1794394158.098719513] [parcel_task]: blend: executing merged 2-waypoint motion
+[INFO] [1794394158.134123952] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394158.134229023] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394158.134314904] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394158.134364034] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394158.134443358] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Validating trajectory with allowed_start_tolerance 0.01
+[INFO] [1794394158.136921705] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Starting trajectory execution ...
+[INFO] [1794394158.137105258] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394158.137170916] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394158.137341050] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: sending trajectory to arm_controller
+[INFO] [1794394158.137927063] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: arm_controller started execution
+[INFO] [1794394158.137973075] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Goal request accepted!
+[INFO] [1794394164.088374088] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Controller 'arm_controller' successfully finished
+[INFO] [1794394164.089717754] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Completed trajectory execution with status SUCCEEDED ...
+[INFO] [1794394164.322513894] [parcel_task]: PARCEL_STATE {"state": "RELEASE_AUTHORIZED", "sim_time": 61.333, "wall_elapsed": 179.07378995499948}
+[INFO] [1794394164.323191858] [parcel_task]: === move_gripper(width=0.04, closing=False) ===
+
+>>> [rcutils|error_handling.c:108] rcutils_set_error_state()
+This error state is being overwritten:
+
+  'Handle's typesupport identifier (rosidl_typesupport_cpp) is not supported by this library, at ./src/type_support_dispatch.hpp:114'
+
+with this new error message:
+
+  'Handle's typesupport identifier (rosidl_typesupport_c) is not supported by this library, at ./src/type_support_dispatch.hpp:116'
+
+rcutils_reset_error() should be called after error handling to avoid this.
+<<<
+[INFO] [1794394167.326443768] [parcel_task]: _send_finger_goal: target=0.0400 first=0.0397 final=0.04 in 1.54s (settled)
+[INFO] [1794394167.330767603] [parcel_task]: grasp record: cleared (gripper move ended with nothing held)
+[INFO] [1794394167.331783286] [parcel_task]: move_gripper -> ok [reached] width=0.0400 (gap=-0.0000, floor=0.003)
+[INFO] [1794394167.333412718] [parcel_task]: place: release confirmed -- opened from 0.0251 to 0.0400
+[INFO] [1794394167.334362980] [parcel_task]: place('(0.18, 0.45, 0.32)') -> ok [placed] target@(0.180,0.450,0.320) RELEASED (no separate retract)
+[INFO] [1794394167.395035067] [parcel_task]: PARCEL_STATE {"state": "REJECTED", "sim_time": 62.385, "wall_elapsed": 182.14680092599974, "slot": 2}
+[INFO] [1794394167.400363314] [parcel_task]: PARCEL_STATE {"state": "PREPARE_OPEN_START", "sim_time": 62.393, "wall_elapsed": 182.15036110099936, "startup": false}
+[INFO] [1794394167.403017121] [parcel_task]: grasp record: cleared (verified empty open hand for continuous approach)
+[INFO] [1794394167.406335667] [parcel_task]: PARCEL_STATE {"state": "PREPARE_ARM_START", "sim_time": 62.393, "wall_elapsed": 182.15192770699923, "startup": false}
+[INFO] [1794394167.409063237] [parcel_task]: PARCEL_STATE {"state": "PREPARE_OPEN_DONE", "sim_time": 62.393, "wall_elapsed": 182.15768623799977, "startup": false, "strokes": 0, "fingers": [0.03999999999999998, 0.03999996161681054]}
+[INFO] [1794394167.410764739] [parcel_task]: === move_to_grasp_pose(x=0.56, y=0.06, z=0.52) [seeded IK] ===
+[INFO] [1794394167.412223192] [parcel_task]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1794394167.412314174] [parcel_task]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[WARN] [1794394167.412336869] [moveit_2971632922.moveit.ros.validate_workspace_bounds]: It looks like the planning volume was not specified. Using default values.
+[INFO] [1794394167.412371781] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1794394167.412413280] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[INFO] [1794394167.413205591] [moveit_2971632922.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'panda_arm[RRTConnectkConfigDefault]' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1794394167.413354838] [parcel_task]: Calling Planner 'OMPL'
+[INFO] [1794394167.489124658] [parcel_task]: Calling PlanningResponseAdapter 'AddTimeOptimalParameterization'
+[INFO] [1794394167.491526364] [parcel_task]: Calling PlanningResponseAdapter 'ValidateSolution'
+[INFO] [1794394167.493671272] [parcel_task]: Calling PlanningResponseAdapter 'DisplayMotionPath'
+[INFO] [1794394167.497805120] [parcel_task]: Planning succeeded, executing...
+[INFO] [1794394167.526117113] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394167.526181772] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394167.526225425] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394167.526248177] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394167.526307897] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Validating trajectory with allowed_start_tolerance 0.01
+[INFO] [1794394167.526686933] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Starting trajectory execution ...
+[INFO] [1794394167.526784611] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394167.526843338] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394167.526977037] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: sending trajectory to arm_controller
+[INFO] [1794394167.527463026] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: arm_controller started execution
+[INFO] [1794394167.527513126] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Goal request accepted!
+[INFO] [1794394170.227666631] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Controller 'arm_controller' successfully finished
+[INFO] [1794394170.229234098] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Completed trajectory execution with status SUCCEEDED ...
+[INFO] [1794394170.439053241] [parcel_task]: PARCEL_STATE {"state": "PREPARE_ARM_DONE", "sim_time": 63.51, "wall_elapsed": 185.19190702600008, "startup": false, "arrived": true}
+[INFO] [1794394170.446666446] [parcel_task]: PARCEL_STATE {"state": "READY", "sim_time": 63.51, "wall_elapsed": 185.1965214619995, "slot": 7}
+[INFO] [1794394170.486665126] [parcel_task]: PARCEL_STATE {"state": "PICK", "sim_time": 63.524, "wall_elapsed": 185.23617570999977, "track": 8, "condition": "intact", "p_damaged": 0.000993136280158069, "votes": 19}
+[INFO] [1794394170.662659119] [parcel_task]: PARCEL_STATE {"state": "INTERCEPT", "sim_time": 63.579, "wall_elapsed": 185.41428857499977, "track": 8, "velocity": 0.045, "measured_velocity": 0.04473205589391424, "camera_stamp": 63.5, "target_at_start": [0.560080770822716, -0.2214183487171732, 0.3199410290161003], "start_sim": 63.824, "grasp_sim": 65.17399999999999, "end_sim": 67.824, "grasp_mode": "confirmed"}
+[INFO] [1794394175.255096314] [parcel_task]: PARCEL_STATE {"state": "CLOSE_START", "sim_time": 65.176, "wall_elapsed": 190.00672541899985, "scheduled_sim": 65.17399999999999}
+[INFO] [1794394175.268726170] [parcel_task]: PARCEL_STATE {"state": "FIRST_CONTACT", "sim_time": 65.176, "wall_elapsed": 190.02131008299966, "left": ["parcel_7"], "right": ["parcel_7"]}
+[INFO] [1794394175.270705839] [parcel_task]: PARCEL_STATE {"state": "BILATERAL_CONTACT", "sim_time": 65.176, "wall_elapsed": 190.02296738399946, "objects": ["parcel_7"]}
+[INFO] [1794394177.502839120] [parcel_task]: PARCEL_STATE {"state": "BILATERAL_CONTACT", "sim_time": 65.932, "wall_elapsed": 192.25520284899994, "objects": ["parcel_8"]}
+[INFO] [1794394178.106593267] [parcel_task]: PARCEL_STATE {"state": "GRASP_CONFIRMED", "sim_time": 66.096, "wall_elapsed": 192.85745064999992, "object": "parcel_8", "width": 0.025127702510328677, "desired": 0.021559999999999774, "joint_age": 0.0, "contact_age": 0.0, "reason": "bilateral contact and stable seated gap"}
+[INFO] [1794394178.107469125] [parcel_task]: grasp record: HOLDING at width=0.0251
+[INFO] [1794394178.245601967] [parcel_task]: PARCEL_STATE {"state": "LIFT_REQUESTED", "sim_time": 66.131, "wall_elapsed": 192.9982854310001, "object": "parcel_8", "lift_sim": 66.274, "close_start_sim": 65.17399999999999, "end_sim": 67.174}
+[INFO] [1794394182.400811207] [parcel_task]: PARCEL_STATE {"state": "LIFTED", "sim_time": 67.175, "wall_elapsed": 197.15284272099962, "object": "parcel_8", "width": 0.025118978099952394, "position": [0.5600784503811503, -0.07966844020947948, 0.5698642308134619]}
+[INFO] [1794394182.403067360] [parcel_task]: PARCEL_STATE {"state": "PLACE", "sim_time": 67.175, "wall_elapsed": 197.15543366699967, "target": [0.17, -0.37, 0.32], "destination": "tote", "slot": 4}
+[INFO] [1794394182.403584011] [parcel_task]: === place(xyz=(0.170,-0.370,0.320)) ===
+[INFO] [1794394182.407850818] [parcel_task]: place: blended approach+descend to place z=0.510
+[INFO] [1794394182.409265251] [parcel_task]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1794394182.409365094] [parcel_task]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[WARN] [1794394182.409393132] [moveit_2971632922.moveit.ros.validate_workspace_bounds]: It looks like the planning volume was not specified. Using default values.
+[INFO] [1794394182.409440301] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1794394182.409522483] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[INFO] [1794394182.410899545] [moveit_2971632922.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'panda_arm[RRTConnectkConfigDefault]' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1794394182.411187081] [parcel_task]: Calling Planner 'OMPL'
+[INFO] [1794394182.488816118] [parcel_task]: Calling PlanningResponseAdapter 'AddTimeOptimalParameterization'
+[INFO] [1794394182.490317928] [parcel_task]: Calling PlanningResponseAdapter 'ValidateSolution'
+[INFO] [1794394182.492147823] [parcel_task]: Calling PlanningResponseAdapter 'DisplayMotionPath'
+[INFO] [1794394182.497936241] [parcel_task]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1794394182.498036493] [parcel_task]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[WARN] [1794394182.498054486] [moveit_2971632922.moveit.ros.validate_workspace_bounds]: It looks like the planning volume was not specified. Using default values.
+[INFO] [1794394182.498096887] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1794394182.498164956] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[INFO] [1794394182.498903389] [moveit_2971632922.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'panda_arm[RRTConnectkConfigDefault]' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1794394182.499042073] [parcel_task]: Calling Planner 'OMPL'
+[INFO] [1794394182.592359192] [parcel_task]: Calling PlanningResponseAdapter 'AddTimeOptimalParameterization'
+[INFO] [1794394182.593628628] [parcel_task]: Calling PlanningResponseAdapter 'ValidateSolution'
+[INFO] [1794394182.595680849] [parcel_task]: Calling PlanningResponseAdapter 'DisplayMotionPath'
+[INFO] [1794394182.604419276] [parcel_task]: blend: executing merged 2-waypoint motion
+[INFO] [1794394182.632453514] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394182.632538708] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394182.632621265] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394182.632658324] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394182.632716263] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Validating trajectory with allowed_start_tolerance 0.01
+[INFO] [1794394182.635229824] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Starting trajectory execution ...
+[INFO] [1794394182.635310047] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394182.635359799] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394182.635502235] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: sending trajectory to arm_controller
+[INFO] [1794394182.635919334] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: arm_controller started execution
+[INFO] [1794394182.635949993] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Goal request accepted!
+[INFO] [1794394187.536325389] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Controller 'arm_controller' successfully finished
+[INFO] [1794394187.538470624] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Completed trajectory execution with status SUCCEEDED ...
+[INFO] [1794394187.757023667] [parcel_task]: PARCEL_STATE {"state": "RELEASE_AUTHORIZED", "sim_time": 68.413, "wall_elapsed": 202.50773162199948}
+[INFO] [1794394187.757855332] [parcel_task]: === move_gripper(width=0.04, closing=False) ===
+
+>>> [rcutils|error_handling.c:108] rcutils_set_error_state()
+This error state is being overwritten:
+
+  'Handle's typesupport identifier (rosidl_typesupport_cpp) is not supported by this library, at ./src/type_support_dispatch.hpp:114'
+
+with this new error message:
+
+  'Handle's typesupport identifier (rosidl_typesupport_c) is not supported by this library, at ./src/type_support_dispatch.hpp:116'
+
+rcutils_reset_error() should be called after error handling to avoid this.
+<<<
+[INFO] [1794394190.756404752] [parcel_task]: _send_finger_goal: target=0.0400 first=0.0397 final=0.04 in 1.54s (settled)
+[INFO] [1794394190.757125819] [parcel_task]: grasp record: cleared (gripper move ended with nothing held)
+[INFO] [1794394190.759347009] [parcel_task]: move_gripper -> ok [reached] width=0.0400 (gap=-0.0000, floor=0.003)
+[INFO] [1794394190.761710411] [parcel_task]: place: release confirmed -- opened from 0.0251 to 0.0400
+[INFO] [1794394190.763004717] [parcel_task]: place('(0.17, -0.37, 0.32)') -> ok [placed] target@(0.170,-0.370,0.320) RELEASED (no separate retract)
+[INFO] [1794394190.804537898] [parcel_task]: PARCEL_STATE {"state": "PREPARE_ARM_START", "sim_time": 69.47, "wall_elapsed": 205.55549301099927, "startup": false}
+[INFO] [1794394190.806263557] [parcel_task]: PARCEL_STATE {"state": "PREPARE_OPEN_START", "sim_time": 69.47, "wall_elapsed": 205.55332196399922, "startup": false}
+[INFO] [1794394190.809747211] [parcel_task]: === move_to_grasp_pose(x=0.56, y=0.06, z=0.52) [seeded IK] ===
+[INFO] [1794394190.810987433] [parcel_task]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1794394190.811128060] [parcel_task]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[WARN] [1794394190.811157922] [moveit_2971632922.moveit.ros.validate_workspace_bounds]: It looks like the planning volume was not specified. Using default values.
+[INFO] [1794394190.811190885] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1794394190.811250790] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[INFO] [1794394190.812298002] [moveit_2971632922.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'panda_arm[RRTConnectkConfigDefault]' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1794394190.812481373] [parcel_task]: Calling Planner 'OMPL'
+[INFO] [1794394190.921923002] [parcel_task]: Calling PlanningResponseAdapter 'AddTimeOptimalParameterization'
+[INFO] [1794394190.923985848] [parcel_task]: Calling PlanningResponseAdapter 'ValidateSolution'
+[INFO] [1794394190.925613414] [parcel_task]: Calling PlanningResponseAdapter 'DisplayMotionPath'
+[INFO] [1794394190.930243356] [parcel_task]: grasp record: cleared (verified empty open hand for continuous approach)
+[INFO] [1794394190.932920854] [parcel_task]: PARCEL_STATE {"state": "PREPARE_OPEN_DONE", "sim_time": 69.515, "wall_elapsed": 205.68534888499926, "startup": false, "strokes": 0, "fingers": [0.039999689139259866, 0.03999999999999998]}
+[INFO] [1794394190.935532455] [parcel_task]: Planning succeeded, executing...
+[INFO] [1794394190.969417935] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394190.969660445] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394190.969996056] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394190.970117241] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394190.970219664] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Validating trajectory with allowed_start_tolerance 0.01
+[INFO] [1794394190.972190190] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Starting trajectory execution ...
+[INFO] [1794394190.972449434] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394190.972527330] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394190.972671122] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: sending trajectory to arm_controller
+[INFO] [1794394190.973666956] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: arm_controller started execution
+[INFO] [1794394190.973702819] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Goal request accepted!
+[INFO] [1794394193.624724432] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Controller 'arm_controller' successfully finished
+[INFO] [1794394193.625166769] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Completed trajectory execution with status SUCCEEDED ...
+[INFO] [1794394193.841110306] [parcel_task]: PARCEL_STATE {"state": "PREPARE_ARM_DONE", "sim_time": 70.533, "wall_elapsed": 208.59108643199943, "startup": false, "arrived": true}
+[INFO] [1794394193.844460421] [parcel_task]: PARCEL_STATE {"state": "READY", "sim_time": 70.533, "wall_elapsed": 208.59631915599948, "slot": 8}
+[INFO] [1794394193.883179295] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=70.544
+[INFO] [1794394195.107371553] [parcel_task]: PARCEL_STATE {"state": "PICK", "sim_time": 70.94, "wall_elapsed": 209.85882365399993, "track": 9, "condition": "intact", "p_damaged": 0.11518574554247607, "votes": 20}
+[INFO] [1794394195.270128271] [parcel_task]: PARCEL_STATE {"state": "INTERCEPT", "sim_time": 71.001, "wall_elapsed": 210.02216779099945, "track": 9, "velocity": 0.045, "measured_velocity": 0.04557683472084408, "camera_stamp": 70.9, "target_at_start": [0.5600839722365525, -0.23178424459267002, 0.3199429099707148], "start_sim": 71.24, "grasp_sim": 72.58999999999999, "end_sim": 75.24, "grasp_mode": "confirmed"}
+[INFO] [1794394198.399356684] [parcel_task]: PARCEL_STATE {"state": "SETTLED", "sim_time": 72.127, "wall_elapsed": 213.1498811679994, "slot": 4}
+[INFO] [1794394199.684515524] [parcel_task]: PARCEL_STATE {"state": "CLOSE_START", "sim_time": 72.59, "wall_elapsed": 214.43700196600003, "scheduled_sim": 72.58999999999999}
+[INFO] [1794394199.700180071] [parcel_task]: PARCEL_STATE {"state": "FIRST_CONTACT", "sim_time": 72.599, "wall_elapsed": 214.45147075399927, "left": ["parcel_8"], "right": ["parcel_8"]}
+[INFO] [1794394199.704361758] [parcel_task]: PARCEL_STATE {"state": "BILATERAL_CONTACT", "sim_time": 72.599, "wall_elapsed": 214.45564566999929, "objects": ["parcel_8"]}
+[INFO] [1794394201.784255037] [parcel_task]: PARCEL_STATE {"state": "BILATERAL_CONTACT", "sim_time": 73.348, "wall_elapsed": 216.53343428799963, "objects": ["parcel_9"]}
+[INFO] [1794394202.408635588] [parcel_task]: PARCEL_STATE {"state": "GRASP_CONFIRMED", "sim_time": 73.517, "wall_elapsed": 217.1611662769992, "object": "parcel_9", "width": 0.025129197775740415, "desired": 0.021479999999999676, "joint_age": 0.001, "contact_age": 0.0, "reason": "bilateral contact and stable seated gap"}
+[INFO] [1794394202.411552497] [parcel_task]: grasp record: HOLDING at width=0.0251
+[INFO] [1794394202.575868177] [parcel_task]: PARCEL_STATE {"state": "LIFT_REQUESTED", "sim_time": 73.559, "wall_elapsed": 217.3287334910001, "object": "parcel_9", "lift_sim": 73.69, "close_start_sim": 72.58999999999999, "end_sim": 74.59}
+[INFO] [1794394206.677292737] [parcel_task]: PARCEL_STATE {"state": "LIFTED", "sim_time": 74.6, "wall_elapsed": 221.42829800899926, "object": "parcel_9", "width": 0.02509717148646797, "position": [0.5600816470433572, -0.09003407595276962, 0.5699020050683514]}
+[INFO] [1794394206.681877223] [parcel_task]: PARCEL_STATE {"state": "PLACE", "sim_time": 74.6, "wall_elapsed": 221.43217032199937, "target": [0.17, -0.27, 0.32], "destination": "tote", "slot": 5}
+[INFO] [1794394206.682809137] [parcel_task]: === place(xyz=(0.170,-0.270,0.320)) ===
+[INFO] [1794394206.690615349] [parcel_task]: place: blended approach+descend to place z=0.510
+[INFO] [1794394206.691716625] [parcel_task]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1794394206.691796141] [parcel_task]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[WARN] [1794394206.691810398] [moveit_2971632922.moveit.ros.validate_workspace_bounds]: It looks like the planning volume was not specified. Using default values.
+[INFO] [1794394206.691846867] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1794394206.691897398] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[INFO] [1794394206.692514514] [moveit_2971632922.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'panda_arm[RRTConnectkConfigDefault]' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1794394206.692666845] [parcel_task]: Calling Planner 'OMPL'
+[INFO] [1794394206.790710009] [parcel_task]: Calling PlanningResponseAdapter 'AddTimeOptimalParameterization'
+[INFO] [1794394206.792960704] [parcel_task]: Calling PlanningResponseAdapter 'ValidateSolution'
+[INFO] [1794394206.794536960] [parcel_task]: Calling PlanningResponseAdapter 'DisplayMotionPath'
+[INFO] [1794394206.795928891] [parcel_task]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1794394206.795982830] [parcel_task]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[WARN] [1794394206.795995770] [moveit_2971632922.moveit.ros.validate_workspace_bounds]: It looks like the planning volume was not specified. Using default values.
+[INFO] [1794394206.796018506] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1794394206.796065147] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[INFO] [1794394206.796651015] [moveit_2971632922.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'panda_arm[RRTConnectkConfigDefault]' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1794394206.796784495] [parcel_task]: Calling Planner 'OMPL'
+[INFO] [1794394206.850726613] [parcel_task]: Calling PlanningResponseAdapter 'AddTimeOptimalParameterization'
+[INFO] [1794394206.851382865] [parcel_task]: Calling PlanningResponseAdapter 'ValidateSolution'
+[INFO] [1794394206.852224490] [parcel_task]: Calling PlanningResponseAdapter 'DisplayMotionPath'
+[INFO] [1794394206.864608033] [parcel_task]: blend: executing merged 2-waypoint motion
+[INFO] [1794394206.902305391] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394206.902399461] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394206.902473051] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394206.902517520] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394206.902592851] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Validating trajectory with allowed_start_tolerance 0.01
+[INFO] [1794394206.904810885] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Starting trajectory execution ...
+[INFO] [1794394206.904929506] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394206.904986555] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394206.905146751] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: sending trajectory to arm_controller
+[INFO] [1794394206.905659921] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: arm_controller started execution
+[INFO] [1794394206.905693881] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Goal request accepted!
+[INFO] [1794394212.606066504] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Controller 'arm_controller' successfully finished
+[INFO] [1794394212.607137711] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Completed trajectory execution with status SUCCEEDED ...
+[INFO] [1794394212.818555966] [parcel_task]: PARCEL_STATE {"state": "RELEASE_AUTHORIZED", "sim_time": 76.032, "wall_elapsed": 227.5712135849999}
+[INFO] [1794394212.819462592] [parcel_task]: === move_gripper(width=0.04, closing=False) ===
+
+>>> [rcutils|error_handling.c:108] rcutils_set_error_state()
+This error state is being overwritten:
+
+  'Handle's typesupport identifier (rosidl_typesupport_cpp) is not supported by this library, at ./src/type_support_dispatch.hpp:114'
+
+with this new error message:
+
+  'Handle's typesupport identifier (rosidl_typesupport_c) is not supported by this library, at ./src/type_support_dispatch.hpp:116'
+
+rcutils_reset_error() should be called after error handling to avoid this.
+<<<
+[INFO] [1794394215.816395545] [parcel_task]: _send_finger_goal: target=0.0400 first=0.0398 final=0.04 in 1.54s (settled)
+[INFO] [1794394215.817418533] [parcel_task]: grasp record: cleared (gripper move ended with nothing held)
+[INFO] [1794394215.818616240] [parcel_task]: move_gripper -> ok [reached] width=0.0400 (gap=-0.0000, floor=0.003)
+[INFO] [1794394215.819402256] [parcel_task]: place: release confirmed -- opened from 0.0251 to 0.0400
+[INFO] [1794394215.821231645] [parcel_task]: place('(0.17, -0.27, 0.32)') -> ok [placed] target@(0.170,-0.270,0.320) RELEASED (no separate retract)
+[INFO] [1794394215.873506266] [parcel_task]: PARCEL_STATE {"state": "PREPARE_ARM_START", "sim_time": 77.096, "wall_elapsed": 230.6148963679998, "startup": false}
+[INFO] [1794394215.874637680] [parcel_task]: PARCEL_STATE {"state": "PREPARE_OPEN_START", "sim_time": 77.096, "wall_elapsed": 230.61683135399926, "startup": false}
+[INFO] [1794394215.881971704] [parcel_task]: grasp record: cleared (verified empty open hand for continuous approach)
+[INFO] [1794394215.883874147] [parcel_task]: === move_to_grasp_pose(x=0.56, y=0.06, z=0.52) [seeded IK] ===
+[INFO] [1794394215.884896548] [parcel_task]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1794394215.884954399] [parcel_task]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[WARN] [1794394215.884967234] [moveit_2971632922.moveit.ros.validate_workspace_bounds]: It looks like the planning volume was not specified. Using default values.
+[INFO] [1794394215.884986499] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1794394215.885010310] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[INFO] [1794394215.885749011] [moveit_2971632922.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'panda_arm[RRTConnectkConfigDefault]' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1794394215.885871436] [parcel_task]: Calling Planner 'OMPL'
+[INFO] [1794394215.980196856] [parcel_task]: Calling PlanningResponseAdapter 'AddTimeOptimalParameterization'
+[INFO] [1794394215.982553408] [parcel_task]: Calling PlanningResponseAdapter 'ValidateSolution'
+[INFO] [1794394215.983798601] [parcel_task]: Calling PlanningResponseAdapter 'DisplayMotionPath'
+[INFO] [1794394215.987708247] [parcel_task]: Planning succeeded, executing...
+[INFO] [1794394215.999161023] [parcel_task]: PARCEL_STATE {"state": "PREPARE_OPEN_DONE", "sim_time": 77.101, "wall_elapsed": 230.63708686099926, "startup": false, "strokes": 0, "fingers": [0.03999961889899997, 0.03999999999999998]}
+[INFO] [1794394216.017210170] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394216.017282709] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394216.017326850] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394216.017351396] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394216.017391906] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Validating trajectory with allowed_start_tolerance 0.01
+[INFO] [1794394216.017978398] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Starting trajectory execution ...
+[INFO] [1794394216.018068914] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394216.018120019] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394216.018260302] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: sending trajectory to arm_controller
+[INFO] [1794394216.019004617] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: arm_controller started execution
+[INFO] [1794394216.019031548] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Goal request accepted!
+[INFO] [1794394218.719715515] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Controller 'arm_controller' successfully finished
+[INFO] [1794394218.720838626] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Completed trajectory execution with status SUCCEEDED ...
+[INFO] [1794394218.933277142] [parcel_task]: PARCEL_STATE {"state": "PREPARE_ARM_DONE", "sim_time": 78.212, "wall_elapsed": 233.68499590899955, "startup": false, "arrived": true}
+[INFO] [1794394218.936467706] [parcel_task]: PARCEL_STATE {"state": "READY", "sim_time": 78.219, "wall_elapsed": 233.6883404399996, "slot": 9}
+[INFO] [1794394218.971153668] [parcel_continuous_control]: CONTINUOUS_WAIT speed=0.045 sim_time=78.227
+[INFO] [1794394219.681696642] [parcel_task]: PARCEL_STATE {"state": "PICK", "sim_time": 78.492, "wall_elapsed": 234.43108767099966, "track": 10, "condition": "intact", "p_damaged": 0.009646943144616671, "votes": 17}
+[INFO] [1794394219.852151268] [parcel_task]: PARCEL_STATE {"state": "INTERCEPT", "sim_time": 78.551, "wall_elapsed": 234.60479100999964, "track": 10, "velocity": 0.045, "measured_velocity": 0.04522907873717925, "camera_stamp": 78.4, "target_at_start": [0.5600820513882505, -0.23570801247079337, 0.3199402792224821], "start_sim": 78.792, "grasp_sim": 80.142, "end_sim": 82.792, "grasp_mode": "confirmed"}
+[INFO] [1794394220.898664189] [parcel_task]: PARCEL_STATE {"state": "SETTLED", "sim_time": 78.926, "wall_elapsed": 235.6503069370001, "slot": 5}
+[INFO] [1794394224.281771837] [parcel_task]: PARCEL_STATE {"state": "CLOSE_START", "sim_time": 80.143, "wall_elapsed": 239.0297948689995, "scheduled_sim": 80.142}
+[INFO] [1794394224.296085810] [parcel_task]: PARCEL_STATE {"state": "FIRST_CONTACT", "sim_time": 80.151, "wall_elapsed": 239.04920518199924, "left": ["parcel_9"], "right": ["parcel_9"]}
+[INFO] [1794394224.299373556] [parcel_task]: PARCEL_STATE {"state": "BILATERAL_CONTACT", "sim_time": 80.151, "wall_elapsed": 239.05033096199986, "objects": ["parcel_9"]}
+[INFO] [1794394226.583977654] [parcel_task]: PARCEL_STATE {"state": "BILATERAL_CONTACT", "sim_time": 80.902, "wall_elapsed": 241.33216520899987, "objects": ["parcel_10"]}
+[INFO] [1794394227.203394919] [parcel_task]: PARCEL_STATE {"state": "GRASP_CONFIRMED", "sim_time": 81.067, "wall_elapsed": 241.95398452599966, "object": "parcel_10", "width": 0.02512822157643802, "desired": 0.02151999999999987, "joint_age": 0.001, "contact_age": 0.002, "reason": "bilateral contact and stable seated gap"}
+[INFO] [1794394227.204263041] [parcel_task]: grasp record: HOLDING at width=0.0251
+[INFO] [1794394227.322374856] [parcel_task]: PARCEL_STATE {"state": "LIFT_REQUESTED", "sim_time": 81.099, "wall_elapsed": 242.07461171299929, "object": "parcel_10", "lift_sim": 81.242, "close_start_sim": 80.142, "end_sim": 82.14200000000001}
+[INFO] [1794394231.118989026] [parcel_task]: PARCEL_STATE {"state": "LIFTED", "sim_time": 82.153, "wall_elapsed": 245.87129652299973, "object": "parcel_10", "width": 0.02505254822467909, "position": [0.5600796997091144, -0.09395799295030326, 0.5698993757381452]}
+[INFO] [1794394231.121557609] [parcel_task]: PARCEL_STATE {"state": "PLACE", "sim_time": 82.153, "wall_elapsed": 245.87381100399944, "target": [0.07, -0.37, 0.32], "destination": "tote", "slot": 6}
+[INFO] [1794394231.122056563] [parcel_task]: === place(xyz=(0.070,-0.370,0.320)) ===
+[INFO] [1794394231.127122965] [parcel_task]: place: blended approach+descend to place z=0.510
+[INFO] [1794394231.128437290] [parcel_task]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1794394231.128524442] [parcel_task]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[WARN] [1794394231.128543315] [moveit_2971632922.moveit.ros.validate_workspace_bounds]: It looks like the planning volume was not specified. Using default values.
+[INFO] [1794394231.128601221] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1794394231.128660091] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[INFO] [1794394231.129352137] [moveit_2971632922.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'panda_arm[RRTConnectkConfigDefault]' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1794394231.129491306] [parcel_task]: Calling Planner 'OMPL'
+[INFO] [1794394231.231633657] [parcel_task]: Calling PlanningResponseAdapter 'AddTimeOptimalParameterization'
+[INFO] [1794394231.234411098] [parcel_task]: Calling PlanningResponseAdapter 'ValidateSolution'
+[INFO] [1794394231.236693570] [parcel_task]: Calling PlanningResponseAdapter 'DisplayMotionPath'
+[INFO] [1794394231.239776658] [parcel_task]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1794394231.239869423] [parcel_task]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[WARN] [1794394231.239892735] [moveit_2971632922.moveit.ros.validate_workspace_bounds]: It looks like the planning volume was not specified. Using default values.
+[INFO] [1794394231.239927213] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1794394231.239990338] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[INFO] [1794394231.240796669] [moveit_2971632922.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'panda_arm[RRTConnectkConfigDefault]' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1794394231.240935127] [parcel_task]: Calling Planner 'OMPL'
+[INFO] [1794394231.324894347] [parcel_task]: Calling PlanningResponseAdapter 'AddTimeOptimalParameterization'
+[INFO] [1794394231.325729876] [parcel_task]: Calling PlanningResponseAdapter 'ValidateSolution'
+[INFO] [1794394231.326793937] [parcel_task]: Calling PlanningResponseAdapter 'DisplayMotionPath'
+[INFO] [1794394231.342921268] [parcel_task]: blend: executing merged 2-waypoint motion
+[INFO] [1794394231.376919514] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394231.376991255] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394231.377053603] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394231.377087788] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394231.377139588] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Validating trajectory with allowed_start_tolerance 0.01
+[INFO] [1794394231.384329426] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Starting trajectory execution ...
+[INFO] [1794394231.384474744] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394231.384550615] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394231.384753832] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: sending trajectory to arm_controller
+[INFO] [1794394231.385527038] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: arm_controller started execution
+[INFO] [1794394231.385572852] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Goal request accepted!
+[INFO] [1794394237.385802288] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Controller 'arm_controller' successfully finished
+[INFO] [1794394237.387602222] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Completed trajectory execution with status SUCCEEDED ...
+[INFO] [1794394237.603142896] [parcel_task]: PARCEL_STATE {"state": "RELEASE_AUTHORIZED", "sim_time": 83.681, "wall_elapsed": 252.3541103459993}
+[INFO] [1794394237.604056130] [parcel_task]: === move_gripper(width=0.04, closing=False) ===
+
+>>> [rcutils|error_handling.c:108] rcutils_set_error_state()
+This error state is being overwritten:
+
+  'Handle's typesupport identifier (rosidl_typesupport_cpp) is not supported by this library, at ./src/type_support_dispatch.hpp:114'
+
+with this new error message:
+
+  'Handle's typesupport identifier (rosidl_typesupport_c) is not supported by this library, at ./src/type_support_dispatch.hpp:116'
+
+rcutils_reset_error() should be called after error handling to avoid this.
+<<<
+[INFO] [1794394240.543093982] [parcel_task]: _send_finger_goal: target=0.0400 first=0.0398 final=0.04 in 1.53s (settled)
+[INFO] [1794394240.543782782] [parcel_task]: grasp record: cleared (gripper move ended with nothing held)
+[INFO] [1794394240.545199332] [parcel_task]: move_gripper -> ok [reached] width=0.0400 (gap=-0.0000, floor=0.003)
+[INFO] [1794394240.546954023] [parcel_task]: place: release confirmed -- opened from 0.0251 to 0.0400
+[INFO] [1794394240.548730130] [parcel_task]: place('(0.07, -0.37, 0.32)') -> ok [placed] target@(0.070,-0.370,0.320) RELEASED (no separate retract)
+[INFO] [1794394240.580907314] [parcel_task]: === move_to_named('ready') ===
+[INFO] [1794394240.582179057] [parcel_task]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1794394240.582333391] [parcel_task]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[WARN] [1794394240.582372993] [moveit_2971632922.moveit.ros.validate_workspace_bounds]: It looks like the planning volume was not specified. Using default values.
+[INFO] [1794394240.582429570] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1794394240.582509577] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[INFO] [1794394240.584158550] [moveit_2971632922.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'panda_arm[RRTConnectkConfigDefault]' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1794394240.584819102] [parcel_task]: Calling Planner 'OMPL'
+[INFO] [1794394240.647497941] [parcel_task]: Calling PlanningResponseAdapter 'AddTimeOptimalParameterization'
+[INFO] [1794394240.649555911] [parcel_task]: Calling PlanningResponseAdapter 'ValidateSolution'
+[INFO] [1794394240.651376344] [parcel_task]: Calling PlanningResponseAdapter 'DisplayMotionPath'
+[INFO] [1794394240.655406120] [parcel_task]: Planning succeeded, executing...
+[INFO] [1794394240.681476252] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394240.681664699] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394240.681802195] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394240.681857490] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394240.681956635] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Validating trajectory with allowed_start_tolerance 0.01
+[INFO] [1794394240.684122578] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Starting trajectory execution ...
+[INFO] [1794394240.684382915] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394240.684494518] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394240.684752670] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: sending trajectory to arm_controller
+[INFO] [1794394240.686131165] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: arm_controller started execution
+[INFO] [1794394240.686176313] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Goal request accepted!
+[INFO] [1794394243.036541308] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Controller 'arm_controller' successfully finished
+[INFO] [1794394243.038688199] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Completed trajectory execution with status SUCCEEDED ...
+[INFO] [1794394243.245663364] [parcel_task]: move_to_named('ready') -> ok @ (0.307, -0.000, 0.590)
+[INFO] [1794394244.965851939] [parcel_task]: PARCEL_STATE {"state": "SETTLED", "sim_time": 86.432, "wall_elapsed": 259.71744679099993, "slot": 6}
+[INFO] [1794394244.973754044] [parcel_task]: PARCEL_STATE {"state": "PREPARE_ARM_START", "sim_time": 86.432, "wall_elapsed": 259.7217592779998, "startup": false}
+[INFO] [1794394244.974491236] [parcel_task]: PARCEL_STATE {"state": "PREPARE_OPEN_START", "sim_time": 86.432, "wall_elapsed": 259.724352491, "startup": false}
+[INFO] [1794394244.982284877] [parcel_task]: === move_to_grasp_pose(x=0.56, y=0.06, z=0.52) [seeded IK] ===
+[INFO] [1794394244.985557001] [parcel_task]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1794394244.986249860] [parcel_task]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[WARN] [1794394244.986294370] [moveit_2971632922.moveit.ros.validate_workspace_bounds]: It looks like the planning volume was not specified. Using default values.
+[INFO] [1794394244.986343009] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1794394244.986411077] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[INFO] [1794394244.987571783] [moveit_2971632922.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'panda_arm[RRTConnectkConfigDefault]' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1794394244.987736820] [parcel_task]: Calling Planner 'OMPL'
+[INFO] [1794394245.056409474] [parcel_task]: Calling PlanningResponseAdapter 'AddTimeOptimalParameterization'
+[INFO] [1794394245.058080849] [parcel_task]: Calling PlanningResponseAdapter 'ValidateSolution'
+[INFO] [1794394245.059825107] [parcel_task]: Calling PlanningResponseAdapter 'DisplayMotionPath'
+[INFO] [1794394245.066654550] [parcel_task]: grasp record: cleared (verified empty open hand for continuous approach)
+[INFO] [1794394245.069248617] [parcel_task]: Planning succeeded, executing...
+[INFO] [1794394245.099922141] [parcel_task]: PARCEL_STATE {"state": "PREPARE_OPEN_DONE", "sim_time": 86.471, "wall_elapsed": 259.822135892, "startup": false, "strokes": 0, "fingers": [0.03999988447482923, 0.03999999999999997]}
+[INFO] [1794394245.102383301] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394245.102456468] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394245.102515370] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394245.102551973] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394245.102614883] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Validating trajectory with allowed_start_tolerance 0.01
+[INFO] [1794394245.104093257] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Starting trajectory execution ...
+[INFO] [1794394245.104204160] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394245.104266359] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394245.104424801] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: sending trajectory to arm_controller
+[INFO] [1794394245.104886542] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: arm_controller started execution
+[INFO] [1794394245.104915999] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Goal request accepted!
+[INFO] [1794394247.355425514] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Controller 'arm_controller' successfully finished
+[INFO] [1794394247.355985567] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Completed trajectory execution with status SUCCEEDED ...
+[INFO] [1794394247.569758146] [parcel_task]: PARCEL_STATE {"state": "PREPARE_ARM_DONE", "sim_time": 87.405, "wall_elapsed": 262.3197164559997, "startup": false, "arrived": true}
+[INFO] [1794394247.574214504] [parcel_task]: PARCEL_STATE {"state": "BATCH_ROUTED", "sim_time": 87.412, "wall_elapsed": 262.3265101899997, "intact_in_tote": 7, "rejected": 3, "skipped": 0, "skipped_tracks": []}
+[INFO] [1794394247.575119193] [parcel_task]: === move_to_named('ready') ===
+[INFO] [1794394247.575809826] [parcel_task]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1794394247.575899046] [parcel_task]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[WARN] [1794394247.575918361] [moveit_2971632922.moveit.ros.validate_workspace_bounds]: It looks like the planning volume was not specified. Using default values.
+[INFO] [1794394247.575957445] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1794394247.576003219] [parcel_task]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[INFO] [1794394247.576900065] [moveit_2971632922.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'panda_arm[RRTConnectkConfigDefault]' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1794394247.577088149] [parcel_task]: Calling Planner 'OMPL'
+[INFO] [1794394247.677613572] [parcel_task]: Calling PlanningResponseAdapter 'AddTimeOptimalParameterization'
+[INFO] [1794394247.679147858] [parcel_task]: Calling PlanningResponseAdapter 'ValidateSolution'
+[INFO] [1794394247.680615189] [parcel_task]: Calling PlanningResponseAdapter 'DisplayMotionPath'
+[INFO] [1794394247.688477914] [parcel_task]: Planning succeeded, executing...
+[INFO] [1794394247.710714498] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394247.710794046] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394247.710852889] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394247.710887095] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394247.710935420] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Validating trajectory with allowed_start_tolerance 0.01
+[INFO] [1794394247.712448405] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Starting trajectory execution ...
+[INFO] [1794394247.712528435] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394247.712593082] [moveit_2971632922.moveit.plugins.simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1794394247.712717916] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: sending trajectory to arm_controller
+[INFO] [1794394247.713140962] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: arm_controller started execution
+[INFO] [1794394247.713170929] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Goal request accepted!
+[INFO] [1794394249.863518482] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Controller 'arm_controller' successfully finished
+[INFO] [1794394249.864825727] [moveit_2971632922.moveit.ros.trajectory_execution_manager]: Completed trajectory execution with status SUCCEEDED ...
+[INFO] [1794394250.074023230] [parcel_task]: move_to_named('ready') -> ok @ (0.307, 0.000, 0.590)
+[INFO] [1794394250.076589308] [parcel_task]: PARCEL_STATE {"state": "FULL", "sim_time": 88.375, "wall_elapsed": 264.8288019239999, "occupied": 7}
+PARCEL_TASK_COMPLETE
+/usr/lib/python3.12/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 4 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

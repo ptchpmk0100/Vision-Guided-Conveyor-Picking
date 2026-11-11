@@ -1,5 +1,9 @@
 # Codex repository guidance
 
+## User writing preferences
+
+- Always write **Nürnberg**, with the umlaut. Do not use **Nurnberg**.
+
 ## Scope and collaboration
 
 - `~/ros_test_ws` is the primary development repository;
