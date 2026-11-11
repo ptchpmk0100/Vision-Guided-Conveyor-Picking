@@ -1,0 +1,134 @@
+{
+ "recordings": [
+  {
+   "name": "r01",
+   "seed": "cond-r01",
+   "damaged": "2,5,6,9",
+   "speed": 0.08,
+   "split": "train"
+  },
+  {
+   "name": "r02",
+   "seed": "cond-r02",
+   "damaged": "1,2,4,6,7,8,10",
+   "speed": 0.08,
+   "split": "train"
+  },
+  {
+   "name": "r03",
+   "seed": "cond-r03",
+   "damaged": "2,6,7",
+   "speed": 0.07,
+   "split": "train"
+  },
+  {
+   "name": "r04",
+   "seed": "cond-r04",
+   "damaged": "4,5,6,8,9",
+   "speed": 0.07,
+   "split": "val"
+  },
+  {
+   "name": "r05",
+   "seed": "cond-r05",
+   "damaged": "3,7,9,10",
+   "speed": 0.07,
+   "split": "train"
+  },
+  {
+   "name": "r06",
+   "seed": "cond-r06",
+   "damaged": "1,3,4,6,7,8",
+   "speed": 0.07,
+   "split": "train"
+  },
+  {
+   "name": "r07",
+   "seed": "cond-r07",
+   "damaged": "1,2,3,5,6,7,8",
+   "speed": 0.08,
+   "split": "train"
+  },
+  {
+   "name": "r08",
+   "seed": "cond-r08",
+   "damaged": "2,4,6,7,8,10",
+   "speed": 0.08,
+   "split": "train"
+  },
+  {
+   "name": "r09",
+   "seed": "cond-r09",
+   "damaged": "1,2,3,4,5,7",
+   "speed": 0.08,
+   "split": "test"
+  },
+  {
+   "name": "r10",
+   "seed": "cond-r10",
+   "damaged": "1,3,4,6,9",
+   "speed": 0.07,
+   "split": "val"
+  },
+  {
+   "name": "r11",
+   "seed": "cond-r11",
+   "damaged": "2,3,4,5,6,9,10",
+   "speed": 0.08,
+   "split": "test"
+  },
+  {
+   "name": "r12",
+   "seed": "cond-r12",
+   "damaged": "1,2,3,5,6,9",
+   "speed": 0.07,
+   "split": "train"
+  },
+  {
+   "name": "r13",
+   "seed": "cond-r13",
+   "damaged": "2,3,5",
+   "speed": 0.08,
+   "split": "train"
+  },
+  {
+   "name": "r14",
+   "seed": "cond-r14",
+   "damaged": "2,5,6,9",
+   "speed": 0.08,
+   "split": "test"
+  },
+  {
+   "name": "r15",
+   "seed": "cond-r15",
+   "damaged": "3,5,7,9",
+   "speed": 0.08,
+   "split": "train"
+  },
+  {
+   "name": "r16",
+   "seed": "cond-r16",
+   "damaged": "7,9,10",
+   "speed": 0.07,
+   "split": "train"
+  }
+ ],
+ "splits": {
+  "r01": "train",
+  "r02": "train",
+  "r03": "train",
+  "r04": "val",
+  "r05": "train",
+  "r06": "train",
+  "r07": "train",
+  "r08": "train",
+  "r09": "test",
+  "r10": "val",
+  "r11": "test",
+  "r12": "train",
+  "r13": "train",
+  "r14": "test",
+  "r15": "train",
+  "r16": "train"
+ }
+}

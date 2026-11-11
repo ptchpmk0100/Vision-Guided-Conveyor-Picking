@@ -16,11 +16,33 @@ Usage:
 Also importable: setup() -> (robot, arm, logger, params, twin);
 move_to_named / move_to_pose / move_gripper / pick / place / pick_and_place; shutdown(twin).
 """
+import os
 import sys
 import time
+import copy
+import math
+from contextlib import contextmanager
+from contextvars import ContextVar
 from dataclasses import dataclass
 from typing import Optional, Tuple
 import rclpy
+
+_MOTION_GUARD = ContextVar('parcel_motion_guard',default=None)
+
+
+@contextmanager
+def guarded_motion(check):
+    token=_MOTION_GUARD.set(check)
+    try:
+        yield
+    finally:
+        _MOTION_GUARD.reset(token)
+
+
+def _check_motion():
+    check=_MOTION_GUARD.get()
+    if check is not None:
+        check()
 from rclpy.node import Node
 from rclpy.action import ActionClient
 from rclpy.executors import SingleThreadedExecutor
@@ -32,8 +54,31 @@ from trajectory_msgs.msg import JointTrajectory, JointTrajectoryPoint
 from builtin_interfaces.msg import Duration
 from moveit.planning import MoveItPy, PlanRequestParameters
 from moveit.core.robot_state import RobotState
+from moveit.core.robot_trajectory import RobotTrajectory
 from moveit.utils import create_params_file_from_dict
 from moveit_configs_utils import MoveItConfigsBuilder
+from twin_moveit_scripts import motion_audit
+
+_MOTION_LIMITS = None
+_MOTION_PROFILE_HASH = None
+_REQUEST_OPTIONS = None
+_EXPERIMENT_PIPELINE = 'ompl'
+_FALLBACK_PARAMS = None
+_SHADOW_PROFILE = None
+_SHADOW_NODE = None
+_SHADOW_EXECUTOR = None
+_SHADOW_COMMAND = None
+
+
+def _extended_profile():
+    """True for the 7/8/10-box profiles; the original three-box path stays unchanged."""
+    return os.environ.get('TWIN_PARCEL_COUNT') in ('7', '8', '10')
+
+
+def _retime_margin():
+    # Reserve 1% inside the unchanged operating envelope for the multi-box profiles.
+    # The first ten-box pilot exposed TOTG's small numerical acceleration overshoot.
+    return .99 if _extended_profile() else 1.
 
 ARM_GROUP = "panda_arm"
 EE_LINK = "panda_link8"
@@ -158,6 +203,26 @@ GRASP_WIDTH_TOL = 0.006
 APPROACH_CLEARANCE = 0.10
 LIFT_HEIGHT = 0.15
 
+# ---- Motion speed (Phase 1) ----------------------------------------------------
+# The arm historically ran at 0.1 (10%) velocity AND acceleration scaling -- the
+# MoveIt "beginner" default baked into both joint_limits.yaml and every request
+# here. That one-tenth throttle is the primary reason pick/place looked slow.
+# Scale toward the Panda's real joint limits for natural speed; override per run
+# with TWIN_VEL_SCALE / TWIN_ACC_SCALE (no code edit) when tuning. Validate
+# placement accuracy whenever raising these -- faster accel can overshoot.
+VEL_SCALE = float(os.environ.get("TWIN_VEL_SCALE", "0.5"))
+ACC_SCALE = float(os.environ.get("TWIN_ACC_SCALE", "0.5"))
+
+# Post-execution settle (Phase 1). robot.execute() already BLOCKS until the
+# controller finishes the trajectory, so the old fixed 3 s dwell after every
+# segment was pure dead time (~30 s/parcel over ~10 segments). Instead confirm the
+# arm has stopped moving by polling the live EE pose, with a short cap. See
+# _settle_pose / _plan_execute.
+SETTLE_CAP = float(os.environ.get("TWIN_SETTLE_CAP", "0.8"))  # max s to wait for stillness
+SETTLE_DT = 0.05       # sample pacing (s)
+SETTLE_TOL = 0.0015    # m: EE movement below this between samples counts as "still"
+SETTLE_HOLD = 0.12     # s: must stay still this long to be called settled
+
 
 # ---- Richer result from primitives (Session 14) ----
 # Stable shape both move_to.py and llm_move.py agree on. Add fields here later
@@ -200,11 +265,33 @@ class GripResult:
 
 
 def build_config_dict(logger):
+    global _MOTION_LIMITS, _MOTION_PROFILE_HASH, _REQUEST_OPTIONS, _EXPERIMENT_PIPELINE
+    global _SHADOW_PROFILE
     mc = MoveItConfigsBuilder("panda", package_name="twin_moveit_config").planning_pipelines(pipelines=["ompl"], default_planning_pipeline="ompl").to_moveit_configs()
     d = mc.to_dict()
     names = d.get("planning_pipelines")
     if isinstance(names, list):
         d["planning_pipelines"] = {"pipeline_names": names}
+    _REQUEST_OPTIONS = motion_audit.request_options(d['ompl'].get('planner_configs', {}))
+    if os.environ.get('TWIN_MOTION_METRICS') or os.environ.get('TWIN_TRAJECTORY_CHECK'):
+        _MOTION_LIMITS = motion_audit.limit_profile(d['robot_description'],
+            d['robot_description_planning']['joint_limits'], VEL_SCALE, ACC_SCALE)
+        _MOTION_PROFILE_HASH = motion_audit.digest(dict(limits=_MOTION_LIMITS,
+            urdf=d['robot_description'], srdf=d['robot_description_semantic']))
+    check = os.environ.get('TWIN_TRAJECTORY_CHECK', 'off')
+    if check not in ('off', 'sampled'):
+        raise ValueError(f'Unknown TWIN_TRAJECTORY_CHECK: {check}')
+    _SHADOW_PROFILE = None
+    if os.environ.get('TWIN_ARRIVAL_SHADOW'):
+        import json
+        from pathlib import Path
+        from twin_moveit_scripts.arrival_gate import ArrivalProfile
+        if not os.environ.get('TWIN_MOTION_METRICS'):
+            raise ValueError('Arrival shadow requires TWIN_MOTION_METRICS output')
+        _SHADOW_PROFILE = ArrivalProfile(**json.loads(
+            Path(os.environ['TWIN_ARRIVAL_SHADOW']).read_text()))
+        if len(_SHADOW_PROFILE.continuous) != 7:
+            raise ValueError('Arrival shadow requires the seven arm joints')
     # S17: MoveItPy reads plan-request params from the 'ompl.plan_request_params.*'
     # config namespace. The builder does NOT populate it, so without this block
     # the six 'Parameter ompl.plan_request_params.* not found' warnings fire and
@@ -214,30 +301,51 @@ def build_config_dict(logger):
     # 'Cannot find planning configuration for group panda_arm').
     d.setdefault("ompl", {})["plan_request_params"] = {
         "planning_pipeline": "ompl",
-        "planner_id": "RRTConnectkConfigDefault",
-        "planning_time": 5.0,
-        "planning_attempts": 5,
-        "max_velocity_scaling_factor": 0.1,
-        "max_acceleration_scaling_factor": 0.1,
+        **_REQUEST_OPTIONS,
+        "max_velocity_scaling_factor": VEL_SCALE*_retime_margin(),
+        "max_acceleration_scaling_factor": ACC_SCALE*_retime_margin(),
     }
     d["use_sim_time"] = True
+    smoother = os.environ.get('TWIN_SMOOTHER', 'off')
+    if smoother not in ('off', 'stomp'):
+        raise ValueError(f'Unsupported TWIN_SMOOTHER: {smoother}; available: off, stomp')
+    _EXPERIMENT_PIPELINE = 'ompl'
+    if smoother == 'stomp':
+        if check != 'sampled':
+            raise ValueError('STOMP experiment requires TWIN_TRAJECTORY_CHECK=sampled')
+        if _REQUEST_OPTIONS['planner_id'] != motion_audit.DEFAULT_PLANNER:
+            raise ValueError('STOMP comparison requires the incumbent RRTConnect planner')
+        import copy
+        smooth = copy.deepcopy(d['ompl'])
+        smooth['planning_plugins'] = ['ompl_interface/OMPLPlanner', 'stomp_moveit/StompPlanner']
+        smooth['stomp_moveit'] = dict(num_timesteps=60, num_iterations=20,
+            num_iterations_after_valid=0, num_rollouts=10, max_rollouts=10,
+            exponentiated_cost_sensitivity=.8, control_cost_weight=.1, delta_t=.1)
+        smooth['plan_request_params']['planning_pipeline'] = 'ompl_smooth'
+        d['ompl_smooth'] = smooth
+        d['planning_pipelines']['pipeline_names'].append('ompl_smooth')
+        _EXPERIMENT_PIPELINE = 'ompl_smooth'
     return d
 
 
 def make_params(robot):
-    p = PlanRequestParameters(robot, "ompl")
-    p.planning_pipeline = "ompl"
+    global _FALLBACK_PARAMS
+    p = PlanRequestParameters(robot, _EXPERIMENT_PIPELINE)
+    p.planning_pipeline = _EXPERIMENT_PIPELINE
     # Match the config name registered in ompl_planning.yaml (see build_config_dict).
-    p.planner_id = "RRTConnectkConfigDefault"
-    p.planning_time = 5.0
-    p.planning_attempts = 5
-    p.max_velocity_scaling_factor = 0.1
-    p.max_acceleration_scaling_factor = 0.1
+    options = _REQUEST_OPTIONS or motion_audit.request_options({motion_audit.DEFAULT_PLANNER: {}})
+    p.planner_id = options['planner_id']
+    p.planning_time = options['planning_time']
+    p.planning_attempts = options['planning_attempts']
+    p.max_velocity_scaling_factor = VEL_SCALE*_retime_margin()
+    p.max_acceleration_scaling_factor = ACC_SCALE*_retime_margin()
+    _FALLBACK_PARAMS = PlanRequestParameters(robot, 'ompl') if _EXPERIMENT_PIPELINE != 'ompl' else None
     return p
 
 
 # ---- SEAM 1: setup (construct the ONE MoveItPy context; call once per process) ----
-def setup(node_name="move_to"):
+def setup(node_name="move_to", prime_gripper=True):
+    global _SHADOW_NODE, _SHADOW_EXECUTOR
     rclpy.init()
     logger = get_logger(node_name)
     params_file = create_params_file_from_dict(build_config_dict(logger), "/**")
@@ -252,6 +360,15 @@ def setup(node_name="move_to"):
     # spin its current-state-monitor executor and deadlock — so we keep ours
     # isolated and drive it with a private SingleThreadedExecutor per call.
     twin = Node("twin_gripper")
+    if _SHADOW_PROFILE is not None:
+        from rclpy.parameter import Parameter
+        from rclpy.qos import QoSProfile, ReliabilityPolicy
+        _SHADOW_NODE = Node('motion_arrival_shadow', parameter_overrides=[
+            Parameter('use_sim_time', value=True)])
+        _SHADOW_NODE.create_subscription(JointState, '/joint_states', _on_shadow_joint_states,
+            QoSProfile(depth=1, reliability=ReliabilityPolicy.BEST_EFFORT))
+        _SHADOW_EXECUTOR = SingleThreadedExecutor()
+        _SHADOW_EXECUTOR.add_node(_SHADOW_NODE)
     twin.create_subscription(JointState, "/joint_states", _on_joint_states, 10)
     # Action client hangs off the node so the free-function primitive reaches it
     # via the handle we return. Now a FollowJointTrajectory client (JTC over both
@@ -275,6 +392,10 @@ def setup(node_name="move_to"):
         logger.warn(f"setup: cell collision objects skipped: {e!r}")
 
     logger.info("MoveItPy up; panda_arm ready. twin_gripper node up.")
+    if not prime_gripper:
+        # Continuous parcel startup owns controller readiness and overlaps its
+        # verified gripper warm-up/open with the initial collision-checked move.
+        return robot, arm, logger, params, twin
     time.sleep(2.0)  # let trajectory-execution action client connect to arm_controller
 
     # A4: PRIME THE GRIPPER -- burn the first finger command here.
@@ -308,6 +429,12 @@ def setup(node_name="move_to"):
 
 # ---- SEAM 3: teardown ----
 def shutdown(twin=None):
+    global _SHADOW_NODE, _SHADOW_EXECUTOR
+    if _SHADOW_EXECUTOR is not None:
+        _SHADOW_EXECUTOR.remove_node(_SHADOW_NODE)
+        _SHADOW_EXECUTOR.shutdown(timeout_sec=0)
+        _SHADOW_NODE.destroy_node()
+        _SHADOW_NODE = _SHADOW_EXECUTOR = None
     if twin is not None:
         try:
             twin.destroy_node()
@@ -359,6 +486,18 @@ def _on_joint_states(msg):
 
 
 _on_joint_states.latest = None
+_on_joint_states.arm_sample = None
+
+
+def _on_shadow_joint_states(msg):
+    try:
+        indices = [msg.name.index(n) for n in motion_audit.ARM_JOINTS]
+        _on_joint_states.arm_sample = dict(
+            stamp=msg.header.stamp.sec + msg.header.stamp.nanosec*1e-9,
+            positions=[float(msg.position[i]) for i in indices],
+            velocities=[float(msg.velocity[i]) for i in indices])
+    except (ValueError, IndexError):
+        _on_joint_states.arm_sample = None
 
 
 def _read_finger_width(twin, logger, exec_=None):
@@ -393,7 +532,62 @@ def _read_finger_width(twin, logger, exec_=None):
             exec_.remove_node(twin)
 
 
-def _send_finger_goal(client, exec_, twin, target, logger, settle=None):  # settle: inert (S19)
+class _TenClock:
+    """Fresh volatile /clock subscription for the ten-profile gripper deadline.
+
+    rclpy.qos has no qos_profile_clock in Jazzy, so the profile is explicit. It
+    is opened BEFORE the gripper goal is dispatched: an import or subscription
+    failure must surface while nothing has been accepted by the controller.
+    """
+
+    def __init__(self, twin):
+        from rosgraph_msgs.msg import Clock
+        from rclpy.qos import DurabilityPolicy, HistoryPolicy, QoSProfile, ReliabilityPolicy
+
+        self.twin = twin
+        self.sample = None
+        profile = QoSProfile(depth=1, history=HistoryPolicy.KEEP_LAST,
+                             reliability=ReliabilityPolicy.BEST_EFFORT,
+                             durability=DurabilityPolicy.VOLATILE)
+        self.subscription = twin.create_subscription(Clock, '/clock', self._on_clock, profile)
+
+    def _on_clock(self, message):
+        self.sample = message.clock.sec + message.clock.nanosec/1e9
+
+    def close(self):
+        self.twin.destroy_subscription(self.subscription)
+
+
+def _wait_ten_finger_result(exec_, twin, future, clock, move_time=None):
+    from twin_moveit_scripts.gripper_deadline import SimulationDeadline
+
+    # A new volatile subscription cannot reuse this node's stale cached /clock
+    # after a long blocking MoveIt call. Start from the first fresh publication.
+    clock.sample = None
+    deadline = SimulationDeadline(time.monotonic(),
+                                  (GRIPPER_MOVE_TIME if move_time is None else move_time)+2.)
+    while not future.done():
+        exec_.spin_once(timeout_sec=.05)
+        if future.done():
+            return None
+        error = deadline.check(time.monotonic(), clock.sample)
+        if error:
+            return error
+    return None
+
+
+def _cancel_finger_goal(goal_handle, exec_):
+    """Best-effort cancel of an accepted gripper goal; returns whether acknowledged."""
+    try:
+        cancellation = goal_handle.cancel_goal_async()
+        _spin_until(exec_, cancellation, timeout=3.)
+        ack = cancellation.result() if cancellation.done() else None
+        return bool(ack is not None and ack.goals_canceling)
+    except Exception:
+        return False
+
+
+def _send_finger_goal(client, exec_, twin, target, logger, settle=None, seconds=None):  # settle: inert (S19)
     """Send BOTH fingers to `target` via one FollowJointTrajectory point, await the
     action, let the fingers settle, and return the live finger width (or None).
 
@@ -405,21 +599,38 @@ def _send_finger_goal(client, exec_, twin, target, logger, settle=None):  # sett
     traj.joint_names = list(FINGER_JOINTS)
     pt = JointTrajectoryPoint()
     pt.positions = [target, target]
-    secs = int(GRIPPER_MOVE_TIME)
+    move_time = GRIPPER_MOVE_TIME if seconds is None else float(seconds)
+    secs = int(move_time)
     pt.time_from_start = Duration(sec=secs,
-                                  nanosec=int((GRIPPER_MOVE_TIME - secs) * 1e9))
+                                  nanosec=int((move_time - secs) * 1e9))
     traj.points = [pt]
     goal = FollowJointTrajectory.Goal()
     goal.trajectory = traj
 
-    send_future = client.send_goal_async(goal)
-    _spin_until(exec_, send_future, timeout=10.0)
-    goal_handle = send_future.result()
-    if goal_handle is None or not goal_handle.accepted:
-        return False, None, "goal rejected by controller"
+    ten = _extended_profile()
+    ten_clock = _TenClock(twin) if ten else None  # before dispatch: fail with nothing accepted
+    try:
+        send_future = client.send_goal_async(goal)
+        _spin_until(exec_, send_future, timeout=10.0)
+        goal_handle = send_future.result()
+        if goal_handle is None or not goal_handle.accepted:
+            return False, None, "goal rejected by controller"
 
-    result_future = goal_handle.get_result_async()
-    _spin_until(exec_, result_future, timeout=15.0)
+        result_future = goal_handle.get_result_async()
+        if ten:
+            try:
+                error = _wait_ten_finger_result(exec_, twin, result_future, ten_clock, move_time)
+            except BaseException:
+                _cancel_finger_goal(goal_handle, exec_)  # never leave an accepted goal running
+                raise
+            if error:
+                cancelled = _cancel_finger_goal(goal_handle, exec_)
+                return False, None, f'{error}; cancellation acknowledged={cancelled}'
+        else:
+            _spin_until(exec_, result_future, timeout=15.0)
+    finally:
+        if ten_clock is not None:
+            ten_clock.close()
     wrapped = result_future.result()
     if wrapped is None:
         return False, None, "no result returned before timeout"
@@ -516,7 +727,7 @@ def _clear_grasp(logger, why):
 
 
 def move_gripper(robot, arm, logger, params, twin, width,
-                 max_effort=GRIPPER_DEFAULT_EFFORT) -> GripResult:
+                 max_effort=GRIPPER_DEFAULT_EFFORT, seconds=None) -> GripResult:
     """Move BOTH fingers to `width` via FollowJointTrajectory, await, judge grasp.
 
     `width` is the target value of each finger joint (0.0 closed .. 0.04 open),
@@ -557,7 +768,7 @@ def move_gripper(robot, arm, logger, params, twin, width,
                               error=f"{GRIPPER_ACTION} action server not available")
 
         # --- Stage 1: detect stroke ---
-        ok, final_width, err = _send_finger_goal(client, exec_, twin, c, logger)
+        ok, final_width, err = _send_finger_goal(client, exec_, twin, c, logger, seconds=seconds)
         if not ok:
             stage = "rejected" if "rejected" in (err or "") else "error"
             return GripResult(ok=False, stage=stage, error=err)
@@ -582,7 +793,7 @@ def move_gripper(robot, arm, logger, params, twin, width,
             t_end = time.time() + GRIPPER_OPEN_RETRY_WAIT
             while time.time() < t_end:
                 exec_.spin_once(timeout_sec=0.05)
-            ok, final_width, err = _send_finger_goal(client, exec_, twin, c, logger)
+            ok, final_width, err = _send_finger_goal(client, exec_, twin, c, logger, seconds=seconds)
         if (not closing) and final_width is not None \
                 and (c - final_width) > GRIPPER_OPEN_TOL:
             logger.error(f"move_gripper: open STILL short after "
@@ -673,7 +884,168 @@ def _planned_end_xyz(trajectory, logger):
         return None
 
 
-def _plan_execute(robot, arm, logger, params, sleep_time=3.0):
+def _settle_pose(robot, arm, logger):
+    """Wait until the live EE pose stops changing (or SETTLE_CAP elapses), then
+    return it. Replaces the old blind fixed sleep after every segment:
+    robot.execute() already blocks until the trajectory finishes, so we only need
+    to confirm the arm has stopped ringing before sampling the arrival pose.
+    Refreshes the planning component's start state each sample so _read_ee_xyz
+    reflects the live current state rather than a stale snapshot.
+    """
+    deadline = time.time() + SETTLE_CAP
+    prev = None
+    still_since = None
+    last = None
+    while True:
+        _shadow_arrival_tick()
+        try:
+            arm.set_start_state_to_current_state()
+        except Exception:
+            pass
+        last = _read_ee_xyz(robot, logger)
+        now = time.time()
+        if prev is not None and last is not None:
+            moved = sum((a - b) ** 2 for a, b in zip(last, prev)) ** 0.5
+            if moved < SETTLE_TOL:
+                if still_since is None:
+                    still_since = now
+                elif now - still_since >= SETTLE_HOLD:
+                    _shadow_arrival_end('existing_pose_dwell')
+                    return last
+            else:
+                still_since = None
+        prev = last
+        if now >= deadline:
+            _shadow_arrival_end('existing_settle_cap')
+            return last
+        time.sleep(SETTLE_DT)
+
+
+def _shadow_arrival_tick():
+    """Observe alongside the old settle predicate; never extend or shorten its wait."""
+    if _SHADOW_COMMAND is None:
+        return
+    command = _SHADOW_COMMAND
+    try:
+        if _SHADOW_EXECUTOR is not None:
+            for _ in range(4):
+                _SHADOW_EXECUTOR.spin_once(timeout_sec=0)
+        now = _SHADOW_NODE.get_clock().now().nanoseconds/1e9
+        command['now'] = now
+        gate = command['gate']
+        if gate.command_id is None:
+            gate.start(command['command_id'], command['target'], now)
+        if not gate.terminal:
+            sample = _on_joint_states.arm_sample
+            command['status'] = gate.update(now=now,
+                stamp=None if sample is None else sample['stamp'],
+                positions=None if sample is None else sample['positions'],
+                velocities=None if sample is None else sample['velocities'],
+                result_command_id=command['command_id'],
+                controller_succeeded=command['controller_succeeded'])
+    except Exception as exc:
+        command['status'] = 'SHADOW_NOT_CHECKED'
+        command['error'] = str(exc)
+
+
+def _shadow_arrival_end(existing_reason):
+    global _SHADOW_COMMAND
+    if _SHADOW_COMMAND is not None:
+        command = _SHADOW_COMMAND
+        motion_audit.record('arrival_shadow', command_id=command['command_id'],
+            status=command.get('status', 'SHADOW_NOT_CHECKED'),
+            error=command.get('error'), existing_reason=existing_reason,
+            sample_clock_domain='node_ros_time', ros_stamp_ns=int(command.get('now', 0)*1e9),
+            execution_authorized=False)
+        _SHADOW_COMMAND = None
+
+
+def _timed_plan(arm, params, kind):
+    started = time.monotonic()
+    result = None
+    effective_pipeline = params.planning_pipeline
+    try:
+        result = arm.plan(single_plan_parameters=params)
+        if not result and params.planning_pipeline == 'ompl_smooth':
+            _check_motion()
+            motion_audit.record('fallback', reason='SMOOTHER_PLAN_FAILED', kind=kind,
+                                pipeline_id='ompl', planner_id=_FALLBACK_PARAMS.planner_id)
+            effective_pipeline = 'ompl'
+            result = arm.plan(single_plan_parameters=_FALLBACK_PARAMS)
+        return result
+    finally:
+        motion_audit.record('plan_finished', kind=kind, planner_id=params.planner_id,
+            pipeline_id=effective_pipeline, requested_pipeline_id=params.planning_pipeline,
+            planning_wall_s=time.monotonic()-started, success=bool(result),
+            planning_time=params.planning_time, planning_attempts=params.planning_attempts)
+
+
+def _audit_candidate(robot, trajectory, params, kind):
+    """Optional checks on FINAL retimed motion, with current attachments retained."""
+    command_id = motion_audit.identifier()
+    checking = os.environ.get('TWIN_TRAJECTORY_CHECK', 'off') == 'sampled'
+    if not checking and not os.environ.get('TWIN_MOTION_METRICS'):
+        return command_id
+    import copy
+    from rclpy.serialization import serialize_message
+    import hashlib
+    data = motion_audit.trajectory_data(trajectory.get_robot_trajectory_msg())
+    verdict = None
+    ee = []
+    collision_samples = 0
+    with robot.get_planning_scene_monitor().read_only() as scene:
+        scene_hash = hashlib.sha256(serialize_message(scene.planning_scene_message)).hexdigest()
+        state = copy.deepcopy(scene.current_state)
+        measured_start = list(state.get_joint_group_positions(ARM_GROUP))
+        if checking:
+            verdict = motion_audit.validate(data, _MOTION_LIMITS,
+                stationary_start=measured_start)
+        for point in data['points']:
+            state.set_joint_group_positions(ARM_GROUP, point['positions'])
+            state.update(force=True)
+            tf = state.get_global_link_transform(EE_LINK)
+            ee.append([float(tf[i][3]) for i in range(3)])
+        if checking and verdict['sampled_checks_passed']:
+            for positions in motion_audit.interpolated_positions(data):
+                collision_samples += 1
+                state.set_joint_group_positions(ARM_GROUP, positions)
+                state.update(force=True)
+                if scene.is_state_colliding(robot_state=state, joint_model_group_name=''):
+                    verdict['errors'].append('SAMPLED_COLLISION')
+                    break
+            verdict['sampled_checks_passed'] = not verdict['errors']
+            verdict['collision_samples'] = collision_samples
+    motion_audit.record('candidate', command_id=command_id, kind=kind,
+        planner_id=params.planner_id, timer='TOTG', profile_hash=_MOTION_PROFILE_HASH,
+        scene_hash=scene_hash, trajectory_hash=motion_audit.digest(data), trajectory=data,
+        measured_start=measured_start, requested_pipeline_id=params.planning_pipeline,
+        limits=_MOTION_LIMITS, validation=verdict, metrics=motion_audit.metrics(data, ee))
+    if checking and not verdict['sampled_checks_passed']:
+        raise ValueError('VALIDATION_FAILED: ' + ','.join(verdict['errors'][:8]))
+    return command_id
+
+
+def _execute_audited(robot, trajectory, command_id):
+    global _SHADOW_COMMAND
+    motion_audit.record('execution_started', command_id=command_id)
+    started = time.monotonic()
+    try:
+        result = robot.execute(trajectory, controllers=[])
+        if _SHADOW_PROFILE is not None:
+            from twin_moveit_scripts.arrival_gate import ArrivalGate
+            target = trajectory.get_robot_trajectory_msg().joint_trajectory.points[-1].positions
+            _SHADOW_COMMAND = dict(command_id=command_id, target=list(target),
+                gate=ArrivalGate(_SHADOW_PROFILE), controller_succeeded=bool(result))
+        motion_audit.record('execution_finished', command_id=command_id,
+            wall_s=time.monotonic()-started,
+            return_value=str(getattr(result, 'status', result)))
+        return result
+    except Exception as exc:
+        motion_audit.record('execution_failed', command_id=command_id, error=str(exc))
+        raise
+
+
+def _plan_execute(robot, arm, logger, params, sleep_time=3.0):  # sleep_time: inert (Phase 1)
     """Plan, execute, VERIFY ARRIVAL, then read back the live pose. Returns a MoveResult.
 
     S21: execution's outcome used to be ignored, so ok=True meant only "nothing
@@ -684,9 +1056,10 @@ def _plan_execute(robot, arm, logger, params, sleep_time=3.0):
     where the plan ended, and a missed move is replanned once from the live state.
     """
     for attempt in range(1, EXEC_ATTEMPTS + 1):
+        _check_motion()
         arm.set_start_state_to_current_state()
         try:
-            result = arm.plan(single_plan_parameters=params)
+            result = _timed_plan(arm, params, 'single')
         except Exception as e:
             logger.error(f"Planning raised: {e}")
             return MoveResult(ok=False, stage="plan_failed", error=str(e))
@@ -697,16 +1070,17 @@ def _plan_execute(robot, arm, logger, params, sleep_time=3.0):
                               error="planner returned no trajectory")
 
         logger.info("Planning succeeded, executing...")
+        _check_motion()
         try:
-            robot.execute(result.trajectory, controllers=[])
+            command_id = _audit_candidate(robot, result.trajectory, params, 'single')
+            _execute_audited(robot, result.trajectory, command_id)
+            _check_motion()
         except Exception as e:
             logger.error(f"Execution raised: {e}")
-            time.sleep(sleep_time)
             return MoveResult(ok=False, stage="exec_error",
-                              error=str(e), final_pose=_read_ee_xyz(robot, logger))
+                              error=str(e), final_pose=_settle_pose(robot, arm, logger))
 
-        time.sleep(sleep_time)  # let the motion settle before sampling the pose
-        xyz = _read_ee_xyz(robot, logger)
+        xyz = _settle_pose(robot, arm, logger)  # confirm stillness, then sample the pose
         end = _planned_end_xyz(result.trajectory, logger)
         if xyz is None or end is None:
             logger.warn("arrival not verifiable (pose unreadable); assuming executed")
@@ -807,6 +1181,14 @@ def move_to_grasp_pose(robot, arm, logger, params, x, y, z, quat) -> MoveResult:
         # Build a RobotState from the model, seed it at the fixed grasp basin,
         # then IK toward the pose. Seeding biases set_from_ik's solver so the
         # redundant wrist resolves to the same value every run (deterministic).
+        if _extended_profile():
+            rs = _ten_profile_goal(robot,pose,logger)
+            if rs is None:
+                logger.warn('Ten-profile IK candidates rejected; trying collision-aware pose planning')
+                return move_to_pose(robot,arm,logger,params,x,y,z,quat=quat)
+            arm.set_start_state_to_current_state()
+            arm.set_goal_state(robot_state=rs)
+            return _plan_execute(robot,arm,logger,params)
         rs = RobotState(robot.get_robot_model())
         rs.set_joint_group_positions(ARM_GROUP,
             [GRASP_SEED_JOINTS[f"panda_joint{i}"] for i in range(1, 8)])
@@ -825,6 +1207,151 @@ def move_to_grasp_pose(robot, arm, logger, params, x, y, z, quat) -> MoveResult:
     except Exception as e:
         logger.warn(f"seeded-IK grasp path errored ({e}); using Cartesian fallback")
         return move_to_pose(robot, arm, logger, params, x, y, z, quat=quat)
+
+
+# ---- Phase 3: blended multi-waypoint motion ------------------------------------
+# moveit_py plans each goal as its own point-to-point trajectory that starts and
+# ends at ZERO velocity, so a pick that goes approach -> descend fully stops at the
+# pre-grasp corner. To make the motion continuous ("natural, fewer stops") we plan
+# each leg separately (each still collision-checked), CONCATENATE the paths, and
+# re-time the whole thing with TOTG. TOTG only zeroes velocity at the two ENDS of
+# the merged path, so the arm flows through the interior waypoints -- it slows at a
+# sharp corner but does not stop. TOTG may change geometry within its path tolerance;
+# TWIN_TRAJECTORY_CHECK=sampled checks the final output for experiments. Any failure
+# returns None and the caller falls back to the original per-segment execution.
+def _ten_profile_goal(robot,pose,logger):
+    """Reject colliding IK branches before OMPL, retaining payload and hand state."""
+    with robot.get_planning_scene_monitor().read_only() as scene:
+        reference=copy.deepcopy(scene.current_state)
+    fixed=[GRASP_SEED_JOINTS[n] for n in motion_audit.ARM_JOINTS]
+    current=list(reference.get_joint_group_positions(ARM_GROUP))
+    bearing=fixed.copy();bearing[0]=math.atan2(pose.pose.position.y,pose.pose.position.x)
+    for number,seed in enumerate((fixed,current,bearing)):
+        candidate=copy.deepcopy(reference)
+        candidate.set_joint_group_positions(ARM_GROUP,seed)
+        candidate.update(force=True)
+        if not candidate.set_from_ik(joint_model_group_name=ARM_GROUP,
+                geometry_pose=pose.pose,tip_name=EE_LINK,timeout=.2):continue
+        candidate.update(force=True)
+        q=list(candidate.get_joint_group_positions(ARM_GROUP))
+        if _MOTION_LIMITS and not all(_MOTION_LIMITS[n]['position_min']<=v<=_MOTION_LIMITS[n]['position_max']
+                                     for n,v in zip(motion_audit.ARM_JOINTS,q)):continue
+        with robot.get_planning_scene_monitor().read_only() as scene:
+            collision=scene.is_state_colliding(robot_state=candidate,joint_model_group_name='')
+        motion_audit.record('ik_candidate',seed=number,accepted=not collision,
+                           target=[pose.pose.position.x,pose.pose.position.y,pose.pose.position.z])
+        if not collision:
+            if number:logger.info(f'Ten-profile IK: selected collision-free seed {number}')
+            return candidate
+    return None
+
+
+def _grasp_goal_state(robot, x, y, z, quat, logger):
+    """Resolve a top-down (x,y,z,quat) pose to a seeded-IK goal RobotState (wrist
+    pinned, same determinism as move_to_grasp_pose). Returns None if IK fails."""
+    try:
+        rs = RobotState(robot.get_robot_model())
+        rs.set_joint_group_positions(ARM_GROUP,
+            [GRASP_SEED_JOINTS[f"panda_joint{i}"] for i in range(1, 8)])
+        rs.update(force=True)
+        pose = PoseStamped()
+        pose.header.frame_id = PLANNING_FRAME
+        qx, qy, qz, qw = quat
+        pose.pose.orientation.x = float(qx)
+        pose.pose.orientation.y = float(qy)
+        pose.pose.orientation.z = float(qz)
+        pose.pose.orientation.w = float(qw)
+        pose.pose.position.x = float(x)
+        pose.pose.position.y = float(y)
+        pose.pose.position.z = float(z)
+        if _extended_profile():
+            return _ten_profile_goal(robot,pose,logger)
+        if not rs.set_from_ik(joint_model_group_name=ARM_GROUP,
+                              geometry_pose=pose.pose, tip_name=EE_LINK, timeout=1.0):
+            return None
+        rs.update(force=True)
+        return rs
+    except Exception as e:
+        logger.warn(f"blend: grasp goal IK errored ({e})")
+        return None
+
+
+def _merge_trajectory_msgs(msgs):
+    """Concatenate RobotTrajectory messages into one, dropping each segment's first
+    point (it duplicates the previous segment's last) and offsetting time. TOTG
+    re-times afterwards, so the input times only need to be monotonic."""
+    import copy
+    base = copy.deepcopy(msgs[0])
+    pts = base.joint_trajectory.points
+    def tsec(d):
+        return d.sec + d.nanosec * 1e-9
+    for m in msgs[1:]:
+        seg = m.joint_trajectory.points
+        if not seg:
+            continue
+        offset = tsec(pts[-1].time_from_start) if pts else 0.0
+        for k, p in enumerate(seg):
+            if k == 0:
+                continue  # same config as the previous segment's last point
+            q = copy.deepcopy(p)
+            t = offset + tsec(p.time_from_start)
+            q.time_from_start.sec = int(t)
+            q.time_from_start.nanosec = int(round((t - int(t)) * 1e9))
+            pts.append(q)
+    return base
+
+
+def _plan_chain_execute(robot, arm, logger, params, goal_states):
+    """Plan a sequence of goal RobotStates, concatenate + re-time (TOTG) into ONE
+    continuous motion, execute it, and verify arrival at the final goal. Returns a
+    MoveResult on success, or None if any step fails (caller falls back)."""
+    try:
+        _check_motion()
+        msgs = []
+        container = None   # reuse the first planned trajectory so the merged one
+                           # keeps a valid joint-model-group (TOTG requires it)
+        start = None
+        for goal in goal_states:
+            if start is None:
+                arm.set_start_state_to_current_state()
+            else:
+                arm.set_start_state(robot_state=start)
+            arm.set_goal_state(robot_state=goal)
+            result = _timed_plan(arm, params, 'chain_segment')
+            if not result:
+                logger.warn("blend: a chain segment failed to plan; falling back")
+                return None
+            if container is None:
+                container = result.trajectory
+            msgs.append(result.trajectory.get_robot_trajectory_msg())
+            start = goal  # the planned segment ends at this goal configuration
+        merged_msg = _merge_trajectory_msgs(msgs)
+        arm.set_start_state_to_current_state()
+        ref = arm.get_start_state()
+        container.set_robot_trajectory_msg(ref, merged_msg)
+        if not container.apply_totg_time_parameterization(VEL_SCALE*_retime_margin(), ACC_SCALE*_retime_margin()):
+            logger.warn("blend: TOTG retiming failed; falling back")
+            return None
+        logger.info(f"blend: executing merged {len(goal_states)}-waypoint motion")
+        _check_motion()
+        command_id = _audit_candidate(robot, container, params, 'chain_totg')
+        _execute_audited(robot, container, command_id)
+        _check_motion()
+        xyz = _settle_pose(robot, arm, logger)
+        try:
+            tf = goal_states[-1].get_global_link_transform(EE_LINK)
+            end = (float(tf[0][3]), float(tf[1][3]), float(tf[2][3]))
+        except Exception:
+            end = None
+        if xyz is not None and end is not None:
+            miss = sum((a - b) ** 2 for a, b in zip(xyz, end)) ** 0.5
+            if miss > ARRIVAL_TOL:
+                logger.warn(f"blend: arrived {miss:.3f} m off planned end; falling back")
+                return None
+        return MoveResult(ok=True, stage="executed", final_pose=xyz)
+    except Exception as e:
+        logger.warn(f"blend: chain execution errored ({e}); falling back")
+        return None
 
 
 # ---- Perception seam (Session 17) — HARDCODED for now ----
@@ -1057,7 +1584,8 @@ class PlaceResult:
 
 
 def pick(robot, arm, logger, params, twin, object_id,
-         expect_half_width=None, width_tol=None) -> PickResult:
+         expect_half_width=None, width_tol=None, home_first=True,
+         blend=False) -> PickResult:
     """Composite: resolve object -> approach (top-down) -> open -> descend ->
     close -> confirm STALL -> lift. First real consumer of BOTH MoveResult and
     the grasp signal. Every sub-step returns a rich result and pick reacts to it:
@@ -1083,11 +1611,16 @@ def pick(robot, arm, logger, params, twin, object_id,
     # solutions with joint headroom and the descend doesn't strand a joint at its
     # limit. This is the "universal pre-pick posture" -- standard industrial
     # practice: return to a repeatable home before each cycle so it's deterministic.
-    logger.info("pick: home to 'ready' pose")
-    r = move_to_named(robot, arm, logger, params, "ready")
-    if not r.ok:
-        return PickResult(ok=False, stage="ready_pose_failed", object_xyz=None,
-                          error=f"could not reach 'ready' pose: {r}")
+    # Phase 2: callers that guarantee the arm is already at a well-conditioned
+    # pose (e.g. parcel_task homes to 'ready' before each pick) pass
+    # home_first=False to skip this redundant re-home. Default True preserves the
+    # original behaviour for every other caller.
+    if home_first:
+        logger.info("pick: home to 'ready' pose")
+        r = move_to_named(robot, arm, logger, params, "ready")
+        if not r.ok:
+            return PickResult(ok=False, stage="ready_pose_failed", object_xyz=None,
+                              error=f"could not reach 'ready' pose: {r}")
 
     # S21: resolve AFTER homing. The arm used to be left parked over the cube by
     # the previous cycle, and resolving first read the camera while the hand
@@ -1108,30 +1641,54 @@ def pick(robot, arm, logger, params, twin, object_id,
     z_approach = z_grasp + APPROACH_CLEARANCE     # pre-grasp, clear above
     z_lift = z_grasp + LIFT_HEIGHT                # raise with object in hand
 
-    # 1. Approach: move above the object, hand already in grasp orientation.
-    logger.info(f"pick: approach ({ox:.3f},{oy:.3f},{z_approach:.3f}) top-down")
-    r = move_to_grasp_pose(robot, arm, logger, params, ox, oy, z_approach, q)
-    if not r.ok:
-        return PickResult(ok=False, stage="approach_failed", object_xyz=xyz,
-                          error=f"approach plan failed: {r}")
+    # 1-3. Approach above the object, open the gripper, and descend to grasp.
+    # Phase 3 (blend=True): open the gripper FIRST -- harmless to do early, and it
+    # lets the approach and descend run as ONE continuous re-timed motion that only
+    # stops at the grasp (the "move to object, then grab" the user wants). If the
+    # blended chain can't be planned/executed it returns falsy and we fall through
+    # to the original discrete approach -> descend, so behaviour is never worse.
+    blended = False
+    if blend:
+        g = move_gripper(robot, arm, logger, params, twin, GRIPPER_MAX)
+        if not g.ok:
+            return PickResult(ok=False, stage="grip_error", object_xyz=xyz,
+                              error=f"pre-grasp open failed: {g}")
+        a = _grasp_goal_state(robot, ox, oy, z_approach, q, logger)
+        d = _grasp_goal_state(robot, ox, oy, z_grasp, q, logger)
+        if a is not None and d is not None:
+            logger.info(f"pick: blended approach+descend to grasp z={z_grasp:.3f}")
+            res = _plan_chain_execute(robot, arm, logger, params, [a, d])
+            blended = res is not None and res.ok
 
-    # 2. Open the gripper before descending (idempotent if already open).
-    g = move_gripper(robot, arm, logger, params, twin, GRIPPER_MAX)
-    if not g.ok:
-        return PickResult(ok=False, stage="grip_error", object_xyz=xyz,
-                          error=f"pre-grasp open failed: {g}")
+    if not blended:
+        # 1. Approach: move above the object, hand already in grasp orientation.
+        logger.info(f"pick: approach ({ox:.3f},{oy:.3f},{z_approach:.3f}) top-down")
+        r = move_to_grasp_pose(robot, arm, logger, params, ox, oy, z_approach, q)
+        if not r.ok and not home_first:
+            # Direct approach from the current pose failed; recover the old
+            # reliability by homing to the 'ready' basin and retrying once.
+            logger.warn("pick: direct approach failed; falling back to home-then-approach")
+            if move_to_named(robot, arm, logger, params, "ready").ok:
+                r = move_to_grasp_pose(robot, arm, logger, params, ox, oy, z_approach, q)
+        if not r.ok:
+            return PickResult(ok=False, stage="approach_failed", object_xyz=xyz,
+                              error=f"approach plan failed: {r}")
 
-    # 3. Descend straight down to grasp height (same orientation).
-    # This leg is purely vertical, which is the main lever we have against nudging
-    # the object: a vertical descent doesn't sweep through the cube's xy footprint.
-    # The residual nudge S17 run 1 saw comes from the APPROACH leg (step 1), where
-    # the unconstrained planner can swing a joint through the object's space. The
-    # real fix is a Cartesian/constrained approach path; noted for a later brick.
-    logger.info(f"pick: descend to grasp z={z_grasp:.3f}")
-    r = move_to_grasp_pose(robot, arm, logger, params, ox, oy, z_grasp, q)
-    if not r.ok:
-        return PickResult(ok=False, stage="descend_failed", object_xyz=xyz,
-                          error=f"descend plan failed: {r}")
+        # 2. Open the gripper before descending (skipped if blend already opened it).
+        if not blend:
+            g = move_gripper(robot, arm, logger, params, twin, GRIPPER_MAX)
+            if not g.ok:
+                return PickResult(ok=False, stage="grip_error", object_xyz=xyz,
+                                  error=f"pre-grasp open failed: {g}")
+
+        # 3. Descend straight down to grasp height (same orientation). A vertical
+        # descent doesn't sweep through the object's xy footprint, so it does not
+        # nudge the object.
+        logger.info(f"pick: descend to grasp z={z_grasp:.3f}")
+        r = move_to_grasp_pose(robot, arm, logger, params, ox, oy, z_grasp, q)
+        if not r.ok:
+            return PickResult(ok=False, stage="descend_failed", object_xyz=xyz,
+                              error=f"descend plan failed: {r}")
 
     # 4. Close on the object. The grasp predicate is GripResult.stalled:
     #    stalled==True -> held; stalled==False (merely 'reached') -> the fingers
@@ -1209,7 +1766,9 @@ def pick(robot, arm, logger, params, twin, object_id,
     return res
 
 
-def place(robot, arm, logger, params, twin, target_id, clearance=0.0) -> PlaceResult:
+def place(robot, arm, logger, params, twin, target_id, clearance=0.0,
+          home_first=True, blend=False, before_release=None,
+          release_seconds=None, retract=True) -> PlaceResult:
     """Composite: resolve target -> approach (top-down) -> descend -> open ->
     confirm RELEASE -> retract. Mirror of pick() with opposite gripper action.
 
@@ -1279,26 +1838,50 @@ def place(robot, arm, logger, params, twin, target_id, clearance=0.0) -> PlaceRe
     z_retract = z_place + LIFT_HEIGHT           # post-release, retract height
     q = TOPDOWN_GRASP_QUAT
 
-    # 0. Home to 'ready' pose for a well-conditioned planning basin (same as pick).
-    logger.info("place: home to 'ready' pose")
-    r = move_to_named(robot, arm, logger, params, "ready")
-    if not r.ok:
-        return PlaceResult(ok=False, stage="ready_pose_failed", target_xyz=txyz,
-                           error=f"could not reach 'ready' pose: {r}")
+    # 0. Optionally home to 'ready' for a well-conditioned planning basin. Phase 2:
+    # a caller that just lifted an object from a pick (parcel_task) passes
+    # home_first=False so the arm routes DIRECTLY object->tray instead of detouring
+    # all the way home and back down. Default True preserves the original path for
+    # every other caller.
+    if home_first:
+        logger.info("place: home to 'ready' pose")
+        r = move_to_named(robot, arm, logger, params, "ready")
+        if not r.ok:
+            return PlaceResult(ok=False, stage="ready_pose_failed", target_xyz=txyz,
+                               error=f"could not reach 'ready' pose: {r}")
 
-    # 1. Approach: move above the target, hand in same top-down orientation.
-    logger.info(f"place: approach ({tx:.3f},{ty:.3f},{z_approach:.3f}) top-down")
-    r = move_to_grasp_pose(robot, arm, logger, params, tx, ty, z_approach, q)
-    if not r.ok:
-        return PlaceResult(ok=False, stage="approach_failed", target_xyz=txyz,
-                           error=f"approach plan failed: {r}")
+    # 1-2. Approach above the target and descend to place height. Phase 3
+    # (blend=True): run approach+descend as ONE continuous re-timed motion that
+    # only stops at the release point. Falls through to discrete moves on failure.
+    blended = False
+    if blend:
+        a = _grasp_goal_state(robot, tx, ty, z_approach, q, logger)
+        d = _grasp_goal_state(robot, tx, ty, z_place, q, logger)
+        if a is not None and d is not None:
+            logger.info(f"place: blended approach+descend to place z={z_place:.3f}")
+            res = _plan_chain_execute(robot, arm, logger, params, [a, d])
+            blended = res is not None and res.ok
 
-    # 2. Descend to place height (same orientation).
-    logger.info(f"place: descend to place z={z_place:.3f}")
-    r = move_to_grasp_pose(robot, arm, logger, params, tx, ty, z_place, q)
-    if not r.ok:
-        return PlaceResult(ok=False, stage="descend_failed", target_xyz=txyz,
-                           error=f"descend plan failed: {r}")
+    if not blended:
+        # 1. Approach: move above the target, hand in same top-down orientation.
+        logger.info(f"place: approach ({tx:.3f},{ty:.3f},{z_approach:.3f}) top-down")
+        r = move_to_grasp_pose(robot, arm, logger, params, tx, ty, z_approach, q)
+        if not r.ok and not home_first:
+            # Direct object->tray approach failed; fall back to home-then-approach
+            # so the old reliability is preserved (object is still held throughout).
+            logger.warn("place: direct approach failed; falling back to home-then-approach")
+            if move_to_named(robot, arm, logger, params, "ready").ok:
+                r = move_to_grasp_pose(robot, arm, logger, params, tx, ty, z_approach, q)
+        if not r.ok:
+            return PlaceResult(ok=False, stage="approach_failed", target_xyz=txyz,
+                               error=f"approach plan failed: {r}")
+
+        # 2. Descend to place height (same orientation).
+        logger.info(f"place: descend to place z={z_place:.3f}")
+        r = move_to_grasp_pose(robot, arm, logger, params, tx, ty, z_place, q)
+        if not r.ok:
+            return PlaceResult(ok=False, stage="descend_failed", target_xyz=txyz,
+                               error=f"descend plan failed: {r}")
 
     # Remember how tight the hand was BEFORE opening, so release can be judged
     # relative to the grasp (fingers moved clearly open) rather than against a
@@ -1307,7 +1890,9 @@ def place(robot, arm, logger, params, twin, target_id, clearance=0.0) -> PlaceRe
 
     # 3. Open the gripper to release the object. This is the inverse of pick's
     #    close: we move to GRIPPER_MAX (full open).
-    g = move_gripper(robot, arm, logger, params, twin, GRIPPER_MAX)
+    if before_release is not None:
+        before_release()
+    g = move_gripper(robot, arm, logger, params, twin, GRIPPER_MAX, seconds=release_seconds)
     if not g.ok:
         return PlaceResult(ok=False, stage="open_failed", target_xyz=txyz,
                            error=f"gripper open failed: {g}")
@@ -1336,7 +1921,13 @@ def place(robot, arm, logger, params, twin, target_id, clearance=0.0) -> PlaceRe
         logger.info(f"place: release confirmed -- opened from "
                     f"{grasp_width_before_open:.4f} to {g.final_width:.4f}")
 
-    # 5. Retract the arm to clear the placed object.
+    # 5. Retract the arm to clear the placed object. A caller that immediately
+    # plans its own departure from the release pose (retract=False) skips this
+    # stop: the release point already sits `clearance` above the tote rim.
+    if not retract:
+        res = PlaceResult(ok=True, stage="placed", released=True, target_xyz=txyz)
+        logger.info(f"place('{target_id}') -> {res} (no separate retract)")
+        return res
     logger.info(f"place: retract to z={z_retract:.3f}")
     r = move_to_grasp_pose(robot, arm, logger, params, tx, ty, z_retract, q)
     if not r.ok:

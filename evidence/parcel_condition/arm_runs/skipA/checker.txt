@@ -1,0 +1,164 @@
+{
+ "passed": false,
+ "exact_entities": true,
+ "correct": 0,
+ "total": 10,
+ "misrouted": [],
+ "left_on_belt": [
+  "parcel_1",
+  "parcel_2",
+  "parcel_3",
+  "parcel_4",
+  "parcel_5",
+  "parcel_6",
+  "parcel_7",
+  "parcel_8",
+  "parcel_9",
+  "parcel_10"
+ ],
+ "failed_other": [],
+ "damaged_in_bin": 0,
+ "intact_in_tote": 0,
+ "parcels": [
+  {
+   "name": "parcel_1",
+   "true": "intact",
+   "where": "belt",
+   "position": [
+    0.56,
+    0.7425,
+    0.32
+   ],
+   "stable": true,
+   "upright": true,
+   "height_ok": true,
+   "passed": false
+  },
+  {
+   "name": "parcel_2",
+   "true": "damaged",
+   "where": "belt",
+   "position": [
+    0.56,
+    0.6925,
+    0.32
+   ],
+   "stable": true,
+   "upright": true,
+   "height_ok": true,
+   "passed": false
+  },
+  {
+   "name": "parcel_3",
+   "true": "intact",
+   "where": "belt",
+   "position": [
+    0.56,
+    0.6425,
+    0.32
+   ],
+   "stable": true,
+   "upright": true,
+   "height_ok": true,
+   "passed": false
+  },
+  {
+   "name": "parcel_4",
+   "true": "intact",
+   "where": "belt",
+   "position": [
+    0.56,
+    0.5925,
+    0.32
+   ],
+   "stable": true,
+   "upright": true,
+   "height_ok": true,
+   "passed": false
+  },
+  {
+   "name": "parcel_5",
+   "true": "damaged",
+   "where": "belt",
+   "position": [
+    0.56,
+    0.5425,
+    0.32
+   ],
+   "stable": true,
+   "upright": true,
+   "height_ok": true,
+   "passed": false
+  },
+  {
+   "name": "parcel_6",
+   "true": "intact",
+   "where": "belt",
+   "position": [
+    0.56,
+    0.4925,
+    0.32
+   ],
+   "stable": true,
+   "upright": true,
+   "height_ok": true,
+   "passed": false
+  },
+  {
+   "name": "parcel_7",
+   "true": "damaged",
+   "where": "belt",
+   "position": [
+    0.56,
+    0.4425,
+    0.32
+   ],
+   "stable": true,
+   "upright": true,
+   "height_ok": true,
+   "passed": false
+  },
+  {
+   "name": "parcel_8",
+   "true": "intact",
+   "where": "belt",
+   "position": [
+    0.56,
+    0.3925,
+    0.32
+   ],
+   "stable": true,
+   "upright": true,
+   "height_ok": true,
+   "passed": false
+  },
+  {
+   "name": "parcel_9",
+   "true": "intact",
+   "where": "belt",
+   "position": [
+    0.56,
+    0.1317,
+    0.32
+   ],
+   "stable": true,
+   "upright": true,
+   "height_ok": true,
+   "passed": false
+  },
+  {
+   "name": "parcel_10",
+   "true": "intact",
+   "where": "belt",
+   "position": [
+    0.56,
+    -0.2123,
+    0.32
+   ],
+   "stable": true,
+   "upright": true,
+   "height_ok": true,
+   "passed": false
+  }
+ ]
+}

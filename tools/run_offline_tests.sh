@@ -27,6 +27,18 @@ echo "===== OFFLINE TEST SUITE (no simulator) ====="
 run "behaviour-tree self-test"  python3 "$PKG/behaviour_tree.py" --self-test
 run "validator self-test"       python3 "$PKG/sorting_validator.py" --self-test
 run "extrinsic-solver self-test" python3 "$TOOLS/fit_extrinsic_calibration.py" --self-test
+run "parcel geometry and depth perception" python3 "$TOOLS/test_parcel_cell.py"
+run "parcel grasp confirmation and loss" python3 "$TOOLS/test_parcel_grasp.py"
+run "parcel appearance variants keep identical physics" python3 "$TOOLS/test_parcel_variants.py"
+run "condition classifier crop geometry" python3 "$TOOLS/test_parcel_condition.py"
+run "condition routing: votes, router, bin world" python3 "$TOOLS/test_parcel_reject.py"
+run "ten-parcel capacity perception and contact IDs" python3 "$TOOLS/test_ten_parcel.py"
+run "motion experiment preflight and planner options" python3 "$TOOLS/test_motion_audit.py"
+run "motion validation prevents dispatch" python3 "$TOOLS/test_motion_dispatch.py"
+run "early launch, slot confirmation and release stroke" python3 "$TOOLS/test_pick_gate.py"
+run "shadow arrival predicate" python3 "$TOOLS/test_arrival_gate.py"
+run "saved controller spline reconstruction" python3 "$TOOLS/test_toppra_path.py"
+run "Pilz sequence contact and blend contracts" python3 "$TOOLS/test_pilz_sequence.py"
 
 # 2. py_compile every package module + tool script
 mods=()

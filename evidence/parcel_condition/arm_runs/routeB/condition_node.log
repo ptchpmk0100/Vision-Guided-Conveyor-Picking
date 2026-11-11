@@ -1,0 +1,30 @@
+[INFO] [1794394292.984024601] [parcel_condition]: condition classifier ready: model=/home/pmkhoi/ros_test_ws_mirror/logs/condition/runs/r1/model.onnx detections=/parcel_cell/moving_detections min_confidence=0.75
+[INFO] [1794394305.788899389] [parcel_condition]: msgs=38 parcels=38 unmatched=6 edge=0 latency_ms mean=10.2 p95=13.3 max=14.1
+[INFO] [1794394337.250776840] [parcel_condition]: msgs=79 parcels=79 unmatched=11 edge=0 latency_ms mean=10.6 p95=14.4 max=15.6
+[INFO] [1794394368.764026859] [parcel_condition]: msgs=106 parcels=106 unmatched=16 edge=0 latency_ms mean=10.5 p95=14.8 max=17.0
+[INFO] [1794394403.291799768] [parcel_condition]: msgs=146 parcels=146 unmatched=22 edge=0 latency_ms mean=10.6 p95=15.2 max=17.0
+[INFO] [1794394434.827297498] [parcel_condition]: msgs=197 parcels=197 unmatched=24 edge=0 latency_ms mean=10.6 p95=15.4 max=18.6
+[INFO] [1794394464.355453261] [parcel_condition]: msgs=230 parcels=230 unmatched=27 edge=0 latency_ms mean=10.4 p95=15.5 max=18.6
+[INFO] [1794394496.864805609] [parcel_condition]: msgs=260 parcels=260 unmatched=31 edge=0 latency_ms mean=10.4 p95=15.5 max=18.6
+[INFO] [1794394527.707970868] [parcel_condition]: msgs=306 parcels=306 unmatched=36 edge=0 latency_ms mean=10.5 p95=15.5 max=23.8
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/pmkhoi/ros_test_ws_mirror/build/twin_moveit_scripts/twin_moveit_scripts/parcel_condition_node.py", line 129, in <module>
+    main()
+  File "/home/pmkhoi/ros_test_ws_mirror/build/twin_moveit_scripts/twin_moveit_scripts/parcel_condition_node.py", line 120, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 757, in _wait_for_ready_callbacks
+    wait_set = _rclpy.WaitSet(
+               ^^^^^^^^^^^^^^^
+rclpy._rclpy_pybind11.RCLError: failed to initialize wait set: the given context is not valid, either rcl_init() was not called or rcl_shutdown() was called., at ./src/rcl/wait.c:130

@@ -420,3 +420,324 @@ to GitHub `main`. Once matched, follow the next user request. Use the mirror
 for isolated testing; promote changes to the primary repository only when
 authorized. Do not resume deferred historical ROS/learned-perception work.
 Claude uses `/handoff`; Codex uses `$handoff`, sharing the same documents.
+
+---
+
+<!-- handoff-id: a8c82248-b9b5-4d1f-a33d-cc3f4a26db33 -->
+## 2026-11-10T19:06:20+00:00 | claude | checkpoint
+
+- Repository: "/home/pmkhoi/ros_test_ws"
+- Branch: "promote/parcel-cell-original-belt"
+- Commit: `c61598039293588b4c94c29592bfd5e811b8896e`
+- Git status captured before this save (paths are JSON-escaped):
+
+```text
+(clean)
+```
+
+## Task and constraints
+
+On the user's request ("commit to the corresponding GitHub repo, analyze it because there may be more than
+today's session") the tested work in the mirror (~/ros_test_ws_mirror) was promoted to this repository on branch
+promote/parcel-cell-original-belt, to be reviewed and merged through a pull request. Not merged to main by the
+agent. The mirror keeps its own HANDOFF.md / SESSION_LOG.md and they were NOT copied here.
+
+## Changes and decisions
+
+GitHub main matched the mirror at commit aa22c04; no code on GitHub was ahead. Everything the mirror added after
+that was promoted (67 files, byte-identical to the mirror commits 4380488/b245f27 sources): parcel cell world and
+launch, camera-only detection and tracking, continuous conveyor interception with contact-confirmed grasps, motion
+phases 1-3, 7/8/10-box batches on the ORIGINAL 5.0 m belt, tools/tests, plan documents, README/AGENTS additions,
+and a CI change installing the MoveIt and message packages the new offline tests import.
+Deliberately NOT promoted: the mirror's tracked logs/, *.bak files, .vscode/, frames_*.pdf (historical junk that is
+not on GitHub), and the mirror ledgers. GitHub-only files (LICENSE, docs/PROJECT-SPEC.md, docs/learning/*) were kept.
+Commits use the repo's configured noreply identity.
+
+## Verification and evidence
+
+New: `tools/run_offline_tests.sh` in this repository: OFFLINE SUITE ALL PASS (13 items) on the promoted tree.
+Mirror evidence (not re-run here): ten boxes headless x2 and GUI x1 10/10, colour regression 2/2, three-box
+continuous 3 of 4 (one low-real-time-factor timeout, rerun 2/2); logs are in the mirror and git-ignored.
+GitHub Actions on the pull request is the only check of the new CI dependency list: NOT yet observed when this was
+written; it must be read from the PR.
+
+## Running operations
+
+None.
+
+## Usage
+
+Five-hour/weekly usage unknown. No external monitor configured.
+
+## Remaining work and blockers
+
+Read the CI result on the pull request and fix the CI package list if it fails. Merge the pull request when
+satisfied. 7 and 8 boxes are layout-tested only. A fixed 15 wall-second gripper wait in the unchanged three-box path
+can time out on a heavily loaded host.
+
+## Next action
+
+Check the pull request's CI, then merge. No further work without a new user request.
+
+---
+
+<!-- handoff-id: c4501852-8c84-4d68-903a-744a2c171770 -->
+## 2026-11-10T19:16:56+00:00 | claude | complete
+
+- Repository: "/home/pmkhoi/ros_test_ws"
+- Branch: "promote/parcel-cell-original-belt"
+- Commit: `255c909a725234fd9ff1de69f74bef2a922c83af`
+- Git status captured before this save (paths are JSON-escaped):
+
+```text
+(clean)
+```
+
+## Task and constraints
+
+Promotion of the tested mirror work to GitHub (ptchpmk0100/language-controlled-panda-digital-twin) via pull request #1,
+branch promote/parcel-cell-original-belt. The agent opened the PR and did NOT merge it; merging to main is the user's call.
+
+## Changes and decisions
+
+Branch commits on top of main (0231876): promoted parcel cell and 7/8/10-box work (67 files), docs, a ledger entry, a CI fix
+(build twin_description and twin_moveit_config with colcon so the MoveIt config tests find them) and tools/parcel_demo.sh
+(one command per terminal to watch the arm) with README lines. Excluded on purpose: mirror logs/, *.bak, .vscode/, frames_*.pdf
+and the mirror's own ledgers. Commits use the repo's noreply identity. A temporary `mirror_tmp` remote used for comparison was removed.
+
+## Verification and evidence
+
+NEW: GitHub Actions on PR #1: first run FAILED (12 of 13 offline items passed; "motion validation prevents dispatch" had 2 errors:
+twin_description / twin_moveit_config not in the ROS package index). Reproduced locally, rehearsed the fix on a clean `git archive`
+export (colcon build of the two packages, then tools/run_offline_tests.sh: ALL PASS), pushed; the next runs (push and pull_request,
+commit 255c909) PASSED (offline-tests, about 1 min each). `tools/parcel_demo.sh` was run end to end (headless, domain 86): the arm
+task printed PARCEL_TASK_COMPLETE, FULL at 90.6 sim-s, and `tools/check_parcel_cell.py --placed --parcel-count 10` confirmed 10 boxes,
+all passed, slot errors 1.1-4.8 mm. Earlier mirror evidence (10-box headless x2 and GUI, colour 2/2, three-box 3 of 4) is unchanged.
+
+## Running operations
+
+None. The demo's orphaned `gz sim` (verified mine by GZ_PARTITION=parcel_demo_86) was stopped; process audit clean.
+
+## Usage
+
+Unknown. No external monitor configured.
+
+## Remaining work and blockers
+
+User to review and merge PR #1 (`gh pr merge 1 --merge` keeps the commits; `--squash` collapses them). 7 and 8 boxes are layout-tested
+only. The unchanged three-box path has a fixed 15 wall-second gripper wait that can time out on an overloaded host.
+
+## Next action
+
+Merge PR #1 when satisfied; nothing else pending without a new request.
+
+---
+
+<!-- handoff-id: ce441691-4648-4724-b81e-ed4af50cb4a1 -->
+## 2026-11-11T10:42:58+00:00 | claude | checkpoint
+
+- Repository: "/home/pmkhoi/ros_test_ws_mirror"
+- Branch: "master"
+- Commit: `a9b3ad622ae02443b864d6ed60a85a469dd4ee96`
+- Git status captured before this save (paths are JSON-escaped):
+
+```text
+" M src/twin_action_demo/launch/industrial_parcel_cell_bringup.launch.py"
+" M tools/run_offline_tests.sh"
+"?? Next_Step.txt"
+"?? Next_Step_learned_detector_advice.txt"
+"?? PARCEL_CONDITION_CLASSIFIER.md"
+"?? src/twin_moveit_scripts/twin_moveit_scripts/parcel_condition.py"
+"?? src/twin_moveit_scripts/twin_moveit_scripts/parcel_condition_node.py"
+"?? src/twin_moveit_scripts/twin_moveit_scripts/parcel_variants.py"
+"?? tools/condition_arm_check.sh"
+"?? tools/condition_collect.sh"
+"?? tools/condition_eval.py"
+"?? tools/condition_extract.py"
+"?? tools/condition_live_check.py"
+"?? tools/condition_run.py"
+"?? tools/condition_sheet.py"
+"?? tools/condition_train.py"
+"?? tools/run_condition_node.sh"
+"?? tools/test_parcel_condition.py"
+"?? tools/test_parcel_variants.py"
+```
+
+## Task and constraints
+
+Khoi asked (2026-11-11) to rewrite Next_Step.txt steps 5-6 for a crop-classifier route (depth detector localises, a small RGB
+classifier labels intact/damaged) and then execute the whole plan in auto mode. Reserved for Khoi and NOT done: merging PR #1 (step 0),
+any commit or push. Step 9 thresholds are `[confirm: number]` in the plan and were not given. Everything is uncommitted in the mirror.
+Steps 1-8 are DONE with results in PARCEL_CONDITION_CLASSIFIER.md; step 9 (reject bin + routing) is in progress / see Next action.
+
+## Changes and decisions
+
+New: parcel_variants.py, parcel_condition.py, parcel_condition_node.py (src/twin_moveit_scripts/twin_moveit_scripts/);
+tools/condition_{collect.sh,run.py,extract.py,train.py,eval.py,live_check.py,sheet.py,arm_check.sh}, run_condition_node.sh,
+test_parcel_variants.py, test_parcel_condition.py (both registered in tools/run_offline_tests.sh, suite ALL PASS at last run).
+Edited: industrial_parcel_cell_bringup.launch.py (variant_* launch args, default OFF), Next_Step.txt (steps 5/6/8 rewritten).
+Decisions: no segmentation camera (labels = spawn manifest + projected Gazebo poses); raw depth not bagged (live depth-detector
+output is); damage marks enlarged 1.4x after first look; split by whole recording (11 train / 2 val / 3 test).
+Training env: ~/venvs/parcel_cls (torch 2.15.0+cu132, onnxruntime CPU, pyyaml added). Shell has a PYTHONPATH to the PRIMARY
+workspace: use tools/*.sh or the scratchpad rosenv.sh (env -i) and `env -u PYTHONPATH` for the venv.
+
+## Verification and evidence
+
+16/16 recordings ok (logs/condition/rec, 7.2 GB, git-ignored). Dataset 4435 crops (logs/condition/dataset). Model logs/condition/runs/r1
+(best epoch 8, val bal-acc 0.993). Test split (r09 r11 r14, 30 parcels): depth-detector crops per crop acc 0.993, damaged recall 232/232,
+3/170 intact flagged; per parcel 30/30. Depth detector class-blind (detection 91.9% vs 90.9%, p=0.41). Arm picks variants: armA/armB/armC
+10/10 by tools/check_parcel_cell.py, 0 Tracebacks. Live node during the arm task: 249 detections, 10/10 parcels correct, latency mean 15 ms p95 29 ms.
+Caveat recorded: sim only, large synthetic marks, 30 test parcels.
+
+## Running operations
+
+None at the time of this checkpoint (sims are started and stopped per script; process audit clean: no gz sim).
+
+## Usage
+
+Unknown. No external monitor configured.
+
+## Remaining work and blockers
+
+Step 9 (reject bin, arm routing behind a flag, independent check) and README/handoff wrap-up. Khoi must still decide: merge PR #1,
+commit these files, and confirm the step 9 thresholds (proposal: damaged recall >= 0.95, intact sent to reject <= 0.05).
+
+## Next action
+
+Implement step 9 behind default-off flags (launch reject_bin, task --condition-routing); keep depth-only behaviour as default.
+
+---
+
+<!-- handoff-id: 32e1a728-c12a-480d-917b-9da287d11435 -->
+## 2026-11-11T11:13:06+00:00 | claude | complete
+
+- Repository: "/home/pmkhoi/ros_test_ws_mirror"
+- Branch: "master"
+- Commit: `a9b3ad622ae02443b864d6ed60a85a469dd4ee96`
+- Git status captured before this save (paths are JSON-escaped):
+
+```text
+" M HANDOFF.md"
+" M README.md"
+" M SESSION_LOG.md"
+" M src/twin_action_demo/launch/industrial_parcel_cell_bringup.launch.py"
+" M src/twin_moveit_scripts/twin_moveit_scripts/parcel_batch_world.py"
+" M src/twin_moveit_scripts/twin_moveit_scripts/parcel_continuous.py"
+" M src/twin_moveit_scripts/twin_moveit_scripts/parcel_io.py"
+" M src/twin_moveit_scripts/twin_moveit_scripts/parcel_task.py"
+" M src/twin_moveit_scripts/twin_moveit_scripts/parcel_tracking.py"
+" M tools/parcel_demo.sh"
+" M tools/run_offline_tests.sh"
+"?? Next_Step.txt"
+"?? Next_Step_learned_detector_advice.txt"
+"?? PARCEL_CONDITION_CLASSIFIER.md"
+"?? src/twin_moveit_scripts/twin_moveit_scripts/parcel_condition.py"
+"?? src/twin_moveit_scripts/twin_moveit_scripts/parcel_condition_node.py"
+"?? src/twin_moveit_scripts/twin_moveit_scripts/parcel_reject.py"
+"?? src/twin_moveit_scripts/twin_moveit_scripts/parcel_variants.py"
+"?? tools/check_condition_routing.py"
+"?? tools/condition_arm_check.sh"
+"?? tools/condition_collect.sh"
+"?? tools/condition_eval.py"
+"?? tools/condition_extract.py"
+"?? tools/condition_live_check.py"
+"?? tools/condition_run.py"
+"?? tools/condition_sheet.py"
+"?? tools/condition_train.py"
+"?? tools/run_condition_node.sh"
+"?? tools/test_parcel_condition.py"
+"?? tools/test_parcel_reject.py"
+"?? tools/test_parcel_variants.py"
+```
+
+## Task and constraints
+
+Khoi asked (2026-11-11) to rewrite Next_Step.txt steps 5-6 for a crop-classifier route and execute the whole plan in auto mode. DONE:
+steps 1-9 in the simulator, results in PARCEL_CONDITION_CLASSIFIER.md. Reserved for Khoi and NOT done: merging PR #1 (plan step 0), any
+commit or push (the mirror has no remote). Step 9 thresholds were `[confirm: number]`; I used PROPOSED ones (damaged recall >= 0.95,
+intact-sent-to-reject <= 0.05, per parcel) and flagged them in the doc and in Next_Step.txt for Khoi to confirm. All work is uncommitted.
+
+## Changes and decisions
+
+New modules: parcel_variants, parcel_condition, parcel_condition_node, parcel_reject (src/twin_moveit_scripts/twin_moveit_scripts/).
+New tools: condition_{collect.sh,run.py,extract.py,train.py,eval.py,live_check.py,sheet.py,arm_check.sh}, run_condition_node.sh,
+check_condition_routing.py, tests test_parcel_{variants,condition,reject}.py (all in tools/run_offline_tests.sh).
+Edited (all default-off): industrial_parcel_cell_bringup.launch.py (variant_* and reject_bin args), parcel_batch_world.py (tote-fit helper,
+optional bin; default world byte-identical, hash-compared), parcel_tracking/io/continuous/task (condition votes, exclude set,
+--condition-routing), parcel_demo.sh (opt-in CONDITION_MODEL), README.md, Next_Step.txt, run_offline_tests.sh.
+Decisions: crop classifier (Khoi); no segmentation camera; raw depth not bagged; damage marks enlarged 1.4x; split by whole recording.
+Reject bin at (0.18, 0.50), 6 slots, floor at tote floor height. Vote rule: mean of last 8 votes (>= 4); >= 0.75 reject, <= 0.25 tote, else skip.
+
+## Verification and evidence
+
+Offline suite ALL PASS (16 checks) after the last code change. 16/16 recordings (logs/condition/rec). Model logs/condition/runs/r1.
+Held-out test (r09 r11 r14, 30 parcels): depth-detector crops per crop acc 0.993, damaged recall 232/232, 3/170 intact flagged; 30/30 parcels.
+Depth detector class-blind (91.9% vs 90.9% detection, p=0.41). Arm picks variants: armA/B/C 10/10. Live node: 249 detections, 10/10 parcels,
+latency mean 15 ms p95 29 ms. Routing (tools/check_condition_routing.py): routeA 3+7, routeB 5+5, demo-script run 3+7, all 10/10; skipA
+(uncertain model) all 10 skipped cleanly; default path (stock parcel_demo.sh) 10/10, FULL 91.6 sim-s. 0 Tracebacks in every task log.
+Caveat: sim only, large synthetic damage, one camera/lighting, 30 test parcels (95% lower bound of recall 0.80).
+
+## Running operations
+
+None. Process audit clean at save time (no gz sim, no ros2 launch, no condition node/bag). Every run script stops its own sim.
+
+## Usage
+
+Unknown. No external monitor configured.
+
+## Remaining work and blockers
+
+Khoi to: review and merge PR #1 (primary repo), decide what to commit from this mirror (logs/condition is git-ignored, 9.2 GB incl. bags;
+delete logs/condition/rec when no longer needed), confirm or change the step 9 thresholds. Optional next science: subtler damage, more
+lighting/belt variation, more held-out recordings. Pre-existing optional items from the earlier handoff are untouched.
+
+## Next action
+
+Task complete; wait for Khoi's review and new request. Do not merge, commit or push without authorisation.
+
+---
+
+<!-- handoff-id: f243b683-a4d1-46fe-971b-cdf20b94cb2d -->
+## 2026-11-11T14:04:10+00:00 | claude | handoff
+
+- Repository: "/home/pmkhoi/ros_test_ws"
+- Branch: "promote/parcel-cell-original-belt"
+- Commit: `2a93f203cee5ab2c3863bc9d62823636bf86585e`
+- Git status captured before this save (paths are JSON-escaped):
+
+```text
+(clean)
+```
+
+## Task and constraints
+
+User asked to update the main workspace (ros_test_ws) to the latest state of ros_test_ws_mirror and commit to GitHub. Complete. Work was applied on the existing PR branch `promote/parcel-cell-original-belt` (PR #1 open) and pushed to origin.
+
+## Changes and decisions
+
+- Applied the mirror's uncommitted diff (README, parcel_* modules, bringup launch, parcel_demo.sh, run_offline_tests.sh) and copied its untracked files (condition classifier modules, tools/condition_*, tests, PARCEL_CONDITION_CLASSIFIER.md, Next_Step*.txt, evidence/).
+- Mirror HANDOFF.md was not copied (it records the mirror path and commit); its 164 new SESSION_LOG lines were appended to this repo's SESSION_LOG.md.
+- Deliberately not synced: mirror-only clutter already ignored or removed here (logs/, .vscode/, *.bak*, frames_*.gv/pdf).
+- Two commits: code/docs/tools (93d3197) and evidence/ dataset, 35 MB, ~6.9k files (2a93f20), kept separate so the dataset can be reverted alone.
+
+## Verification and evidence
+
+- `bash tools/run_offline_tests.sh` in ros_test_ws: OFFLINE SUITE: ALL PASS (new this session).
+- Changed tracked files compared byte-for-byte with the mirror: identical.
+- Gazebo/ROS runtime behaviour not re-run here; the live and arm-run evidence is the mirror-era output under evidence/parcel_condition/arm_runs.
+
+## Running operations
+
+None started.
+
+## Usage
+
+Unknown. No external monitor configured.
+
+## Remaining work and blockers
+
+PR #1 is still open and now also contains the condition classifier work, which widens its scope; the user may prefer to split it. The mirror (ros_test_ws_mirror) still holds the same changes uncommitted and has no remote.
+
+## Next action
+
+Task complete. Review/merge PR #1 when satisfied; new user request needed for anything else.

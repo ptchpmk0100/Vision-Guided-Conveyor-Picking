@@ -1,0 +1,189 @@
+{
+ "seed": "routeB",
+ "count": 10,
+ "queue_y": [
+  -0.3,
+  -0.6439999999999999,
+  -0.988,
+  -1.332,
+  -1.676,
+  -2.0199999999999996,
+  -2.364,
+  -2.7079999999999997,
+  -3.0519999999999996,
+  -3.3959999999999995
+ ],
+ "parcels": [
+  {
+   "index": 1,
+   "name": "parcel_1",
+   "condition": "damaged",
+   "damage": [
+    {
+     "kind": "crush",
+     "corner": [
+      1,
+      -1
+     ],
+     "size": 0.018
+    }
+   ],
+   "benign": [
+    "sticker"
+   ],
+   "shade": 0.914,
+   "yaw_deg": 0.0
+  },
+  {
+   "index": 2,
+   "name": "parcel_2",
+   "condition": "intact",
+   "damage": [],
+   "benign": [
+    "sticker"
+   ],
+   "shade": 0.893,
+   "yaw_deg": 0.0
+  },
+  {
+   "index": 3,
+   "name": "parcel_3",
+   "condition": "damaged",
+   "damage": [
+    {
+     "kind": "tear",
+     "centre": [
+      -0.0013,
+      0.0057
+     ],
+     "length": 0.0415
+    }
+   ],
+   "benign": [
+    "sticker"
+   ],
+   "shade": 0.909,
+   "yaw_deg": 0.0
+  },
+  {
+   "index": 4,
+   "name": "parcel_4",
+   "condition": "damaged",
+   "damage": [
+    {
+     "kind": "tear",
+     "centre": [
+      -0.0139,
+      -0.0028
+     ],
+     "length": 0.0453
+    },
+    {
+     "kind": "crush",
+     "corner": [
+      -1,
+      1
+     ],
+     "size": 0.0175
+    }
+   ],
+   "benign": [
+    "sticker"
+   ],
+   "shade": 1.05,
+   "yaw_deg": 0.0
+  },
+  {
+   "index": 5,
+   "name": "parcel_5",
+   "condition": "intact",
+   "damage": [],
+   "benign": [
+    "sticker"
+   ],
+   "shade": 0.932,
+   "yaw_deg": 0.0
+  },
+  {
+   "index": 6,
+   "name": "parcel_6",
+   "condition": "intact",
+   "damage": [],
+   "benign": [],
+   "shade": 0.996,
+   "yaw_deg": 0.0
+  },
+  {
+   "index": 7,
+   "name": "parcel_7",
+   "condition": "intact",
+   "damage": [],
+   "benign": [],
+   "shade": 0.938,
+   "yaw_deg": 0.0
+  },
+  {
+   "index": 8,
+   "name": "parcel_8",
+   "condition": "damaged",
+   "damage": [
+    {
+     "kind": "tear",
+     "centre": [
+      -0.0044,
+      -0.0018
+     ],
+     "length": 0.0332
+    },
+    {
+     "kind": "crush",
+     "corner": [
+      1,
+      1
+     ],
+     "size": 0.0186
+    }
+   ],
+   "benign": [],
+   "shade": 1.054,
+   "yaw_deg": 0.0
+  },
+  {
+   "index": 9,
+   "name": "parcel_9",
+   "condition": "intact",
+   "damage": [],
+   "benign": [
+    "sticker"
+   ],
+   "shade": 1.057,
+   "yaw_deg": 0.0
+  },
+  {
+   "index": 10,
+   "name": "parcel_10",
+   "condition": "damaged",
+   "damage": [
+    {
+     "kind": "crush",
+     "corner": [
+      -1,
+      -1
+     ],
+     "size": 0.0216
+    },
+    {
+     "kind": "stain",
+     "centre": [
+      -0.0149,
+      0.0047
+     ],
+     "blobs": 4
+    }
+   ],
+   "benign": [],
+   "shade": 1.043,
+   "yaw_deg": 0.0
+  }
+ ]
+}

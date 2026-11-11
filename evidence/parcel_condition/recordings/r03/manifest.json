@@ -1,0 +1,149 @@
+{
+ "seed": "cond-r03",
+ "count": 10,
+ "queue_y": [
+  -0.3,
+  -0.6439999999999999,
+  -0.988,
+  -1.332,
+  -1.676,
+  -2.0199999999999996,
+  -2.364,
+  -2.7079999999999997,
+  -3.0519999999999996,
+  -3.3959999999999995
+ ],
+ "parcels": [
+  {
+   "index": 1,
+   "name": "parcel_1",
+   "condition": "intact",
+   "damage": [],
+   "benign": [],
+   "shade": 1.013,
+   "yaw_deg": -1.2
+  },
+  {
+   "index": 2,
+   "name": "parcel_2",
+   "condition": "damaged",
+   "damage": [
+    {
+     "kind": "tear",
+     "centre": [
+      -0.001,
+      -0.0013
+     ],
+     "length": 0.041
+    }
+   ],
+   "benign": [],
+   "shade": 1.019,
+   "yaw_deg": -0.77
+  },
+  {
+   "index": 3,
+   "name": "parcel_3",
+   "condition": "intact",
+   "damage": [],
+   "benign": [],
+   "shade": 0.944,
+   "yaw_deg": 9.94
+  },
+  {
+   "index": 4,
+   "name": "parcel_4",
+   "condition": "intact",
+   "damage": [],
+   "benign": [],
+   "shade": 1.006,
+   "yaw_deg": 0.22
+  },
+  {
+   "index": 5,
+   "name": "parcel_5",
+   "condition": "intact",
+   "damage": [],
+   "benign": [],
+   "shade": 0.93,
+   "yaw_deg": 5.01
+  },
+  {
+   "index": 6,
+   "name": "parcel_6",
+   "condition": "damaged",
+   "damage": [
+    {
+     "kind": "stain",
+     "centre": [
+      -0.0128,
+      -0.0044
+     ],
+     "blobs": 2
+    },
+    {
+     "kind": "crush",
+     "corner": [
+      1,
+      1
+     ],
+     "size": 0.0206
+    }
+   ],
+   "benign": [
+    "sticker"
+   ],
+   "shade": 0.897,
+   "yaw_deg": 3.04
+  },
+  {
+   "index": 7,
+   "name": "parcel_7",
+   "condition": "damaged",
+   "damage": [
+    {
+     "kind": "crush",
+     "corner": [
+      1,
+      -1
+     ],
+     "size": 0.0212
+    }
+   ],
+   "benign": [
+    "sticker"
+   ],
+   "shade": 1.037,
+   "yaw_deg": 6.35
+  },
+  {
+   "index": 8,
+   "name": "parcel_8",
+   "condition": "intact",
+   "damage": [],
+   "benign": [],
+   "shade": 0.905,
+   "yaw_deg": -0.51
+  },
+  {
+   "index": 9,
+   "name": "parcel_9",
+   "condition": "intact",
+   "damage": [],
+   "benign": [
+    "sticker"
+   ],
+   "shade": 1.034,
+   "yaw_deg": 9.34
+  },
+  {
+   "index": 10,
+   "name": "parcel_10",
+   "condition": "intact",
+   "damage": [],
+   "benign": [],
+   "shade": 0.988,
+   "yaw_deg": 3.36
+  }
+ ]
+}
