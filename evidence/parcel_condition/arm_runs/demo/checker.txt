@@ -1,0 +1,167 @@
+{
+ "passed": true,
+ "exact_entities": true,
+ "correct": 10,
+ "total": 10,
+ "misrouted": [],
+ "left_on_belt": [],
+ "failed_other": [],
+ "damaged_in_bin": 3,
+ "intact_in_tote": 7,
+ "parcels": [
+  {
+   "name": "parcel_1",
+   "true": "intact",
+   "where": "tote",
+   "position": [
+    0.3705,
+    -0.3648,
+    0.32
+   ],
+   "stable": true,
+   "upright": true,
+   "height_ok": true,
+   "slot": 0,
+   "slot_error_m": 0.0052,
+   "passed": true
+  },
+  {
+   "name": "parcel_2",
+   "true": "intact",
+   "where": "tote",
+   "position": [
+    0.3697,
+    -0.2649,
+    0.32
+   ],
+   "stable": true,
+   "upright": true,
+   "height_ok": true,
+   "slot": 1,
+   "slot_error_m": 0.0051,
+   "passed": true
+  },
+  {
+   "name": "parcel_3",
+   "true": "damaged",
+   "where": "bin",
+   "position": [
+    0.2814,
+    0.4449,
+    0.32
+   ],
+   "stable": true,
+   "upright": true,
+   "height_ok": true,
+   "passed": true
+  },
+  {
+   "name": "parcel_4",
+   "true": "intact",
+   "where": "tote",
+   "position": [
+    0.2697,
+    -0.3727,
+    0.32
+   ],
+   "stable": true,
+   "upright": true,
+   "height_ok": true,
+   "slot": 2,
+   "slot_error_m": 0.0027,
+   "passed": true
+  },
+  {
+   "name": "parcel_5",
+   "true": "intact",
+   "where": "tote",
+   "position": [
+    0.2692,
+    -0.2719,
+    0.32
+   ],
+   "stable": true,
+   "upright": true,
+   "height_ok": true,
+   "slot": 3,
+   "slot_error_m": 0.0021,
+   "passed": true
+  },
+  {
+   "name": "parcel_6",
+   "true": "damaged",
+   "where": "bin",
+   "position": [
+    0.2796,
+    0.5444,
+    0.32
+   ],
+   "stable": true,
+   "upright": true,
+   "height_ok": true,
+   "passed": true
+  },
+  {
+   "name": "parcel_7",
+   "true": "intact",
+   "where": "tote",
+   "position": [
+    0.1697,
+    -0.3649,
+    0.32
+   ],
+   "stable": true,
+   "upright": true,
+   "height_ok": true,
+   "slot": 4,
+   "slot_error_m": 0.0051,
+   "passed": true
+  },
+  {
+   "name": "parcel_8",
+   "true": "intact",
+   "where": "tote",
+   "position": [
+    0.1695,
+    -0.2725,
+    0.32
+   ],
+   "stable": true,
+   "upright": true,
+   "height_ok": true,
+   "slot": 5,
+   "slot_error_m": 0.0026,
+   "passed": true
+  },
+  {
+   "name": "parcel_9",
+   "true": "damaged",
+   "where": "bin",
+   "position": [
+    0.1795,
+    0.4448,
+    0.32
+   ],
+   "stable": true,
+   "upright": true,
+   "height_ok": true,
+   "passed": true
+  },
+  {
+   "name": "parcel_10",
+   "true": "intact",
+   "where": "tote",
+   "position": [
+    0.0708,
+    -0.3698,
+    0.32
+   ],
+   "stable": true,
+   "upright": true,
+   "height_ok": true,
+   "slot": 6,
+   "slot_error_m": 0.0008,
+   "passed": true
+  }
+ ]
+}

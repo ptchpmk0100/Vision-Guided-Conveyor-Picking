@@ -1,6 +1,6 @@
 {
  "split": "test",
- "model": "/home/pmkhoi/ros_test_ws_mirror/logs/condition/runs/r1/model.onnx",
+ "model": "logs/condition/runs/r1/model.onnx",
  "recordings": [
   "r09",
   "r11",

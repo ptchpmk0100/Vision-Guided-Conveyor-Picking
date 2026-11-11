@@ -3,7 +3,7 @@
 
 With the calibration launch already running headless, use a clean sourced shell:
 
-  python3 /home/pmkhoi/ros_test_ws_mirror/tools/collect_extrinsic_calibration.py \
+  python3 tools/collect_extrinsic_calibration.py \
     --run-id b1_run_01 --target-half-height 0.002
 
 Repeat from a fresh launch with ``--run-id b1_run_02``.  Datasets default to

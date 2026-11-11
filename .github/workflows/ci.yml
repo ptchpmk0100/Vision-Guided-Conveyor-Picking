@@ -1,8 +1,8 @@
 name: ci
 
-# Runs the OFFLINE test suite (component self-tests + py_compile) in a ROS 2 Jazzy container.
-# The full pick-and-sort checks need a running Gazebo simulator and are not run in CI; they
-# are exercised locally via tools/run_sort_line_check.sh (ground truth).
+# Runs the offline test suite (unit and contract tests + py_compile) in a ROS 2 Jazzy container.
+# The scored pick-and-sort checks need a running Gazebo simulator and are not run in CI; they
+# run locally via tools/run_parcel_cell_check.sh and tools/condition_arm_check.sh.
 on:
   push:
   pull_request:

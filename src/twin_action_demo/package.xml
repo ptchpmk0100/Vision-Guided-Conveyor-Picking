@@ -3,12 +3,11 @@
 <package format="3">
   <name>twin_action_demo</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
+  <description>Gazebo worlds, models, bridges and bring-up launch files for the Panda parcel cell.</description>
   <maintainer email="pmkhoi@todo.todo">pmkhoi</maintainer>
-  <license>TODO: License declaration</license>
+  <license>Apache-2.0</license>
 
   <depend>rclpy</depend>
-  <depend>twin_interfaces</depend>
 
   <depend>std_msgs</depend>
   <depend>sensor_msgs</depend>

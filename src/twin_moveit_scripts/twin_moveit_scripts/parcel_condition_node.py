@@ -15,7 +15,7 @@ from rclpy.qos import QoSProfile, ReliabilityPolicy, qos_profile_sensor_data
 from sensor_msgs.msg import CameraInfo, Image
 from vision_msgs.msg import Detection3D, Detection3DArray, ObjectHypothesisWithPose
 
-from twin_moveit_scripts.object_detector_sorting_line import _load_extrinsic
+from twin_moveit_scripts.extrinsic import load_extrinsic as _load_extrinsic
 from twin_moveit_scripts.parcel_condition import CLASSES, crop_window, cut_crop, preprocess, softmax
 
 CONDITION_TOPIC = '/parcel_cell/condition'
