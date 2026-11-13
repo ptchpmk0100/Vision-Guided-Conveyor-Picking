@@ -1,0 +1,78 @@
+{
+ "bag": "logs/condition_cpp/parity/r09/out",
+ "python_messages": 224,
+ "cpp_messages": 222,
+ "n_both": 333,
+ "n_python_only": 14,
+ "n_cpp_only": 10,
+ "max_abs_prob_diff": 8.395340223010805e-08,
+ "mean_abs_prob_diff": 2.7341128378138474e-08,
+ "decision_mismatches": 0,
+ "tolerance": 0.001,
+ "worst": [
+  {
+   "stamp": "25.500000000",
+   "id": "observation_1",
+   "diff": 8.395340223010805e-08,
+   "python": {
+    "label": "intact",
+    "conf": 0.9981827735900879,
+    "probs": [
+     0.9981827735900879,
+     0.001817310811020434
+    ]
+   },
+   "cpp": {
+    "label": "intact",
+    "conf": 0.9981826896366857,
+    "probs": [
+     0.9981826896366857,
+     0.0018173103633143564
+    ]
+   }
+  },
+  {
+   "stamp": "25.700000000",
+   "id": "observation_1",
+   "diff": 7.740400120859192e-08,
+   "python": {
+    "label": "intact",
+    "conf": 0.9948364496231079,
+    "probs": [
+     0.9948364496231079,
+     0.005163629539310932
+    ]
+   },
+   "cpp": {
+    "label": "intact",
+    "conf": 0.9948363722191067,
+    "probs": [
+     0.9948363722191067,
+     0.005163627780893239
+    ]
+   }
+  },
+  {
+   "stamp": "41.600000000",
+   "id": "observation_0",
+   "diff": 7.728629780601182e-08,
+   "python": {
+    "label": "intact",
+    "conf": 0.9989194869995117,
+    "probs": [
+     0.9989194869995117,
+     0.001080590533092618
+    ]
+   },
+   "cpp": {
+    "label": "intact",
+    "conf": 0.9989194097132139,
+    "probs": [
+     0.9989194097132139,
+     0.0010805902867861517
+    ]
+   }
+  }
+ ],
+ "passed": true
+}
