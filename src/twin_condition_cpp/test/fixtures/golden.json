@@ -1,0 +1,478 @@
+{
+ "note": "Produced by tools/make_condition_golden.py from the Python pipeline. Do not edit by hand.",
+ "source_bag": "r09",
+ "model_sha256": "f94d9d357945fca7be6b71e767fee6f1ad92e7e42d7a3c360d49ac4c81892405",
+ "min_confidence": 0.75,
+ "cv2_version": "5.0.0",
+ "onnxruntime_version": "1.31.1",
+ "classes": [
+  "intact",
+  "damaged"
+ ],
+ "crop_size": 64,
+ "input_size": 128,
+ "intrinsics": [
+  [
+   409.5813223017851,
+   0.0,
+   320.0
+  ],
+  [
+   0.0,
+   409.5813223017852,
+   240.0
+  ],
+  [
+   0.0,
+   0.0,
+   1.0
+  ]
+ ],
+ "rotation": [
+  [
+   0.000153415254765,
+   -0.99999944896,
+   -0.00103852910741
+  ],
+  [
+   -0.999999982088,
+   -0.000153300052854,
+   -0.000111006649347
+  ],
+  [
+   0.000110847381611,
+   0.00103854611892,
+   -0.999999454567
+  ]
+ ],
+ "translation": [
+  0.400252949876,
+  -0.000694094067475,
+  1.20006280988
+ ],
+ "image_shape": [
+  480,
+  640
+ ],
+ "frames": [
+  {
+   "file": "frame_0.png",
+   "detection_stamp": 10.5,
+   "image_stamp": 10.5,
+   "detections": [
+    {
+     "centre": [
+      0.5600173931575978,
+      -0.10715830515885869,
+      0.3199387221022787
+     ],
+     "window": [
+      342,
+      137,
+      397,
+      193
+     ],
+     "crop_b64": "ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/RkZGT05MT05MT05MT05MT05MT05MQUJEODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Pj9CQEFDQEFDQEFDQEFDQEFDQEFDQEFDhHhptJ+EtJ+EtJ+EtJ+EtJ+EtJ+EaWNaODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/i31trJmArJmArJmArJmArJmArJmArJmAsZyCtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EaWNaODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/RERGmop2nYx3nYx3nYx3nYx3nYx3nYx3nYx3nYx3rZmAtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EaWNaODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ZmBYjYBujYBukoNxs56DtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EaWNaODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/QD47gHNitJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EaWNaODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/RkA5hHVgtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EaWNaODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/PT09SEE4hHRgtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EaWNaODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/SUI3TUM2hHRgtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+Ed25iRUVGODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/SUE3TUM2gXFdsJuBtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+Ee3FkODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/SUE3TUM2UEY5emtYtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+Ee3FkODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/SUI3TUM2TUM2dmdVtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+Ee3FkODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/SUE3TUM2TUM2dmhVtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+Ee3FkODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/SUE4TUM2TUM2dmhVtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+Ee3FkODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/SUE4TUM2TUM2dmhVtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+Ee3FkODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/SUE3TUM2TUM2dmhVtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+Ee3FkODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/RkA5TEI2TUM2dmdVtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EsZyCnotznotznotzqpZ9tJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EhnlqSEhIODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/RkA5TUM2c2VTr5uAtJ+EtJ+EtJ+EtJ+EtJ+EtaCFtqGHppJ6PzUpPjQoPjQogXFctJ+EtJ+Es56Dr5qAr5qAr5qAr5qAr5qAsZyBtJ+EtJ+EtJ+EtJ+EtJ+EtJ+EjH9uODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/RkA5TUM2T0U4bF9OtJ+EtJ+EtJ+EtJ+EtJ+EvayUy8CquK2ZPzUpPjQoPjQogXFctJ+EtJ+EqZV7alpJalpJalpJalpJalpJgW9btJ+EtJ+EtJ+EtJ+EtJ+EtJ+EjH9uODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs+Nzo+Njo9Njk9Njk9RkA4TUM2TUM2Z1tKtqKIx7ulyLulyLulyLulyb6ozMKtua+bPzUpPjQoPjQogXFcmIVudGRRcmJPZVZFZVZFZVZFZVZFZVZFaVpJdGRRdmVStqaMv66Tv66Tv66Tk4l4ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs+ODs/ODs/ODs/ODs/Nzo+Nzo+Njo9NTk8NTg8NDg7RT83TUM2TUM2Z1tKt6OJy8GszMKtzMKtzMKtzMKtzMKtua+bPzUpPjQoPjQoU0c4ZFZFZVZFZVZFZVZFZVZFZVZFZVZFZVZFZVZFZVZFZVdFfm9bsaKIwbKXwbKXlYx7ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs+Nzs+Nzo+Njk9Njk8NTg8NDc7NDg7NTk8NDg7Mzc6MjU5RD43TUM2TUM2Z1tKtaGGvq6Wyr+pzMKtzMKtzMKtzMKtxLqljoRzSkAzPjQoPjQoT0I0ZVZFZVZFZVZFZVZFZVZFZVZFZVZFZVZFZVZFZVZFZVZFqZqCwbKXwbKXlYx7ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs+Nzs9Njk8NTg8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IyUoHyEkGh0eFxgaHBwbTEI1TUM2TUM2TUM2NjEpFhcYFhcYFhcYFhcYFhcYFhcYFhcYFBYXEhQWEhQWGBkbHR4hISMmJScqKCstKy4xLjE0MTM3Mzc6Njk9Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Njo9NDg7MjY5MDM2LTAyKi0vJyksIyUoHiEjGhweFhcZExUXHR0cHR0cHR0cHR0cGBkZEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWGBocHR4hISMmJScqKCsuKy4xLjE0MTQ3Mzc6Njk9Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Njo9NDg7MjY5MDI2LC8zKiwvJyksIyUnHiEjGhweFRcZEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWGBocHB8hISMmJScqKCsuKy4xLjE0MDQ3Mzc6Njo9Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Njo9NDg7MjU5LzI2LTAyKSwvJiksIiUoHiEjGRweFRcZEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWGBocHR8hISMmJScqKCsuKy4xLjE1MTQ4Mzc6Njo9Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Njo9NDg7MjU4LzI2LTAyKSwvJiksIiUoHiAjGRweFRcZEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWGBocHR8hISQmJSgqKCsuKy4xLjE1MTQ4NDc6Njo9Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Njo9NDc7MjU4LzI1LC8zKSwvJigsIiQnHiAjGhseFRcZEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWGBocHR8hISQmJSgqKCsuKy4yLjE1MjQ4NDc6Njo9Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Njo9NDc7MjU4LzI1LC8yKSwvJiksIiQnHiAjGhseFRcZEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWGBocHR8hISQmJSgqKCsuKy4yLzI1MjU3NDc6Njo9Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Njo9NDc7MjU4LzI1LS8yKSwvJikrIiUnHiAjGhseFRcZEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWExQWGBocHR8hISQmJSgqKSsuKy4yLzI1MjU3NDc6Njo9Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+",
+     "tensor_head": [
+      -1.158917784690857,
+      -1.158917784690857,
+      -1.158917784690857,
+      -1.158917784690857,
+      -1.158917784690857,
+      -1.158917784690857,
+      -1.158917784690857,
+      -1.158917784690857,
+      -1.158917784690857,
+      -1.158917784690857,
+      -1.158917784690857,
+      -1.158917784690857
+     ],
+     "tensor_sum": -28444.912109375,
+     "logits": [
+      -7.3996758460998535,
+      7.840705871582031
+     ],
+     "probs": [
+      2.4053949232438754e-07,
+      0.9999997615814209
+     ],
+     "label": "damaged",
+     "confidence": 0.9999997615814209
+    }
+   ]
+  },
+  {
+   "file": "frame_1.png",
+   "detection_stamp": 24.4,
+   "image_stamp": 24.4,
+   "detections": [
+    {
+     "centre": [
+      0.5599868294470192,
+      -0.025819920449376043,
+      0.31993631733597666
+     ],
+     "window": [
+      304,
+      137,
+      360,
+      193
+     ],
+     "crop_b64": "ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/PD5BQEFDQEFDQEFDQEFDQEFDQEFDQEFDQEFDQEFDQEFDQEFDQEFDQEFDQEFDQEFDQEFDQEFDQEFDQEFDOTs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/bWVcsZyCsZyCsZyCsZyCsZyCsZyCsZyCsZyCsZyCsZyCsZyCsZyCsZyCsZyCsZyCsZyCsZyCsZyCqZZ+QEFDODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/cGheuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHs56CZFdGlIRvoY95oY95oY95oY95oY95mop2P0BDODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/cGheuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHrpl+f21WaVhDfGpTp5J4uaOHuaOHuaOHuaOHsZyCQEFDODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/cGheuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHqpZ7hHJaZ1dCZ1dCZ1dCf25XpZB2uaOHuaOHuaOHsZyCQEFDODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/cGheuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHqZR6h3RdZ1dCZ1dCZ1dCZ1dCZ1dCgW9YpZB2uaOHuaOHsZyCQEFDODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/cGheuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHqpZ7h3RdZ1dCZ1dCZ1dCZ1dCZ1dCZ1dCZ1dCf25Xp5N4uaOHsZyCQEFDODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/cGheuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHrpl+hHJaZ1dCZ1dCZ1dCZlZBZlZBZ1dCZ1dCZ1dCZ1dCfGpTrJd8sZyCQEFDODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/cGheuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHhHJaaVlEZ1dCZ1dCZlZBYlE+YlE+ZlZBZ1dCZ1dCZ1dCZ1dCdmVPsZyCQEFDODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/cGheuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHtaCEhnNcYlE+YlE+YlE+YlE+YlE+ZlZBZ1dCZ1dCZ1dCZ1dCdmVPsZyCQEFDODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/cGheuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHuaOHtJ+Dd2RPcmBMcmBMaVhEYlE+YlE+YlE+YlE+ZlVBZ1dCZ1dCZ1dChHJaqpV6rJd8sZyCQEFDODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/cGheuaOHuaOHuaOHuaOHuaOHuaOHuaOHn4pxfWpVfWpVe2lTZFI/YlE+cF9Kd2VQd2VQd2VQd2VQdWRPaFhDZ1dCZ1dCh3RdqpZ7uaOHuaOHsZyCQEFDODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/YVxWmYl1uaOHuaOHuaOHuaOHuaOHl4NriHVed2VQYlE+YlE+Y1I/cmBMc2FNfGpUgG5YgG5YgG5YgG5Yf21XdmRPdWROi3hgqZR6uaOHuaOHq5h/bWVcPD5BODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/gHVnuaOHuaOHuaOHt6GFlYFpk39ncV9LYlE+c2FMiHVeg3BacF9Kf21XgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YloJqrpl+uaOHuaOHoY95ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs/Nzs/Nzs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/gHVnuaOHuaOHuaOHs56CZ1ZDeGZQfWpVfWpVl4Nrs56CoItygG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YloJqr5p/uaOHoY95ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs/Nzs/Nzs/Nzs/Nzs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/gHVnuaOHuaOHuaOHtJ+Dd2RPrJZ8uaOHraCMpJ2RmY5/gG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YmYVsuaOHoY95ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/gXVnuaOHuaOHuaOHuaOHuaOHuaOHuaOHepKlS4S5XX2YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5Yl4RrtqGFoY95ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/gXVnuaOHuaOHuaOHuaOHuaOHuaOHuaOHepKlYHyTfm9cgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5Ygm9ZlIFpoY95ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/ODs/ODs/ODs/ODs/ODs/Nzs/Nzs+gHVnuaOHuaOHuaOHuaOHuaOHuaOHuaOHepKlYnuQgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5Ykn5noY95Nzs+ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs+Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs+Nzo+Nzo9Nzk9Njk9Njk9g3psvq2Svq2Svq2Svq2Svq2Svq2Svq2SfZaqYnuQgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5Ykn9noI95Nzo+ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs+Nzs+Nzs+Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs+Njo9NTg8NDc6MjU4NDc6NDc6g3xuwbKXwbKXwbKXwbKXwbKXwbKXwbKXfpmsYXuQgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5Yk4FppJaBNzo+ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Njo+NTk8MzY6MTQ3LjE0LzI1LTEzgHlrwbKXwbKXwbKXwbKXwbKXwbKXwbKXm6Sjf4aHgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YlINsp5uGNjo9ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzo+NTg8MjU5MDM2LTAzKi0vJyksfXVowbKXwbKXwbKXwbKYw7iiw7ijw7ijw7ijpZiCgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YlINsp5uGNjo9ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs/Nzs/Nzs/Njo+NTg8MjU4MDM2LS8yKiwvJigrfXVnwbKXwbKXwbKXwbOZxsW6x8a9x8a9x8a9rqeZiXllgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YhXNdnYx0p5uGNjk9ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Njo9NTg7MjU4MDM2LC8yKSwvJigrfXVnwbKXwbKXwbKXwbOZxsW6x8a9x8a9x8a9x8a9saqdgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YnIxzwbKXp5uGNjk8ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Njo9NTg7MjU4MDM2LC8yKSwvJigrfXVnwbKXwbKXwbKXwbOZxsW6x8a9x8a9x8a9x8a9saqdgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YnIxzwbKXp5uGNjk8ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+Nzo+Njk9NDc7MTQ4LzE1Ky4xKCsuJCcqeG5fuqaKuqaKuqaKu6iNxsS6x8a9x8a9x8a9x8a9saqdgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5Yno11uquQwbKXp5uGNjk8ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+Njo9Njk9Njk9NTg7MjU5LzI2LS8yKSwvJiksIyUod2tduaOHuaOHuaOHuqWKxsS6x8a9x8a9x8a9x8a9oaCYTktHUU1IfWxXgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YoY51u6iMu6iMopN9Njk8Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Njo9NTk9NTg8NDc7MzY5MTQ3LTA0Ki0wJyksJCYoISMldmpcuaOHuaOHuaOHuqWKxsS5x8a9j5CMdnh1dnh1YmVkNzs+PD5Ae2tWgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YloJqrpl+uaOHuaOHoI95Njk9Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+Njk9NTg8NDc6MzY5MTQ3LjE0Ky4xKCotJCcpISMlHiAidWlbuaOHuaOHuaOHuqWKxsS5lJSQUFNUNzs+Nzs+Nzs+PT9AWlNKfWxXgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5YgG5Yp5J4uaOHuaOHuaOHoI95Njk9Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+Njk9NDc7MzY5MTQ3LzI1LC8yKSsuJigrISQmHiAiHB4gdGhZuaOHuaOHuaOHuqWKxsS6UlVWNzs+UFNUZGZmZGZmaWhjgG5Y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FBYYEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWFBUXFhcYFhcYFhcYGBgZGxwdHiAhISMlJSYoKCkrKiwuLjAyMTM1Njg7ODs9OTw+ODs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Njo+NTk8MjY5LzM2LTAzKi0wJiksIyUoHyEkGhweFBYYEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWFBYYGBocHB4hICIlJCYpJyotKi0wLjAzMDM2MzY6NTk9Njo9Njo9Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+NTg8MjY5LzM2LTAzKi0wJiksIyUnHyEjGhwfFBYYEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWFBYYGhsdHiAiIiQnJigrKSsuLC8yLzI2MjU4NDg7Njo9Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Njo9NTg8MjU5MDI2LTAzKi0wJiksIyUnHyEjGRweFBYYEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWFRYYGhwdHiAjIyUoJyksKiwvLDAzLzM2MzY5NTg7Nzo9Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Njo9NTg8MjU5MDI2LS8zKiwvJikrIyUnHiEjGRweFBYXEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWFRYYGhwdHiAjIyUoJyksKiwvLDAzLzM2MzY5NTg7Nzo9Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+NTg8MjU5LzM1LS8zKiwvJikrIiUnHiEjGhsdFBUXEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWFRcYGhweHiEjIyUoJyksKiwvLDAzLzM2MzY5NTg8Nzo9Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Njo+NTg8MjU4LzI2LS8yKSwvJikrIiUnHiEjGhseFBUXEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWFRcZGhwfHiEjIyUoJyksKiwvLTAzMDM2MzY5NTg8Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Njo+NTg8MjU4LzI1LC8yKSwvJigrIiQnHiAjGRsdExUXEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWFRcZGhwfHiEjIyUoJyksKi0wLTAzMDM2MzY5NTg8Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+",
+     "tensor_head": [
+      -1.158917784690857,
+      -1.158917784690857,
+      -1.158917784690857,
+      -1.158917784690857,
+      -1.158917784690857,
+      -1.158917784690857,
+      -1.158917784690857,
+      -1.158917784690857,
+      -1.158917784690857,
+      -1.158917784690857,
+      -1.158917784690857,
+      -1.158917784690857
+     ],
+     "tensor_sum": -29014.91796875,
+     "logits": [
+      -4.8973846435546875,
+      5.639678001403809
+     ],
+     "probs": [
+      2.65338512690505e-05,
+      0.9999734163284302
+     ],
+     "label": "damaged",
+     "confidence": 0.9999734163284302
+    },
+    {
+     "centre": [
+      0.5601030206488795,
+      -0.37005953934351365,
+      0.31994935121969625
+     ],
+     "window": [
+      464,
+      137,
+      520,
+      193
+     ],
+     "crop_b64": "Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+S0pJPkBCNzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+P0FCP0JDP0JDP0JDP0JDP0JDP0JDP0JDP0JDP0JDP0JDP0JDP0JDP0JDP0FDP0FDP0FDo5F7YFtVNzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+PkFCqpd/sp2Dsp2Dsp2Dsp2Dsp2Dsp2Dsp2Dsp2Dsp2Dsp2Dsp2Dsp2Dsp2Dsp2Dsp2Dsp2DuKOHYFtVNzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Oz09UUk+nIt2oZB6oZB6oZB6oZB6oZB6oZB6o5J7uKOHuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIqZZ+ZmBYNzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Pj48SEI6SkM6V0w+s56DuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIcGheNzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+QT88RUE7SkM6UEY5UEY5Vkw+s56DuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIcGheNzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+QT88QkA8TEQ6UEY5UEY5UEY5UEY5Vkw+s56DuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIcGheNzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+ODw+QD88T0U5UEY5UEY5UEY5UEY5UEY5UEY5V0w+s56DuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIcGheNzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+OTw9PD09Pz88UEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5Vkw+s56DuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIcGheNzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+QkA8UEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5Vkw+s56DuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIcGheNzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+QkA8UEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5Vkw+s56DuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIcGheNzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+OTw9QkA8UEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5Vkw+s56DuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIcGheNzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Pz48UEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5V0w+s56DuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIcGheNzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Pz48UEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5Vkw+s56DuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIcGheNzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Pz48UEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5Vkw+s56DuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIcGheNzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Pz48UEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5V0w+s56DuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIcGheNzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Pz48UEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5Vkw+s56DuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIcGheNzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Pz48UEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5Vkw+s56DuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIcGheNzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+Nzo+Nzo+Pz48UEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5Vkw+s56DuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIcGheNzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+Njo9Njk9NTk8NTk8NTg8NTc7NDc7PTs6UEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5Vkw+s56DuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIcGheNzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzo+Nzo+Njo9NTk8NDg8NDg7Mzc6MjY5MjU4MTQ3Ojk3UEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5Ukg6b2FQrJh+uqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIuqSIu6eLv66Sv66Sv66Sv66Sv66Sv66Sv66Sv66Sv66Sv66Sv66Sv66Sv66SqJuFbGhgNzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzo+Njo9NTk8NDg7Mzc6MjY5MTQ4MDM2LzI1LjE0ODc0UEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5qZmAvqyQvqyQvqyQvqyQvqyQvqyQvqyQvqyQvqyQvqyQvqyQv66SwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXhX1wNzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzo+Njk9NTg8Mzc6MjU5MTQ3LzI1LTAzLC4yKi0wNTQxUEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5rJ6FwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXhX1wNzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzo+Njk9NDg7MjY5MTQ3LjI1LS8yKy0wKSsuJigrMjEuUEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5rJ6FwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXhH1wNzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzo+Njk9NDc6MTU4LzI1LTAzKy0wKCotJScqISQmLy0qUEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5rJ6FwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXhX1wNzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzo+Njk9MzY6MDM3LjE0Ky4xKCsuJScqISMmHR8hKykmUEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5rJ6FwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXvK6Tvq+UhH1vNzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Njo+NTk8MzY5MDM2LTE0Ki0wJyotIyUpHyEkGhwfKSckUEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5UEY5rJ6FwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXe3FfkYFr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FhcYFhcYFhcYFhcYFhcYFhcYFhcYFhcYFhcYFhcYFhcYFhcYFxgZGhscHiAhICIlJCcqJyotKy4xLjE0MDQ3MzY6NTg8Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Njk9Mzc6MTQ3LjE0Ky4xKCstJScqICMmHB4hFxkbExUXEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWExUXFxkaHB4gICIlJCcqJyotKy4xLjE0MDQ3MzY6NTg8Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Njk9NDc6MTQ3LjE0Ky4xKCotJScqICMlHB4gFxkbExQXEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWExUXFxkaHB4gICMlJCcqJyotKy4xLjA0MDQ3Mzc6NTk8Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Njk9NDc6MTQ3LjE0Ky4xKCotJScqICIlHB4hFxkbExUXEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWExUXFxkbHB4hICMlJScpKCotKy4xLTE0MDQ3Mzc6NTk8Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Njk8NDc6MTQ3LjE0Ky4xKCotJScqICIlHB4hFxkbExUXEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWExUXFxkbHB4hICMlJScpKCotKy4xLTE0MDQ3Mzc6NTk8Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Njk8NDc6MTQ3LjE0Ky4xKCotJCcqICMlHB4gFxkbExQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWExUXFxkbGx4gICIlJCYpJyksKy0wLjE0MTQ3Mzc6NTk8Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Njk8Mzc6MTQ3LjE0Ky4xJyotJCcpICIlHB4gFxkaExUWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWExUXFhgaGhweHR8hISQmJScqKSwvLTAzMDM2MzY5NTg7Njk9Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+NTk8Mzc6MTQ3LTA0Ky4xJyotJCcpICIlGx4fFhgaExQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWExUWFBYYFhcaHyEkIiQnJigrKSsvLC8yLzI1MTQ3MzY6Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+",
+     "tensor_head": [
+      -1.1760425567626953,
+      -1.1760425567626953,
+      -1.1760425567626953,
+      -1.1760425567626953,
+      -1.1760425567626953,
+      -1.1760425567626953,
+      -1.1760425567626953,
+      -1.1760425567626953,
+      -1.1760425567626953,
+      -1.1760425567626953,
+      -1.1760425567626953,
+      -1.1760425567626953
+     ],
+     "tensor_sum": -23339.833984375,
+     "logits": [
+      2.340477228164673,
+      -2.090235471725464
+     ],
+     "probs": [
+      0.9882340431213379,
+      0.011765915900468826
+     ],
+     "label": "intact",
+     "confidence": 0.9882340431213379
+    }
+   ]
+  },
+  {
+   "file": "frame_2.png",
+   "detection_stamp": 38.6,
+   "image_stamp": 38.6,
+   "detections": [
+    {
+     "centre": [
+      0.5600309888375588,
+      0.07647906643290653,
+      0.3199035611114639
+     ],
+     "window": [
+      256,
+      137,
+      312,
+      193
+     ],
+     "crop_b64": "Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+PUBBP0FCP0FCP0FCP0FCP0FCP0FCP0FDP0FDP0FDP0FDP0FDP0FDP0FDP0FDP0FDQEFDQEFDQEFDQEFDQEFDQEFDQEFDQEFDQEFDQEFDQEFDPD9BODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+mIl0rpqArpqArpqArpqArpqArpqArpqArpqArpqArpqArpqArpqArpqArpqArpqArpqArpqArpqArpqArpqArpqArpqArpqArpqArpqArpqAenFkODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+no53tqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFjn5pUEtDODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+no54tqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFkoBqVU5EODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+no54tqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFkYFqVU5EODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+no54tqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFkYFqVU5EODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+no54tqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFkoBqWlFFQ0JBODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+no53tqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFkoFqY1dHW1JFODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+no53tqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFkoFqY1dHW1JFODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+no53tqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFkoFqY1dHW1JFNzs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+no53tqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFkoFqY1dHW1JFNzs/Nzs/Nzs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+no54tqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFkoBqY1dHW1JFNzs/Nzs/Nzs/Nzs/Nzs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+no54tqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFkYFqY1dHW1JFNzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+no54tqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFkYFqY1dHW1JFNzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+no54tqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFkoBqY1dHW1JFNzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+no53tqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFkoFqY1dHW1JFNzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/ODs/ODs/ODs/ODs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+no53tqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFkoFqY1dHW1JFNzs+Nzs+Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/ODs/ODs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+Nzo+Nzo+Njo9Njk9Njk8no13tqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFkoFqY1dHW1JFNzs+Nzs+Nzs+Nzs+Nzs+Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+Nzo+Njk9NTg8NDg7Mzc6nY13tqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFkoFqY1dHW1JFNzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Njo9Njk9NTg8NDc6MjY5MTU5o5aBva2Rva2Rva2Rva2Rva2Rva2Rva2Rwbinwrqrwrqrwrqrwrqrwrqrwrqrwrqrwrqrwrqru6yWtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFkoBqY1dHW1JFNzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Njo9NTg8NDc7MzY5MTU4MDM2ppqFwbKXwbKXwbKXwbKXwbKXwbKXwbKXxsK2x8a9x8a9x8a9x8a9x8a9x8a9x8a9x8a9x8a9wbejvKqPvKqPvKqPvKqPvKqPvKqPvKqPvKqPlYZwY1dHW1JFNzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Njo9NTg8MzY6MTU4MDM2LjE0pZqEwbKXwbKXwbKXwbKXwbKXwbKYw7qmxsS5nJyXiImFiImFiImFiImFiImFiImFu7qzx8a9xLuowbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXmIp0Y1dHW1JFNzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs/Nzs/Nzs/Nzs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Njo9NDc7MjU5MDM2LjE0Ky4xpZmEwbKXwbKXwbKXwbKXwbKXwbOZx8W7x8a9ZGZmNzs+Nzs+Nzs+Nzs+Nzs+Nzs+rKylx8a9w7unwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXmIp0Y1dHW1JFNzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs/Nzs/Nzs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Njk9Mzc6MTU4LjI1LC8yKSwvpJmDwbKXwbKXwbKXwbKXwbKXwbOZxsW6x8a9ZGZmNzs+Nzs+Nzs+PEBCUlVWUlVWsbGpx8a9w7unwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXmIp0Y1dHW1JFNzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Njk8Mzc6MTQ3LTA0Ky4xJyotpJiDwbKXwbKXwbKXwbKXwbKXwbOZxsW6x8a9amxrQERGQERGQERGWVxcx8a9x8a9x8a9x8a9w7unwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXmIp0YlZHWFBFNzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+NTk8Mzc6MTQ3LTA0Ky4xJyotpJiDwbKXwbKXwbKXwbKXwbKXwbOZxsW6x8a9wcC3vr21vr21vr21wL+2x8a9x8a9x8a9x8a9w7unwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXmIp0Vk5EODw+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+NTk8Mzc6MDQ3LTA0Ky4xJyotnY13uKSIuKSIuKSIuKSIuKSIuaaMxsS5x8a9x8a9x8a9x8a9x8a9x8a9x8a9x8a9x8a9x8a9vrOfuKSIuKSIuKSIuKSIuKSIuKSIuKSIuKSIk4JsVU5ENjo9Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+NTk8MzY6MDM3LTAzKy0xJyotm4t0tqGFtqGFtqGFtqGFtqGFt6OIxsS5x8a9x8a9x8a9x8a9x8a9x8a9x8a9x8a9x8a9x8a9vbGdtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFkoBqVU5ENjo9Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+NTk8MzY5MDM3LTAzKy0xJyktm4p0tqGFtqGFtqGFtqGFtqGFt6OIxsS5x8a9x8a9x8a9x8a9x8a9x8a9x8a9x8a9x8a9x8a9vbGdtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFkoFqVU5ENjo9Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+NTg8MzY5MDM3LTAzKy0wJyksm4p0tqGFtqGFtqGFtqGFtqGFt6OIxsS5x8a9x8a9x8a9x8a9x8a9uLeveXl1h4iEu7qzx8a9vbGdtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFkoFqVU5ENjo9Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+NTg8MzY6MDM3LTAzKi0wJyksm4p0tqGFtqGFtqGFtqGFtqGFt6OIxsS5x8a9x8a9x8a9x8a9x8a9r6+nTE1MYmVktLSttLOqsaWStqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFkoBqVk5ENjo9Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+NTg8MzY5MDM2LTAzKi0wJyksm4p0tqGFtqGFtqGFtqGFtqGFt6OIw72vxL+yxL+yxL+yxL+yxL+yxL+yxL+yxL+yxL+ykY2CnI56tqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFkoFqVk5ENjo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+NTg8MzY5MDM2LTAzKi0wJyksm4p0tqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFkoFqVk5ENzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+NTg8MzY5MDM2LTAzKi0wJyksm4p0tqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFkoFqVk5ENzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+NTg8MzY5MDM2LTAzKi0wJiksm4p0tqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFkoFqVk5ENzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Njo+NTg8MzY5MDM2LTAzKi0wJiksm4p0tqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFkoBqVk5ENzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Njo9NTg7MzU5MDM2LDAzKi0wJiksm4p0tqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFkoFqVk5ENzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Njo9NTg7MzU5MDM2LC8zKi0wJiksm4p0tqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFkoFqVk5ENzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Njo9NTg7MzY4MDM2LC8yKi0vJikrm4p0tqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFkoBqVk5ENzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Njo9NTg7MjU5MDI2LC8yKi0vJigrm4p0tqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFkoFqVk5ENzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Njo9NDg7MjU5LzI2LC8yKiwvJigrm4p0tqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFkoFqVk5ENzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Njo9NDg7MjU5LzI2LC8yKiwvJigrm4p0tqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFkoFqVk5ENzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Njk9NDc7MjU5LzI2LC8yKSwvJigrm4p0tqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFkoFqVk5ENzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Njk9NDc7MjQ4LzI1LC8yKSwvJigrm4p0tqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFkoBqVk5ENzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Njk9NDc7MTU4LzI1LC8yKSwvJSgrbGBQfG1ZfG1ZfG1ZfG1ZfG1ZfG1ZfG1ZfG1ZfG1ZfG1ZfG1Zjn1ntqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFtqGFkoFqVk5ENzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Njk9NDc7MTU4LzI1LC8yKSwvJSgrNzMvSUA0T0U3T0U3T0U3T0U3T0U3T0U3T0U3T0U3T0U3T0U3YVVFiXljiXljiXljiXljiXljiXljiXljiXljiXljiXljiXljiXljiXljiXljeWpXVk5ENzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Njk9NDc7MjQ4LzI1LC8yKSwvJSgrIiQnNTItSD80T0U3T0U3T0U3T0U3T0U3T0U3T0U3T0U3T0U3T0U3T0U3T0U3T0U3T0U3T0U3T0U3T0U3T0U3T0U3T0U3T0U3T0U3T0U3T0U3VUo8UUpBNzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Njk9NDc7MjU4LzI1LC4yKSwvJSgqIiQnHh8iMy8qSUA0T0U3T0U3T0U3T0U3T0U3T0U3T0U3T0U3T0U3T0U3T0U3T0U3T0U3T0U3T0U3T0U3T0U3T0U3T0U3T0U3T0U3T0U3T0U3T0U3R0I5Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Njk9NDc7MjU4LzI1LC4yKSwvJSgqIiQnHR8iGRodLSomS0I1S0I1S0I1S0I1S0I1S0I1S0I1S0I1S0I1S0I1S0I1S0I1S0I1S0I1S0I1S0I1TEI1TEM2TEM2TEM2TUM3TUQ3TUQ3TUQ3RkE5Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Njk9NDc7MjU4LzI1Ky4xKSwvJSgqIiQmHR8hGRocFhcYFhcYFhcYFhcYFhcYFhcYFhcYFhcYFhcYFhcYFhcYFhcYFhcYFhcYFhcYFhgYGRsbHyAhIyQmJigqKistLS8wMDI0MjU3NTc5Nzk8Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Njk9NDc6MjU3LzI1Ky4xKSsuJScqISQmHR8iGBocFBYXEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWFhgaGx4gICIlJCYpKCotKi0wLjE0MTM3MzY6Njk9Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Njk8NDc6MTQ4LjI1Ky4xKSsuJScqISQmHR8hGBocFBYYEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWExQXFhgaGx0gICIlJCYpKCotKi0wLjE0MDQ3MzY6Njk8Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Njk9NDc6MTU4LjI1Ky4xKSsuJScqISQmHB8hGBkcFBUYEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWExQWFhgaHB4gICIlJCYpKCotKy0wLjE0MTQ3MzY6NTk9Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+NTk9Mzc6MTQ4LjE1Ky4xKCsuJScqISQmHB8hGBkcFBUXEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWExQWFhgaHB4gICMlJCYpKCstKy0wLjE0MTQ3MzY6NTk9Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Njk8Mzc6MDQ4LjE1Ky4xKCsuJScqISMmHB8hFxkbFBUXEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWExUXFxgaGx4gICMlJCcpKCstKy0xLjE0MDQ3MzY6Njk8Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Njk9Mzc6MTQ3LjE1Ky4xKCsuJCcqISMmHB4hFxkbExUXEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWExUXFhkbHB4gISMlJCcpKCsuKy4xLjE0MTM3MzY6Njk9Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Njk9Mzc6MTQ3LjE1Ky4xKCsuJCcqISMmHR4hFxkbExUXEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWExUXFhkbHB4hISMlJCcpKCsuKy4xLjE0MTM3MzY6Njk9Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+",
+     "tensor_head": [
+      -1.1760425567626953,
+      -1.1760425567626953,
+      -1.1760425567626953,
+      -1.1760425567626953,
+      -1.1760425567626953,
+      -1.1760425567626953,
+      -1.1760425567626953,
+      -1.1760425567626953,
+      -1.1760425567626953,
+      -1.1760425567626953,
+      -1.1760425567626953,
+      -1.1760425567626953
+     ],
+     "tensor_sum": -23105.5546875,
+     "logits": [
+      3.1621522903442383,
+      -3.081308364868164
+     ],
+     "probs": [
+      0.9980606436729431,
+      0.0019393509719520807
+     ],
+     "label": "intact",
+     "confidence": 0.9980606436729431
+    },
+    {
+     "centre": [
+      0.5600838121658607,
+      -0.26587282811446716,
+      0.3199408750800451
+     ],
+     "window": [
+      415,
+      137,
+      471,
+      193
+     ],
+     "crop_b64": "ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/OTs+PkBCP0FDP0FDP0FDP0FDP0FDP0FDP0FDP0FDP0FDP0FDP0FDP0FCP0FCP0FCP0FCP0FCP0FCP0FCP0FCPD9BNzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/OTs+SkI3mYdwqpd+qpd+qpd+qpd+qpd+qpd+qpd+qpd+qpd+qpd+qpd+qpd+qpd+qpd+qpd+qpd+qpd+qpd+qpd+hnpqNzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Ozw+SUE3TUM2n4x0sp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Cq5d+m4t1m4t1m4t1m4t1m4t1m4t1b2hdNzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Pj08RkA5R0E4TUM2TUM2n4x0sp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2CfHJkNzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Pj08SEE4TUM2TUM2TUM2TUM2n4x0sp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2CfHJkNzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Pj08R0E4TUM2TUM2TUM2TUM2TUM2n4x0sp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2CfHJkNzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs/Nzs/PT09SEE4TUM2TUM2TUM2TUM2TUM2TUM2n4x0sp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2CfHJkNzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs/Nzs/SUE3TUM2TUM2TUM2TUM2TUM2TUM2TUM2n4x0sp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2CfHJkNzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs/Nzs/Nzs/Nzs/Nzs/SUE3TUM2TUM2TUM2TUM2TUM2TUM2TUM2n4x0sp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Crpl/eG5iNzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/SUE3TUM2TUM2TUM2TUM2TUM2TUM2TUM2n4x0sp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2CcWleOz5ANzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+ODs/ODs/ODs/ODs/ODs/ODs/ODs/ODs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/SUE3TUM2TUM2TUM2TUM2TUM2Ukg6modwrpp/sp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2CbWZcNzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+ODs/ODs/ODs/ODs/ODs/ODs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/SUE4TUM2TUM2TUM2TUM2TUM2U0g7rJd9sp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2CbWZcNzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+ODs/ODs/ODs/ODs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs+SUE3TUM2TUM2TUM2TUM2TUM2U0k7rJd9sp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2CbWZcNzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+ODs/ODs/ODs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs+Nzs+Nzs+SUE3TUM2TUM2TUM2TUM2TUM2U0k7rJd9sp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2CbWZcNzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs+Nzs+Nzs+Nzs+SUE3TUM2TUM2TUM2TUM2TUM2U0g7rJd9sp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2CbWZcNzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+SUE3TUM2TUM2TUM2TUM2TUM2U0k7q5d9sp2Csp2Csp2Csp2Csp2Csp2Csp2DtqSMtqWNtqWNtqWNtqWNtqWNtqWNtqWNtqWNtqWNs5+Fsp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2CbWZcNzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+SUE3TUM2TUM2TUM2TUM2TUM2U0k7q5d9sp2Csp2Csp2Csp2Csp2Csp2Cs5+GxsO5x8a9x8a9x8a9x8a9x8a9x8a9x8a9x8a9x8a9uaqUsp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2CbWZcNzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+SUE3TUM2TUM2TUM2TUM2TUM2U0k7q5d9sp2Csp2Csp2Csp2Csp2Csp2Cs5+GxsO5x8a9x8a9x8a9x8a9x8a9x8a9x8a9x8a9x8a9uaqUsp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2CbWZcNzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs/Nzs/Nzs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+SUE3TUM2TUM2TUM2TUM2TUM2U0k7q5d9sp2Csp2Csp2Csp2Csp2Csp2Cs5+GxsO5x8a9x8a9x8a9x8a9x8a9x8a9x8a9x8a9x8a9uKqUsp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2CbWZcNzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs/Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Njo9Nzo+Njo9Njo9Njk9Njk9NTk8NTk8SUE3TUM2TUM2TUM2TUM2TUM2VEk8taWLvKuQvKuQvKuQvKuQvKuQvKuQva2TxsS6x8a9x8a9x8a9x8a9x8a9x8a9x8a9x8a9x8a9uKqUsp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2CbWZcNzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Njk9NTg8NDc6MjY5MTQ3MDM2LzM2MzY5SEA3TUM2TUM2TUM2TUM2TUM2VEo8uquRwbKXwbKXwbKXwbKXwbKXwbKXwbOZxsW6x8a9x8a9x8a9pKSednh1dnh1e316wsG4x8a9vrKcuqmOuqmOuqmOuqmOuqmOuqmOuqmOuqmOcGthNzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+NTk8MzY6MTQ4LzI1LC8yKi0wKCsuKi0wRj81TUM2TUM2TUM2TUM2TUM2VEo8uquRwbKXwbKXwbKXwbKXwbKXwbKXwbOZxsW6hoeCg4SAiImFZWdmNzs+Nzs+QERGvr21x8a9w7ijwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXc29lNzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+NTg8MzY6MDM3LTA0Ky0wJyotJCYpHyIlRD0zTUM2TUM2TUM2TUM2TUM2VEo8uquRwbKXwbKXwbKXwbKXwbKXwbKXwbOZx8W7PT8/LzI1Nzs+Nzs+Nzs+P0NFamxrwcC3x8a9w7ijwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXc29lNzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+NTg7MzY5MDM2LS8zKi0wJiksIyUnHiAjRDwyTUM2TUM2TUM2TUM2TUM2VEo8uquRwbKXwbKXwbKXwbKXwbKXwbKXwbOZxsW6UlVWNzs+RklLUlVWUlVWaGppx8a9x8a9x8a9w7ijwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXc29lNzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+NTk7MjY5MDM2LS8zKi0wJiksIyUnHiAjRDwyTUM2TUM2TUM2TUM2TUM2VEo8uquRwbKXwbKXwbKXwbKXwbKXwbKXwbOZxsW6WVxcQERGjI2Jx8a9x8a9x8a9x8a9x8a9x8a9w7ijwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXc29lNzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+NTk7MjY5LzM2LS8zKiwvJikrIyUnHiAjRDwyTUM2TUM2TUM2TUM2TUM2VEo8uquRwbKXwbKXwbKXwbKXwbKXwbKXwbOZxsW6wL+2vr21w8K5x8a9x8a9x8a9x8a9x8a9x8a9w7ijwbKXwbKXwbKXwbKXwbKXwbKXwbKXwbKXc29lNzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+NDg7MjU5LzI2LS8zKiwvJigrIyUnHiAjRDwyTUM2TUM2TUM2TUM2TUM2U0k7rpuBtaGGtaGGtaGGtaGGtaGGtaGGtqOJxsS5x8a9x8a9x8a9x8a9x8a9x8a9x8a9x8a9x8a9uqyXinxoj4RvwbKXwbKXwbKXwbKXwbKXwbKXc29lNzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+NDg7MjU5LzI2LC8yKiwvJigrIyQnHiAjRDwyTUM2TUM2TUM2TUM2TUM2U0g7rJd9sp2Csp2Csp2Csp2Csp2Csp2Csp6DuKmTuKqUuKqUuKqUuKqUuKqUraGOf354wsG4x8a9uKqUoY92o5J5t6OIt6OIt6OIt6OIt6OIt6OIb2lfNzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+NDg8MjU5LzI2LC8yKSwvJigrJCYoNzMtSUA0TUM2TUM2TUM2TUM2TUM2U0k7rJd9sp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Cqpd+jYFwuKyZu6+ctaOKsp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2CbWZcNzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+NDg8MjU5LzI2LC8yKSwvJigrJScoSkE1TUM2TUM2TUM2TUM2TUM2TUM2U0k7rJd9sp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2CbWZcNzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+NDc7MjU5LzI1LC8yKSwvJigrJCcoSkE1TUM2TUM2TUM2TUM2TUM2TUM2U0g7rJd9sp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2CbWZcNzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+NDc7MjU4LzI1LC8yKSwvJigrJScoSkE1TUM2TUM2TUM2TUM2TUM2TUM2U0k7q5d9sp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2CopB5Y15WNzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+NTc7MjU4LzI1LC8yKSwvJSgrJScoSkE1TUM2TUM2TUM2TUM2TUM2TkQ3WU4/rJh9sp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2CXVpTNzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+NTc7MjU4LzI1LC8yKSwvJSgrJSYoSkE1TUM2TUM2TUM2TUM2TUM2X1NDrJh9sZyCsp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2CXVpTNzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Njo+NDc7MjU4LzI1Ky8yKSwvJSgrJSYoSkE1TUM2TUM2TUM2TUM2TUM2YFREsp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2CXVpTNzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Njo9NDc7MjU4LzI1LC8yKSwuJSgqJCYoSkE1TUM2TUM2TUM2TUM2TUM2YFREsp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2CXVpTNzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Njo9NDg6MjU4LzI1LC8xKSsuJSgqJSYoSkE1TUM2TUM2TUM2TUM2TUM2YFREsp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2CXVlTNzs+Nzs+Nzs+Nzs+Nzs+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Njo9NDg6MjU4LzI1LC8xKSsuJScqJCYnSkE1TUM2TUM2TUM2TUM2TUM2YFREsp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2CXVlTNzs+Nzs+Nzs+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Njo9Mzc7MTU4LjE1LC4xKSsuJScqJCYnSkE1TUM2TUM2TUM2TUM2TUM2YFREsp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2CXVpTNzs+Nzs+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Njo9Mzc6MTQ4LjE1Ky4xKSsuJScqJCYnSkE1TUM2TUM2TUM2TUM2TUM2YFREsp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2CXVlTNzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Njo9Mzc6MTQ4LjE1Ky4xKCsuJScqJCYnSkE1TUM2TUM2TUM2TUM2TUM2YFREsp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2CXVlTNzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Njo9Mzc6MTQ4LjE1Ky4xKCsuJScqJCYnSkE1TUM2TUM2TUM2TUM2TUM2YFREsp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2CXVlTNzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Njk9Mzc6MTQ3LjE0Ky4xKCsuJCcqJCUnSkE1TUM2TUM2TUM2TUM2TUM2YFREsp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2CXVlTNzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Njk9Mzc7MTQ3LjE0Ky4xKCsuJCcqJCUnSkE1TUM2TUM2TUM2TUM2TUM2YFREsp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2CXVlTNzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Njk9NDY6MTQ3LjE0Ky4xKCsuJCcpJCUnSkE1TUM2TUM2TUM2TUM2TUM2VUo8eWpXeWpXeWpXeWpXeWpXeWpXeWpXeWpXeWpXeWpXeWpXeWpXeWpXkoBqsp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2Csp2CXVlTNzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Njk9NDY6MTQ3LjE0Ky0xKCstJCcpJCUmSkE1TUM2TUM2TUM2TUM2TUM2TUM2TUM2TUM2TUM2TUM2TUM2TUM2TUM2TUM2TUM2TUM2TUM2TUM2TUM2ZllJhnZhhnZhhnZhhnZhhnZhhnZhhnZhhnZhhnZhhnZhhnZhhnZhfnJjTUtKNzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Njk9Mzc6MTQ3LjE0Ky4xKCstJCcpIyUmSkE1TUM2TUM2TUM2TUM2TUM2TUM2TUM2TUM2TUM2TUM2TUM2TUM2TUM2TUM2TUM2TUM2TUM2TUM2TUM2TUM2TUM2TUM2TUM2TUM2TUM2TUM2TUM2TUM2S0I3RkA4RkA4RkA4Ojs9Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Njk9MzY6MTQ3LjE0Ky4xKCotJCcpIiQmQToxQzsxQjowQjowQjowQjowQjowQjowQjowS0E1TUM2TUM2TUM2TUM2TUM2TUM2TUM2TUM2TUM2TUM2TUM2TUM2TUM2TUM2TUM2TUM2TUM2S0I3SUE3Qz85Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Njk9MzY6MTQ3LjE0Ky4wKCotJCYpHyIlGx0gFhgaExUXEhQWEhQWEhQWEhQWEhQWEhQWPzguSUA0SUA0SUA0SUA0SUA0SUA0SUA0SUA0SUA0SkE1SkE1SkE1S0E1S0I2S0I2S0I2S0I2QD47Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Njk8MzY5MDQ3LTE0Ky0wKCotJCYpHyIlGx0gFhgaExUXEhQWEhQWEhQWEhQWEhQWEhQWFRYYFhcYFhcYFhcYFhcYFhcYFhcYFhcYFhgZGxwdICEjJCYnKCkrKywuLS8xMTM1MzU3Njg6Nzk9Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Njk8MzY6MDQ3LTE0Ky0wKCotJCYpHyIlGx0fFhgZExUXEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWExUXGBocHR8hISQmJScqKSsuLC4xLzI1MTQ4NDc7Njk9Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+NTk8Mzc5MDM3LTA0Ki0wJyotJCYpICIkGx0fFhgZExUXEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWExUXGBocHR8hISQmJSgqKSwuLC8yLzI1MTQ4NDc7Njk9Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+NTk8MzY5MDM3LTA0Ki0wJyotJCYpICElGx0fFhcZExUWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWFBUXGBocHR8iISQmJSgqKSwvLC8yLzI1MTQ4NDc7Njk9Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+NTk8MjY5MDM3LTA0Ki0wJyosIyYpICElGx0fFhcZExUWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWFBUYGBodHh8iIiQmJSgqKSwvLC8yLzI1MTQ4NDc7Njk9Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+NTg8MzY5MDM3LTA0Ki0wJyosIyYoICIkGx0fFRcZExQXEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWExYXGRsdHiAiIiQmJSgrKSwvLC8yLzI1MTU4NDc7Njk9Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+NTg8MjY6MDM2LTAzKi0wJyosIyYoHyIjGx0fFRcZEhUWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWFBYXGRsdHiAiIiQnJSgrKSwvLC8yLzI2MTU4NDc7Njk9Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+Nzs+NTg8MjU5MDM2LTAzKi0wJyosIyYoHyIjGhwfFRcYEhUWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWEhQWFBYXGRsdHiAiIiQnJSgrKSwvLC8yLzI2MTU4NDc7Njk9Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+Nzo+",
+     "tensor_head": [
+      -1.158917784690857,
+      -1.158917784690857,
+      -1.158917784690857,
+      -1.158917784690857,
+      -1.158917784690857,
+      -1.158917784690857,
+      -1.158917784690857,
+      -1.158917784690857,
+      -1.158917784690857,
+      -1.158917784690857,
+      -1.158917784690857,
+      -1.158917784690857
+     ],
+     "tensor_sum": -24303.091796875,
+     "logits": [
+      3.8031270503997803,
+      -3.1328768730163574
+     ],
+     "probs": [
+      0.9990288019180298,
+      0.000971202680375427
+     ],
+     "label": "intact",
+     "confidence": 0.9990288019180298
+    }
+   ]
+  }
+ ],
+ "window_cases": [
+  {
+   "frame": 0,
+   "centre": [
+    0.5600173931575978,
+    -0.10715830515885869,
+    0.3199387221022787
+   ],
+   "window": [
+    342,
+    137,
+    397,
+    193
+   ]
+  },
+  {
+   "frame": 1,
+   "centre": [
+    0.5599868294470192,
+    -0.025819920449376043,
+    0.31993631733597666
+   ],
+   "window": [
+    304,
+    137,
+    360,
+    193
+   ]
+  },
+  {
+   "frame": 1,
+   "centre": [
+    0.5601030206488795,
+    -0.37005953934351365,
+    0.31994935121969625
+   ],
+   "window": [
+    464,
+    137,
+    520,
+    193
+   ]
+  },
+  {
+   "frame": 2,
+   "centre": [
+    0.5600309888375588,
+    0.07647906643290653,
+    0.3199035611114639
+   ],
+   "window": [
+    256,
+    137,
+    312,
+    193
+   ]
+  },
+  {
+   "frame": 2,
+   "centre": [
+    0.5600838121658607,
+    -0.26587282811446716,
+    0.3199408750800451
+   ],
+   "window": [
+    415,
+    137,
+    471,
+    193
+   ]
+  },
+  {
+   "frame": null,
+   "name": "behind_camera",
+   "centre": [
+    0.56,
+    0.0,
+    1.5
+   ],
+   "window": null
+  },
+  {
+   "frame": null,
+   "name": "off_image_left",
+   "centre": [
+    0.56,
+    -0.9,
+    0.05
+   ],
+   "window": null
+  },
+  {
+   "frame": null,
+   "name": "off_image_right",
+   "centre": [
+    0.56,
+    0.9,
+    0.05
+   ],
+   "window": null
+  },
+  {
+   "frame": null,
+   "name": "near_centre",
+   "centre": [
+    0.4,
+    0.0,
+    0.05
+   ],
+   "window": [
+    298,
+    218,
+    341,
+    261
+   ]
+  }
+ ],
+ "rounding_case": {
+  "intrinsics": [
+   [
+    100.0,
+    0.0,
+    100.5
+   ],
+   [
+    0.0,
+    100.0,
+    100.5
+   ],
+   [
+    0.0,
+    0.0,
+    1.0
+   ]
+  ],
+  "rotation": [
+   [
+    1.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0,
+    1.0,
+    0.0
+   ],
+   [
+    0.0,
+    0.0,
+    1.0
+   ]
+  ],
+  "translation": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "shape": [
+   200,
+   200
+  ],
+  "centre": [
+   0.0,
+   0.0,
+   1.0
+  ],
+  "window": [
+   94,
+   94,
+   106,
+   106
+  ]
+ },
+ "softmax_case": {
+  "logits": [
+   [
+    2.0,
+    -1.0
+   ],
+   [
+    0.0,
+    0.0
+   ],
+   [
+    -3.0,
+    4.0
+   ]
+  ],
+  "probs": [
+   [
+    0.9525741268224334,
+    0.04742587317756679
+   ],
+   [
+    0.5,
+    0.5
+   ],
+   [
+    0.0009110511944006454,
+    0.9990889488055994
+   ]
+  ]
+ }
+}

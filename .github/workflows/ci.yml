@@ -16,25 +16,33 @@ jobs:
       options: --dns 1.1.1.1 --dns 8.8.8.8
     steps:
       - uses: actions/checkout@v4
-      - name: Install python deps
-        run: |
-          printf 'Acquire::Retries "5";\nAcquire::http::Timeout "20";\n' > /etc/apt/apt.conf.d/99-ci
-          apt-get update
-          # The parcel-cell tests import MoveIt and the control/vision message packages
-          # (no simulator is started; only the Python modules are needed).
-          apt-get install -y --no-install-recommends python3-numpy python3-opencv python3-yaml \
-            build-essential cmake python3-colcon-common-extensions \
-            ros-jazzy-moveit-py ros-jazzy-moveit-configs-utils ros-jazzy-moveit-msgs \
-            ros-jazzy-vision-msgs ros-jazzy-control-msgs ros-jazzy-trajectory-msgs \
-            ros-jazzy-shape-msgs ros-jazzy-sensor-msgs ros-jazzy-geometry-msgs \
-            ros-jazzy-rosgraph-msgs ros-jazzy-std-msgs
+      - name: Install deps (same script as the Dockerfile)
+        run: bash tools/install_ci_deps.sh --no-downloads
       - name: Offline test suite
         shell: bash
         run: |
           source /opt/ros/jazzy/setup.bash
           # twin_description and twin_moveit_config are data-only packages; the MoveIt
           # config tests look them up in the ROS package index, so build just those two.
-          colcon build --packages-select twin_description twin_moveit_config
+          colcon build --base-paths src --packages-select twin_description twin_moveit_config
           source install/setup.bash
           chmod +x tools/run_offline_tests.sh
           tools/run_offline_tests.sh
+
+  # C++ port of the parcel condition node: builds it against ONNX Runtime 1.31.1 and runs its gtests against
+  # golden data produced by the Python pipeline, using the released model. Both downloads are checked by sha256.
+  condition-cpp:
+    runs-on: ubuntu-latest
+    container:
+      image: ros:jazzy
+      options: --dns 1.1.1.1 --dns 8.8.8.8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install deps, ONNX Runtime and model (sha256 checked; same script as the Dockerfile)
+        run: bash tools/install_ci_deps.sh --dest /opt/dl
+      - name: Build and test twin_condition_cpp (fails on any skipped test)
+        shell: bash
+        run: |
+          source /opt/ros/jazzy/setup.bash
+          colcon build --base-paths src --packages-select twin_condition_cpp
+          bash tools/check_condition_cpp.sh
